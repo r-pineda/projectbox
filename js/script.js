@@ -1,16 +1,16 @@
 /* ScrollReveal (js-extension) */
 window.sr = ScrollReveal({
 	reset: true,
-	distance: '200px',
+	distance: '400px',
 	origin: 'bottom',
 	scale: 0.1,
 	easing: 'cubic-bezier(0, 0.2, 0, 1)'
 });
 
 sr.reveal('#fix');
-sr.reveal('#project-fade');
-sr.reveal('#team-fade');
-sr.reveal('#functions-fade');
+sr.reveal('#project');
+sr.reveal('#team');
+sr.reveal('#functions');
 
 
 $(document).ready(function(){
