@@ -1,4 +1,4 @@
-/* ScrollReveal (js-extension) */
+/* ScrollReveal (js-extension) 
 window.sr = ScrollReveal({
 	reset: true,
 	distance: '200px',
@@ -36,4 +36,4 @@ $(document).ready(function(){
       });
     } // End if
   });
-});
+});*/
