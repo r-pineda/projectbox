@@ -191,6 +191,10 @@ footer, .footer, .dark, .footer a{
 	margin-top: 230px;
 }
 
+#divdown {
+	margin-top: 50px;
+}
+
 
 a.anchor {
     display: block;
@@ -207,11 +211,6 @@ h1 span, h2 span, section span {
 	margin-top:120px;
 }
 
-#textdownloads {
-	position: absolute;
-	margin-top: 180px;
-}
-
 #functions {
 	padding: 30px;
 }
@@ -223,4 +222,12 @@ h1 span, h2 span, section span {
 
 footer {
 	padding: 30px;
+}
+
+#font {
+	font-size: 13px;
+}
+
+#abstandleft {
+	margin-left: 60px;
 }
