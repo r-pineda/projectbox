@@ -37,3 +37,7 @@ $(document).ready(function(){
     } // End if
   });
 });
+
+$('.nav-item a').on('click', function(){
+     $('.navbar-collapse').collapse('hide');
+});
