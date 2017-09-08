@@ -9,7 +9,7 @@ window.sr = ScrollReveal({
 
 sr.reveal('#fix');
 sr.reveal('#project');
-sr.reveal('#team');
+sr.reveal('.card');
 sr.reveal('#functions');
 
 
@@ -36,4 +36,8 @@ $(document).ready(function(){
       });
     } // End if
   });
+});
+
+$('.nav-item a').on('click', function(){
+     $('.navbar-collapse').collapse('hide');
 });
