@@ -11,6 +11,7 @@ sr.reveal('#fix');
 sr.reveal('#project');
 sr.reveal('.card');
 sr.reveal('#functions');
+sr.reveal('.percentage');
 
 
 $(document).ready(function(){
