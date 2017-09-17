@@ -29,6 +29,7 @@ h5 {
 p,
 span {
 	font-family: 'Ek Mukta', sans-serif;
+	font-weight: 50;
 }
 
 
@@ -57,7 +58,7 @@ span {
 
 a:hover {
 	text-decoration: none;
-	color:#fff;
+	color: #0aa699;
 }
 
 /* navigation */
@@ -71,6 +72,8 @@ a:hover {
 
 .navbar {
 	height: 80px;
+	font-family: 'Montserrat', sans-serif;
+	letter-spacing: 1px;
 }
 
 .navbar-brand {
@@ -118,11 +121,13 @@ a:hover {
 .navbar-brand a,
 a {
 	color: #fff;
-	transition: 0.2s ease-out;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
 }
 
 .navbar a:hover, .navbar-brand a:hover {
-	color:#bdc3c7;
+	color: #4d4b4b;
+	border-bottom: 3px solid #31c6b8;
 }
 
 
@@ -204,6 +209,7 @@ a.anchor {
 
 h1 {
 	position: relative;
+	font-family: 'Montserrat', sans-serif;
 }
 
 h1 span, h2 span, section span {
@@ -238,11 +244,85 @@ footer {
     	height: 30px;
     }
 
-    .navbar-brand {
-	position: relative;
-	z-index: 1000;
-	margin-left: 0px;
-	width: 30px;
-	height: 30px;
+		.navbar-brand {
+			position: relative;
+			z-index: 1000;
+			margin-left: 0px;
+			width: 30px;
+			height: 30px;
+		}
+
+		body {
+			overflow-x: hidden;
+			overflow-y: hidden;
+		}
 }
+
+.progress-pie-chart {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #bebebe;
+  position: relative;
+}
+.progress-pie-chart.gt-50 {
+  background-color: #81CE97;
+}
+
+.ppc-progress {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  clip: rect(0, 200px, 200px, 100px);
+}
+.ppc-progress .ppc-progress-fill {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  clip: rect(0, 100px, 200px, 0);
+  background: #009b8d;
+  transform: rotate(60deg);
+}
+.gt-50 .ppc-progress {
+  clip: rect(0, 100px, 200px, 0);
+}
+.gt-50 .ppc-progress .ppc-progress-fill {
+  clip: rect(0, 200px, 200px, 100px);
+  background: #E5E5E5;
+}
+
+.ppc-percents {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 173.91304px/2);
+  top: calc(50% - 173.91304px/2);
+  width: 173.91304px;
+  height: 173.91304px;
+  background: #fff;
+  text-align: center;
+  display: table;
+}
+.ppc-percents span {
+  display: block;
+  font-size: 2.6em;
+  font-weight: bold;
+  color: #009b8d;
+	margin-top: 0px;
+}
+
+.pcc-percents-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+.progress-pie-chart {
+  margin: 50px auto 0;
 }
