@@ -14,8 +14,10 @@
 
 /* typo */
 
-html {
+html, body {
 	line-height: 1.5;
+	height:100%;
+	width: 100%;
 }
 
 h1,
@@ -326,3 +328,9 @@ footer {
 .progress-pie-chart {
   margin: 50px auto 0;
 }
+
+#project {
+	height: 100%;
+	line-height: 4;
+}
+
