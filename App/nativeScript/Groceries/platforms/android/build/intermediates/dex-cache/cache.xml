@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-animated-vector-drawable-25.3.1_4601be404702563f961dde4e2633be7058036d65.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\com.android.support\support-compat\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-compat-25.3.1_c0745354945aa2a04c92ed00b5f7af4d91ad9880.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\Groceries\runtime\unspecified\jars\libs\binding-generator.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a3e74f5f1ebe12c7cfa6591158ef298c95a5275f">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\binding-generator_0288ef51f43add671ca7bd42cba356f9e356076d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\com.android.support\support-v4\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-v4-25.3.1_fb59b7f71a1e7080e720c545664be88a630c6119.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-appcompat-v7-25.3.1_0085d24178cd7275c20ec30f934ba25eecbc5478.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\Groceries\runtime\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="eb6078500d1af5e7b663871706674405c57292a3">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\Groceries-runtime-unspecified_00710f34815ef1babdc07430c3a9b49616d354a1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-recyclerview-v7-25.3.1_3fdcbe9cd5116d4d28e6fbf45a325f4a5c837044.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\widgets-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ed69cd5603304a6fc9a36a94c8be977a1d0e4857">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\intermediates-exploded-aar-widgets-release_03f62b82a07785d08c3a2043930f253a867cd80f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-core-utils-25.3.1_e9c35e18218b3ff9a5cbe3dbcdf5bb9e8cf9cb94.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\com.android.support\support-fragment\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-fragment-25.3.1_815ec3d5c26ed1ea495bbbfa723bf6bd29c11c4e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-vector-drawable-25.3.1_cc648ccb27a5acf49ee0760164e8d982007ce883.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\support-annotations-25.3.1_07cc1bdab6386cc71ca9e51c0b2d242e9420314e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\com.android.support\transition\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-transition-25.3.1_cf479a3f75d106a6be5db94758d3c0b6552e1920.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-media-compat-25.3.1_da2464a6800ffb30c7710c19ad1bdff6144fb65b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\com.android.support\design\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-design-25.3.1_f874b507b10b008d0b43c711d357496b3fbd961e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\Michael\Google Drive\NativeScript\Neuer Ordner\Groceries\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-core-ui-25.3.1_d516b793bd2248b08999ea7ff2f5193c45599dd2.jar" />
+    </item>
+
+</items>
