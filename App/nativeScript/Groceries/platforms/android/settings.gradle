@@ -1,4 +1,4 @@
-rootProject.name = "Groceries"
+rootProject.name = "projectbox"
 include "asbg"
 project(":asbg").projectDir = file("build-tools/android-static-binding-generator")
 

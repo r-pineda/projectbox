@@ -46,30 +46,25 @@ export class UserService {
     )
     .map(response => response.json())
     .do(data => {
-      console.dir(data);
-      // Config.token = data.Result.access_token;
+      Config.token = data.access_token;
+      console.log(Config.token)
     })
     .catch(this.handleErrors);
   }
 
-  // meetings() {
-  //   let headers = new Headers();
-  //   headers.append("Content-Type", "application/json");
-  //   headers.append("Authorization", "")
-  
-  //   return this.http.post(
-  //     Config.apiUrl + "v2/token",
-  //     JSON.stringify({
-  //       username: user.email,
-  //       password: user.password
-  //     }),
-  //     { headers: headers }
-  //   )
-  //   .map(response => response.json())
-  //   .do(data => {
-  //     Config.token = data.Result.access_token;
-  //   })
-  //   .catch(this.handleErrors);
-  // }
+  meetings() {
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.get(
+      Config.apiUrl + "v2/meetings",
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+      console.dir(data);
+    })
+    .catch(this.handleErrors);
+  }
   
 }
