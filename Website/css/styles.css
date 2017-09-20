@@ -310,8 +310,11 @@ footer {
 }
 
 #project {
-	height: 90%;
+	height: 100%;
 	line-height: 2;
+}
+
+#neu {
 	width: 60%;
 	margin: auto;
 }
