@@ -1,18 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Ek+Mukta|Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Mukta:200,300,400');
 
-/*
-	Projectbox - main stylesheet for homepage
-	created by Rommelt Pineda [PIN]
-
-
-	index:
-	[typo]
-	[colors]
-
-*/
-
-
-/* typo */
 
 html, body {
 	line-height: 1.5;
@@ -23,17 +11,29 @@ html, body {
 h1,
 h2,
 h3,
-h4,
 h5 {
 	font-family: 'Montserrat', sans-serif;
+}
+
+h4 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+}
+
+.subhead {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+}
+
+#titlesub {
+	font-weight: 300;
 }
 
 p,
 span {
 	font-family: 'Ek Mukta', sans-serif;
-	font-weight: 50;
+	font-weight: 200;
 }
-
 
 /* colors */
 
@@ -167,8 +167,8 @@ section {
     display: flex; /* NEW */
 		background: url('../img/office.min.jpg');
 		background-repeat: center center no-repeat;
- 		 background-size: cover;
- 		 color:#fff;
+ 		background-size: cover;
+ 		color:#fff;
 }
 
 #pre-footer a{
@@ -238,26 +238,6 @@ footer {
 
 #abstandleft {
 	margin-left: 60px;
-}
-
-@media only screen and (max-width: 768px) {
-    .navbar-brand img{
-    	width: 30px;
-    	height: 30px;
-    }
-
-		.navbar-brand {
-			position: relative;
-			z-index: 1000;
-			margin-left: 0px;
-			width: 30px;
-			height: 30px;
-		}
-
-		body {
-			overflow-x: hidden;
-			overflow-y: hidden;
-		}
 }
 
 .progress-pie-chart {
@@ -331,6 +311,31 @@ footer {
 
 #project {
 	height: 100%;
-	line-height: 4;
+	line-height: 2;
 }
 
+#neu {
+	width: 60%;
+	font-size: 12pt;
+	margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar-brand img{
+    	width: 30px;
+    	height: 30px;
+    }
+
+		.navbar-brand {
+			position: relative;
+			z-index: 1000;
+			margin-left: 0px;
+			width: 30px;
+			height: 30px;
+		}
+
+		body {
+			overflow-x: hidden;
+			overflow-y: hidden;
+		}
+}

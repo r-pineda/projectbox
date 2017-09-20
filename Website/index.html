@@ -1,8 +1,15 @@
 <!DOCTYPE HTML>
 <html lang="de">
-
-
 <head>
+	<!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-45802931-2"></script>
+	<script>
+  	window.dataLayer = window.dataLayer || [];
+  	function gtag(){dataLayer.push(arguments)};
+  		gtag('js', new Date());
+  		gtag('config', 'UA-45802931-2');
+	</script>
+
 	<meta charset="utf-8">
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -19,18 +26,8 @@
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="icon" type="image/png" href="https://www.projectbox.eu/website/css/images/logo-inner.png">
-
 </head>
-
 <body class="is-large">
-	<!-- comment
-		<div class="nav-right navbar-menu" id="navMenu">
-			<a class="navbar-item is-tab" id="linktodown" href="#">das Projekt</a>
-			<a class="navbar-item is-tab" id="linktoteam" href="#">das Team</a>
-			<a class="navbar-item is-tab" id="linktodoc" href="#">dokumente</a>
-		</div>
-	</nav> -->
-
 	<!-- Image and text -->
 	<nav class="navbar navbar-dark navbar-expand-md fixed-top projectbox-bg-color" id="fix">
 		<a class="navbar-brand" href="#top">
@@ -39,7 +36,6 @@
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
 		<div class="collapse navbar-collapse projectbox-bg-color" id="navbarSupportedContent">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
@@ -63,7 +59,6 @@
 			</ul>
 		</div>
 	</nav>
-
 	<!-- Welcome screen -->
 	<section class="projectbox-bg-color" id="top">
 		<div class="container-fluid h-100">
@@ -71,39 +66,51 @@
 				<div class="col align-self-center" id="adjust">
 					<img src="https://www.projectbox.eu/website/css/images/logo-inner.png" alt="Description" width="140">
 					<h2>projectbox</h2>
-					<h4>"eine mobile Projektmanagement App"</h4>
+					<h4 id="titlesub">"eine mobile Projektmanagement App"</h4>
 				</div>
 				<div id="project"></div>
 			</div>
-
 		</div>
 	</section>
-
 	<!-- project description -->
 	<section id="project">
-		<div class="container">
+		<div class="container" id="neu">
 			<div id="divdown" class="row">
 				<div class="col-sm-12 text-center">
 					<h4>generelles.</h4>
-					<p>Projectbox ist eine mobile Applikation und erleichtert Projektmanagement-Aufgaben.</p>
-				</div>
-				<div class="col-sm-12 text-center">
-					<h4>effizient.</h4>
-					<p>Events und Meetings über das Kalender-Interface planen, schnell und unkompliziert.</p>
+					<p>Projectbox ist eine mobile Applikation und erleichtert Projektmanagement-Aufgaben.
+						Die App ist sowohl im Appstore, als auch auf Google Play erhältlich.
+						Es ist somit möglich, sie auf iOS- und Android-Geräten zu verwenden.
+						<br />
+						<br />
+            </p>
 				</div>
 				<div class="col-sm-12 text-center">
 					<h4>schnell.</h4>
-					<p>Kollegen und Mitarbeiter zu Events einladen, per Knopfdruck.</p>
+					<p>Events und Meetings können schnell und unkompliziert über das Kalender-Interface geplant werden.
+						Kollegen und Mitarbeiter einzuladen erfordert nicht mehr als ein paar Knopfdrücke.
+						<br />
+						<br />
+					</p>
 				</div>
 				<div class="col-sm-12 text-center">
-					<h4>kreativ.</h4>
-					<p>Agenden, Protokolle und Fotos teilen, alles über eine App.</p>
+					<h4>effizient.</h4>
+					<p>Ähnlich wie Meetings können auch TODOs inklusive Deadlines über den Kalender festgelegt werden.
+						Eine Timetracking-Funktion ist in das Modul integriert und hilft beim Aufzeichnen der Aktivitäten.
+						<br />
+						<br />
+          </p>
+				</div>
+				<div class="col-sm-12 text-center">
+					<h4>vernetzt.</h4>
+					<p>Zu einzelnen Events können entsprechende Agenden, Protokolle und Fotos hochgeladen und geteilt werden.
+						Dem Benutzer ist es möglich, Kommentare zu Events und TODOs zu verfassen. Alles über eine einzige App.
+						<br />
+						<br /></p>
 				</div>
 				</div>
 			</div>
 	</section>
-
-
 	<!-- ads -->
 	<section class="projectbox-bg-color" id="functions">
 		<div class="container">
@@ -135,12 +142,13 @@
 							<img class="card-img-top" src="img/team/htl3r_projectbox_Manuel_final.jpg" alt="Card image cap">
 							<div class="card-block">
 								<h4 class="card-title">Manuel Gafoz</h4>
-								<p class="card-text">Projektleiter</p>
+								<p class="subhead" class="card-text">Projektleiter</p>
 							</div>
 							<ul class="list-group list-group-flush">
 								<li class="list-group-item">Motivation des Teams</li>
 								<li class="list-group-item">Projektmanagement im Team</li>
-								<li class="list-group-item">Unterstützt das Team</li>
+								<li class="list-group-item">Verantwortlich für den Webauftritt</li>
+								<li class="list-group-item">Kommunikation mit dem Autraggeber</li>
 							</ul>
 						</div>
 					</div>
@@ -149,12 +157,12 @@
 							<img class="card-img-top" src="img/team/htl3r_projectbox_Michael_final.jpg" alt="Card image cap">
 							<div class="card-block">
 								<h4 class="card-title">Michael Frühwirth</h4>
-								<p class="card-text">Backend</p>
+								<p class="subhead" class="card-text">Backend</p>
 							</div>
 							<ul class="list-group list-group-flush">
-								<li class="list-group-item">Motivation des Teams</li>
-								<li class="list-group-item">Projektmanagement im Team</li>
-								<li class="list-group-item">Unterstützt das Team</li>
+								<li class="list-group-item">Untestützung des Projektleiters</li>
+								<li class="list-group-item">Umsetzung des App - Backends</li>
+								<li class="list-group-item">Verantwortlich für API Zugriffe</li>
 							</ul>
 						</div>
 					</div>
@@ -163,12 +171,12 @@
 							<img class="card-img-top" src="img/team/htl3r_projectbox_Rommelt_final.jpg" alt="Card image cap">
 							<div class="card-block">
 								<h4 class="card-title">Rommelt Pineda</h4>
-								<p class="card-text">Frontend</p>
+								<p class="subhead" class="card-text">Frontend</p>
 							</div>
 							<ul class="list-group list-group-flush">
-								<li class="list-group-item">Motivation des Teams</li>
-								<li class="list-group-item">Projektmanagement im TAeam</li>
-								<li class="list-group-item">Unterstützt das Team</li>
+								<li class="list-group-item">Verwaltet den Webauftritt</li>
+								<li class="list-group-item">Umsetzung des App - Frontends</li>
+								<li class="list-group-item">User-Interface Gestaltung</li>
 							</ul>
 						</div>
 					</div>
@@ -177,12 +185,12 @@
 							<img class="card-img-top" src="img/team/htl3r_projectbox_Max_final.jpg" alt="Card image cap">
 							<div class="card-block">
 								<h4 class="card-title">Maximilian Kraus</h4>
-								<p class="card-text">Design & Usability</p>
+								<p class="subhead" class="card-text">Design & Usability</p>
 							</div>
 							<ul class="list-group list-group-flush">
-								<li class="list-group-item">Motivation des Teams</li>
-								<li class="list-group-item">Projektmanagement im Team</li>
-								<li class="list-group-item">Unterstützt das Team</li>
+								<li class="list-group-item">Entwicklung einer optimalen User-Experience</li>
+								<li class="list-group-item">Hilft bei Marketingtätigkeiten</li>
+								<li class="list-group-item">Verbesserung des User-Interface</li>
 							</ul>
 						</div>
 					</div>
@@ -195,7 +203,6 @@
 			</div>
 		</div>
 	</section>
-
 	<!-- downloads -->
 	<section class="hero is-fullheight projectbox-bg-color">
 		<div class="hero-body">
@@ -209,31 +216,17 @@
 					</div>
 					<div class="col-sm-12 col-md-9">
 						<br/>
-						<!--
-							<ul class="nav nav-tabs">
-								<li class="nav-item">
-									<a class="nav-link active" href="#1b" data-toggle="tab">Allgemein</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#2b" data-toggle="tab">Statusberichte</a>
-								</li>
-
-								<li class="nav-item">
-									<a class="nav-link disabled" href="#3b" data-toggle="tab">Medien</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link disabled" href="#4a" data-toggle="tab">Sonstiges</a>
-								</li>
-							</ul>-->
-
 						<div class="tab-content">
 							<div class="tab-pane active" id="1b">
 								<div class="list-group" id="abstandleft">
-									<a href="#" class="list-group-item list-group-item-action"><i class="fa fa-book" aria-hidden="true"></i>
+									<a href="docs/da_ansuchen_gafoz.pdf" class="list-group-item list-group-item-action" download><i class="fa fa-book" aria-hidden="true"></i>
 										Diplomarbeitsansuchen
 									</a>
-									<a href="#" class="list-group-item list-group-item-action disabled"><i class="fa fa-book" aria-hidden="true"></i>
+									<a href="docs/da_antrag_gafoz.pdf" class="list-group-item list-group-item-action" download><i class="fa fa-book" aria-hidden="true"></i>
 										Diplomarbeitsantrag
+									</a>
+									<a href="docs/da_antrag_gafoz.pdf" class="list-group-item list-group-item-action disabled" download><i class="fa fa-book" aria-hidden="true"></i>
+										1. Management Summary
 									</a>
 								</div>
 							</div>
@@ -243,7 +236,6 @@
 			</div>
 		</div>
 	</section>
-
 	<section class="percentage">
 		<div class="container">
 			<div class="row">
@@ -260,27 +252,9 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</section>
-	<!-- pre footer
-	<section id="pre-footer">
-		<div class="container">
-			<div class="row">
-				<div class="hidden-xs hidden-s col-md-12">
-					<img src="https://www.projectbox.eu/website/css/images/logo-inner.png" alt="logo">
-				</div>
-			</div>
-			<div class="row">
-				<div class="hidden-xs hidden-s col-md-4">
-					<h3>projectbox</h3>
-					<br/>
-				</div>
-			</div>
-		</div>
-	</section>
-	-->
 	<section class="splitter">
 	</section>
 	<footer class="footer dark" id="font">
@@ -297,16 +271,12 @@
 			</div>
 		</div>
 	</footer>
-
-
 	<!-- JavaScript files -->
-
 	<script src="https://fastcdn.org/jQuery/2.1.4/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 	<script src="js/script.js"></script>
-
 	<script>
 	$(function(){
   var $ppc = $('.progress-pie-chart'),
