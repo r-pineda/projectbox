@@ -167,8 +167,8 @@ section {
     display: flex; /* NEW */
 		background: url('../img/office.min.jpg');
 		background-repeat: center center no-repeat;
- 		 background-size: cover;
- 		 color:#fff;
+ 		background-size: cover;
+ 		color:#fff;
 }
 
 #pre-footer a{
@@ -238,26 +238,6 @@ footer {
 
 #abstandleft {
 	margin-left: 60px;
-}
-
-@media only screen and (max-width: 768px) {
-    .navbar-brand img{
-    	width: 30px;
-    	height: 30px;
-    }
-
-		.navbar-brand {
-			position: relative;
-			z-index: 1000;
-			margin-left: 0px;
-			width: 30px;
-			height: 30px;
-		}
-
-		body {
-			overflow-x: hidden;
-			overflow-y: hidden;
-		}
 }
 
 .progress-pie-chart {
@@ -330,7 +310,28 @@ footer {
 }
 
 #project {
-	height: 100%;
-	line-height: 4;
+	height: 90%;
+	line-height: 2;
+	width: 60%;
+	margin: auto;
 }
 
+@media only screen and (max-width: 768px) {
+    .navbar-brand img{
+    	width: 30px;
+    	height: 30px;
+    }
+
+		.navbar-brand {
+			position: relative;
+			z-index: 1000;
+			margin-left: 0px;
+			width: 30px;
+			height: 30px;
+		}
+
+		body {
+			overflow-x: hidden;
+			overflow-y: hidden;
+		}
+}
