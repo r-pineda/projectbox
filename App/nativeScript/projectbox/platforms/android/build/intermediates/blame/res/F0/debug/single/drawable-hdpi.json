@@ -8,6 +8,10 @@
         "source": "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\src\\main\\res\\drawable-hdpi\\logo.png"
     },
     {
+        "merged": "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\build\\intermediates\\res\\merged\\F0\\debug\\drawable-hdpi\\logo_.png",
+        "source": "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\src\\main\\res\\drawable-hdpi\\logo_.png"
+    },
+    {
         "merged": "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\build\\intermediates\\res\\merged\\F0\\debug\\drawable-hdpi\\icon.png",
         "source": "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\src\\main\\res\\drawable-hdpi\\icon.png"
     }
