@@ -16,10 +16,6 @@
         "source": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\src\\main\\res\\drawable-xxhdpi\\icon2.png"
     },
     {
-        "merged": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\build\\intermediates\\res\\merged\\F0\\debug\\drawable-xxhdpi\\background.png",
-        "source": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\src\\main\\res\\drawable-xxhdpi\\background.png"
-    },
-    {
         "merged": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\build\\intermediates\\res\\merged\\F0\\debug\\drawable-xxhdpi\\logo.png",
         "source": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\src\\main\\res\\drawable-xxhdpi\\logo.png"
     },

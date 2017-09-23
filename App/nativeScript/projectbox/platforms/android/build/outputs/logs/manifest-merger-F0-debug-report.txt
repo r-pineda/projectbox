@@ -2,7 +2,7 @@
 manifest
 ADDED from D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\AndroidManifest.xml:2:1-43:12
 	package
-		ADDED from D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\AndroidManifest.xml:3:2-39
+		ADDED from D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\AndroidManifest.xml:3:2-29
 		INJECTED from D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\AndroidManifest.xml
 		INJECTED from D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\AndroidManifest.xml
 	android:versionName

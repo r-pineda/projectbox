@@ -8,10 +8,6 @@
         "source": "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\src\\main\\res\\drawable-mdpi\\icon2.png"
     },
     {
-        "merged": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\build\\intermediates\\res\\merged\\F0\\debug\\drawable-mdpi\\background.png",
-        "source": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\src\\main\\res\\drawable-mdpi\\background.png"
-    },
-    {
         "merged": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\build\\intermediates\\res\\merged\\F0\\debug\\drawable-mdpi\\logo_login.png",
         "source": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\src\\main\\res\\drawable-mdpi\\logo_login.png"
     },

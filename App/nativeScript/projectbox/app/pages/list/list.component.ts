@@ -38,7 +38,7 @@ export class ListComponent {
     
       this.routerExtensions.navigate(["/animation"], {
           transition: {
-              name: "slideRight",
+              name: "slide",
               curve: "easeOut"
           }
       });

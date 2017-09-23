@@ -1,9 +1,5 @@
 [
     {
-        "merged": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\build\\intermediates\\res\\merged\\F0\\debug\\drawable-xhdpi\\background.png",
-        "source": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\src\\main\\res\\drawable-xhdpi\\background.png"
-    },
-    {
         "merged": "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\build\\intermediates\\res\\merged\\F0\\debug\\drawable-xhdpi\\logo.png",
         "source": "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\src\\main\\res\\drawable-xhdpi\\logo.png"
     },
