@@ -35,9 +35,8 @@ export class LoginComponent {
       .subscribe(
         () => this.routerExtensions.navigate(["/list"], {
           transition: {
-              name: "slideLeft",
-              duration: 1000,
-              curve: "linear"
+              name: "slide",
+              curve: "easeOut"
           }
       }),
         (error) => alert("Unfortunately we could not find your account.")

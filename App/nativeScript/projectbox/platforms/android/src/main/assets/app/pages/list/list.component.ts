@@ -12,6 +12,7 @@ import {
   TouchGestureEventData} from "ui/gestures";
 
 
+
 @Component({
   selector: "list",
   templateUrl: "pages/list/list.html",
