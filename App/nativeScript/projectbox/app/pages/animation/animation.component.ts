@@ -11,38 +11,30 @@ import {
   SwipeGestureEventData,
   TouchGestureEventData} from "ui/gestures";
 
-
 @Component({
-  selector: "list",
-  templateUrl: "pages/list/list.html",
+  selector: "animation",
+  templateUrl: "pages/animation/animation.html",
   providers: [UserService],
-  styleUrls: ["pages/list/list-common.css", "pages/list/list.css"]
+  styleUrls: ["pages/animation/animation-common.css", "pages/animation/animation.css"]
 })
-export class ListComponent {
+export class AnimationComponent {
 
   meetings :String;
 
   constructor(private router: Router, private routerExtensions: RouterExtensions, private userService: UserService) {
-    
-    this.meetings = "Lade..."
 
-    this.userService.meetings().subscribe(
-      (data) => this.meetings = JSON.stringify(data),
-      (error) => alert("Unfortunately we could not find any meetings.")
-    );
   }
 
   onSwipe(args: SwipeGestureEventData) {
-    if (args.direction = 1) {
+    if (args.direction = 2) {
     
-      this.routerExtensions.navigate(["/animation"], {
+      this.routerExtensions.navigate(["/list"], {
         transition: {
-            name: "slideLeft",
+            name: "slideRight",
             duration: 500,
             curve: "easeOut"
           }
       });
     }
   }
-
 }

@@ -1,5 +1,5 @@
 <StackLayout>
 
-    <Label [text]="meetings"></Label>
+    <Label (swipe)="onSwipe($event)" [text]="meetings"></Label>
 
 </StackLayout>
