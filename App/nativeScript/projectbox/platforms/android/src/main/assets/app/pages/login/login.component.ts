@@ -33,8 +33,8 @@ export class LoginComponent {
       .subscribe(
         () => this.routerExtensions.navigate(["/list"], {
           transition: {
-              name: "flip",
-              duration: 2000,
+              name: "slideLeft",
+              duration: 1000,
               curve: "linear"
           }
       }),
