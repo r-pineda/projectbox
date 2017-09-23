@@ -1,0 +1,7 @@
+23/9/17
+
+- Mockups für das "Funktionen" - Bild von https://www.behance.net/gallery/22663297/Apple-Device-Wireframe-Mockups
+- StatusBar entfernt durch das Importieren vom Component "Pages" - hiddenStatusBar = true
+- Loading-Screen Bilder erstellt
+- Logo im Login-Screen angepasst
+- Animationen angepasst

@@ -5,14 +5,7 @@
     "\\App\\nativeScript",
     "\\App\\nativeScript\\projectbox",
     "\\App\\nativeScript\\projectbox\\app",
-    "\\App\\nativeScript\\projectbox\\app\\App_Resources\\Android",
-    "\\App\\nativeScript\\projectbox\\app\\App_Resources\\Android\\values",
-    "\\App\\nativeScript\\projectbox\\app\\App_Resources\\Android\\values-v21",
-    "\\App\\nativeScript\\projectbox\\app\\App_Resources\\iOS\\Assets.xcassets",
-    "\\App\\nativeScript\\projectbox\\app\\pages",
-    "\\App\\nativeScript\\projectbox\\app\\pages\\list",
-    "\\App\\nativeScript\\projectbox\\app\\pages\\login"
+    "\\App\\nativeScript\\projectbox\\app\\pages"
   ],
-  "SelectedNode": "\\App\\nativeScript\\projectbox\\app\\pages\\list\\list.component.ts",
   "PreviewInSolutionExplorer": false
 }
