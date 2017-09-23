@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
-import { Router } from "@angular/router";
+import { Router} from "@angular/router";
+import {RouterExtensions} from "nativescript-angular/router";
 
 @Component({
   selector: "my-app",
@@ -13,7 +14,7 @@ export class LoginComponent {
   user: User;
   isLoggingIn = true;
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private routerExtensions: RouterExtensions, private userService: UserService) {
     this.user = new User();
     this.user.email = "manuel.gafoz@htl.rennweg.at";
     this.user.password = "manuel1999";
@@ -30,7 +31,13 @@ export class LoginComponent {
   login() {
     this.userService.login(this.user)
       .subscribe(
-        () => this.router.navigate(["/list"]),
+        () => this.routerExtensions.navigate(["/list"], {
+          transition: {
+              name: "slideLeft",
+              duration: 1000,
+              curve: "linear"
+          }
+      }),
         (error) => alert("Unfortunately we could not find your account.")
       );
   }
