@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Sep 23 17:34:07 CEST 2017
+#Sat Sep 23 17:48:39 CEST 2017
 2185.file=D\:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\build\\intermediates\\assets\\F0\\debug\\app\\tns_modules\\@angular\\core\\src\\linker\\element_ref.d.ts
 1425.base=D\:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\build\\intermediates\\assets\\F0\\debug
 2716.set=ASSET
