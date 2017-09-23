@@ -240,6 +240,10 @@ footer {
 	margin-left: 60px;
 }
 
+/*
+    Progress Bar
+*/
+
 .progress-pie-chart {
   width: 200px;
   height: 200px;
@@ -310,9 +314,6 @@ footer {
   margin: 50px auto 0;
 }
 
-#project {
-	height: 75%;
-}
 
 #neu {
 	width: 100%;
@@ -334,10 +335,6 @@ footer {
 			height: 30px;
 		}
 
-		body {
-			overflow-x: hidden;
-			overflow-y: hidden;
-		}
 }
 
 
