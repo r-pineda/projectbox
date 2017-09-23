@@ -1,11 +1,15 @@
 {
   "ExpandedNodes": [
-    "",
     "\\App",
     "\\App\\nativeScript",
     "\\App\\nativeScript\\projectbox",
     "\\App\\nativeScript\\projectbox\\app",
-    "\\App\\nativeScript\\projectbox\\app\\pages"
+    "\\App\\nativeScript\\projectbox\\app\\pages",
+    "\\App\\nativeScript\\projectbox\\app\\pages\\animation",
+    "\\App\\nativeScript\\projectbox\\app\\pages\\list",
+    "\\App\\nativeScript\\projectbox\\app\\pages\\login",
+    "\\Mitschriften",
+    "\\Mitschriften\\Rommelt"
   ],
   "PreviewInSolutionExplorer": false
 }
