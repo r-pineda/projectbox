@@ -1,9 +1,9 @@
 {
-	"time": "Sat Sep 23 2017 17:48:27 GMT+0200 (Mitteleuropäische Sommerzeit)",
+	"time": "Sat Sep 23 2017 19:29:52 GMT+0200 (Mitteleuropäische Sommerzeit)",
 	"nativePlatformStatus": "3",
 	"bundle": false,
 	"release": false,
-	"changesRequireBuild": true,
+	"changesRequireBuild": false,
 	"projectFileHash": "ffdd10300ca9eb195c5275533860a822ec66ac750ae14b34772ade8b3a149999",
-	"changesRequireBuildTime": "Sat Sep 23 2017 17:48:27 GMT+0200 (Mitteleuropäische Sommerzeit)"
+	"changesRequireBuildTime": "Sat Sep 23 2017 19:29:27 GMT+0200 (Mitteleuropäische Sommerzeit)"
 }
