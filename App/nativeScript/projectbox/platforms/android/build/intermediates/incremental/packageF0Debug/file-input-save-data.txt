@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Sep 23 22:01:28 CEST 2017
+#Sat Sep 23 23:19:20 CEST 2017
 2185.file=D\:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\build\\intermediates\\assets\\F0\\debug\\app\\tns_modules\\tns-core-modules\\ui\\core\\bindable\\package.json
 1425.base=D\:\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\platforms\\android\\build\\intermediates\\assets\\F0\\debug
 2716.set=ANDROID_RESOURCE
