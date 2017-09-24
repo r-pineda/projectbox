@@ -1,0 +1,5 @@
+ErrorDocument 404 http://app.projectbox.eu/error
+ErrorDocument 403 http://app.projectbox.eu/error
+ErrorDocument 500 http://app.projectbox.eu/error
+ErrorDocument 401 http://app.projectbox.eu/error
+Options -Indexes
