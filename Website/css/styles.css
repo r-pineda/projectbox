@@ -236,8 +236,13 @@ footer {
 	font-size: 13px;
 }
 
-.abstandleft {
-	margin-left: 60px;
+.tabs-fix {
+    color:#fff;
+}
+
+.tabs-fix:hover {
+    color:#495057;
+    background-color: #fff;
 }
 
 /*
