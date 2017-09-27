@@ -1,7 +1,9 @@
-<ListView [items]="meetings" class="list-group">
+<ListView [items]="meetings" class="list-group"> <!--standard listview taken from NativeScript API Reference Angular
+                                                     we take as items the "meetings" variable from the component
+                                                     -->
     <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
         <GridLayout class="list-group-item">
-            <Label [text]="item.name + '- Ort:' + item.location" class="data"></Label>
+            <Label [text]="item.name + '- Ort:' + item.location" class="data"></Label>  <!--here we list the attributes of every meeting-->
         </GridLayout>
     </ng-template>
 </ListView>

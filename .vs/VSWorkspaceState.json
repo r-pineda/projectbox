@@ -8,9 +8,9 @@
     "\\App\\nativeScript\\projectbox\\app\\pages",
     "\\App\\nativeScript\\projectbox\\app\\pages\\animation",
     "\\App\\nativeScript\\projectbox\\app\\pages\\list",
-    "\\Website",
-    "\\Website\\css"
+    "\\App\\nativeScript\\projectbox\\app\\shared",
+    "\\App\\nativeScript\\projectbox\\app\\shared\\meeting"
   ],
-  "SelectedNode": "\\Website\\index.html",
+  "SelectedNode": "\\App\\nativeScript\\projectbox\\app\\pages\\list\\list-common.css",
   "PreviewInSolutionExplorer": false
 }
