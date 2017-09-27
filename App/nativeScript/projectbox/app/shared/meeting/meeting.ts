@@ -4,7 +4,7 @@ export interface Meeting {
     location :String;
     id :Number;
     duration :Number;
-    date :String;
+    date :Date;
     attendees: String;
     agenda :String
   }

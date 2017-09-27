@@ -40,9 +40,27 @@ export class ListComponent {
 
   displayMeetings(data :any){
 
+    //@Rommelt hier die Daten für View vorbereiten
+
     this.meetings = data.meetings;
 
     console.dir(this.meetings[0]);
+
+    //@Rommelt: name des 1. meetings:
+
+    console.log(this.meetings[0].name);
+
+    //@Rommelt Attribute von this.meetings[i]:
+    /*
+    protocol :String;
+    name :String;
+    location :String;
+    id :Number;
+    duration :Number;
+    date :Date;
+    attendees: String;
+    agenda :String
+    */
 
   }
 
