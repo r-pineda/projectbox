@@ -32,18 +32,18 @@ export class ListComponent {
 
 
     this.userService.meetings().subscribe(
-      (data) => this.meetingsText = JSON.stringify(data.meeting), 
+      (data) => this.displayMeetings(data), 
       (error) => alert("Unfortunately we could not find any meetings.")
     );
-
-    this.meetingsText.split('\\').join('\\\\');
-
-    this.meetings = JSON.parse(this.meetingsText).meeting
-
-    console.log(this.meetings.length);
-    console.dir(this.meetings[0]);
-    console.dir(this.meetings[1]);
     
+  }
+
+  displayMeetings(data :any){
+
+    this.meetings = data.meetings;
+
+    console.dir(this.meetings[0]);
+
   }
 
   onSwipe(args: SwipeGestureEventData) {
