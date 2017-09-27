@@ -4,11 +4,8 @@
   "readme": "NativeScript Application",
   "repository": "<fill-your-repository-here>",
   "nativescript": {
-    "id": "com.agilecoderz.projectbox.ios",
+    "id": "eu.projectbox.app",
     "tns-android": {
-      "version": "3.2.0"
-    },
-    "tns-ios": {
       "version": "3.2.0"
     }
   },
