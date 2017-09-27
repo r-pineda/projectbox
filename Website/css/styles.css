@@ -329,21 +329,7 @@ footer {
 	margin: auto;
 }
 
-@media only screen and (max-width: 1300px) {
-    .navbar-brand img{
-    	width: 30px;
-    	height: 30px;
-    }
 
-		.navbar-brand {
-			position: relative;
-			z-index: 1000;
-			margin-left: 0px;
-			width: 30px;
-			height: 30px;
-		}
-
-}
 
 
 /* Test */
