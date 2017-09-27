@@ -22,25 +22,28 @@ import {
 })
 export class ListComponent {
 
-  meetingdata : any;
-  meetingsText :String;
+  meetingdata :any;
+  meetingsText :string;
+  meetings :Meeting[];
 
   constructor(private router: Router, private routerExtensions: RouterExtensions, private userService: UserService) {
     
-    this.meetingsText = "Lade..."
-
+    this.meetingsText = "Lade...";
 
 
     this.userService.meetings().subscribe(
-      (data) => this.meetingdata = JSON.parse(data.meetings), 
+      (data) => this.meetingsText = JSON.stringify(data.meeting), 
       (error) => alert("Unfortunately we could not find any meetings.")
     );
 
-    let meetings: Meeting[] = this.meetingdata;
+    this.meetingsText.split('\\').join('\\\\');
 
-    console.log(meetings.length);
-    console.dir(meetings[0]);
-    console.dir(meetings[1]);
+    this.meetings = JSON.parse(this.meetingsText).meeting
+
+    console.log(this.meetings.length);
+    console.dir(this.meetings[0]);
+    console.dir(this.meetings[1]);
+    
   }
 
   onSwipe(args: SwipeGestureEventData) {
