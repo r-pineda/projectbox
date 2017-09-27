@@ -10,7 +10,8 @@ import {
   PinchGestureEventData,
   RotationGestureEventData,
   SwipeGestureEventData,
-  TouchGestureEventData} from "ui/gestures";
+  TouchGestureEventData
+} from "ui/gestures";
 
 
 
@@ -61,6 +62,8 @@ export class ListComponent {
     attendees: String;
     agenda :String
     */
+
+
 
   }
 
