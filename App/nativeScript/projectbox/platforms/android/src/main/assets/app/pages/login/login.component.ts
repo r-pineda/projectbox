@@ -4,6 +4,8 @@ import { UserService } from "../../shared/user/user.service";
 import { Router} from "@angular/router";
 import {RouterExtensions} from "nativescript-angular/router";
 import {Page} from "ui/page";
+import { AppShortcuts } from "nativescript-app-shortcuts";
+import { isIOS } from "tns-core-modules/platform";
 
 @Component({
   selector: "my-app",
@@ -20,8 +22,58 @@ export class LoginComponent {
     this.user.email = "manuel.gafoz@htl.rennweg.at";
     this.user.password = "manuel1999";
     page.actionBarHidden = true;
+
+    // instantiate the plugin
+    let appShortcuts = new AppShortcuts();
+
+    appShortcuts.available().then(available => {
+    if (available) {
+        console.log("This device supports app shortcuts");
+    } else {
+        console.log("No app shortcuts capability, ask the user to upgrade :)");
+    }
+    });
+
+  	appShortcuts.configureQuickActions([
+        {
+            type: "dashboard",
+            title: "Dashboard",
+            subtitle: "Gelange zum Dashboard", // iOS only
+            iconTemplate: "dashboard" // ignored by iOS, if iconType is set as well
+        },
+        {
+            type: "task",
+            title: "Tasks",
+            subtitle: "Übersicht aller Tasks", // iOS only
+            iconTemplate: "task" // ignored by iOS, if iconType is set as well
+        },
+        {
+            type: "meeting",
+            title: "Meetings",
+            subtitle: "Übersicht aller Meetings", // iOS only
+            iconTemplate: "meeting" // ignored by iOS, if iconType is set as well
+        },
+        {
+            type: "ticket",
+            title: "Tickets",
+            subtitle: "Liste der Tickets", // iOS only
+            iconTemplate: "bug"
+        },
+        {
+            type: "seeting",
+            title: "Einstellungen",
+            subtitle: "Ändere dein Profil", // iOS only
+            iconTemplate: "setting"
+        },
+        ]).then(() => {
+            alert("Added 2 actions, close the app and apply pressure to the app icon to check it out!");
+        }, (errorMessage) => {
+            alert(errorMessage);
+        });
+
+
   }
-  
+
   submit() {
     if (this.isLoggingIn) {
       this.login();
@@ -29,7 +81,7 @@ export class LoginComponent {
       this.signUp();
     }
   }
-  
+
   login() {
     this.userService.login(this.user)
       .subscribe(

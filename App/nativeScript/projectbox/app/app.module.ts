@@ -6,6 +6,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { AppShortcuts } from "nativescript-app-shortcuts";
 
 import { AppComponent } from "./app.component";
 import { routes, navigatableComponents } from "./app.routing";
@@ -44,7 +45,7 @@ export class AppModule {
       } else if (shortcutItem.type === "ticket") {
         //this.deeplink("/page2");
         console.log("ticket");
-      } else if (shortcutItem.type === "seeting") {
+      } else if (shortcutItem.type === "setting") {
         //this.deeplink("/page2");
         console.log("seeting");
       }

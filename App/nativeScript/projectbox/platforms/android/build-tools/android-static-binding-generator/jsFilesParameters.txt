@@ -11,6 +11,7 @@ C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\androi
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\pages\login\login.component.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\config.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\meeting\meeting.js
+C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\meeting\meeting.service.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\user\user.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\user\user.service.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-angular\animations.js
@@ -73,9 +74,12 @@ C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\androi
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-angular\value-accessors\text-value-accessor.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-angular\value-accessors\time-value-accessor.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-angular\zone-js\dist\zone-nativescript.js
+C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-app-shortcuts\app-shortcuts.common.js
+C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-app-shortcuts\app-shortcuts.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-intl\index.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-intl\nativescript-intl-common.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-intl\nativescript-intl.js
+C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-telerik-ui\scripts\eula-prompt.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\tns-core-modules\bundle-entry-points.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\tns-core-modules\application\application-common.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\tns-core-modules\application\application.js
