@@ -3,6 +3,7 @@ import { UserService } from "../../shared/user/user.service";
 import { Router} from "@angular/router";
 import {RouterExtensions} from "nativescript-angular/router";
 import { Meeting } from "../../shared/meeting/meeting"
+import { MeetingService } from "../../shared/meeting/meeting.service";
 import {
   GestureEventData,
   GestureTypes,
@@ -18,7 +19,7 @@ import {
 @Component({
   selector: "list",
   templateUrl: "pages/list/list.html",
-  providers: [UserService],
+  providers: [UserService, MeetingService],
   styleUrls: ["pages/list/list-common.css", "pages/list/list.css"]
 })
 export class ListComponent {
@@ -27,15 +28,19 @@ export class ListComponent {
   meetingsText :string;
   meetings :Meeting[];
 
-  constructor(private router: Router, private routerExtensions: RouterExtensions, private userService: UserService) {
+  constructor(private router: Router, private routerExtensions: RouterExtensions, private userService: UserService, private meetingService :MeetingService) {
     
     this.meetingsText = "Lade...";
 
+    this.meetingService.getMeetings().then(data => this.meetings);
 
+
+    /*
     this.userService.meetings().subscribe(
       (data) => this.displayMeetings(data), 
       (error) => alert("Unfortunately we could not find any meetings.")
     );
+    */
     
   }
 
@@ -43,13 +48,13 @@ export class ListComponent {
 
     //@Rommelt hier die Daten für View vorbereiten
 
-    this.meetings = data.meetings;
+    //this.meetings = data.meetings;
 
-    console.dir(this.meetings[0]);
+    //console.dir(this.meetings[0]);
 
     //@Rommelt: name des 1. meetings:
 
-    console.log(this.meetings[0].name);
+    //console.log(this.meetings[0].name);
 
     //@Rommelt Attribute von this.meetings[i]:
     /*
@@ -62,8 +67,6 @@ export class ListComponent {
     attendees: String;
     agenda :String
     */
-
-
 
   }
 
