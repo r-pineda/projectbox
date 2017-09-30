@@ -47,7 +47,6 @@ export class UserService {
     .map(response => response.json())
     .do(data => {
       Config.token = data.access_token;
-      console.log(Config.token)
     })
     .catch(this.handleErrors);
   }

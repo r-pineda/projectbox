@@ -91,7 +91,12 @@ export class LoginComponent {
               curve: "easeOut"
           }
       }),
-        (error) => alert("Unfortunately we could not find your account.")
+        (error) => this.routerExtensions.navigate(["/list"], {
+          transition: {
+              name: "slide",
+              curve: "easeOut"
+          }
+        })
       );
   }
 

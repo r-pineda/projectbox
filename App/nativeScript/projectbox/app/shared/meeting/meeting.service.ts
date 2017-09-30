@@ -6,6 +6,17 @@ import { Observable } from "rxjs/Rx";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
 import { Config } from "../config";
+import {
+    getBoolean,
+    setBoolean,
+    getNumber,
+    setNumber,
+    getString,
+    setString,
+    hasKey,
+    remove,
+    clear
+} from "application-settings";
 
 @Injectable()
 export class MeetingService {
@@ -23,13 +34,6 @@ export class MeetingService {
             (data) => {return data.meetings}, 
             (error) => alert("Unfortunately we could not find any meetings.")
         );
-
-        while(this.dinner_not_ready){
-
-            if(this.meetings != null){
-                this.dinner_not_ready = false;
-            }
-        }
 
         return Promise.resolve(this.meetings);
         
@@ -53,5 +57,14 @@ export class MeetingService {
   handleErrors(error: Response) {
     console.log(JSON.stringify(error.json()));
     return Observable.throw(error);
+  }
+
+  saveMeetings(meetingsToSave :any){
+    setString("meetings", JSON.stringify(meetingsToSave));
+  }
+
+  getSavedMeetings (){
+
+    return JSON.parse(getString("meetings"));
   }
 }

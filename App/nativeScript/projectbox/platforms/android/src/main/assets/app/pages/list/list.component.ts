@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { UserService } from "../../shared/user/user.service";
 import { Router} from "@angular/router";
-import {RouterExtensions} from "nativescript-angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 import { Meeting } from "../../shared/meeting/meeting"
 import { MeetingService } from "../../shared/meeting/meeting.service";
 import {
@@ -32,15 +32,13 @@ export class ListComponent {
     
     this.meetingsText = "Lade...";
 
-    this.meetingService.getMeetings().then(data => this.meetings);
 
+    //this.meetingService.getMeetings().then(data => this.meetings);
 
-    /*
     this.userService.meetings().subscribe(
       (data) => this.displayMeetings(data), 
-      (error) => alert("Unfortunately we could not find any meetings.")
+      (error) => this.displayMeetings(false)
     );
-    */
     
   }
 
@@ -48,7 +46,27 @@ export class ListComponent {
 
     //@Rommelt hier die Daten für View vorbereiten
 
-    //this.meetings = data.meetings;
+    if(data){
+
+      this.meetingService.saveMeetings(data);
+      this.meetings = data.meetings;
+
+    }else{
+
+      console.log("offline!");
+      console.log("offline!");
+      console.log("offline!");
+      console.log("offline!");
+      console.log("offline!");
+      console.log("offline!");
+      console.log("offline!");
+      console.log("offline!");
+      console.log("offline!");
+      console.log("offline!");
+      data = this.meetingService.getSavedMeetings()
+      this.meetings = data.meetings;
+      
+    }
 
     //console.dir(this.meetings[0]);
 

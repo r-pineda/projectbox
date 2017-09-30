@@ -46,6 +46,10 @@ export class UserService {
     )
     .map(response => response.json())
     .do(data => {
+      console.log("1");
+      console.log(data);
+      console.dir(data);
+      console.log("2");
       Config.token = data.access_token;
       console.log(Config.token)
     })
