@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { UserService } from "../../shared/user/user.service";
 import { Router} from "@angular/router";
-import {RouterExtensions} from "nativescript-angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 import {
   GestureEventData,
   GestureTypes,
@@ -12,14 +12,14 @@ import {
   TouchGestureEventData} from "ui/gestures";
 
 @Component({
-  selector: "animation",
-  templateUrl: "pages/animation/animation.html",
+  selector: "meeting_detail",
+  templateUrl: "pages/meeting_detail/meeting_detail.html",
   providers: [UserService],
-  styleUrls: ["pages/animation/animation-common.css", "pages/animation/animation.css"]
+  styleUrls: ["pages/meeting_detail/meeting_detail-common.css", "pages/meeting_detail/meeting_detail.css"]
 })
-export class AnimationComponent {
+export class Meeting_detailComponent {
 
-  meetings :String;
+  meetings :string;
 
   constructor(private router: Router, private routerExtensions: RouterExtensions, private userService: UserService) {
 
