@@ -28,7 +28,7 @@ export class UserService {
   }
 
   handleErrors(error: Response) {
-    console.log(JSON.stringify(error.json()));
+    //console.log(JSON.stringify(error.json()));
     return Observable.throw(error);
   }
 
@@ -46,26 +46,7 @@ export class UserService {
     )
     .map(response => response.json())
     .do(data => {
-      console.log("1");
-      console.log(data);
-      console.dir(data);
-      console.log("2");
       Config.token = data.access_token;
-      console.log(Config.token)
-    })
-    .catch(this.handleErrors);
-  }
-
-  meetings() {
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
-    return this.http.get(
-      Config.apiUrl + "v2/meetings",
-      { headers: headers }
-    )
-    .map(response => response.json())
-    .do(data => {
     })
     .catch(this.handleErrors);
   }

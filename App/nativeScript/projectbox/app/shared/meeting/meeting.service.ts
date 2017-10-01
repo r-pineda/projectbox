@@ -21,10 +21,13 @@ import {
 @Injectable()
 export class MeetingService {
 
+  constructor(private http: Http) {}
+
+  /*
     meetings :Meeting[] = null;
     dinner_not_ready :boolean = true;
 
-    constructor(private http: Http) {}
+    
 
     getMeetings(): Promise<Meeting[]> {
 
@@ -53,6 +56,7 @@ export class MeetingService {
     .catch(this.handleErrors);
       
   }
+  */
 
   handleErrors(error: Response) {
     console.log(JSON.stringify(error.json()));
@@ -64,7 +68,21 @@ export class MeetingService {
   }
 
   getSavedMeetings (){
-
     return JSON.parse(getString("meetings"));
+  }
+  
+
+  meetings() {
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.get(
+      Config.apiUrl + "v2/meetings",
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+    })
+    .catch(this.handleErrors);
   }
 }

@@ -35,7 +35,7 @@ export class ListComponent {
 
     //this.meetingService.getMeetings().then(data => this.meetings);
 
-    this.userService.meetings().subscribe(
+    this.meetingService.meetings().subscribe(
       (data) => this.displayMeetings(data), 
       (error) => this.displayMeetings(false)
     );
@@ -53,16 +53,6 @@ export class ListComponent {
 
     }else{
 
-      console.log("offline!");
-      console.log("offline!");
-      console.log("offline!");
-      console.log("offline!");
-      console.log("offline!");
-      console.log("offline!");
-      console.log("offline!");
-      console.log("offline!");
-      console.log("offline!");
-      console.log("offline!");
       data = this.meetingService.getSavedMeetings()
       this.meetings = data.meetings;
       

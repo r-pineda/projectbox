@@ -12,6 +12,7 @@ C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\androi
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\config.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\meeting\meeting.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\meeting\meeting.service.js
+C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\status\status.service.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\user\user.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\user\user.service.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-angular\animations.js
