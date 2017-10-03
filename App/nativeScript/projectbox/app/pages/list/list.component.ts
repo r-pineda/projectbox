@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { UserService } from "../../shared/user/user.service";
+import { StatusService } from "../../shared/status/status.service";
 import { Router} from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Meeting } from "../../shared/meeting/meeting"
@@ -19,7 +20,7 @@ import {
 @Component({
   selector: "list",
   templateUrl: "pages/list/list.html",
-  providers: [UserService, MeetingService],
+  providers: [UserService, MeetingService, StatusService],
   styleUrls: ["pages/list/list-common.css", "pages/list/list.css"]
 })
 export class ListComponent {
@@ -27,10 +28,22 @@ export class ListComponent {
   meetingdata :any;
   meetingsText :string;
   meetings :Meeting[];
+  public offlinemode :boolean;
 
-  constructor(private router: Router, private routerExtensions: RouterExtensions, private userService: UserService, private meetingService :MeetingService) {
+  constructor(private router: Router, private routerExtensions: RouterExtensions, private userService: UserService, private meetingService :MeetingService, private statusService :StatusService) {
     
     this.meetingsText = "Lade...";
+
+    this.offlinemode = this.statusService.getOfflineMode();
+    console.log(this.offlinemode);
+    console.log(this.offlinemode);
+    console.log(this.offlinemode);
+    console.log(this.offlinemode);
+    console.log(this.offlinemode);
+    console.log(this.offlinemode);
+    console.log(this.offlinemode);
+    console.log(this.offlinemode);
+    console.log(this.offlinemode);
 
 
     //this.meetingService.getMeetings().then(data => this.meetings);

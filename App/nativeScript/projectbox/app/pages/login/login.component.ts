@@ -108,6 +108,7 @@ export class LoginComponent {
     }else{
 
       this.statusService.setOfflineMode(true);
+      console.log(this.statusService.getOfflineMode());
 
       if(this.statusService.getWasLoggedIn()){
 

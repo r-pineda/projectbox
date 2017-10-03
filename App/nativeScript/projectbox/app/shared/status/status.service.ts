@@ -18,17 +18,18 @@ import {
 @Injectable()
 export class StatusService {
 
-    offlineMode :boolean = false; 
+    offlineMode :boolean; 
     currentUser :string;    //noch string, TODO: user Interface anlegen
     AccesToken :string;
 
   constructor() {}
 
   setOfflineMode(isOffline :boolean){
+      setBoolean("offlineMode", isOffline);
       this.offlineMode = isOffline;
   }
   getOfflineMode(){
-      return this.offlineMode;
+      return getBoolean("offlineMode");
   }
 
   setCurrentUser(usr :any){
