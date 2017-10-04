@@ -112,7 +112,7 @@ export class LoginComponent {
 
       if(this.statusService.getWasLoggedIn()){
 
-        alert("You are offline. showing latest received data");
+        //alert("You are offline. showing latest received data");
       
         this.routerExtensions.navigate(["/list"], {
             transition: {
