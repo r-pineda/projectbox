@@ -3,6 +3,9 @@
                                                      -->
     <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
         <GridLayout class="list-group-item">
+            <ng-template *ngIf="offlinemode">
+                    <Label [text]="OFFLINE" style="background-color:red;"></Label>
+            </ng-template>
             <Label [text]="item.name + '- Ort:' + item.location" class="data"></Label>  <!--here we list the attributes of every meeting-->
         </GridLayout>
     </ng-template>

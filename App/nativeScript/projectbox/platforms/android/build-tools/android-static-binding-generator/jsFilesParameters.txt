@@ -2,13 +2,9 @@ C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\androi
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\app.module.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\app.routing.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\main.js
-C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\item\item-detail.component.js
-C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\item\item.js
-C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\item\item.service.js
-C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\item\items.component.js
-C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\pages\animation\animation.component.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\pages\list\list.component.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\pages\login\login.component.js
+C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\pages\meeting_detail\meeting_detail.component.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\config.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\meeting\meeting.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\shared\meeting\meeting.service.js
@@ -77,7 +73,6 @@ C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\androi
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-angular\zone-js\dist\zone-nativescript.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-app-shortcuts\app-shortcuts.common.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-app-shortcuts\app-shortcuts.js
-C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-couchbase\couchbase.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-intl\index.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-intl\nativescript-intl-common.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-intl\nativescript-intl.js

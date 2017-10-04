@@ -1,15 +1,15 @@
 import { LoginComponent } from "./pages/login/login.component";
 import { ListComponent } from "./pages/list/list.component";
-import { AnimationComponent } from "./pages/animation/animation.component";
+import { Meeting_detailComponent } from "./pages/meeting_detail/meeting_detail.component";
 
 export const routes = [
   { path: "", component: LoginComponent },
   { path: "list", component: ListComponent },
-  { path: "animation", component: AnimationComponent }
+  { path: "meeting_detail/:meeting", component: Meeting_detailComponent }
 ];
 
 export const navigatableComponents = [
   LoginComponent,
   ListComponent,
-  AnimationComponent
+  Meeting_detailComponent
 ];
