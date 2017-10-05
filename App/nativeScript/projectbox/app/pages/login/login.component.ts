@@ -47,31 +47,31 @@ export class LoginComponent {
         {
             type: "dashboard",
             title: "Dashboard",
-            subtitle: "Gelange zum Dashboard", // iOS only
+            //subtitle: "Gelange zum Dashboard", // iOS only
             iconTemplate: "dashboard" // ignored by iOS, if iconType is set as well
         },
         {
             type: "task",
             title: "Tasks",
-            subtitle: "Übersicht aller Tasks", // iOS only
+            //subtitle: "Übersicht aller Tasks", // iOS only
             iconTemplate: "task" // ignored by iOS, if iconType is set as well
         },
         {
             type: "meeting",
             title: "Meetings",
-            subtitle: "Übersicht aller Meetings", // iOS only
+            //subtitle: "Übersicht aller Meetings", // iOS only
             iconTemplate: "meeting" // ignored by iOS, if iconType is set as well
         },
         {
             type: "ticket",
             title: "Tickets",
-            subtitle: "Liste der Tickets", // iOS only
+            //subtitle: "Liste der Tickets", // iOS only
             iconTemplate: "bug"
         },
         {
             type: "seeting",
             title: "Einstellungen",
-            subtitle: "Ändere dein Profil", // iOS only
+            //subtitle: "Ändere dein Profil", // iOS only
             iconTemplate: "setting"
         },
         ]).then(() => {
