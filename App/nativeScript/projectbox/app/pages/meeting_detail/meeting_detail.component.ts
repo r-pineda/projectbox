@@ -42,13 +42,13 @@ export class Meeting_detailComponent {
   getMeetingById(data :Meeting[], meeting_id :number){
         if(data){
           this.meetingService.saveMeetings(data);
-          data.every(function(meeting, index){
+          data.some(function(meeting, index){
             console.log(meeting.id + " & " + meeting_id);
             if(meeting.id == meeting_id){
               this.meeting = meeting;
-              return false;
+              return true;
             }
-            return true;
+            return false;
           });
         }else{
     
