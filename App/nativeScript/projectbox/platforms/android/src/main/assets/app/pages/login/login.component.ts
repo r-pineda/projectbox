@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
-import { Router} from "@angular/router";
-import {RouterExtensions} from "nativescript-angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
 import { AppShortcuts } from "nativescript-app-shortcuts";
 import { isIOS } from "tns-core-modules/platform";
@@ -22,6 +22,7 @@ export class LoginComponent {
   (
     private router: Router,
     private routerExtensions: RouterExtensions,
+    private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private statusService :StatusService,
     private page: Page
@@ -47,31 +48,31 @@ export class LoginComponent {
         {
             type: "dashboard",
             title: "Dashboard",
-            subtitle: "Gelange zum Dashboard", // iOS only
+            //subtitle: "Gelange zum Dashboard", // iOS only
             iconTemplate: "dashboard" // ignored by iOS, if iconType is set as well
         },
         {
             type: "task",
             title: "Tasks",
-            subtitle: "Übersicht aller Tasks", // iOS only
+            //subtitle: "Übersicht aller Tasks", // iOS only
             iconTemplate: "task" // ignored by iOS, if iconType is set as well
         },
         {
             type: "meeting",
             title: "Meetings",
-            subtitle: "Übersicht aller Meetings", // iOS only
+            //subtitle: "Übersicht aller Meetings", // iOS only
             iconTemplate: "meeting" // ignored by iOS, if iconType is set as well
         },
         {
             type: "ticket",
             title: "Tickets",
-            subtitle: "Liste der Tickets", // iOS only
+            //subtitle: "Liste der Tickets", // iOS only
             iconTemplate: "bug"
         },
         {
             type: "seeting",
             title: "Einstellungen",
-            subtitle: "Ändere dein Profil", // iOS only
+            //subtitle: "Ändere dein Profil", // iOS only
             iconTemplate: "setting"
         },
         ]).then(() => {
@@ -103,7 +104,7 @@ export class LoginComponent {
 
     console.log(valid);
 
-    if (valid == "SyntaxError: Unexpected token e in JSON at position 0"){
+    if (valid == "403"){
       alert("Wrong credentials!");
     }else{
 
@@ -112,7 +113,7 @@ export class LoginComponent {
 
       if(this.statusService.getWasLoggedIn()){
 
-        alert("You are offline. showing latest received data");
+        //alert("You are offline. showing latest received data");
       
         this.routerExtensions.navigate(["/list"], {
             transition: {

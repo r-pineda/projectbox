@@ -73,6 +73,7 @@ C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\androi
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-angular\zone-js\dist\zone-nativescript.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-app-shortcuts\app-shortcuts.common.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-app-shortcuts\app-shortcuts.js
+C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-couchbase\couchbase.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-intl\index.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-intl\nativescript-intl-common.js
 C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-intl\nativescript-intl.js

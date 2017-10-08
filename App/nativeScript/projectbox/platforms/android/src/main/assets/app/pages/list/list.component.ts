@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { UserService } from "../../shared/user/user.service";
 import { StatusService } from "../../shared/status/status.service";
-import { Router} from "@angular/router";
-import { RouterExtensions } from "nativescript-angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { RouterExtensions, PageRoute } from "nativescript-angular/router";
 import { Meeting } from "../../shared/meeting/meeting"
 import { MeetingService } from "../../shared/meeting/meeting.service";
 import {
@@ -14,6 +14,7 @@ import {
   SwipeGestureEventData,
   TouchGestureEventData
 } from "ui/gestures";
+import "rxjs/add/operator/switchMap";
 
 
 
@@ -30,23 +31,25 @@ export class ListComponent {
   meetings :Meeting[];
   public offlinemode :boolean;
 
-  constructor(private router: Router, private routerExtensions: RouterExtensions, private userService: UserService, private meetingService :MeetingService, private statusService :StatusService) {
+  constructor
+  (
+    private router: Router,
+    private routerExtensions: RouterExtensions,
+    private pageRoute: PageRoute,
+    private userService: UserService,
+    private meetingService :MeetingService,
+    private statusService :StatusService
+  ) {
     
     this.meetingsText = "Lade...";
 
     this.offlinemode = this.statusService.getOfflineMode();
-    console.log(this.offlinemode);
-    console.log(this.offlinemode);
-    console.log(this.offlinemode);
-    console.log(this.offlinemode);
-    console.log(this.offlinemode);
-    console.log(this.offlinemode);
-    console.log(this.offlinemode);
-    console.log(this.offlinemode);
-    console.log(this.offlinemode);
 
-
-    //this.meetingService.getMeetings().then(data => this.meetings);
+    /*
+    this.pageRoute.activatedRoute
+    .switchMap(activatedRoute => activatedRoute.params)
+    .forEach((params) => { this.meetings.id = +params["id"]; });
+    */
 
     this.meetingService.meetings().subscribe(
       (data) => this.displayMeetings(data), 

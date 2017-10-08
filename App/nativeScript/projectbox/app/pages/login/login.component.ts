@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
-import { Router} from "@angular/router";
-import {RouterExtensions} from "nativescript-angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
 import { AppShortcuts } from "nativescript-app-shortcuts";
 import { isIOS } from "tns-core-modules/platform";
@@ -22,6 +22,7 @@ export class LoginComponent {
   (
     private router: Router,
     private routerExtensions: RouterExtensions,
+    private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private statusService :StatusService,
     private page: Page
@@ -103,7 +104,7 @@ export class LoginComponent {
 
     console.log(valid);
 
-    if (valid == "SyntaxError: Unexpected token e in JSON at position 0"){
+    if (valid == "403"){
       alert("Wrong credentials!");
     }else{
 
