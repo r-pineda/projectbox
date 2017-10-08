@@ -94,18 +94,15 @@ export class ListComponent {
 
   }
 
-  onSwipe(args: SwipeGestureEventData) {
-    /*
-    if (args.direction = 1) {
+  showDetail(id: number) {
     
-      this.routerExtensions.navigate(["/meeting_detail"], {
+      this.routerExtensions.navigate(["/meeting_detail/" + id], {
+          
           transition: {
               name: "slide",
               curve: "easeOut"
           }
       });
-    }
-    */
   }
 
 }

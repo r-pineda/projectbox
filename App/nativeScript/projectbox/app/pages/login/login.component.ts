@@ -40,7 +40,7 @@ export class LoginComponent {
     if (available) {
         console.log("This device supports app shortcuts");
     } else {
-        console.log("No app shortcuts capability, ask the user to upgrade :)");
+        //console.log("No app shortcuts capability, ask the user to upgrade :)");
     }
     });
 

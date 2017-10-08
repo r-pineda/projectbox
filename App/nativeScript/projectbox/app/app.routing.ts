@@ -5,7 +5,7 @@ import { Meeting_detailComponent } from "./pages/meeting_detail/meeting_detail.c
 export const routes = [
   { path: "", component: LoginComponent },
   { path: "list", component: ListComponent },
-  { path: "meeting_detail/:meeting", component: Meeting_detailComponent }
+  { path: "meeting_detail/:id", component: Meeting_detailComponent }
 ];
 
 export const navigatableComponents = [

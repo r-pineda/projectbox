@@ -9,7 +9,7 @@
         <!-- creating the list of meetings -->
         <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
             <GridLayout class="list-group-item">
-                <Label [text]="item.name + '- Ort:' + item.location" class="data"></Label>
+                <Label (tap)="showDetail(item.id)"[text]="item.name + '- Ort:' + item.location" class="data"></Label>
                 <!--here we list the attributes of every meeting-->
             </GridLayout>
         </ng-template>
