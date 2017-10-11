@@ -75,7 +75,6 @@ export class Meeting_detailComponent {
   }
 
   onSwipe(args: SwipeGestureEventData) {
-    console.dir(this.meeting);
     if (args.direction = 2) {
     
       this.routerExtensions.navigate(["/list"], {
