@@ -6,7 +6,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
-import { AppShortcuts } from "nativescript-app-shortcuts";
+//import { AppShortcuts } from "nativescript-app-shortcuts";
 
 import { AppComponent } from "./app.component";
 import { routes, navigatableComponents } from "./app.routing";
@@ -27,8 +27,9 @@ import { routes, navigatableComponents } from "./app.routing";
 })
 export class AppModule {
     constructor(private routerExtensions: RouterExtensions,
-              private zone: NgZone) {
-
+              //private zone: NgZone
+            ) {
+/*
     new AppShortcuts().setQuickActionCallback(shortcutItem => {
   console.log(`The app was launched by shortcut type '${shortcutItem.type}'`);
 
@@ -58,5 +59,6 @@ export class AppModule {
         animated: false
       });
     });
+    */
   }
 }

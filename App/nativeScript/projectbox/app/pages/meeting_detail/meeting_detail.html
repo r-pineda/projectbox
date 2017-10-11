@@ -1,4 +1,9 @@
 <StackLayout>
-    <Label [text]="meeting.name" class="data"></Label>
-    
+    <Label (tap)="onSwipe($event)"[text]="meeting.id"></Label>
+    <Label (tap)="onSwipe($event)"[text]="meeting.name"></Label>
+    <Label (tap)="onSwipe($event)"[text]="meeting.location"></Label>
+    <Label (tap)="onSwipe($event)"[text]="meeting.duration"></Label>
+    <Label (tap)="onSwipe($event)"[text]="meeting.date"></Label>
+    <Label (tap)="onSwipe($event)"[text]="meeting.attendees"></Label>
+    <Label (tap)="onSwipe($event)"[text]="meeting.agenda"></Label>
 </StackLayout>

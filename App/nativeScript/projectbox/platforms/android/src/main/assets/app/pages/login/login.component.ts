@@ -4,8 +4,8 @@ import { UserService } from "../../shared/user/user.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
-import { AppShortcuts } from "nativescript-app-shortcuts";
-import { isIOS } from "tns-core-modules/platform";
+//import { AppShortcuts } from "nativescript-app-shortcuts";
+//import { isIOS } from "tns-core-modules/platform";
 import { StatusService } from "../../shared/status/status.service"
 
 @Component({
@@ -25,17 +25,17 @@ export class LoginComponent {
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private statusService :StatusService,
-    private page: Page
+    //private page: Page
   )
   {
     this.user = new User();
     this.user.email = "michael.fruehwirth@htl.rennweg.at";
     this.user.password = "michael1234";
-    page.actionBarHidden = true;
+    //page.actionBarHidden = true;
 
     // instantiate the plugin
-    let appShortcuts = new AppShortcuts();
-
+    //let appShortcuts = new AppShortcuts();
+/*
     appShortcuts.available().then(available => {
     if (available) {
         console.log("This device supports app shortcuts");
@@ -81,7 +81,7 @@ export class LoginComponent {
             alert(errorMessage);
         });
 
-
+*/
   }
 
   submit() {

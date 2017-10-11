@@ -39,32 +39,43 @@ export class Meeting_detailComponent {
 
   }
 
-  getMeetingById(data :Meeting[], meeting_id :number){
-        if(data){
+  getMeetingById(data :any, meeting_id :number){
+    if(data){
+
+      data.forEach(meeting => {
+
+        if(meeting.id == meeting_id){
+          this.meeting = meeting;
+        }
+      });
+
+          //$H!T some
+          /*
           this.meetingService.saveMeetings(data);
           data.some(function(meeting, index){
-            console.log(meeting.id + " & " + meeting_id);
             if(meeting.id == meeting_id){
               this.meeting = meeting;
               return true;
             }
             return false;
           });
-        }else{
+          */
+    }else{
     
-          data = this.meetingService.getSavedMeetings()
-          data.every(function(meeting, index){
-            console.log(meeting.id + " & " + meeting_id);
-            if(meeting.id == meeting_id){
-              this.meeting = meeting;
-              return false;
-            }
-            return true;
-          });
+      data = this.meetingService.getSavedMeetings()
+
+      data.forEach(meeting => {
+            
+        if(meeting.id == meeting_id){
+          this.meeting = meeting;
         }
-      }
+                        
+      });
+    }
+  }
 
   onSwipe(args: SwipeGestureEventData) {
+    console.dir(this.meeting);
     if (args.direction = 2) {
     
       this.routerExtensions.navigate(["/list"], {

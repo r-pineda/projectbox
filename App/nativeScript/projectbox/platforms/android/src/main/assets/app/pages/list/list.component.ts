@@ -39,7 +39,8 @@ export class ListComponent {
     private userService: UserService,
     private meetingService :MeetingService,
     private statusService :StatusService
-  ) {
+  )
+  {
     
     this.meetingsText = "Lade...";
 
