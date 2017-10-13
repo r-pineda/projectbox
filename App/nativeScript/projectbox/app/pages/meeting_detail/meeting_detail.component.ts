@@ -13,6 +13,8 @@ import {
   TouchGestureEventData} from "ui/gestures";
 import { Meeting } from "../../shared/meeting/meeting"
 import { MeetingService } from "../../shared/meeting/meeting.service"
+import * as camera from "nativescript-camera";
+import { Image } from "ui/image";
 
 @Component({
   selector: "meeting_detail",
@@ -23,12 +25,14 @@ import { MeetingService } from "../../shared/meeting/meeting.service"
 export class Meeting_detailComponent {
 
   meeting :Meeting;
+  public picture :any;
 
   constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService) {
 
     this.route.params.subscribe((params) => {
       this.getMeetings(params["id"]);
     });
+    this.picture = "https://placehold.it/200x200";
   }
 
   getMeetings(meeting_id :number){
@@ -84,5 +88,14 @@ export class Meeting_detailComponent {
           }
       });
     }
+  }
+
+  openCamera(){
+    camera.requestPermissions();
+
+    camera.takePicture().then(picture => {
+      this.picture = picture;
+      console.dir(picture);
+    });
   }
 }

@@ -9,6 +9,7 @@
     "@angular/router": true,
     "nativescript-angular": true,
     "nativescript-app-shortcuts": true,
+    "nativescript-camera": true,
     "nativescript-couchbase": true,
     "nativescript-telerik-ui": true,
     "nativescript-theme-core": true,
