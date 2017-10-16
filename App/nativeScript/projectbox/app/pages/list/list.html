@@ -1,22 +1,3 @@
-<StackLayout>
-    <!-- Label for a hint that the User is offline at the moment -->
-    <Label *ngIf="offlinemode" text="OFFLINE" style="background-color:rgb(99, 228, 178);"></Label>
-    
-    <ListView [items]="meetings" class="list-group">
-        <!--standard listview taken from NativeScript API Reference Angular
-        we take as items the "meetings" variable from the component-->
-
-        <!-- creating the list of meetings -->
-        <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
-            <GridLayout class="list-group-item">
-                <Label (tap)="showDetail(item.id)"[text]="item.name + '- Ort:' + item.location" class="data"></Label>
-                <!--here we list the attributes of every meeting-->
-            </GridLayout>
-        </ng-template>
-
-    </ListView>
-</StackLayout>
-
 <!-- Projekte -->
 <ScrollView>
     <GridLayout columns="*,*,*" rows="*,*,150,*,*,*,*" >
@@ -46,4 +27,4 @@
     </ListView>
 
     </GridLayout>
-    </ScrollView>
+</ScrollView>

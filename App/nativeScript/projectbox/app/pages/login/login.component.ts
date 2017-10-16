@@ -25,13 +25,13 @@ export class LoginComponent {
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private statusService :StatusService,
-    //private page: Page
+    private page: Page
   )
   {
     this.user = new User();
     this.user.email = "michael.fruehwirth@htl.rennweg.at";
     this.user.password = "michael1234";
-    //page.actionBarHidden = true;
+    page.actionBarHidden = true;
 
     // instantiate the plugin
     //let appShortcuts = new AppShortcuts();
@@ -156,4 +156,5 @@ export class LoginComponent {
   toggleDisplay() {
     this.isLoggingIn = !this.isLoggingIn;
   }
+  
 }

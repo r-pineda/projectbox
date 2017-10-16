@@ -1,7 +1,17 @@
-<StackLayout>
-    <!-- Label for a hint that the User is offline at the moment -->
-    <Label *ngIf="offlinemode" text="OFFLINE" style="background-color:rgb(99, 228, 178);"></Label>
+<!-- Projekte -->
+<ScrollView>
+    <GridLayout columns="*,*,*" rows="*,*,150,*,*,*,*" >
     
+    <Label *ngIf="offlinemode" row="0" text="OFFLINE" style="background-color:rgb(99, 228, 178);"></Label>
+    <Label text="PROJEKTE" row="1" colSpan="3" class="h1"></Label>
+    
+    <Button text="Best of Rennweg" row="2" col="0" class="project"></Button>
+    <Button text="Coffee Shop CMS" row="2" col="1" class="project"></Button>
+    <Button text="CCF" row="2" col="2" class="project"></Button>
+    
+    <Label text="TASKS" row="3" colSpan="3" class="h1"></Label>
+
+    <Label text="MEETINGS" row="5" colSpan="3" class="h1"></Label>
     <ListView [items]="meetings" class="list-group">
         <!--standard listview taken from NativeScript API Reference Angular
         we take as items the "meetings" variable from the component-->
@@ -15,4 +25,6 @@
         </ng-template>
 
     </ListView>
-</StackLayout>
+
+    </GridLayout>
+</ScrollView>
