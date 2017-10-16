@@ -1,0 +1,8 @@
+16/10/17
+
+	tns runtime error: "failed to find module:"
+	fix: 
+		$tns plugin remove <name of the plugin not being found>
+		$npm uninstall -g <name>
+		$tns plugin add <name>
+		$npm install <name> --save
