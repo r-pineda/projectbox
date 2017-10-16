@@ -11,6 +11,7 @@
     "nativescript-app-shortcuts": true,
     "nativescript-camera": true,
     "nativescript-couchbase": true,
+    "nativescript-imagepicker": true,
     "nativescript-telerik-ui": true,
     "nativescript-theme-core": true,
     "reflect-metadata": true,
@@ -19,6 +20,8 @@
     "zone.js": true,
     "tslib": true,
     "nativescript-intl": true,
+    "nativescript-permissions": true,
+    "nativescript-pro-ui": true,
     "symbol-observable": true,
     "tns-core-modules-widgets": true
 }

@@ -14,6 +14,7 @@ import {
 import { Meeting } from "../../shared/meeting/meeting"
 import { MeetingService } from "../../shared/meeting/meeting.service"
 import * as camera from "nativescript-camera";
+import * as imagepicker from "nativescript-imagepicker";
 import { Image } from "ui/image";
 
 @Component({
@@ -96,6 +97,26 @@ export class Meeting_detailComponent {
     camera.takePicture().then(picture => {
       this.picture = picture;
       console.dir(picture);
+    });
+  }
+
+  openGallery(){
+
+    let context = imagepicker.create({
+      mode: "single" // use "multiple" for multiple selection
+    });
+    context
+    .authorize()
+    .then(function() {
+        return context.present();
+    })
+    .then(function(selection) {
+        selection.forEach(function(selected) {
+            console.dir(selected);
+            this.picture = selected.getImage();
+        });
+    }).catch(function (e) {
+        // process error
     });
   }
 }
