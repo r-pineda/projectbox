@@ -115,7 +115,7 @@ export class LoginComponent {
 
         //alert("You are offline. showing latest received data");
       
-        this.routerExtensions.navigate(["/list"], {
+        this.routerExtensions.navigate(["/todo"], {
             transition: {
             name: "slide",
             curve: "easeOut"
@@ -134,7 +134,7 @@ export class LoginComponent {
     this.statusService.setCurrentUser(usrData);
     this.statusService.setOfflineMode(false);
 
-    this.routerExtensions.navigate(["/list"], {
+    this.routerExtensions.navigate(["/todo"], {
       transition: {
           name: "slide",
           curve: "easeOut"

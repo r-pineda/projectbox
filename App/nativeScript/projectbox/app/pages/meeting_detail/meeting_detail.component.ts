@@ -16,6 +16,9 @@ import { MeetingService } from "../../shared/meeting/meeting.service"
 import * as camera from "nativescript-camera";
 import * as imagepicker from "nativescript-imagepicker";
 import { Image } from "ui/image";
+import { ImageAsset } from "tns-core-modules/image-asset";
+import * as fs from "tns-core-modules/file-system";
+import * as imageSource from "tns-core-modules/image-source";
 
 @Component({
   selector: "meeting_detail",
@@ -26,14 +29,13 @@ import { Image } from "ui/image";
 export class Meeting_detailComponent {
 
   meeting :Meeting;
-  public picture :any;
+  public picture :ImageAsset;
 
   constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService) {
 
     this.route.params.subscribe((params) => {
       this.getMeetings(params["id"]);
     });
-    this.picture = "https://placehold.it/200x200";
   }
 
   getMeetings(meeting_id :number){
@@ -103,7 +105,7 @@ export class Meeting_detailComponent {
   openGallery(){
 
     let context = imagepicker.create({
-      mode: "single" // use "multiple" for multiple selection
+      mode: "single" //use "multiple" for multiple selection
     });
     context
     .authorize()
@@ -111,12 +113,12 @@ export class Meeting_detailComponent {
         return context.present();
     })
     .then(function(selection) {
-        selection.forEach(function(selected) {
-            console.dir(selected);
-            this.picture = selected.getImage();
-        });
+      console.log(selection[0].android);
+      let path = fs.path.normalize(selection[0].android);
+      this.picture = selection[0].android//imageSource.fromFile(path).android;
     }).catch(function (e) {
         // process error
     });
+
   }
 }
