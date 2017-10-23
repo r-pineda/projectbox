@@ -3,6 +3,294 @@
 
     <item
         is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\transition\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-transition-25.3.1_3f1e5b3bd8726e63e505868114d63e3e77167de0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Input-2017.1.1003-dev-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7279ec5fcf43856d4563c37f6b911e6289500106">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\intermediates-exploded-aar-Input-2017.1.1003-dev-release_9a591df62dc95ab31c0e9786445190d028fa9094.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Common-2017.1.1003-dev-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="29bb374c9fd569ea5fad2e6729c255c3717382c9">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\intermediates-exploded-aar-Common-2017.1.1003-dev-release_de5f27a63e0d00d8b47ae749b5d04e1fbddeef8e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.5.0\489b7552dd3322b63f694122d16ce62c21c303b5\jackson-databind-2.5.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="489b7552dd3322b63f694122d16ce62c21c303b5">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\jackson-databind-2.5.0_e74c049f64dfa70d15f37a12cb1bf622858749c0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Input-2017.1.1003-dev-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7279ec5fcf43856d4563c37f6b911e6289500106">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\intermediates-exploded-aar-Input-2017.1.1003-dev-release_b629151c495641eccad5cc302c0ac5d16056d813.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\projectbox\runtime\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="eb6078500d1af5e7b663871706674405c57292a3">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\projectbox-runtime-unspecified_42ccc240098d88b79408f2718593d0e03133aa81.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Chart-2017.1.1003-dev-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="669d0795783c3d477c08aa18fb0457829a1292ac">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\intermediates-exploded-aar-Chart-2017.1.1003-dev-release_9b7fdd4199fc2e2923b15b3d0b82244a8724bc15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Chart-2017.1.1003-dev-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="669d0795783c3d477c08aa18fb0457829a1292ac">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\intermediates-exploded-aar-Chart-2017.1.1003-dev-release_91b15f4e55503fd81d234fb6f71a7ffe8aa3060e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\.gradle\caches\modules-2\files-2.1\com.couchbase.lite\couchbase-lite-java-core\1.3.1\3807f8d70802e9bee03617bc9d0b1a0bbbdab656\couchbase-lite-java-core-1.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3807f8d70802e9bee03617bc9d0b1a0bbbdab656">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\couchbase-lite-java-core-1.3.1_014230db4bd061e92644f38bb52de45ae0ef8b8e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\projectbox\runtime\unspecified\jars\libs\binding-generator.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a3e74f5f1ebe12c7cfa6591158ef298c95a5275f">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\binding-generator_d6ac0d0fbd6369e00574841d2ad41e94e1ec3995.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-core-utils-25.3.1_c7e30f82fbdd09c822b8593ce7708826919fbf96.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-media-compat-25.3.1_be7293ed99dc4daba65a723793bf88d500be3214.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-appcompat-v7-25.3.1_5573143fd63bef2fb66c56971fe65d4d8ac79609.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-core-ui-25.3.1_03bc89d2ace546c885b39eda0f176015e520d12e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.8.0\5ea7af56cc7c567ed9856d99efb30740e9b17ff\okio-1.8.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\okio-1.8.0_94ce9682b17718f78249c5560637b355a0acd3e2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Data-2017.1.1003-dev-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a690a9ad791e20a8e6bfa1f39c4df912499d2472">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\intermediates-exploded-aar-Data-2017.1.1003-dev-release_f1ace17db666bf942fcd5bbe6c6dd50d8ec35756.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\support-fragment\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-fragment-25.3.1_c3609ed046c616bf9070a7c8bc4b51cf026d5741.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\design\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-design-25.3.1_61a68cdff58f2192b0cb70d9a860e8f36596b2e9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\widgets-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ada15dd7aad50793dcd67b281a8eb06e80007500">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\intermediates-exploded-aar-widgets-release_3cbd3251f69eb0529136c7e791694d0b7f360a2b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\transition\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\com.android.support-transition-25.3.1_625ede8bd3190fb3a862d9ecc88c8e9c08b1c30d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Common-2017.1.1003-dev-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="29bb374c9fd569ea5fad2e6729c255c3717382c9">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\intermediates-exploded-aar-Common-2017.1.1003-dev-release_f0d87ee8a638c92f94e8d4c053c657884acfcad8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\projectbox\runtime\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="eb6078500d1af5e7b663871706674405c57292a3">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\projectbox-runtime-unspecified_6d1a4ee5e880e39f6906d83491fa0516b56aac72.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.3.1\19047bdb6a4fc00a44124f64ca98e88fc204e7e3\okhttp-3.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="19047bdb6a4fc00a44124f64ca98e88fc204e7e3">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\okhttp-3.3.1_d298b3957e1f61713f1695d0baef7a977cd11bc9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\widgets-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ada15dd7aad50793dcd67b281a8eb06e80007500">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\intermediates-exploded-aar-widgets-release_fe150db16402ecf9e93b31bdaffd164d57014f6d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\List-2017.1.1003-dev-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ccf00b7aa2472bfe1e92931c49e46d9103742149">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\intermediates-exploded-aar-List-2017.1.1003-dev-release_deffeeb691a473ae445d9a60aa7f6c57d0f16af1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\projectbox\runtime\unspecified\jars\libs\binding-generator.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a3e74f5f1ebe12c7cfa6591158ef298c95a5275f">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\binding-generator_79fa24506470eb887d30c5a8aaba6ace087b3de8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.5.0\b2ece1bd57ac7b4c315b7505b65ac79cb1da4270\jackson-core-2.5.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b2ece1bd57ac7b4c315b7505b65ac79cb1da4270">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\jackson-core-2.5.0_95d6c91e5c2683ea07ab89ce3b42e1f2b8df0000.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-vector-drawable-25.3.1_daf1d2731e3dda785d19a45ae40897c74c94a00a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\com.android.support-recyclerview-v7-25.3.1_ab49cabf80c1a0f5f2a816e3fa6aa1b2d97135ee.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\support-fragment\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\com.android.support-support-fragment-25.3.1_692150f8fe64d762526b7b762c6c6bb1f2e802fd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\com.android.support-animated-vector-drawable-25.3.1_63036bd745af7c2fcbf740f3581c12d28ffb548b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\support-v4\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-v4-25.3.1_6108da9bd454f226f0ae3a2de16678e3b75a97bf.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\design\25.3.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -39,24 +327,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Michael\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.5.0\489b7552dd3322b63f694122d16ce62c21c303b5\jackson-databind-2.5.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="489b7552dd3322b63f694122d16ce62c21c303b5">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\jackson-databind-2.5.0_e74c049f64dfa70d15f37a12cb1bf622858749c0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Input-2017.1.1003-dev-release\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="7279ec5fcf43856d4563c37f6b911e6289500106">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\intermediates-exploded-aar-Input-2017.1.1003-dev-release_b629151c495641eccad5cc302c0ac5d16056d813.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\Michael\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.6.2\f1bc476cc167b18e66c297df599b2377131a8947\gson-2.6.2.jar"
         jumboMode="false"
         optimize="true"
@@ -66,12 +336,39 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Primitives-2017.1.1003-dev-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="dea5032193895bd143e997736b2842b1dffd1dcf">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\intermediates-exploded-aar-Primitives-2017.1.1003-dev-release_57ea4b5c2d36389b755d071ea35f2fe716252167.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Feedback-2017.1.1003-dev-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="99917b3cc83bb26c61fe0fa886ef55ee8005e9bf">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\intermediates-exploded-aar-Feedback-2017.1.1003-dev-release_98f550223a00ab506548de059df18c669cd90e2d.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Gauges-2017.1.1003-dev-release\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="763441cc6a990002aed18218e3bb277961816ea4">
         <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\intermediates-exploded-aar-Gauges-2017.1.1003-dev-release_f255780da94fd2b94c2c92dd625ddcefcddbb029.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-animated-vector-drawable-25.3.1_9ab8715edb5f07e6698819e92910898d97b1d7da.jar" />
     </item>
     <item
         is-multidex="false"
@@ -93,30 +390,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Chart-2017.1.1003-dev-release\jars\classes.jar"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.3.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="669d0795783c3d477c08aa18fb0457829a1292ac">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\intermediates-exploded-aar-Chart-2017.1.1003-dev-release_91b15f4e55503fd81d234fb6f71a7ffe8aa3060e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Michael\.gradle\caches\modules-2\files-2.1\com.couchbase.lite\couchbase-lite-java-core\1.3.1\3807f8d70802e9bee03617bc9d0b1a0bbbdab656\couchbase-lite-java-core-1.3.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3807f8d70802e9bee03617bc9d0b1a0bbbdab656">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\couchbase-lite-java-core-1.3.1_014230db4bd061e92644f38bb52de45ae0ef8b8e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\projectbox\runtime\unspecified\jars\libs\binding-generator.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a3e74f5f1ebe12c7cfa6591158ef298c95a5275f">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\binding-generator_d6ac0d0fbd6369e00574841d2ad41e94e1ec3995.jar" />
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-recyclerview-v7-25.3.1_93918b8ee483cc68e3028d1a419bc7623a247e2b.jar" />
     </item>
     <item
         is-multidex="false"
@@ -126,6 +405,24 @@
         revision="25.0.2"
         sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
         <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\support-annotations-25.3.1_07cc1bdab6386cc71ca9e51c0b2d242e9420314e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\List-2017.1.1003-dev-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ccf00b7aa2472bfe1e92931c49e46d9103742149">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\intermediates-exploded-aar-List-2017.1.1003-dev-release_6529e2fc7da1ae26e5075046937880b5b60f0fc6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Data-2017.1.1003-dev-release\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a690a9ad791e20a8e6bfa1f39c4df912499d2472">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\intermediates-exploded-aar-Data-2017.1.1003-dev-release_e27b12b1dfd167317a2b9964595d1333c6c3f0ca.jar" />
     </item>
     <item
         is-multidex="false"
@@ -147,24 +444,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Michael\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.8.0\5ea7af56cc7c567ed9856d99efb30740e9b17ff\okio-1.8.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\okio-1.8.0_94ce9682b17718f78249c5560637b355a0acd3e2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Data-2017.1.1003-dev-release\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a690a9ad791e20a8e6bfa1f39c4df912499d2472">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\intermediates-exploded-aar-Data-2017.1.1003-dev-release_f1ace17db666bf942fcd5bbe6c6dd50d8ec35756.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\support-compat\25.3.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -174,12 +453,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\transition\25.3.1\jars\classes.jar"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Gauges-2017.1.1003-dev-release\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\com.android.support-transition-25.3.1_625ede8bd3190fb3a862d9ecc88c8e9c08b1c30d.jar" />
+        sha1="763441cc6a990002aed18218e3bb277961816ea4">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\intermediates-exploded-aar-Gauges-2017.1.1003-dev-release_3dbbbe28b0ef00f50277649d8f2abcff4975253b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\support-compat\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\Michael\Desktop\Neuer Ordner\projetbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0\debug\com.android.support-support-compat-25.3.1_21d82a395f2d95f85df7496ffa27fb944c356062.jar" />
     </item>
     <item
         is-multidex="false"
@@ -192,24 +480,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\Common-2017.1.1003-dev-release\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="29bb374c9fd569ea5fad2e6729c255c3717382c9">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\intermediates-exploded-aar-Common-2017.1.1003-dev-release_f0d87ee8a638c92f94e8d4c053c657884acfcad8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\projectbox\runtime\unspecified\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="eb6078500d1af5e7b663871706674405c57292a3">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\projectbox-runtime-unspecified_6d1a4ee5e880e39f6906d83491fa0516b56aac72.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\support-v4\25.3.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -219,48 +489,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Michael\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.3.1\19047bdb6a4fc00a44124f64ca98e88fc204e7e3\okhttp-3.3.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="19047bdb6a4fc00a44124f64ca98e88fc204e7e3">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\okhttp-3.3.1_d298b3957e1f61713f1695d0baef7a977cd11bc9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\widgets-release\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ada15dd7aad50793dcd67b281a8eb06e80007500">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\intermediates-exploded-aar-widgets-release_fe150db16402ecf9e93b31bdaffd164d57014f6d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\List-2017.1.1003-dev-release\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ccf00b7aa2472bfe1e92931c49e46d9103742149">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\intermediates-exploded-aar-List-2017.1.1003-dev-release_deffeeb691a473ae445d9a60aa7f6c57d0f16af1.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\Michael\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.5.0\a2a55a3375bc1cef830ca426d68d2ea22961190e\jackson-annotations-2.5.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="a2a55a3375bc1cef830ca426d68d2ea22961190e">
         <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\jackson-annotations-2.5.0_15146deabba0b1fda035c6a2b5077f67fb800b86.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Michael\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.5.0\b2ece1bd57ac7b4c315b7505b65ac79cb1da4270\jackson-core-2.5.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b2ece1bd57ac7b4c315b7505b65ac79cb1da4270">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\jackson-core-2.5.0_95d6c91e5c2683ea07ab89ce3b42e1f2b8df0000.jar" />
     </item>
     <item
         is-multidex="false"
@@ -279,33 +513,6 @@
         revision="25.0.2"
         sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
         <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\com.android.support-support-core-ui-25.3.1_83a063c4b2a9ec0cd2d09a58b9ecabdf0b8a65ed.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.3.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="95519720620b553f63afc789beba9ad582807f7c">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\com.android.support-recyclerview-v7-25.3.1_ab49cabf80c1a0f5f2a816e3fa6aa1b2d97135ee.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\support-fragment\25.3.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\com.android.support-support-fragment-25.3.1_692150f8fe64d762526b7b762c6c6bb1f2e802fd.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.3.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
-        <dex dex="C:\Users\Michael\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\build\intermediates\pre-dexed\F0F1F2F3F4F5\debug\com.android.support-animated-vector-drawable-25.3.1_63036bd745af7c2fcbf740f3581c12d28ffb548b.jar" />
     </item>
 
 </items>

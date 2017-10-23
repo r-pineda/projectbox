@@ -1,14 +1,8 @@
 <StackLayout>
-        <GridLayout *ngFor="let todo of todos" columns="auto, auto, auto, auto" rows="auto, auto, auto, auto">
-            <Label row="0" col="0" colSpan="4" [text]="todo.id"></Label>
-            <TextField class="hours" hint="hh"col="0", row="1" keyboardType="number" [(ngModel)]="temp[todo.id][0]" maxLength="2"></TextField>
-            <Label col="1" row="1" text=" : "></Label>
-            <TextField class="minutes" hint="mm"col="2", row="1" keyboardType="number" [(ngModel)]="temp[todo.id][1]" maxLength="2"></TextField>
-            <TextField class="hours" hint="hh"col="0", row="2" keyboardType="number" [(ngModel)]="temp[todo.id][2]" maxLength="2"></TextField>
-            <Label col="1" row="2" text=" : "></Label>
-            <TextField class="minutes" hint="mm"col="2", row="2" keyboardType="number" [(ngModel)]="temp[todo.id][3]" maxLength="2"></TextField>
-            <Button (tap)="saveTime(todo.id)" row="1" rowSpan="2" col="3" text = "Bestätigen"></Button>
-            <Label row="3" col="0" colSpan="3" text="Zeit für dises TODO in Minuten:"></Label>
-            <Label row="3" col="3" [text] = "temp[todo.id][4]"></Label>
-        </GridLayout>
+    <GridLayout *ngFor="let todo of todos" columns="auto, auto" rows="auto, auto">
+        <Label row="0" col="0" colSpan="2" [text]="todo.id"></Label>
+        <Image col="0", row="1" keyboardType="number" [src]="(temp[todo.id][5]==1) ? 'res://stop_btn' : 'res://play_btn'" (tap)="play_stop(todo.id)"></Image>
+        <Label row="1" col="0" text="Zeit für dises TODO in m:"></Label>
+        <Label row="1" col="1" [text] = "todo.timeTaken"></Label>
+    </GridLayout>
 </StackLayout>

@@ -19,7 +19,14 @@ export class TodoComponent {
 
   todos :Todo[];
   timestart :string;
-  temp :number[][];
+  temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
+                    //Ebene 1 des Arrays ist assoziativ mit den IDs von den Todos. die 2. Ebene enthält folgende Attribute:
+                    //[0]startTime: Stunden
+                    //[1]startTime: Minuten
+                    //[2]endTime: Stunden
+                    //[3]endTime: Minuten
+                    //[4]errechnete dauer des Eintrags
+                    //[5]TimerRunning :boolean
 
   constructor
   (
@@ -39,11 +46,35 @@ export class TodoComponent {
     this.temp = new Array(this.todos.length);
     this.todos.forEach(element => {
       this.temp[element.id] = [];
+      this.temp[element.id][4] = element.timeTaken;
+      this.temp[element.id][5] = 0;
     });
   }
 
   saveTime(id :any){
-    this.temp[id][4] += ((+this.temp[id][2] * 60) + +this.temp[id][3]) - ((+this.temp[id][0] * 60) + +this.temp[id][1])
+    console.dir(this.temp);
+    this.todos.forEach(todo => {
+      if(id == todo.id){
+        todo.timeTaken += ((this.temp[id][2] * 60) + +this.temp[id][3]) - ((this.temp[id][0] * 60) + +this.temp[id][1]); 
+      }
+    });
+  }
+
+
+  play_stop(id :any){
+    if(this.temp[id][5] == 0){
+      this.temp[id][5] = 1;
+      let date :Date = new Date();
+      this.temp[id][0] = date.getHours();
+      this.temp[id][1] = date.getMinutes();
+    }else{
+      this.temp[id][5] = 0;
+      let date :Date = new Date();
+      this.temp[id][2] = date.getHours();
+      this.temp[id][3] = date.getMinutes();
+      this.saveTime(id);
+    }
+
   }
 
 }
