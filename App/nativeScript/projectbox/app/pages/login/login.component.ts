@@ -7,6 +7,8 @@ import { Page } from "ui/page";
 //import { AppShortcuts } from "nativescript-app-shortcuts";
 //import { isIOS } from "tns-core-modules/platform";
 import { StatusService } from "../../shared/status/status.service"
+import * as elementRegistryModule from 'nativescript-angular/element-registry';
+elementRegistryModule.registerElement("CardView", () => require("nativescript-cardview").CardView);
 
 @Component({
   selector: "my-app",
@@ -17,6 +19,7 @@ import { StatusService } from "../../shared/status/status.service"
 export class LoginComponent {
   user: User;
   isLoggingIn = true;
+  wrongcredentials :boolean = false;
 
   constructor
   (
@@ -29,8 +32,8 @@ export class LoginComponent {
   )
   {
     this.user = new User();
-    this.user.email = "michael.fruehwirth@htl.rennweg.at";
-    this.user.password = "michael1234";
+    //this.user.email = "michael.fruehwirth@htl.rennweg.at";
+    //this.user.password = "michael1234";
     page.actionBarHidden = true;
 
     // instantiate the plugin
@@ -102,20 +105,17 @@ export class LoginComponent {
 
   offlineLogin(valid :any){
 
-    console.log(valid);
-
     if (valid == "403"){
-      alert("Wrong credentials!");
+      this.wrongcredentials = true;
     }else{
 
       this.statusService.setOfflineMode(true);
-      console.log(this.statusService.getOfflineMode());
 
       if(this.statusService.getWasLoggedIn()){
 
         //alert("You are offline. showing latest received data");
       
-        this.routerExtensions.navigate(["/todo"], {
+        this.routerExtensions.navigate(["/list"], {
             transition: {
             name: "slide",
             curve: "easeOut"
@@ -130,11 +130,12 @@ export class LoginComponent {
 
   loginProceed(usrData :any){
 
+    this.wrongcredentials = false;
     this.statusService.loggedIn();
     this.statusService.setCurrentUser(usrData);
     this.statusService.setOfflineMode(false);
 
-    this.routerExtensions.navigate(["/todo"], {
+    this.routerExtensions.navigate(["/list"], {
       transition: {
           name: "slide",
           curve: "easeOut"

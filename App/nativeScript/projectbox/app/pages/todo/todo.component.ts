@@ -23,10 +23,12 @@ export class TodoComponent {
                     //Ebene 1 des Arrays ist assoziativ mit den IDs von den Todos. die 2. Ebene enthält folgende Attribute:
                     //[0]startTime: Stunden
                     //[1]startTime: Minuten
-                    //[2]endTime: Stunden
-                    //[3]endTime: Minuten
-                    //[4]errechnete dauer des Eintrags
-                    //[5]TimerRunning :boolean
+                    //[2]startTime: Sekunden
+                    //[3]endTime: Stunden
+                    //[4]endTime: Minuten
+                    //[5]endTime: Sekunden
+                    //[6]errechnete dauer des Eintrags
+                    //[7]TimerRunning :0 = false, 1 = true
 
   constructor
   (
@@ -46,8 +48,8 @@ export class TodoComponent {
     this.temp = new Array(this.todos.length);
     this.todos.forEach(element => {
       this.temp[element.id] = [];
-      this.temp[element.id][4] = element.timeTaken;
-      this.temp[element.id][5] = 0;
+      this.temp[element.id][6] = element.timeTaken;
+      this.temp[element.id][7] = 0;
     });
   }
 
@@ -55,24 +57,31 @@ export class TodoComponent {
     console.dir(this.temp);
     this.todos.forEach(todo => {
       if(id == todo.id){
-        todo.timeTaken += ((this.temp[id][2] * 60) + +this.temp[id][3]) - ((this.temp[id][0] * 60) + +this.temp[id][1]); 
+        let sec :number = 
+        ((this.temp[id][3] * 3600) + (this.temp[id][4] * 60) + +this.temp[id][5]) 
+        - ((this.temp[id][0] * 3600) + (this.temp[id][1] * 60) + +this.temp[id][2]);
+        sec -= sec%60;
+        todo.timeTaken += (sec/60);
       }
     });
   }
 
 
   play_stop(id :any){
-    if(this.temp[id][5] == 0){
-      this.temp[id][5] = 1;
+    if(this.temp[id][7] == 0){
+      this.temp[id][7] = 1;
       let date :Date = new Date();
       this.temp[id][0] = date.getHours();
       this.temp[id][1] = date.getMinutes();
+      this.temp[id][2] = date.getSeconds();
     }else{
-      this.temp[id][5] = 0;
+      this.temp[id][7] = 0;
       let date :Date = new Date();
-      this.temp[id][2] = date.getHours();
-      this.temp[id][3] = date.getMinutes();
+      this.temp[id][3] = date.getHours();
+      this.temp[id][4] = date.getMinutes();
+      this.temp[id][5] = date.getSeconds();
       this.saveTime(id);
+      console.dir(this.temp);
     }
 
   }
