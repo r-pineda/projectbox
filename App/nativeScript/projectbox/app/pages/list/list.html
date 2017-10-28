@@ -1,8 +1,8 @@
 <!-- Projekte -->
-<ScrollView>
-    <GridLayout columns="*,*,*" rows="*,*,150,*,*,*,*" >
+<Page class="page">
+    <GridLayout columns="*,*,*" rows="30,70,150,70,70,*" >
     
-    <Label *ngIf="offlinemode" row="0" text="OFFLINE" style="background-color:rgb(99, 228, 178);"></Label>
+    <Label *ngIf="offlinemode" row="0" colSpan="3" text="OFFLINE" style="text-align:center;background-color:rgb(99, 228, 178);"></Label>
     <Label text="PROJEKTE" row="1" colSpan="3" class="h1"></Label>
     
     <Button text="Best of Rennweg" row="2" col="0" class="project"></Button>
@@ -11,8 +11,8 @@
     
     <Label text="TASKS" row="3" colSpan="3" class="h1"></Label>
 
-    <Label text="MEETINGS" row="5" colSpan="3" class="h1"></Label>
-    <ListView [items]="meetings" class="list-group">
+    <Label text="MEETINGS" row="4" colSpan="3" class="h1"></Label>
+    <ListView [items]="meetings" row="5" colSpan="3">
         <!--standard listview taken from NativeScript API Reference Angular
         we take as items the "meetings" variable from the component-->
 
@@ -27,4 +27,4 @@
     </ListView>
 
     </GridLayout>
-</ScrollView>
+</Page>

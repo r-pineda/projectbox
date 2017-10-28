@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "nativescript-theme-core@~1.0.2",
+        "raw": "nativescript-theme-core@^1.0.4",
         "scope": null,
         "escapedName": "nativescript-theme-core",
         "name": "nativescript-theme-core",
-        "rawSpec": "~1.0.2",
-        "spec": ">=1.0.2 <1.1.0",
+        "rawSpec": "^1.0.4",
+        "spec": ">=1.0.4 <2.0.0",
         "type": "range"
       },
-      "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\node_modules\\tns-template-hello-world-ng"
+      "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox"
     ]
   ],
-  "_from": "nativescript-theme-core@>=1.0.2 <1.1.0",
+  "_from": "nativescript-theme-core@>=1.0.4 <2.0.0",
   "_id": "nativescript-theme-core@1.0.4",
   "_inCache": true,
   "_location": "/nativescript-theme-core",
@@ -29,22 +29,23 @@
   "_npmVersion": "3.10.9",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "nativescript-theme-core@~1.0.2",
+    "raw": "nativescript-theme-core@^1.0.4",
     "scope": null,
     "escapedName": "nativescript-theme-core",
     "name": "nativescript-theme-core",
-    "rawSpec": "~1.0.2",
-    "spec": ">=1.0.2 <1.1.0",
+    "rawSpec": "^1.0.4",
+    "spec": ">=1.0.4 <2.0.0",
     "type": "range"
   },
   "_requiredBy": [
-    "/tns-template-hello-world-ng"
+    "#USER",
+    "/"
   ],
   "_resolved": "https://registry.npmjs.org/nativescript-theme-core/-/nativescript-theme-core-1.0.4.tgz",
   "_shasum": "cf2880c7fbf2fe5f43e2235d309750790803efe1",
   "_shrinkwrap": null,
-  "_spec": "nativescript-theme-core@~1.0.2",
-  "_where": "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\node_modules\\tns-template-hello-world-ng",
+  "_spec": "nativescript-theme-core@^1.0.4",
+  "_where": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox",
   "author": {
     "name": "Telerik",
     "email": "support@telerik.com"

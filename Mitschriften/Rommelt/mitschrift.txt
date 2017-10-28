@@ -1,7 +1,28 @@
 23/9/17
 
-- Mockups f�r das "Funktionen" - Bild von https://www.behance.net/gallery/22663297/Apple-Device-Wireframe-Mockups
+- Mockups f�r das "Funktionen" - Bild von https://www.behance.net/gallery/22663297/Apple-Device-Wireframe-Mockups
 - StatusBar entfernt durch das Importieren vom Component "Pages" - hiddenStatusBar = true
 - Loading-Screen Bilder erstellt
 - Logo im Login-Screen angepasst
 - Animationen angepasst
+
+27/10/17
+
+- Recherche für Einsatz von Themen
+- Fonteinsatz
+- CSS
+- Klassen in HTML und XML in Nativescript
+- Multiple Screens einsatz
+- Elemente für Navigation und Dashboard recherchiert
+
+https://docs.nativescript.org/ui/theme#font
+https://docs.nativescript.org/ui/icon-fonts
+https://www.nativescript.org/blog/give-your-apps-some-style-with-the-nativescript-theme-builder
+https://docs.nativescript.org/ui/theme
+https://www.nativescript.org/blog/supporting-multiple-screen-resolutions-in-your-nativescript-app
+https://discourse.nativescript.org/t/how-to-support-multiple-screen-sizes-in-your-nativescript-app-typescript-and-angluar/273/2
+http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/overview
+http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/ListView/overview
+
+28/10/17
+

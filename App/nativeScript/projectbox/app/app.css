@@ -1,4 +1,6 @@
+@import '~/nativescript-theme-core/css/core.light.css';
 @import url("~/platform.css");
+@import url("~/custom.css");
 
 Page {
     background-color: white;
@@ -6,5 +8,9 @@ Page {
   }
   TextField {
     padding: 10;
-    font-size: 13;
+    font-size: 15;
   }
+
+* {
+  font-family: "Montserrat-Medium";
+}

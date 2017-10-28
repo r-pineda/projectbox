@@ -10,6 +10,7 @@
     "nativescript-angular": true,
     "nativescript-app-shortcuts": true,
     "nativescript-camera": true,
+    "nativescript-cardview": true,
     "nativescript-couchbase": true,
     "nativescript-imagepicker": true,
     "nativescript-telerik-ui": true,
