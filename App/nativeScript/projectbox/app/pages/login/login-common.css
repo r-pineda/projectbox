@@ -7,7 +7,7 @@ StackLayout {
 }
 
 Image {
-  height: 35%;
+  height: 40%;
 }
 
 TextField {
@@ -24,9 +24,9 @@ TextField {
 }
 
 #logo{
-  margin:20;
-  margin-top: 11%; /* 93 = 11% */
-  margin-bottom: 9%;
+  margin:5;
+  margin-top: 5%; /* 93 = 11% */
+  margin-bottom: 5%;
 }
 /*
   Oben bis Logo: 93;
