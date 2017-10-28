@@ -70,3 +70,11 @@ GridLayout{
 CardView{
   width: 84%;
 }
+
+.cred{
+  margin-left: 4.6%;
+  margin-right: 4.6%;
+  border-color: rgb(161, 0, 0);
+  border-width: 2%;
+  border-radius: 0;
+}
