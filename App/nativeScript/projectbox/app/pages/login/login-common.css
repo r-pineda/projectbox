@@ -11,8 +11,9 @@ Image {
 }
 
 TextField {
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 4.6%;
+  margin-right: 4.6%;
+  border-color: transparent;
   background-color: white;
   margin-bottom: 4%;
 }
