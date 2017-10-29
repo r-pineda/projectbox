@@ -1,15 +1,17 @@
 <Page xmlns:Card="nativescript-cardview">
   <StackLayout>
       <Image id="logo" src="res://logo_log" stretch="none" horizontalAlignment="center"></Image>
-      <CardView margin="0" elevation="20" shadowOffsetWidth = "1"; shadowOffsetHeight = "1"; radius="0">
-        <GridLayout horizontalAlignment="center" rows="*,*,*,*" columns="*">
-          <TextField [class]="wrongcredentials ? 'cred' : ''" row="0" col="0" hint="BENUTZERNAME" keyboardType="email" [(ngModel)]="user.email"
-            autocorrect="false" autocapitalizationType="none"></TextField>
-          <TextField [class]="wrongcredentials ? 'cred' : ''" row="1" col="0" hint="PASSWORT" secure="true" [(ngModel)]="user.password"></TextField>
-        
-          <Button row="2" col="0" text="LOGIN" class="submit-button" (tap)="submit()"></Button>
-          <Label row="3" col="0" id="forgot" text="Passwort vergessen?" horizontalAlignment="center"></Label>
-        </GridLayout>
-      </CardView>
+      <GridLayout #box id="box">
+        <CardView margin="0" elevation="20" shadowOffsetWidth = "1"; shadowOffsetHeight = "1"; radius="0">
+          <GridLayout id="innerbox" horizontalAlignment="center" rows="*,*,*,*" columns="*">
+            <TextField (tap)="keyboardOn()" [class]="wrongcredentials ? 'cred' : ''" row="0" col="0" hint="BENUTZERNAME" keyboardType="email" [(ngModel)]="user.email"
+              autocorrect="false" autocapitalizationType="none"></TextField>
+            <TextField (tap)="keyboardOn()" [class]="wrongcredentials ? 'cred' : ''" row="1" col="0" hint="PASSWORT" secure="true" [(ngModel)]="user.password"></TextField>
+          
+            <Button row="2" col="0" text="LOGIN" class="submit-button" (tap)="submit()"></Button>
+            <Label row="3" col="0" id="forgot" text="Passwort vergessen?" horizontalAlignment="center"></Label>
+          </GridLayout>
+        </CardView>
+      </GridLayout>
   </StackLayout>
 </Page>

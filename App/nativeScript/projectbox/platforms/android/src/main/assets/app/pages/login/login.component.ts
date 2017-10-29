@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild, ElementRef } from "@angular/core";
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -9,6 +9,11 @@ import { Page } from "ui/page";
 import { StatusService } from "../../shared/status/status.service"
 import * as elementRegistryModule from 'nativescript-angular/element-registry';
 elementRegistryModule.registerElement("CardView", () => require("nativescript-cardview").CardView);
+import {AnimationCurve} from "ui/enums";
+import observable = require("data/observable");
+import view = require("ui/core/view");
+import { TextField } from "ui/text-field";
+import { GridLayout } from "ui/layouts/grid-layout";
 
 @Component({
   selector: "my-app",
@@ -16,10 +21,12 @@ elementRegistryModule.registerElement("CardView", () => require("nativescript-ca
   templateUrl: "pages/login/login.html",
   styleUrls: ["pages/login/login-common.css", "pages/login/login.css"]
 })
-export class LoginComponent {
+export class LoginComponent{
+  @ViewChild("box") grid: ElementRef;
   user: User;
   isLoggingIn = true;
   wrongcredentials :boolean = false;
+  box :GridLayout;
 
   constructor
   (
@@ -156,6 +163,16 @@ export class LoginComponent {
   }
   toggleDisplay() {
     this.isLoggingIn = !this.isLoggingIn;
+  }
+
+  
+  keyboardOn(){
+    this.box = this.grid.nativeElement;
+    this.box.animate({
+      translate: {x:0, y:-300},
+      duration: 1000,
+      curve: AnimationCurve.easeOut
+    });
   }
   
 }
