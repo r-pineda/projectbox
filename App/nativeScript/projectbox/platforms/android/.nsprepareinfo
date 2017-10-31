@@ -1,9 +1,9 @@
 {
-	"time": "Tue Oct 31 2017 12:11:47 GMT+0100 (Mitteleuropäische Zeit)",
+	"time": "Tue Oct 31 2017 12:21:30 GMT+0100 (Mitteleuropäische Zeit)",
 	"nativePlatformStatus": "3",
 	"bundle": false,
 	"release": false,
-	"changesRequireBuild": true,
+	"changesRequireBuild": false,
 	"projectFileHash": "bbc10cff4e3ebce7338e41d68bb1848f5168b9bdf0a7b6b952161d164e1245b1",
 	"changesRequireBuildTime": "Tue Oct 31 2017 12:11:47 GMT+0100 (Mitteleuropäische Zeit)"
 }

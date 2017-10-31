@@ -21,12 +21,8 @@ import { routes, navigatableComponents } from "./app.routing";
     NativeScriptFormsModule,
     NativeScriptHttpModule,
     NativeScriptRouterModule,
-<<<<<<< HEAD
     NgShadowModule, //ng-shadow plugin
     NativeScriptRouterModule.forRoot(routes)
-=======
-    NativeScriptRouterModule.forRoot(routes),
->>>>>>> dba93e5c0aa298952ed0e9dbfccaf8001cb7557c
   ],
   declarations: [
     AppComponent,
