@@ -7,13 +7,12 @@ import { Page } from "ui/page";
 //import { AppShortcuts } from "nativescript-app-shortcuts";
 //import { isIOS } from "tns-core-modules/platform";
 import { StatusService } from "../../shared/status/status.service"
-import * as elementRegistryModule from 'nativescript-angular/element-registry';
-elementRegistryModule.registerElement("CardView", () => require("nativescript-cardview").CardView);
 import {AnimationCurve} from "ui/enums";
 import observable = require("data/observable");
 import view = require("ui/core/view");
 import { TextField } from "ui/text-field";
 import { GridLayout } from "ui/layouts/grid-layout";
+import { AndroidData, IOSData, Elevation } from 'nativescript-ng-shadow';
 
 @Component({
   selector: "my-app",
@@ -24,9 +23,15 @@ import { GridLayout } from "ui/layouts/grid-layout";
 export class LoginComponent{
   @ViewChild("box") grid: ElementRef;
   user: User;
-  isLoggingIn = true;
   wrongcredentials :boolean = false;
   box :GridLayout;
+  boxIsUp :boolean = false;
+  fabShadowA: AndroidData = {
+    elevation: Elevation.CARD_PICKED_UP,
+  };
+  fabShadoI: IOSData = {
+    elevation: Elevation.CARD_PICKED_UP,
+  };
 
   constructor
   (
@@ -94,14 +99,6 @@ export class LoginComponent{
 */
   }
 
-  submit() {
-    if (this.isLoggingIn) {
-      this.login();
-    } else {
-      this.signUp();
-    }
-  }
-
   login() {
     this.userService.login(this.user)
       .subscribe(
@@ -154,7 +151,7 @@ export class LoginComponent{
     this.box = this.grid.nativeElement;
     this.box.animate({
       translate: {x:0, y:-300},
-      duration: 1000,
+      duration: 750,
       curve: AnimationCurve.easeOut
     });
   }
