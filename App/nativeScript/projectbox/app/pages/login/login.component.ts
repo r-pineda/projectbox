@@ -98,7 +98,7 @@ export class LoginComponent{
     if (this.isLoggingIn) {
       this.login();
     } else {
-      this.signUp();
+      //this.signUp();
     }
   }
 

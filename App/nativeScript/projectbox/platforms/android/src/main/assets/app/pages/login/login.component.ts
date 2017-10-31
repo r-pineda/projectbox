@@ -98,7 +98,7 @@ export class LoginComponent{
     if (this.isLoggingIn) {
       this.login();
     } else {
-      this.signUp();
+      //this.signUp();
     }
   }
 
@@ -116,12 +116,10 @@ export class LoginComponent{
       this.wrongcredentials = true;
     }else{
 
-      this.statusService.setOfflineMode(true);
-
       if(this.statusService.getWasLoggedIn()){
 
         //alert("You are offline. showing latest received data");
-      
+        this.statusService.setOfflineMode(true);
         this.routerExtensions.navigate(["/list"], {
             transition: {
             name: "slide",
@@ -147,22 +145,8 @@ export class LoginComponent{
           name: "slide",
           curve: "easeOut"
       }
-  })
+    })
 
-  }
-
-  signUp() {
-    this.userService.register(this.user)
-      .subscribe(
-        () => {
-          alert("Your account was successfully created.");
-          this.toggleDisplay();
-        },
-        () => alert("Unfortunately we were unable to create your account.")
-      );
-  }
-  toggleDisplay() {
-    this.isLoggingIn = !this.isLoggingIn;
   }
 
   

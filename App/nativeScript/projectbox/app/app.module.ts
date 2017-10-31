@@ -7,6 +7,8 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 //import { AppShortcuts } from "nativescript-app-shortcuts";
+import { SIDEDRAWER_DIRECTIVES } from "nativescript-telerik-ui/sidedrawer/angular";
+import { LISTVIEW_DIRECTIVES } from 'nativescript-telerik-ui/listview/angular';
 
 import { AppComponent } from "./app.component";
 import { routes, navigatableComponents } from "./app.routing";
@@ -17,11 +19,13 @@ import { routes, navigatableComponents } from "./app.routing";
     NativeScriptFormsModule,
     NativeScriptHttpModule,
     NativeScriptRouterModule,
-    NativeScriptRouterModule.forRoot(routes)
+    NativeScriptRouterModule.forRoot(routes),
   ],
   declarations: [
     AppComponent,
-    ...navigatableComponents
+    navigatableComponents,
+    LISTVIEW_DIRECTIVES,
+    SIDEDRAWER_DIRECTIVES
   ],
   bootstrap: [AppComponent]
 })

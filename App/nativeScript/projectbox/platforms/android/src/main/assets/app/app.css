@@ -6,6 +6,8 @@ Page {
     background-color: white;
     font-size: 15;
   }
+
+
   TextField {
     padding: 10;
     font-size: 15;
@@ -13,4 +15,42 @@ Page {
 
 * {
   font-family: "Montserrat-Medium";
+}
+
+.page {
+ padding-left: 20;
+}
+
+/* Navigation */
+
+.sideStackLayout {
+  background-color: #555555;
+  color: #FFFFFF;
+}
+
+.sideTitleStackLayout {
+  padding: 16;
+  font-weight: bold;
+  background-color: #333333;
+}
+
+.sideLabel {
+  padding: 16;
+}
+
+.listItemStackLayout {
+  padding: 16;
+  background-color: #FFFFFF;
+}
+
+.archiveViewStackLayout {
+  padding: 16;
+  background-color: #387EF5;
+  color: #FFFFFF;
+}
+
+.deleteViewStackLayout {
+  padding: 16;
+  background-color: #EF473A;
+  color: #FFFFFF;
 }
