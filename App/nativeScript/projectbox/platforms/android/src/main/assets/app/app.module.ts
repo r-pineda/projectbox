@@ -7,6 +7,7 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 //import { AppShortcuts } from "nativescript-app-shortcuts";
+/* Navigation */
 import { SIDEDRAWER_DIRECTIVES } from "nativescript-telerik-ui/sidedrawer/angular";
 import { LISTVIEW_DIRECTIVES } from 'nativescript-telerik-ui/listview/angular';
 

@@ -12,6 +12,7 @@
     "nativescript-camera": true,
     "nativescript-cardview": true,
     "nativescript-couchbase": true,
+    "nativescript-fresco": true,
     "nativescript-imagepicker": true,
     "nativescript-telerik-ui": true,
     "nativescript-theme-core": true,

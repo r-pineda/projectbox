@@ -31,3 +31,8 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/ListView/
 
 - Navigation implemented (basic)
 - Styled dashboard right alignment
+
+
+31/10/17
+
+-added images to Navigation

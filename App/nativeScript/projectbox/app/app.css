@@ -24,14 +24,14 @@ Page {
 /* Navigation */
 
 .sideStackLayout {
-  background-color: #555555;
+  background-color: #29A699;
   color: #FFFFFF;
 }
 
 .sideTitleStackLayout {
   padding: 16;
   font-weight: bold;
-  background-color: #333333;
+  background-color: #29A699;
 }
 
 .sideLabel {
@@ -53,4 +53,22 @@ Page {
   padding: 16;
   background-color: #EF473A;
   color: #FFFFFF;
+}
+
+
+.full-name, .e-mail-nav {
+  text-align: center;
+}
+
+.nav-items {
+  padding: 20;
+}
+
+ActionBar {
+  color: #fff;
+  background-color: #29A699;
+}
+
+.side-nav-items {
+  padding: 20;
 }
