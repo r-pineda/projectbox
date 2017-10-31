@@ -8,6 +8,9 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NgShadowModule } from 'nativescript-ng-shadow';
 //import { AppShortcuts } from "nativescript-app-shortcuts";
+/* Navigation */
+import { SIDEDRAWER_DIRECTIVES } from "nativescript-telerik-ui/sidedrawer/angular";
+import { LISTVIEW_DIRECTIVES } from 'nativescript-telerik-ui/listview/angular';
 
 import { AppComponent } from "./app.component";
 import { routes, navigatableComponents } from "./app.routing";
@@ -18,12 +21,18 @@ import { routes, navigatableComponents } from "./app.routing";
     NativeScriptFormsModule,
     NativeScriptHttpModule,
     NativeScriptRouterModule,
+<<<<<<< HEAD
     NgShadowModule, //ng-shadow plugin
     NativeScriptRouterModule.forRoot(routes)
+=======
+    NativeScriptRouterModule.forRoot(routes),
+>>>>>>> dba93e5c0aa298952ed0e9dbfccaf8001cb7557c
   ],
   declarations: [
     AppComponent,
-    ...navigatableComponents
+    navigatableComponents,
+    LISTVIEW_DIRECTIVES,
+    SIDEDRAWER_DIRECTIVES
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild, OnInit } from "@angular/core";
 import { UserService } from "../../shared/user/user.service";
 import { StatusService } from "../../shared/status/status.service";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -15,7 +15,11 @@ import {
   TouchGestureEventData
 } from "ui/gestures";
 import "rxjs/add/operator/switchMap";
-
+import { ListViewEventData, RadListView } from "nativescript-telerik-ui/listview";
+import { RadSideDrawerComponent, SideDrawerType } from "nativescript-telerik-ui/sidedrawer/angular";
+import { View } from 'ui/core/view';
+import * as Utils from "utils/utils";
+import * as FrameModule from "ui/frame";
 
 
 @Component({
@@ -24,7 +28,7 @@ import "rxjs/add/operator/switchMap";
   providers: [UserService, MeetingService, StatusService],
   styleUrls: ["pages/list/list-common.css", "pages/list/list.css"]
 })
-export class ListComponent {
+export class ListComponent implements OnInit{
 
   meetingdata :any;
   meetingsText :string;
@@ -104,6 +108,29 @@ export class ListComponent {
               curve: "easeOut"
           }
       });
+  }
+
+  /* SideDrawer */
+  public selected: number;
+  private drawer: SideDrawerType;
+
+  @ViewChild(RadSideDrawerComponent)
+  public drawerComponent: RadSideDrawerComponent;
+
+  public ngOnInit() {
+      this.drawer = this.drawerComponent.sideDrawer;
+  }
+
+  public onPullToRefreshInitiated(args: any) { }
+
+  public onSwipeCellStarted(args: ListViewEventData) { }
+
+  public onDelete() { }
+
+  public onArchive() { }
+
+  public onMenuTapped(value: any) {
+      this.drawer.closeDrawer();
   }
 
 }

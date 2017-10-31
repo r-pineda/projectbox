@@ -99,6 +99,17 @@ export class LoginComponent{
 */
   }
 
+<<<<<<< HEAD
+=======
+  submit() {
+    if (this.isLoggingIn) {
+      this.login();
+    } else {
+      //this.signUp();
+    }
+  }
+
+>>>>>>> dba93e5c0aa298952ed0e9dbfccaf8001cb7557c
   login() {
     this.userService.login(this.user)
       .subscribe(
