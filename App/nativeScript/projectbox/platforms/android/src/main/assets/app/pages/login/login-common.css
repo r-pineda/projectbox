@@ -55,15 +55,16 @@ TextField {
   pw-reset: 12;
 */
 
-GridLayout{
-  padding-top:20%;
-  width: 100%;
+#outerbox{
+  width: 88%;
   height: 300vh; /* 251 */
 }
 
-#innerbox{
-
+#box{
+  padding-top:20%;
   background-color: #08857a;
+  width: 100%;
+  height: 100%;
 }
 
 #forgot{
@@ -71,9 +72,6 @@ GridLayout{
   color: white;
 }
 
-CardView{
-  width: 84%;
-}
 
 .cred{
   margin-left: 4.6%;
