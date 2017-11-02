@@ -1,5 +1,7 @@
-<!-- Navigation 
-<ActionBar title="Dashboard"></ActionBar>
+<!-- Navigation -->
+<ActionBar title="Dashboard">
+    </ActionBar>
+<!--
 <RadSideDrawer>
     <StackLayout tkDrawerContent class="sideStackLayout">
         <StackLayout class="sideTitleStackLayout">
@@ -32,18 +34,32 @@
     <Label *ngIf="offlinemode" row="0" colSpan="3" text="OFFLINE" style="text-align:center;background-color:rgb(99, 228, 178);"></Label>
     <Label text="PROJEKTE" row="1" colSpan="3" class="h1"></Label>
     
-    <Button text="Best of Rennweg" row="2" col="0" class="project"></Button>
-    <Button text="Coffee Shop CMS" row="2" col="1" class="project"></Button>
-    <Button text="CCF" row="2" col="2" class="project"></Button>
-    
+    <GridLayout columns="*, *" row="*,*" row="2" col="0" class="project">
+        <Label text="Best of Rennweg" col="0" row="0"></Label>
+        <!--<Border cornerRadius="10" col="0" row="1" borderWidth="2" height="5" width="100" borderColor="#C0BEBD" style="top:0;background-color:#C0BEBD"></Border>-->
+        <Label text="12 Personen" col="1" row="1"></Label>
+    </GridLayout>
+
+    <GridLayout columns="*" row="100,30,30" row="2" col="1" class="project">
+            <Label text="Best of Rennweg" col="0" colSpan="2" row="0"></Label>
+            <Label text="12 Personen" col="0" row="2"></Label>
+        </GridLayout>
+
+        <GridLayout columns="*" row="100,30,30" row="2" col="2" class="project">
+                <Label text="Best of Rennweg" col="0" row="0"></Label>
+                <Label text="12 Personen" col="0" row="2"></Label>
+            </GridLayout>
+
     <Label text="TASKS" row="3" colSpan="3" class="h1"></Label>
     <StackLayout row="4" colSpan="3">
-            <GridLayout class="list-group-item" columns="auto, *, auto" rows="auto, 25" style.verticalAlignment="top" style.backgroundColor="lightgray">
-                <Image src="#" rowSpan="2" width="72" height="72" margin="3" style.verticalAlignment="top"></Image>
-                <Label text="My cat loves the camera" textWrap="true" col="1" colSpan="2" minHeight="50" style.fontSize="20" margin="3"></Label>
-                <Label text="John Smith" col="1" row="1" style.fontSize="14" style.horizontalAlignment="left" style.verticalAlignment="bottom" margin="3"></Label>
-                <Label text="comments: 26" col="2" row="1" style.color="#10C2B0" style.fontSize="14" style.verticalAlignment="bottom" margin="3"></Label>
-              </GridLayout>
+            <GridLayout (tap)="showDetail()" columns="auto, auto" rows="auto, auto">
+                    <Border cornerRadius="10" rowSpan="2" borderWidth="2" height="30" width="5" borderColor="#DEE8E7" style="top:0;background-color:#CB1F2C;">
+                       </Border>
+                    <Label text="UX - Testfälle erstellen" id="task-h1" class="h1" textWrap="true" col="1" style.fontSize="20"></Label>
+                    <Label text="Donec id elit non mi porta gravida at eget metus. Cras mattis 
+                    consectetur purus sit amet fermentum. Nulla vitae elit libero, a
+                    pharetra augude." col="1" row="1" class="task"  style.fontSize="14" style.verticalAlignment="top" style.horizontalAlignment="left" textWrap="true"></Label>
+                  </GridLayout>
     </StackLayout>
 
     <Label text="MEETINGS" row="5" colSpan="3" class="h1"></Label>
@@ -53,9 +69,9 @@
 
         <!-- creating the list of meetings -->
         <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
-            <GridLayout  (tap)="showDetail(item.id)" class="list-group-item" columns="auto, *, auto" rows="auto, 25, auto
-            " style.verticalAlignment="top" style.backgroundColor="lightgray">
+            <GridLayout  (tap)="showDetail(item.id)" class="meet" columns="auto, *, auto" rows="auto, 25, auto">
                 <Image src="#" rowSpan="2" width="72" height="72" margin="3" style.verticalAlignment="top"></Image>
+                <Label text="HEUTE" rowSpan="2" width="72" height="72" margin="3" style.verticalAlignment="center" margin-top="30"></Label>
                 <Label [text]="item.name" textWrap="true" col="1" style.fontSize="20"></Label>
                 <Label [text]="item.date" col="1" row="1"  style.fontSize="14" style.verticalAlignment="top" style.horizontalAlignment="left" margin="3"></Label>
                <!-- <Label text="John Smith" col="1" row="1" style.fontSize="14" style.horizontalAlignment="left" style.verticalAlignment="bottom" margin="3"></Label>-->

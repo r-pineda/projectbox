@@ -67,6 +67,7 @@ Page {
 ActionBar {
   color: #fff;
   background-color: #29A699;
+  text-align: center;
 }
 
 .side-nav-items {

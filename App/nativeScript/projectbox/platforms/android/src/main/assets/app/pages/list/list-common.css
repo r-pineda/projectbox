@@ -22,3 +22,17 @@ h1 {
   font-weight: 500;
   font-size: 15;
 }
+
+.task, #task-h1 {
+  vertical-align: middle;
+  background-color: #F3F4F4;
+}
+
+.meet {
+  vertical-align: middle;
+  background-color: #F3F4F4;
+}
+
+.project {
+  background-color: #F3F4F4;
+}
