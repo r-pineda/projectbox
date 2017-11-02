@@ -1,4 +1,4 @@
-<!-- Navigation -->
+<!-- Navigation 
 <ActionBar title="Dashboard"></ActionBar>
 <RadSideDrawer>
     <StackLayout tkDrawerContent class="sideStackLayout">
@@ -20,7 +20,7 @@
                 <Image src="res://settings" row="4" col="0" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
                 <Image src="res://logout"  row="4" col="1" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
                 <Label text="Einstellungen" row="5" col="0" class="full-name"></Label>
-                <Label text="Logout" row="5" col="1" class="full-name"></Label>-->
+                <Label text="Logout" row="5" col="1" class="full-name"></Label>
             </GridLayout>
         </ScrollView>
     </StackLayout>
@@ -28,7 +28,7 @@
 
 <!-- Content -->
 <Page class="page">    
-    <GridLayout columns="*,*,*" rows="30,70,150,70,70,*" >
+    <GridLayout columns="*,*,*" rows="30,70,150,70,*,70,*" >
     <Label *ngIf="offlinemode" row="0" colSpan="3" text="OFFLINE" style="text-align:center;background-color:rgb(99, 228, 178);"></Label>
     <Label text="PROJEKTE" row="1" colSpan="3" class="h1"></Label>
     
@@ -37,18 +37,30 @@
     <Button text="CCF" row="2" col="2" class="project"></Button>
     
     <Label text="TASKS" row="3" colSpan="3" class="h1"></Label>
+    <StackLayout row="4" colSpan="3">
+            <GridLayout class="list-group-item" columns="auto, *, auto" rows="auto, 25" style.verticalAlignment="top" style.backgroundColor="lightgray">
+                <Image src="#" rowSpan="2" width="72" height="72" margin="3" style.verticalAlignment="top"></Image>
+                <Label text="My cat loves the camera" textWrap="true" col="1" colSpan="2" minHeight="50" style.fontSize="20" margin="3"></Label>
+                <Label text="John Smith" col="1" row="1" style.fontSize="14" style.horizontalAlignment="left" style.verticalAlignment="bottom" margin="3"></Label>
+                <Label text="comments: 26" col="2" row="1" style.color="#10C2B0" style.fontSize="14" style.verticalAlignment="bottom" margin="3"></Label>
+              </GridLayout>
+    </StackLayout>
 
-    <Label text="MEETINGS" row="4" colSpan="3" class="h1"></Label>
-    <ListView [items]="meetings" row="5" colSpan="3">
+    <Label text="MEETINGS" row="5" colSpan="3" class="h1"></Label>
+    <ListView [items]="meetings" row="6" colSpan="3">
         <!--standard listview taken from NativeScript API Reference Angular
         we take as items the "meetings" variable from the component-->
 
         <!-- creating the list of meetings -->
         <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
-            <GridLayout class="list-group-item">
-                <Label (tap)="showDetail(item.id)"[text]="item.name + '- Ort:' + item.location" class="data"></Label>
-                <!--here we list the attributes of every meeting-->
-            </GridLayout>
+            <GridLayout  (tap)="showDetail(item.id)" class="list-group-item" columns="auto, *, auto" rows="auto, 25, auto
+            " style.verticalAlignment="top" style.backgroundColor="lightgray">
+                <Image src="#" rowSpan="2" width="72" height="72" margin="3" style.verticalAlignment="top"></Image>
+                <Label [text]="item.name" textWrap="true" col="1" style.fontSize="20"></Label>
+                <Label [text]="item.date" col="1" row="1"  style.fontSize="14" style.verticalAlignment="top" style.horizontalAlignment="left" margin="3"></Label>
+               <!-- <Label text="John Smith" col="1" row="1" style.fontSize="14" style.horizontalAlignment="left" style.verticalAlignment="bottom" margin="3"></Label>-->
+                <Label  [text]="item.location" col="1" row="2" style.fontSize="14"style.verticalAlignment="top" margin="3"></Label>
+              </GridLayout>
         </ng-template>
 
     </ListView>
