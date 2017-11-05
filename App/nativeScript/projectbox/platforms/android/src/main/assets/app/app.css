@@ -13,8 +13,13 @@ Page {
     font-size: 15;
   }
 
-* {
+
+.h1, .h2, .h3, .h4, .h5 {
   font-family: "Montserrat-Medium";
+}
+
+.text {
+  font-family: "Mukta-Light";
 }
 
 .page {
