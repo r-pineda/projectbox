@@ -25,7 +25,7 @@
     "nativescript-fresco": "^3.0.6",
     "nativescript-imagepicker": "^3.0.7",
     "nativescript-ng-shadow": "^1.1.2",
-    "nativescript-telerik-ui": "^3.1.3",
+    "nativescript-pro-ui": "^3.2.0",
     "nativescript-theme-core": "^1.0.4",
     "reflect-metadata": "~0.1.8",
     "rxjs": "~5.4.2",

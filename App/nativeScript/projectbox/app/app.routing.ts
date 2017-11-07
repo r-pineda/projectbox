@@ -4,7 +4,7 @@ import { Meeting_detailComponent } from "./pages/meeting_detail/meeting_detail.c
 import { TodoComponent } from "./pages/todo/todo.component";
 
 export const routes = [
-  { path: "", component: ListComponent },
+  { path: "", component: LoginComponent },
   { path: "list", component: ListComponent },
   { path: "meeting_detail/:id", component: Meeting_detailComponent },
   { path: "todo", component: TodoComponent }

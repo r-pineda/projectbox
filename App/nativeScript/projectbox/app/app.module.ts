@@ -9,8 +9,8 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NgShadowModule } from 'nativescript-ng-shadow';
 //import { AppShortcuts } from "nativescript-app-shortcuts";
 /* Navigation */
-import { SIDEDRAWER_DIRECTIVES } from "nativescript-telerik-ui/sidedrawer/angular";
-import { LISTVIEW_DIRECTIVES } from 'nativescript-telerik-ui/listview/angular';
+import { SIDEDRAWER_DIRECTIVES } from "nativescript-pro-ui/sidedrawer/angular";
+import { LISTVIEW_DIRECTIVES } from 'nativescript-pro-ui/listview/angular';
 
 import { AppComponent } from "./app.component";
 import { routes, navigatableComponents } from "./app.routing";
