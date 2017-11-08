@@ -33,6 +33,7 @@ h1 {
 .meeting {
   vertical-align: middle;
   background-color: #F3F4F4;
+  margin-bottom: 20;
 }
 
 .meeting-indicator {
