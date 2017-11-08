@@ -11,22 +11,6 @@ import { Config } from "../config";
 export class UserService {
   constructor(private http: Http) {}
 
-  register(user: User) {
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-
-    return this.http.post(
-      Config.apiUrl + "Users",
-      JSON.stringify({
-        Username: user.email,
-        Email: user.email,
-        Password: user.password
-      }),
-      { headers: headers }
-    )
-    .catch(this.handleErrors);
-  }
-
   handleErrors(error: Response) {
     console.log(JSON.stringify(error.json) + " handleErrors");
     return Observable.throw(error);
@@ -49,6 +33,7 @@ export class UserService {
       Config.token = data.access_token;
     })
     .catch((err: any) => {
+      console.log(err);
       if(err == "Response with status: 403 Forbidden for URL: https://secure.projectbox.eu/v2/token"){
         return Observable.throw("403");
       }else{

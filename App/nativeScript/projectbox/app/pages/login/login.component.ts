@@ -5,7 +5,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
 //import { AppShortcuts } from "nativescript-app-shortcuts";
-//import { isIOS } from "tns-core-modules/platform";
+import { isIOS } from "tns-core-modules/platform";
+import { isAndroid } from "tns-core-modules/platform";
 import { StatusService } from "../../shared/status/status.service"
 import {AnimationCurve} from "ui/enums";
 import observable = require("data/observable");
@@ -13,6 +14,7 @@ import view = require("ui/core/view");
 import { TextField } from "ui/text-field";
 import { GridLayout } from "ui/layouts/grid-layout";
 import { AndroidData, IOSData, Elevation } from 'nativescript-ng-shadow';
+import utilityModule = require("utils/utils");
 
 @Component({
   selector: "my-app",
@@ -22,6 +24,9 @@ import { AndroidData, IOSData, Elevation } from 'nativescript-ng-shadow';
 })
 export class LoginComponent{
   @ViewChild("box") grid: ElementRef;
+  @ViewChild("usrn") userNameTextField: ElementRef;
+  @ViewChild("pass") passWordTextField: ElementRef;
+
   user: User;
   wrongcredentials :boolean = false;
   box :GridLayout;
@@ -40,7 +45,7 @@ export class LoginComponent{
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private statusService :StatusService,
-    private page: Page
+    private page: Page,
   )
   {
     this.user = new User();
@@ -132,18 +137,12 @@ export class LoginComponent{
 
   loginProceed(usrData :any){
 
+    this.keyboardOff();
     this.wrongcredentials = false;
     this.statusService.loggedIn();
     this.statusService.setCurrentUser(usrData);
     this.statusService.setOfflineMode(false);
-
-    this.routerExtensions.navigate(["/list"], {
-      transition: {
-          name: "slide",
-          curve: "easeOut"
-      }
-    })
-
+    setTimeout(this.redirect(), 1000);
   }
 
   
@@ -154,6 +153,32 @@ export class LoginComponent{
       duration: 750,
       curve: AnimationCurve.easeOut
     });
+  }
+
+  keyboardOff(){
+    let usrTF = this.userNameTextField.nativeElement;
+    let pswTF = this.passWordTextField.nativeElement;
+    usrTF.dismissSoftInput();
+    pswTF.dismissSoftInput();
+    this.box = this.grid.nativeElement;
+    this.box.animate({
+      translate: {x:0, y:0},
+      duration: 0,
+      curve: AnimationCurve.easeIn
+    });
+  }
+
+  forgotPW(){
+    utilityModule.openUrl("https://secure.projectbox.eu/#/email");
+  }
+
+  redirect(){
+    this.routerExtensions.navigate(["/list"], {
+      transition: {
+          name: "slide",
+          curve: "easeOut"
+      }
+    })
   }
   
 }

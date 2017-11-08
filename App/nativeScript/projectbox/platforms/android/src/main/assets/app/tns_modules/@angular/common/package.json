@@ -10,7 +10,7 @@
         "spec": ">=4.2.0 <4.3.0",
         "type": "range"
       },
-      "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\node_modules\\tns-template-hello-world-ng"
+      "C:\\Users\\Michael\\Desktop\\Neuer Ordner\\projetbox\\App\\nativeScript\\projectbox"
     ]
   ],
   "_from": "@angular/common@>=4.2.0 <4.3.0",
@@ -38,13 +38,13 @@
     "type": "range"
   },
   "_requiredBy": [
-    "/tns-template-hello-world-ng"
+    "/"
   ],
   "_resolved": "https://registry.npmjs.org/@angular/common/-/common-4.2.6.tgz",
   "_shasum": "210ace4bd24e375f8b41ba52feb34b18a887d5da",
   "_shrinkwrap": null,
   "_spec": "@angular/common@~4.2.0",
-  "_where": "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox\\node_modules\\tns-template-hello-world-ng",
+  "_where": "C:\\Users\\Michael\\Desktop\\Neuer Ordner\\projetbox\\App\\nativeScript\\projectbox",
   "author": {
     "name": "angular"
   },

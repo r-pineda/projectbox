@@ -1,3 +1,4 @@
+<Page class="page">
 <!-- Navigation -->
 <ActionBar title="Dashboard">
 </ActionBar>
@@ -27,7 +28,6 @@
 </StackLayout>
 </RadSideDrawer>
 <!-- Content -->
-<Page class="page">
     <GridLayout columns="*,*,*" rows="20,auto,auto,auto,auto,auto,auto" >
     <Label *ngIf="offlinemode" row="0" colSpan="3" text="OFFLINE" style="text-align:center;background-color:rgb(99, 228, 178);"></Label>
   
@@ -48,7 +48,7 @@
     <GridLayout columns="auto, *" rows="auto" row="1" colSpan="3">
             <Label text="PROJEKTE" row="0" col="0" class="h1"></Label>
             <Label text="see all >" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom" class="text"></Label>
-        </GridLayout>
+    </GridLayout>
     <!--<Label text="PROJEKTE" row="1" colSpan="3" class="h1"></Label>-->
     
     <GridLayout columns="auto" rows="70,*,*" col="0" row="2" class="project" style="padding:5;">
