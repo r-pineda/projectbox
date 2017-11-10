@@ -14,7 +14,10 @@ import view = require("ui/core/view");
 import { TextField } from "ui/text-field";
 import { GridLayout } from "ui/layouts/grid-layout";
 import { AndroidData, IOSData, Elevation } from 'nativescript-ng-shadow';
+<<<<<<< HEAD
+=======
 import utilityModule = require("utils/utils");
+>>>>>>> d561e004693d90dedff1985b83f69355aaede815
 
 @Component({
   selector: "my-app",
@@ -24,9 +27,12 @@ import utilityModule = require("utils/utils");
 })
 export class LoginComponent{
   @ViewChild("box") grid: ElementRef;
+<<<<<<< HEAD
+=======
   @ViewChild("usrn") userNameTextField: ElementRef;
   @ViewChild("pass") passWordTextField: ElementRef;
 
+>>>>>>> d561e004693d90dedff1985b83f69355aaede815
   user: User;
   wrongcredentials :boolean = false;
   box :GridLayout;
@@ -137,7 +143,10 @@ export class LoginComponent{
 
   loginProceed(usrData :any){
 
+<<<<<<< HEAD
+=======
     this.keyboardOff();
+>>>>>>> d561e004693d90dedff1985b83f69355aaede815
     this.wrongcredentials = false;
     this.statusService.loggedIn();
     this.statusService.setCurrentUser(usrData);
@@ -145,6 +154,14 @@ export class LoginComponent{
     setTimeout(this.redirect(), 1000);
   }
 
+<<<<<<< HEAD
+    this.routerExtensions.navigate(["/list"], {
+      transition: {
+          name: "slide",
+          curve: "easeOut"
+      }
+    })
+=======
   
   keyboardOn(){
     this.box = this.grid.nativeElement;
@@ -154,6 +171,7 @@ export class LoginComponent{
       curve: AnimationCurve.easeOut
     });
   }
+>>>>>>> d561e004693d90dedff1985b83f69355aaede815
 
   keyboardOff(){
     let usrTF = this.userNameTextField.nativeElement;
@@ -168,6 +186,16 @@ export class LoginComponent{
     });
   }
 
+<<<<<<< HEAD
+  
+  keyboardOn(){
+    this.box = this.grid.nativeElement;
+    this.box.animate({
+      translate: {x:0, y:-300},
+      duration: 750,
+      curve: AnimationCurve.easeOut
+    });
+=======
   forgotPW(){
     utilityModule.openUrl("https://secure.projectbox.eu/#/email");
   }
@@ -179,6 +207,7 @@ export class LoginComponent{
           curve: "easeOut"
       }
     })
+>>>>>>> d561e004693d90dedff1985b83f69355aaede815
   }
   
 }

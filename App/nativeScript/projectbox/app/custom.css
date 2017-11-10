@@ -80,6 +80,29 @@ border-radius: 10;
 font-size: 15;
 }
 
+<<<<<<< HEAD
+.h1 {
+font-size: 36;
+}
+
+.h2 {
+font-size: 30;
+}
+
+.h3 {
+font-size: 24;
+}
+
+.h4 {
+font-size: 18;
+}
+
+.h5 {
+font-size: 14;
+}
+
+.h6 {
+=======
 .nav-h1, .h1 {
 font-size: 36;
 }
@@ -101,6 +124,7 @@ font-size: 14;
 }
 
 .nav-h6, .h6 {
+>>>>>>> d561e004693d90dedff1985b83f69355aaede815
 font-size: 12;
 }
 

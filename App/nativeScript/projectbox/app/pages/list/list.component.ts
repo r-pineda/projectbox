@@ -15,8 +15,13 @@ import {
   TouchGestureEventData
 } from "ui/gestures";
 import "rxjs/add/operator/switchMap";
+<<<<<<< HEAD
+import { ListViewEventData, RadListView } from "nativescript-telerik-ui/listview";
+import { RadSideDrawerComponent, SideDrawerType } from "nativescript-telerik-ui/sidedrawer/angular";
+=======
 import { ListViewEventData, RadListView } from "nativescript-pro-ui/listview";
 import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
+>>>>>>> d561e004693d90dedff1985b83f69355aaede815
 import { View } from 'ui/core/view';
 import * as Utils from "utils/utils";
 import * as FrameModule from "ui/frame";
