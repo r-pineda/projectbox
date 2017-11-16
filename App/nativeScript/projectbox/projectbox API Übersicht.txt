@@ -115,3 +115,8 @@ endpoint: /v2/projects/1
 method:   PUT
 body:     {task: { ... }}
 response: JSON object des Tasks
+------------------------------------------------------------
+Timetracking
+endpoint: /v2/trackings
+method:   GET
+response: JSON array mit allen Trackings des Users
