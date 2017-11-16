@@ -3,7 +3,7 @@ import { UserService } from "../../shared/user/user.service";
 import { StatusService } from "../../shared/status/status.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions, PageRoute } from "nativescript-angular/router";
-import { Meeting } from "../../shared/meeting/meeting"
+import { Meeting } from "../../shared/meeting/meeting";
 import { MeetingService } from "../../shared/meeting/meeting.service";
 import { Project, Pivot } from "../../shared/user/project"
 import {
@@ -17,9 +17,6 @@ import {
 } from "ui/gestures";
 import "rxjs/add/operator/switchMap";
 import { ListViewEventData, RadListView } from "nativescript-pro-ui/listview";
-import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
-import { View } from 'ui/core/view';
-import * as Utils from "utils/utils";
 import * as FrameModule from "ui/frame";
 
 
@@ -68,7 +65,7 @@ export class ListComponent implements OnInit{
 
   displayMeetings(data :any){
 
-    //@Rommelt hier die Daten für View vorbereiten
+    //@Rommelt hier die Daten fï¿½r View vorbereiten
 
     if(data){
 
@@ -133,24 +130,4 @@ export class ListComponent implements OnInit{
           }
       });
   }
-
-  /* SideDrawer */
-  public selected: number;
-  private drawer: SideDrawerType;
-
-  @ViewChild(RadSideDrawerComponent)
-  public drawerComponent: RadSideDrawerComponent;
-
-  public onPullToRefreshInitiated(args: any) { }
-
-  public onSwipeCellStarted(args: ListViewEventData) { }
-
-  public onDelete() { }
-
-  public onArchive() { }
-
-  public onMenuTapped(value: any) {
-      this.drawer.closeDrawer();
-  }
-
 }
