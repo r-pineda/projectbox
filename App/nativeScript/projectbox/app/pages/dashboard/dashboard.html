@@ -1,3 +1,49 @@
-<StackLayout>
-    <Label text="YEAY Dashboard"></Label>
-</StackLayout>
+<Page xmlns="http://www.nativescript.org/tns.xsd" class="page">
+    <!-- Navigation -->
+        <GridLayout columns="*,*,*" rows="20,auto,auto,auto,auto,auto,auto" >
+        <Label *ngIf="offlinemode" row="0" colSpan="3" text="OFFLINE" style="text-align:center;background-color:rgb(99, 228, 178);"></Label>
+      
+        <!-- <ListView [items]="projects" row="1" colSpan="3">
+                <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
+                    <GridLayout columns="80,auto,auto,auto" rows="auto,auto,auto" (tap)="showDetail(item.id)" class="meeting">
+                        <Label text="HEUTE" col="0" row="0" rowSpan="3" class="meeting-indicator h4" margin="0 0 0 5"></Label>
+                        <Border cornerRadius="5" col="1" rowSpan="3" class="meeting-border" margin="5"></Border>
+                        <Label [text]="item.name" textWrap="true" class="h4" col="2" margin="5 0 0 0"></Label>
+                        <Label [text]="item.date" col="2" row="1"  class="text" margin="0"></Label>
+                        <Label [text]="item.location" col="2" row="2" class="text" margin="0 5 0 0"></Label>
+                        <Label text="..." col="3" rowSpan="3" class="meeting-indicator text"></Label>
+                    </GridLayout>
+                </ng-template>
+        
+            </ListView>-->
+        
+        <GridLayout columns="auto, *" rows="auto" row="1" colSpan="3">
+                <Label text="PROJEKTE" row="0" col="0" class="h2"></Label>
+                <Label text="see all >" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom" class="text" style="margin-right:10;"></Label>
+        </GridLayout>
+        <!--<Label text="PROJEKTE" row="1" colSpan="3" class="h1"></Label>-->
+        
+        <GridLayout columns="auto" rows="70,*,*" col="0" row="2" class="project" style="padding:5;">
+            <Label text="Best of Rennweg" class="text" textWrap="true" style.fontSize="20" col="0" row="0"></Label>
+            <Border cornerRadius="0" col="0" row="1" borderWidth="2" height="3" width="110" borderColor="#C0BEBD" style="top:0;background-color:#C0BEBD"></Border>
+            <Label text="12 Personen" class="text" col="0" row="2"></Label>
+        </GridLayout>
+        <GridLayout columns="*,*" rows="*,*" col="1" row="2" class="project" style="margin-left:5;padding:5;">
+                <Label text="Best of Rennweg" class="text" rowSpan="2" colSpan="2" style.fontSize="20" style="background-color:#000;"></Label>
+            </GridLayout>
+    
+        <Label text="TASKS" row="3" colSpan="3" class="h2"></Label>
+        <StackLayout row="4" colSpan="3">
+                <GridLayout (tap)="showDetail()" columns="5, *" rows="40, auto">
+                        <Border cornerRadius="10" col="0" row="0" height="40" width="5" borderColor="#DEE8E7" style="top:0;background-color:#CB1F2C;" margin="10 0 0 0">
+                           </Border>
+                        <GridLayout col="1" rowSpan="2" columns="auto" class="task" rows="*, *" padding="10">
+                                <Label text="UX - Testfälle erstellen" id="task-h1" class="h1" textWrap="true" col="0" row="0" style.fontSize="20"></Label>
+                                <Label text="Donec id elit non mi porta gravida at eget metus" class="text" col="0" row="2" style.fontSize="14" style.verticalAlignment="top" style.horizontalAlignment="left" textWrap="true"></Label>
+                        </GridLayout>
+                      </GridLayout>
+        </StackLayout>
+        <Label text="MEETINGS" row="5" colSpan="3" class="h2"></Label>
+    
+        </GridLayout>
+</Page>
