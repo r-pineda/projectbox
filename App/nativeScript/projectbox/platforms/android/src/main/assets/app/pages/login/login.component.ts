@@ -122,7 +122,7 @@ export class LoginComponent{
 
         //alert("You are offline. showing latest received data");
         this.statusService.setOfflineMode(true);
-        this.routerExtensions.navigate(["/list"], {
+        this.routerExtensions.navigate(["/dashboard"], {
             transition: {
             name: "slide",
             curve: "easeOut"
@@ -142,7 +142,12 @@ export class LoginComponent{
     this.statusService.loggedIn();
     this.statusService.setCurrentUser(usrData);
     this.statusService.setOfflineMode(false);
-    setTimeout(this.redirect(), 1000);
+    this.routerExtensions.navigate(["/dashboard"], {
+      transition: {
+          name: "slide",
+          curve: "easeOut"
+      }
+    })
   }
 
   
@@ -170,15 +175,6 @@ export class LoginComponent{
 
   forgotPW(){
     utilityModule.openUrl("https://secure.projectbox.eu/#/email");
-  }
-
-  redirect(){
-    this.routerExtensions.navigate(["/list"], {
-      transition: {
-          name: "slide",
-          curve: "easeOut"
-      }
-    })
   }
   
 }

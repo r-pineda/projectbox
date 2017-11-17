@@ -3,8 +3,9 @@ import { UserService } from "../../shared/user/user.service";
 import { StatusService } from "../../shared/status/status.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions, PageRoute } from "nativescript-angular/router";
-import { Meeting } from "../../shared/meeting/meeting"
+import { Meeting } from "../../shared/meeting/meeting";
 import { MeetingService } from "../../shared/meeting/meeting.service";
+import { Project, Pivot } from "../../shared/user/project"
 import {
   GestureEventData,
   GestureTypes,
@@ -16,9 +17,6 @@ import {
 } from "ui/gestures";
 import "rxjs/add/operator/switchMap";
 import { ListViewEventData, RadListView } from "nativescript-pro-ui/listview";
-import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
-import { View } from 'ui/core/view';
-import * as Utils from "utils/utils";
 import * as FrameModule from "ui/frame";
 
 
@@ -34,7 +32,7 @@ export class ListComponent implements OnInit{
   meetingsText :string;
   meetings :Meeting[];
   public offlinemode :boolean;
-
+  projects :Project[];
   constructor
   (
     private router: Router,
@@ -49,23 +47,23 @@ export class ListComponent implements OnInit{
     this.meetingsText = "Lade...";
 
     this.offlinemode = this.statusService.getOfflineMode();
-
-    /*
-    this.pageRoute.activatedRoute
-    .switchMap(activatedRoute => activatedRoute.params)
-    .forEach((params) => { this.meetings.id = +params["id"]; });
-    */
+  }
+  
+  public ngOnInit() {
+    this.userService.getProjects().subscribe(
+      (data) => this.displayProjects(data),
+      (error) => this.displayProjects(false)
+    );
 
     this.meetingService.meetings().subscribe(
       (data) => this.displayMeetings(data), 
       (error) => this.displayMeetings(false)
     );
-    
   }
 
   displayMeetings(data :any){
 
-    //@Rommelt hier die Daten für View vorbereiten
+    //@Rommelt hier die Daten f�r View vorbereiten
 
     if(data){
 
@@ -78,6 +76,10 @@ export class ListComponent implements OnInit{
       this.meetings = data.meetings;
       
     }
+
+    
+
+    
 
     //console.dir(this.meetings[0]);
 
@@ -99,6 +101,23 @@ export class ListComponent implements OnInit{
 
   }
 
+  displayProjects(data :any){
+        if(data){
+    
+          this.userService.saveProjects(data);
+          this.projects = data.projects;
+    
+        }else{
+    
+          data = this.userService.getSavedProjects()
+          this.projects = data.projects;
+          
+        }
+
+        console.log(this.projects[0].name);
+    
+      }
+
   showDetail(id: number) {
     
       this.routerExtensions.navigate(["/meeting_detail/" + id], {
@@ -109,28 +128,4 @@ export class ListComponent implements OnInit{
           }
       });
   }
-
-  /* SideDrawer */
-  public selected: number;
-  private drawer: SideDrawerType;
-
-  @ViewChild(RadSideDrawerComponent)
-  public drawerComponent: RadSideDrawerComponent;
-
-  public ngOnInit() {
-      this.drawer = this.drawerComponent.sideDrawer;
-  }
-
-  public onPullToRefreshInitiated(args: any) { }
-
-  public onSwipeCellStarted(args: ListViewEventData) { }
-
-  public onDelete() { }
-
-  public onArchive() { }
-
-  public onMenuTapped(value: any) {
-      this.drawer.closeDrawer();
-  }
-
 }

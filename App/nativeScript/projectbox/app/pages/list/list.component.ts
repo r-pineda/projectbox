@@ -59,8 +59,6 @@ export class ListComponent implements OnInit{
       (data) => this.displayMeetings(data), 
       (error) => this.displayMeetings(false)
     );
-
-    this.drawer = this.drawerComponent.sideDrawer;
   }
 
   displayMeetings(data :any){
