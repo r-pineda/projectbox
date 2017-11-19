@@ -49,8 +49,8 @@ export class LoginComponent{
   )
   {
     this.user = new User();
-    //this.user.email = "michael.fruehwirth@htl.rennweg.at";
-    //this.user.password = "michael1234";
+    this.user.email = "michael.fruehwirth@htl.rennweg.at";
+    this.user.password = "michael1234";
     page.actionBarHidden = true;
 
     // instantiate the plugin
@@ -122,7 +122,7 @@ export class LoginComponent{
 
         //alert("You are offline. showing latest received data");
         this.statusService.setOfflineMode(true);
-        this.routerExtensions.navigate(["/dashboard"], {
+        this.routerExtensions.navigate(["/ticket"], {
             transition: {
             name: "slide",
             curve: "easeOut"
@@ -142,7 +142,7 @@ export class LoginComponent{
     this.statusService.loggedIn();
     this.statusService.setCurrentUser(usrData);
     this.statusService.setOfflineMode(false);
-    this.routerExtensions.navigate(["/dashboard"], {
+    this.routerExtensions.navigate(["/ticket"], {
       transition: {
           name: "slide",
           curve: "easeOut"

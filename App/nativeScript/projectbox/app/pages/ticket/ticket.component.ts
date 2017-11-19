@@ -15,7 +15,7 @@ import { TicketService } from "../../shared/ticket/ticket.service";
   styleUrls: ["pages/ticket/ticket-common.css", "pages/ticket/ticket.css"]
 })
 
-export class TodoComponent {
+export class TicketComponent {
 
   tickets :Ticket[];
   timestart :string;
@@ -44,15 +44,39 @@ export class TodoComponent {
   }
 
   ngOnInit(): void {
-    this.tickets = this.ticketService.ticketsDummy();
+
+    /*
     this.temp = new Array(this.tickets.length);
     this.tickets.forEach(element => {
       this.temp[element.id] = [];
       this.temp[element.id][6] = element.timeTaken;
       this.temp[element.id][7] = 0;
     });
+    */
+
+    this.ticketService.tickets().subscribe(
+      (data) => this.displayTickets(data), 
+      (error) => this.displayTickets(false)
+    );
   }
 
+  displayTickets(data :any){
+
+    if(data){
+
+      this.ticketService.saveTickets(data);
+      this.tickets = data.tickets;
+
+    }else{
+
+      data = this.ticketService.getSavedTickets()
+      this.tickets = data.tickets;
+      
+    }
+    console.dir(this.tickets);
+  }
+
+  /*
   saveTime(id :any){
     console.dir(this.temp);
     this.tickets.forEach(ticket => {
@@ -85,5 +109,6 @@ export class TodoComponent {
     }
 
   }
+  */
 
 }

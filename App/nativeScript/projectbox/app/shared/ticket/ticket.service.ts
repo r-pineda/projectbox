@@ -40,4 +40,12 @@ export class TicketService {
     })
     .catch(this.handleErrors);
   }
+
+  saveTickets(ticketsToSave :any){
+    setString("tickets", JSON.stringify(ticketsToSave));
+  }
+
+  getSavedTickets (){
+    return JSON.parse(getString("tickets"));
+  }
 }
