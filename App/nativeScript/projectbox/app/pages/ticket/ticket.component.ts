@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef } from "@angular/core";
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -7,6 +7,9 @@ import { Page } from "ui/page";
 import { StatusService } from "../../shared/status/status.service";
 import { Ticket } from "../../shared/ticket/ticket";
 import { TicketService } from "../../shared/ticket/ticket.service";
+import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
+import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
+
 
 @Component({
   selector: "my-app",
@@ -15,7 +18,7 @@ import { TicketService } from "../../shared/ticket/ticket.service";
   styleUrls: ["pages/ticket/ticket-common.css", "pages/ticket/ticket.css"]
 })
 
-export class TicketComponent {
+export class TicketComponent implements AfterViewInit, OnInit {
 
   tickets :Ticket[];
   timestart :string;
@@ -37,10 +40,10 @@ export class TicketComponent {
     private activatedRoute: ActivatedRoute,
     private statusService :StatusService,
     private ticketService :TicketService,
-    private page: Page
+    private page: Page,
+    private _changeDetectionRef: ChangeDetectorRef
   )
   {
-    page.actionBarHidden = true;
   }
 
   ngOnInit(): void {
@@ -110,5 +113,21 @@ export class TicketComponent {
 
   }
   */
+
+    @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
+    private drawer: RadSideDrawer;
+
+    ngAfterViewInit() {
+        this.drawer = this.drawerComponent.sideDrawer;
+        this._changeDetectionRef.detectChanges();
+    }
+
+    public openDrawer() {
+        this.drawer.showDrawer();
+    }
+
+    public onCloseDrawerTap() {
+       this.drawer.closeDrawer();
+    }
 
 }
