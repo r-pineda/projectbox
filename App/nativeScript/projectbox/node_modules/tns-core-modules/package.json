@@ -10,7 +10,7 @@
         "spec": ">=3.3.0 <4.0.0",
         "type": "range"
       },
-      "C:\\Users\\Michael\\Desktop\\Neuer Ordner\\projetbox\\App\\nativeScript\\projectbox"
+      "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox"
     ]
   ],
   "_from": "tns-core-modules@>=3.3.0 <4.0.0",
@@ -44,7 +44,7 @@
   "_shasum": "4feb1f31113c554f0bb47984ac496fccdb5af156",
   "_shrinkwrap": null,
   "_spec": "tns-core-modules@^3.3.0",
-  "_where": "C:\\Users\\Michael\\Desktop\\Neuer Ordner\\projetbox\\App\\nativeScript\\projectbox",
+  "_where": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox",
   "dependencies": {
     "tns-core-modules-widgets": "3.3.0"
   },

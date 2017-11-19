@@ -3,7 +3,7 @@
 @import url("~/custom.css");
 
 Page {
-    background-color: white;
+    background-color: #ECEDEE;
     font-size: 15;
   }
 
@@ -30,6 +30,10 @@ Page {
 
 .page {
  padding-left: 20;
+}
+
+.center {
+    text-align: center;
 }
 
 /* Navigation */

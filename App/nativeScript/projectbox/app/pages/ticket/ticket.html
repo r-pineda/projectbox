@@ -1,3 +1,12 @@
-<StackLayout>
-    <Label text="TicketComponent"></Label>
+<StackLayout orientation="vertical" class="page">
+    <Label class="h1" text="TOP-TICKETS"></Label>
+    <GridLayout columns="auto,auto,auto" class="ticket" rows="50">
+        <Label class="border-tickets" col="0" row="0"></Label>
+        <GridLayout columns="*" rows="50,50" *ngFor="let ticket of tickets" col="1" row="0">
+                <Label class="h3" [text]="ticket.name" col="0" row="0"></Label>
+                <Label class="h1" text="Neu" col="0" row="1"></Label>
+        </GridLayout>
+        <Label class="h4" text="LOL" col="2" row="0"></Label>
+    </GridLayout>
+    <Label class="h1" text="WEITERE TICKETS"></Label>
 </StackLayout>

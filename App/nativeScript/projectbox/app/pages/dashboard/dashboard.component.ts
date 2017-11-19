@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from "@angular/core";
+import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef } from "@angular/core";
 import { UserService } from "../../shared/user/user.service";
 import { StatusService } from "../../shared/status/status.service";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -18,6 +18,8 @@ import {
 import "rxjs/add/operator/switchMap";
 import { ListViewEventData, RadListView } from "nativescript-pro-ui/listview";
 import * as FrameModule from "ui/frame";
+import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
+import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 
 @Component({
   selector: "my-app",
@@ -26,13 +28,14 @@ import * as FrameModule from "ui/frame";
   styleUrls: ["pages/dashboard/dashboard-common.css", "pages/dashboard/dashboard.css"]
 })
 
-export class DashboardComponent {
+export class DashboardComponent implements AfterViewInit, OnInit {
 
   meetingdata :any;
   meetingsText :string;
   meetings :Meeting[];
   public offlinemode :boolean;
   projects :Project[];
+  username :string; // need this for navds
   constructor
   (
     private router: Router,
@@ -40,7 +43,8 @@ export class DashboardComponent {
     private pageRoute: PageRoute,
     private userService: UserService,
     private meetingService :MeetingService,
-    private statusService :StatusService
+    private statusService :StatusService,
+      private _changeDetectionRef: ChangeDetectorRef
   )
   {
     
@@ -129,4 +133,22 @@ export class DashboardComponent {
       });
   }
 
+/* nav */
+
+
+    @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
+    private drawer: RadSideDrawer;
+
+    ngAfterViewInit() {
+        this.drawer = this.drawerComponent.sideDrawer;
+        this._changeDetectionRef.detectChanges();
+    }
+
+    public openDrawer() {
+        this.drawer.showDrawer();
+    }
+
+    public onCloseDrawerTap() {
+       this.drawer.closeDrawer();
+    }
 }

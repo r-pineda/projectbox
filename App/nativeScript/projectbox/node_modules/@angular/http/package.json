@@ -10,7 +10,7 @@
         "spec": ">=4.2.0 <4.3.0",
         "type": "range"
       },
-      "C:\\Users\\Michael\\Desktop\\Neuer Ordner\\projetbox\\App\\nativeScript\\projectbox"
+      "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox"
     ]
   ],
   "_from": "@angular/http@>=4.2.0 <4.3.0",
@@ -44,7 +44,7 @@
   "_shasum": "499e2ba0bbc1f3d71b76debec034c958caf1134e",
   "_shrinkwrap": null,
   "_spec": "@angular/http@~4.2.0",
-  "_where": "C:\\Users\\Michael\\Desktop\\Neuer Ordner\\projetbox\\App\\nativeScript\\projectbox",
+  "_where": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox",
   "author": {
     "name": "angular"
   },
