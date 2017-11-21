@@ -13,7 +13,7 @@ import { SIDEDRAWER_DIRECTIVES } from "nativescript-pro-ui/sidedrawer/angular";
 import { LISTVIEW_DIRECTIVES } from 'nativescript-pro-ui/listview/angular';
 
 /* use fontawesome */
-import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
+import { TNSFontIconModule, TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 import { AppComponent } from "./app.component";
 import { routes, navigatableComponents } from "./app.routing";

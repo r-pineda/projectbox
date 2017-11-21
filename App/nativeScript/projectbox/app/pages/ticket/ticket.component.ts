@@ -42,10 +42,8 @@ export class TicketComponent implements AfterViewInit, OnInit {
     private ticketService :TicketService,
     private page: Page,
     private _changeDetectionRef: ChangeDetectorRef,
-    private fonticon: TNSFontIconService
-  )
+    private fonticon: TNSFontIconService)
   {
-      console.log(fonticon);
   }
 
   ngOnInit(): void {
