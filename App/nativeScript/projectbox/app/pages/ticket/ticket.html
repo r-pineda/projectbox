@@ -1,21 +1,18 @@
-
-    <!-- Navigation -->
-    <ActionBar title="Dashboard">
-            <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="openDrawer()"></NavigationButton>
-            <StackLayout orientation="horizontal"
-            ios:horizontalAlignment="center"
-            android:horizontalAlignment="center">
-            <Label text="Tickets" class="action-label nav-h3"></Label>
-          </StackLayout>
-          <ActionItem ios.position="right" android.position="actionBar" ios.systemIcon="13" android.systemIcon="ic_menu_refresh"></ActionItem>
-    </ActionBar>
-    <RadSideDrawer tkExampleTitle tkToggleNavButton>
+<!-- Navigation -->
+<ActionBar title="Dashboard">
+    <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="openDrawer()"></NavigationButton>
+    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
+        <Label text="Tickets" class="action-label nav-h3"></Label>
+    </StackLayout>
+    <ActionItem ios.position="right" android.position="actionBar" ios.systemIcon="13" android.systemIcon="ic_menu_refresh"></ActionItem>
+</ActionBar>
+<RadSideDrawer tkExampleTitle tkToggleNavButton>
     <StackLayout tkDrawerContent class="sideStackLayout">
         <StackLayout class="sideTitleStackLayout">
-                    <Label text="Willkommen" class="h2 full-name"></Label>
-                    <Label text="manuel.gafoz@htl.rennweg.at" class="e-mail-nav"></Label>
-                </StackLayout>
-       <!-- <StackLayout class="sideStackLayout">
+            <Label text="Willkommen" class="h2 full-name"></Label>
+            <Label text="manuel.gafoz@htl.rennweg.at" class="e-mail-nav"></Label>
+        </StackLayout>
+        <!-- <StackLayout class="sideStackLayout">
             <Label text="Primary" class="sideLabel sideLightGrayLabel"></Label>
             <Label text="Social" class="sideLabel"></Label>
             <Label text="Promotions" class="sideLabel"></Label>
@@ -25,32 +22,38 @@
             <Label text="Sent Mail" class="sideLabel"></Label>
             <Label text="Drafts" class="sideLabel"></Label>
         </StackLayout>-->
-         <GridLayout class="side-nav-items" columns="*,*" rows="*,*,*,*,*,*" >
-                        <Image src="~/images/dashboard.png" row="0" col="0" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
-                        <Image src="~/images/task.png"  row="0" col="1" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
-                        <Label text="Dashboard" row="1" col="0" class="h4 center"></Label>
-                        <Label text="TODO" row="1" col="1" class="h4 center"></Label>
-                        <Image src="~/images/meeting.png"  row="2" col="0" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
-                        <Image src="~/images/bug.png"  row="2" col="1" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
-                        <Label text="Meeting" row="3" col="0" class="h4 center"></Label>
-                        <Label text="Tickets" row="3" col="1" class="h4 center"></Label>
-                        <Image src="~/images/settings.png" row="4" col="0" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
-                        <Image src="~/images/logout.png"  row="4" col="1" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
-                        <Label text="Einstellungen" row="5" col="0" class="h4 center"></Label>
-                        <Label text="Logout" row="5" col="1" class="h4 center"></Label>
-                    </GridLayout>
+        <GridLayout class="side-nav-items" columns="*,*" rows="*,*,*,*,*,*">
+            <Image src="~/images/dashboard.png" row="0" col="0" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
+            <Image src="~/images/task.png" row="0" col="1" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
+            <Label text="Dashboard" row="1" col="0" class="h4 center"></Label>
+            <Label text="TODO" row="1" col="1" class="h4 center"></Label>
+            <Image src="~/images/meeting.png" row="2" col="0" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
+            <Image src="~/images/bug.png" row="2" col="1" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
+            <Label text="Meeting" row="3" col="0" class="h4 center"></Label>
+            <Label text="Tickets" row="3" col="1" class="h4 center"></Label>
+            <Image src="~/images/settings.png" row="4" col="0" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
+            <Image src="~/images/logout.png" row="4" col="1" width="100" height="100" stretch="aspectFill" class="sideLabel"></Image>
+            <Label text="Einstellungen" row="5" col="0" class="h4 center"></Label>
+            <Label text="Logout" row="5" col="1" class="h4 center"></Label>
+        </GridLayout>
         <Label text="Close Drawer" color="lightgray" padding="10" style="horizontal-align: center" (tap)="onCloseDrawerTap()"></Label>
     </StackLayout>
-    <StackLayout tkMainContent class="page">
-        <Label class="h1" text="TOP-TICKETS"></Label>
-    <GridLayout *ngFor="let ticket of tickets" columns="auto,auto,*" rows="auto">
-        <Label class="border-tickets" height="50" col="0" row="0"></Label>
-        <StackLayout class="ticket" orientation="vertical" col="1" row="0" width="200" height="80">
-                <Label class="h3" [text]="ticket.name"></Label>
-                <Label class="h4" text="Neu"></Label>
-        </StackLayout>
-        <Label class="fa ticket indicator-tickets" [text]="'fa-arrow-down' | fonticon" height="80" col="2" row="0"></Label>
-    </GridLayout>
-    <Label class="h1" text="WEITERE TICKETS"></Label>
-    </StackLayout>
+    <ScrollView tkMainContent class="page" orientation="vertical" isEnabled="true" width="100%" height="100%" >
+        <AbsoluteLayout>
+            <StackLayout>
+            <Label class="h1" text="TOP-TICKETS"></Label>
+            <GridLayout *ngFor="let ticket of tickets" columns="auto,auto,*" rows="auto">
+                <Label class="border-tickets" height="50" col="0" row="0"></Label>
+                <StackLayout class="ticket" orientation="vertical" col="1" row="0" width="200" height="80">
+                    <Label class="h3" [text]="ticket.name"></Label>
+                    <Label class="h4" text="Neu"></Label>
+                </StackLayout>
+                <Label class="fa ticket indicator-tickets" [text]="'fa-arrow-down' | fonticon" height="80" col="2" row="0"></Label>
+            </GridLayout>
+            <Label class="h1" text="WEITERE TICKETS"></Label>
+                <Label class="h1" text="WEITERE TICKETS"></Label>
+                <Label class="h1" text="WEITERE TICKETS"></Label>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ScrollView>
 </RadSideDrawer>
