@@ -12,6 +12,9 @@ import { NgShadowModule } from 'nativescript-ng-shadow';
 import { SIDEDRAWER_DIRECTIVES } from "nativescript-pro-ui/sidedrawer/angular";
 import { LISTVIEW_DIRECTIVES } from 'nativescript-pro-ui/listview/angular';
 
+/* use fontawesome */
+import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
+
 import { AppComponent } from "./app.component";
 import { routes, navigatableComponents } from "./app.routing";
 
@@ -22,7 +25,10 @@ import { routes, navigatableComponents } from "./app.routing";
     NativeScriptHttpModule,
     NativeScriptRouterModule,
     NgShadowModule, //ng-shadow plugin
-    NativeScriptRouterModule.forRoot(routes)
+    NativeScriptRouterModule.forRoot(routes),
+   TNSFontIconModule.forRoot({
+			'fa': './fonts/font-awesome.css'
+		})
   ],
   declarations: [
     AppComponent,

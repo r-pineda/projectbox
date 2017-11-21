@@ -1,9 +1,9 @@
 {
-	"time": "Sun Nov 19 2017 23:45:31 GMT+0100 (Mitteleuropäische Zeit)",
+	"time": "Tue Nov 21 2017 01:23:06 GMT+0100 (Mitteleuropäische Zeit)",
 	"nativePlatformStatus": "3",
 	"bundle": false,
 	"release": false,
 	"changesRequireBuild": false,
-	"projectFileHash": "e2c9f88789403084cbba78914efdcffd076de607cf2a81d80428c652b554a6a3",
-	"changesRequireBuildTime": "Sun Nov 19 2017 20:49:13 GMT+0100 (Mitteleuropäische Zeit)"
+	"projectFileHash": "693da4403bd5bc2e37178c82c38d8d41327d242f0620b2fb57428b72e96535e7",
+	"changesRequireBuildTime": "Tue Nov 21 2017 00:40:00 GMT+0100 (Mitteleuropäische Zeit)"
 }

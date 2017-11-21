@@ -98,6 +98,10 @@ D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\ass
 D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-ng-shadow\common\ios-data.model.js
 D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-ng-shadow\common\shape.enum.js
 D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-ng-shadow\hooks\before-livesync\nativescript-angular-sync.js
+D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-ngx-fonticon\nativescript-ngx-fonticon.js
+D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-ngx-fonticon\src\app\main.js
+D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-ngx-fonticon\src\app\pipes\fonticon.pipe.js
+D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-ngx-fonticon\src\app\services\fonticon.service.js
 D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-permissions\permissions.js
 D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\nativescript-pro-ui\scripts\eula-prompt.js
 D:\Desktop\projectbox\App\nativeScript\projectbox\platforms\android\src\main\assets\app\tns_modules\tns-core-modules\bundle-entry-points.js

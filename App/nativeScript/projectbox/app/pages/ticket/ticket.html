@@ -43,13 +43,13 @@
     </StackLayout>
     <StackLayout tkMainContent class="page">
         <Label class="h1" text="TOP-TICKETS"></Label>
-    <GridLayout columns="auto,auto,auto" rows="auto">
-        <Label class="border-tickets" col="0" row="0"></Label>
-        <StackLayout *ngFor="let ticket of tickets" class="ticket" orientation="vertical" col="1" row="0" height="100">
-                <Label class="h3" [text]="ticket.name" height="50"></Label>
-                <Label class="h4" text="Neu" height="50"></Label>
+    <GridLayout *ngFor="let ticket of tickets" columns="auto,auto,*" rows="auto">
+        <Label class="border-tickets" height="50" col="0" row="0"></Label>
+        <StackLayout class="ticket" orientation="vertical" col="1" row="0" width="200" height="80">
+                <Label class="h3" [text]="ticket.name"></Label>
+                <Label class="h4" text="Neu"></Label>
         </StackLayout>
-        <Label class="h4" text="LOL" class="ticket" col="2" row="0"></Label>
+        <Label class="fa ticket indicator-tickets" [text]="'fa-arrow-down'" height="80" col="2" row="0"></Label>
     </GridLayout>
     <Label class="h1" text="WEITERE TICKETS"></Label>
     </StackLayout>

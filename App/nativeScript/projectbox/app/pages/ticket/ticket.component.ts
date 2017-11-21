@@ -9,7 +9,7 @@ import { Ticket } from "../../shared/ticket/ticket";
 import { TicketService } from "../../shared/ticket/ticket.service";
 import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
 import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
-
+import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 @Component({
   selector: "my-app",
@@ -41,9 +41,11 @@ export class TicketComponent implements AfterViewInit, OnInit {
     private statusService :StatusService,
     private ticketService :TicketService,
     private page: Page,
-    private _changeDetectionRef: ChangeDetectorRef
+    private _changeDetectionRef: ChangeDetectorRef,
+    private fonticon: TNSFontIconService
   )
   {
+      console.log(fonticon);
   }
 
   ngOnInit(): void {

@@ -2,6 +2,10 @@
 @import url("~/platform.css");
 @import url("~/custom.css");
 
+.fa {
+  font-family: FontAwesome, fontawesome-webfont;
+}
+
 Page {
     background-color: #ECEDEE;
     font-size: 15;

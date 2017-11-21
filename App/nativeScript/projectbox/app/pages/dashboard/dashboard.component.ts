@@ -20,6 +20,7 @@ import { ListViewEventData, RadListView } from "nativescript-pro-ui/listview";
 import * as FrameModule from "ui/frame";
 import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
 import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
+import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 @Component({
   selector: "my-app",
@@ -44,7 +45,8 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     private userService: UserService,
     private meetingService :MeetingService,
     private statusService :StatusService,
-      private _changeDetectionRef: ChangeDetectorRef
+      private _changeDetectionRef: ChangeDetectorRef,
+      private fonticon: TNSFontIconService
   )
   {
     
@@ -134,7 +136,14 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   }
 
 /* nav */
-
+    navigateto(pagename: string) {
+        this.routerExtensions.navigate([pagename + ""], {
+          transition: {
+              name: "slide",
+              curve: "easeOut"
+          }
+      });
+    }
 
     @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
     private drawer: RadSideDrawer;
