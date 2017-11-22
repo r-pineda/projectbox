@@ -32,7 +32,6 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 export class DashboardComponent implements AfterViewInit, OnInit {
 
   meetingdata :any;
-  meetingsText :string;
   meetings :Meeting[];
   public offlinemode :boolean;
   projects :Project[];
@@ -45,17 +44,12 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     private userService: UserService,
     private meetingService :MeetingService,
     private statusService :StatusService,
-      private _changeDetectionRef: ChangeDetectorRef,
-      private fonticon: TNSFontIconService
-  )
-  {
-    
-    this.meetingsText = "Lade...";
-
-    this.offlinemode = this.statusService.getOfflineMode();
-  }
+    private _changeDetectionRef: ChangeDetectorRef,
+    private fonticon: TNSFontIconService
+  ){}
   
   public ngOnInit() {
+    this.offlinemode = this.statusService.getOfflineMode();
     this.userService.getProjects().subscribe(
       (data) => this.displayProjects(data),
       (error) => this.displayProjects(false)
@@ -137,7 +131,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
 
 /* nav */
     navigateto(pagename: string) {
-        this.routerExtensions.navigate([pagename + ""], {
+        this.routerExtensions.navigate([pagename], {
           transition: {
               name: "slide",
               curve: "easeOut"
