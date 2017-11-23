@@ -3,6 +3,7 @@ import { Http, Headers, Response } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
+import 'rxjs/add/operator/toPromise';
 import {
   getBoolean,
   setBoolean,
@@ -42,7 +43,6 @@ export class UserService {
     .map(response => response.json())
     .do(data => {
       Config.token = data.access_token;
-      console.log(Config.token);
     })
     .catch((err: any) => {
       console.log(err);
@@ -65,7 +65,8 @@ export class UserService {
     .map(response => response.json())
     .do(data => {
     })
-    .catch(this.handleErrors);
+    .catch(this.handleErrors)
+    .toPromise();
   }
 
   saveProjects(projectsToSave :Project[]){

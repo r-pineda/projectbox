@@ -120,3 +120,8 @@ Timetracking
 endpoint: /v2/trackings
 method:   GET
 response: JSON array mit allen Trackings des Users
+
+
+Fragen: 
+    meeting ID in PUT?
+    

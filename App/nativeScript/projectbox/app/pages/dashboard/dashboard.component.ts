@@ -50,7 +50,7 @@ export class DashboardComponent {
   }
   
   public ngOnInit() {
-    this.userService.getProjects().subscribe(
+    this.userService.getProjects().then(
       (data) => this.displayProjects(data),
       (error) => this.displayProjects(false)
     );
@@ -99,7 +99,10 @@ export class DashboardComponent {
     agenda :String
     */
     this.meetings[0].name = "test inApp";
-    this.meetingService.createMeeting(this.meetings[0]);
+    this.meetingService.createMeeting(this.meetings[0]).then(
+      (data) => alert("Meeting mit dem Namen: " + data.meeting.name + " erfolgreich erstellt."),
+      (error) => console.log(error)
+    );
 
   }
 
@@ -115,7 +118,6 @@ export class DashboardComponent {
           this.projects = data.projects;
           
         }
-
         console.log(this.projects[0].name);
     
       }
