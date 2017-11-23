@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef } from "@angular/core";
+import { Component, ViewChild, OnInit } from "@angular/core";
 import { UserService } from "../../shared/user/user.service";
 import { StatusService } from "../../shared/status/status.service";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -18,9 +18,6 @@ import {
 import "rxjs/add/operator/switchMap";
 import { ListViewEventData, RadListView } from "nativescript-pro-ui/listview";
 import * as FrameModule from "ui/frame";
-import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
-import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
-import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 @Component({
   selector: "my-app",
@@ -29,13 +26,13 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
   styleUrls: ["pages/dashboard/dashboard-common.css", "pages/dashboard/dashboard.css"]
 })
 
-export class DashboardComponent implements AfterViewInit, OnInit {
+export class DashboardComponent {
 
   meetingdata :any;
+  meetingsText :string;
   meetings :Meeting[];
   public offlinemode :boolean;
   projects :Project[];
-  username :string; // need this for navds
   constructor
   (
     private router: Router,
@@ -43,13 +40,16 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     private pageRoute: PageRoute,
     private userService: UserService,
     private meetingService :MeetingService,
-    private statusService :StatusService,
-    private _changeDetectionRef: ChangeDetectorRef,
-    private fonticon: TNSFontIconService
-  ){}
+    private statusService :StatusService
+  )
+  {
+    
+    this.meetingsText = "Lade...";
+
+    this.offlinemode = this.statusService.getOfflineMode();
+  }
   
   public ngOnInit() {
-    this.offlinemode = this.statusService.getOfflineMode();
     this.userService.getProjects().subscribe(
       (data) => this.displayProjects(data),
       (error) => this.displayProjects(false)
@@ -98,6 +98,8 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     attendees: String;
     agenda :String
     */
+    this.meetings[0].name = "test inApp";
+    this.meetingService.createMeeting(this.meetings[0]);
 
   }
 
@@ -129,29 +131,4 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       });
   }
 
-/* nav */
-    navigateto(pagename: string) {
-        this.routerExtensions.navigate([pagename], {
-          transition: {
-              name: "slide",
-              curve: "easeOut"
-          }
-      });
-    }
-
-    @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
-    private drawer: RadSideDrawer;
-
-    ngAfterViewInit() {
-        this.drawer = this.drawerComponent.sideDrawer;
-        this._changeDetectionRef.detectChanges();
-    }
-
-    public openDrawer() {
-        this.drawer.showDrawer();
-    }
-
-    public onCloseDrawerTap() {
-       this.drawer.closeDrawer();
-    }
 }

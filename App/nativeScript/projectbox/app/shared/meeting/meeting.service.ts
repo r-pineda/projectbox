@@ -85,4 +85,23 @@ export class MeetingService {
     })
     .catch(this.handleErrors);
   }
+
+  createMeeting(meeting :Meeting){
+    let postObject :any;
+    delete meeting.id;
+    postObject.meeting = meeting;
+    console.dir(postObject);
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.post(
+      Config.apiUrl + "v2/meetings",
+      JSON.stringify(postObject),
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+    })
+    .catch(this.handleErrors);
+  }
 }
