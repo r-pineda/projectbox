@@ -42,11 +42,15 @@ export class UserService {
     )
     .map(response => response.json())
     .do(data => {
-      Config.token = data.access_token;
+      if(data.result == "error"){
+        console.log("here");
+        throw new Error("403");
+      }else{
+        Config.token = data.access_token;
+      }
     })
     .catch((err: any) => {
-      console.log(err);
-      if(err == "Response with status: 403 Forbidden for URL: https://secure.projectbox.eu/v2/token"){
+      if(err == "403"){
         return Observable.throw("403");
       }else{
         return Observable.throw(err);
