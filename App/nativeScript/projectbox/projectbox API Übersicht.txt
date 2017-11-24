@@ -123,5 +123,6 @@ response: JSON array mit allen Trackings des Users
 
 
 Fragen: 
-    meeting ID in PUT?
-    
+    meeting ID in PUT? Nein.
+    ProfilBild: avatar ID in User Objekt, Request URL: https://secure.projectbox.eu/v2/user/avatar/{avatar-id}
+    Message bei Login Error: "ip blocked" oder "invalid credentials"
