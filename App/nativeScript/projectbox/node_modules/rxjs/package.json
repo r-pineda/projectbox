@@ -10,7 +10,7 @@
         "spec": ">=5.4.2 <5.5.0",
         "type": "range"
       },
-      "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox"
+      "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox"
     ]
   ],
   "_from": "rxjs@>=5.4.2 <5.5.0",
@@ -44,7 +44,7 @@
   "_shasum": "0758cddee6033d68e0fd53676f0f3596ce3d483f",
   "_shrinkwrap": null,
   "_spec": "rxjs@~5.4.2",
-  "_where": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox",
+  "_where": "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox",
   "author": {
     "name": "Ben Lesh",
     "email": "ben@benlesh.com"

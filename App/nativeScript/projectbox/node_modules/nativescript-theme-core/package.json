@@ -10,7 +10,7 @@
         "spec": ">=1.0.4 <2.0.0",
         "type": "range"
       },
-      "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox"
+      "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox"
     ]
   ],
   "_from": "nativescript-theme-core@>=1.0.4 <2.0.0",
@@ -44,7 +44,7 @@
   "_shasum": "cf2880c7fbf2fe5f43e2235d309750790803efe1",
   "_shrinkwrap": null,
   "_spec": "nativescript-theme-core@^1.0.4",
-  "_where": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox",
+  "_where": "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox",
   "author": {
     "name": "Telerik",
     "email": "support@telerik.com"

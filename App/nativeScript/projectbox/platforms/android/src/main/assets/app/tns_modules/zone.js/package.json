@@ -10,7 +10,7 @@
         "spec": ">=0.8.2 <0.9.0",
         "type": "range"
       },
-      "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox"
+      "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox"
     ]
   ],
   "_from": "zone.js@>=0.8.2 <0.9.0",
@@ -44,7 +44,7 @@
   "_shasum": "8cecb3977fcd1b3090562ff4570e2847e752b48d",
   "_shrinkwrap": null,
   "_spec": "zone.js@~0.8.2",
-  "_where": "D:\\Desktop\\projectbox\\App\\nativeScript\\projectbox",
+  "_where": "C:\\Users\\Michael\\Desktop\\projectbox\\App\\nativeScript\\projectbox",
   "author": {
     "name": "Brian Ford"
   },
