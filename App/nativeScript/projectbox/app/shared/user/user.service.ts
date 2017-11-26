@@ -23,6 +23,7 @@ import { Project, Pivot } from "./project"
 export class UserService {
   constructor(private http: Http) {}
 
+  //Wahrscheinlicher Fall: wenn der Request nicht 200~ zurückgibt, wird automatisch ein Error geworfen und er springt sofort zum catch
   handleErrors(error: Response) {
     console.log(JSON.stringify(error.json) + " handleErrors");
     return Observable.throw(error);
@@ -42,15 +43,10 @@ export class UserService {
     )
     .map(response => response.json())
     .do(data => {
-      if(data.result == "error"){
-        console.log("here");
-        throw new Error("403");
-      }else{
-        Config.token = data.access_token;
-      }
+      Config.token = data.access_token;
     })
     .catch((err: any) => {
-      if(err == "403"){
+      if(err == "Response with status: 403 Forbidden for URL: https://secure.projectbox.eu/v2/token"){
         return Observable.throw("403");
       }else{
         return Observable.throw(err);
