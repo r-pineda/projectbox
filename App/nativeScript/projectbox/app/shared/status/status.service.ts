@@ -32,29 +32,6 @@ export class StatusService {
       return getBoolean("offlineMode");
   }
 
-  setCurrentUser(usr :any){
-      this.currentUser = JSON.stringify(usr);
-      setString("latestUser", JSON.stringify(usr));
-
-  }
-  getCurrentUser(){
-
-      if(this.currentUser){
-
-        return this.currentUser;
-
-      }else{
-          return getString("latestUser");
-      }
-  }
-
-  setAccestoken(tkn :string){
-      this.AccesToken = tkn;
-  }
-  getAccesToken(){
-      return this.AccesToken;
-  }
-
   loggedIn(){
       setBoolean("wasLoggedIn", true)
   }

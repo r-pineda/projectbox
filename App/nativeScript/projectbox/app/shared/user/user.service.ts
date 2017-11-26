@@ -15,6 +15,7 @@ import {
   remove,
   clear
 } from "application-settings";
+import { UserLogin } from "./userLogin";
 import { User } from "./user";
 import { Config } from "../config";
 import { Project, Pivot } from "./project"
@@ -29,7 +30,7 @@ export class UserService {
     return Observable.throw(error);
   }
 
-  login(user: User) {
+  login(user: UserLogin) {
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
   
@@ -43,6 +44,7 @@ export class UserService {
     )
     .map(response => response.json())
     .do(data => {
+      this.setCurrentUser(data);
       Config.token = data.access_token;
     })
     .catch((err: any) => {
@@ -52,6 +54,15 @@ export class UserService {
         return Observable.throw(err);
       }
     });
+  }
+
+  setCurrentUser(usr :User){
+    let user :User = usr;
+    console.dir(user);
+    setString("curUser", JSON.stringify(user));
+  }
+  getCurrentUser() :User{
+    return JSON.parse(getString("curUser")); 
   }
 
   getProjects(){

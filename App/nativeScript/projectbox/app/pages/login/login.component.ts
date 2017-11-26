@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from "@angular/core";
-import { User } from "../../shared/user/user";
+import { UserLogin } from "../../shared/user/userLogin";
 import { UserService } from "../../shared/user/user.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
@@ -23,18 +23,18 @@ import utilityModule = require("utils/utils");
   styleUrls: ["pages/login/login-common.css", "pages/login/login.css"]
 })
 export class LoginComponent{
-  @ViewChild("box") grid: ElementRef;
+  @ViewChild("box") grid: ElementRef;//elemente aus dem view selectieren, dient zur animation der box
   @ViewChild("usrn") userNameTextField: ElementRef;
   @ViewChild("pass") passWordTextField: ElementRef;
 
-  user: User;
+  user: UserLogin;
   wrongcredentials :boolean = false;
   box :GridLayout;
   boxIsUp :boolean = false;
   fabShadowA: AndroidData = {
     elevation: Elevation.CARD_PICKED_UP,
   };
-  fabShadoI: IOSData = {
+  fabShadowI: IOSData = {
     elevation: Elevation.CARD_PICKED_UP,
   };
 
@@ -48,7 +48,7 @@ export class LoginComponent{
     private page: Page,
   )
   {
-    this.user = new User();
+    this.user = new UserLogin();
     this.user.email = "michael.fruehwirth@htl.rennweg.at";
     this.user.password = "michael1234";
     page.actionBarHidden = true;
@@ -107,7 +107,7 @@ export class LoginComponent{
   login() {
     this.userService.login(this.user)
       .subscribe(
-      (data) => this.loginProceed(data),
+      (data) => this.loginProceed(),
       (error) => this.offlineLogin(error)
       );
   }
@@ -137,12 +137,11 @@ export class LoginComponent{
 
   }
 
-  loginProceed(usrData :any){
+  loginProceed(){
 
     this.keyboardOff();
     this.wrongcredentials = false;
     this.statusService.loggedIn();
-    this.statusService.setCurrentUser(usrData);
     this.statusService.setOfflineMode(false);
     this.routerExtensions.navigate(["/dashboard"], {
       transition: {
