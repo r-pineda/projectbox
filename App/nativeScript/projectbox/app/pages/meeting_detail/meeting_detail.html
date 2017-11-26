@@ -1,4 +1,70 @@
-<StackLayout>
+<!-- Navigation -->
+<ActionBar title="Meeting">
+    <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="openDrawer()"></NavigationButton>
+    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
+        <Label text="Meeting" class="action-label nav-h3"></Label>
+    </StackLayout>
+    <ActionItem ios.position="right" android.position="actionBar" ios.systemIcon="13" android.systemIcon="ic_menu_refresh"></ActionItem>
+</ActionBar>
+<RadSideDrawer tkExampleTitle tkToggleNavButton>
+    <StackLayout tkDrawerContent class="sideStackLayout">
+        <StackLayout class="sideTitleStackLayout">
+            <Label text="Willkommen" class="h2 full-name"></Label>
+            <Label text="manuel.gafoz@htl.rennweg.at" class="e-mail-nav"></Label>
+        </StackLayout>
+        <!-- <StackLayout class="sideStackLayout">
+            <Label text="Primary" class="sideLabel sideLightGrayLabel"></Label>
+            <Label text="Social" class="sideLabel"></Label>
+            <Label text="Promotions" class="sideLabel"></Label>
+            <Label text="Labels" class="sideLabel sideLightGrayLabel"></Label>
+            <Label text="Important" class="sideLabel"></Label>
+            <Label text="Starred" class="sideLabel"></Label>
+            <Label text="Sent Mail" class="sideLabel"></Label>
+            <Label text="Drafts" class="sideLabel"></Label>
+        </StackLayout>-->
+        <GridLayout class="side-nav-items" columns="*,*" rows="*,*,*,*,*,*">
+            <Image (tap)="navigateto('/dashboard')" src="~/images/dashboard.png" row="0" col="0" width="50" height="50" stretch="aspectFit" class="sideLabel"></Image>
+            <Image (tap)="navigateto('/todo')" src="~/images/task.png"  row="0" col="1" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
+            <Label (tap)="navigateto('/dashboard')" text="Dashboard" row="1" col="0" class="h4 center"></Label>
+            <Label (tap)="navigateto('/todo')" text="TODO" row="1" col="1" class="h4 center"></Label>
+            <Image (tap)="navigateto('/meeting')" src="~/images/meeting.png"  row="2" col="0" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
+            <Image (tap)="navigateto('/ticket')" src="~/images/bug.png"  row="2" col="1" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
+            <Label (tap)="navigateto('/meeting')" text="Meeting" row="3" col="0" class="h4 center"></Label>
+            <Label (tap)="navigateto('/ticket')" text="Tickets" row="3" col="1" class="h4 center"></Label>
+            <Image (tap)="navigateto('/settings')" src="~/images/settings.png" row="4" col="0" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
+            <Image (tap)="logout" src="~/images/logout.png"  row="4" col="1" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
+            <Label text="Einstellungen" row="5" col="0" class="h4 center"></Label>
+            <Label text="Logout" row="5" col="1" class="h4 center"></Label>
+        </GridLayout>
+        <Label text="Close Drawer" color="lightgray" padding="10" style="horizontal-align: center" (tap)="onCloseDrawerTap()"></Label>
+    </StackLayout>
+    <ScrollView tkMainContent class="page" orientation="vertical" isEnabled="true" width="100%" height="100%" >
+        <StackLayout id="meeting-detail" shadow elevation="-20">
+            <TextField class="textfield" [text]="meeting.name"></TextField>
+                <TextField class="textfield" [text]="meeting.location"></TextField>
+                <TextField class="textfield" [text]="meeting.date"></TextField>
+                <TextField class="textfield" [text]="meeting.duration"></TextField>
+                <TextField class="textfield" [text]="meeting.attendees"></TextField>
+                <StackLayout>
+                <TabView>
+                        <TabView.items>
+                          <TabViewItem title="Tab 1">
+                            <TabViewItem.view>
+                               <Label text="Label in Tab1"></Label>
+                            </TabViewItem.view>
+                          </TabViewItem>
+                          <TabViewItem title="Tab 2">
+                            <TabViewItem.view>
+                               <Label text="Label in Tab2"></Label>
+                            </TabViewItem.view>
+                          </TabViewItem>
+                        </TabView.items>
+                      </TabView>
+                    </StackLayout>
+            </StackLayout>
+    </ScrollView>
+</RadSideDrawer>
+<!--<StackLayout>
     <Label (tap)="onSwipe($event)"[text]="meeting.id"></Label>
     <Label (tap)="onSwipe($event)"[text]="meeting.name"></Label>
     <Label (tap)="onSwipe($event)"[text]="meeting.location"></Label>
@@ -10,4 +76,4 @@
     <Button (tap)="openGallery()" text="select from gallery"></Button>
     <img [src]="picture" height="200" width="200">
     
-</StackLayout>
+</StackLayout>-->

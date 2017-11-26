@@ -19,6 +19,10 @@ import { Image } from "ui/image";
 import { ImageAsset } from "tns-core-modules/image-asset";
 import * as fs from "tns-core-modules/file-system";
 import * as imageSource from "tns-core-modules/image-source";
+import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
+import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
+import { TNSFontIconService } from 'nativescript-ngx-fonticon';
+import * as tabViewModule from "tns-core-modules/ui/tab-view";
 
 @Component({
   selector: "meeting_detail",
