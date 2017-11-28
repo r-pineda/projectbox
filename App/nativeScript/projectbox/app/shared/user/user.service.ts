@@ -58,7 +58,6 @@ export class UserService {
 
   setCurrentUser(usr :User){
     let user :User = usr;
-    console.dir(user);
     setString("curUser", JSON.stringify(user));
   }
   getCurrentUser() :User{

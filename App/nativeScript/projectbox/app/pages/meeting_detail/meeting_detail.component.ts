@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { UserService } from "../../shared/user/user.service";
 import { Router} from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
@@ -30,7 +30,7 @@ import * as tabViewModule from "tns-core-modules/ui/tab-view";
   providers: [UserService, MeetingService],
   styleUrls: ["pages/meeting_detail/meeting_detail-common.css", "pages/meeting_detail/meeting_detail.css"]
 })
-export class Meeting_detailComponent {
+export class Meeting_detailComponent implements OnInit{
 
   meeting :Meeting;
   public picture :ImageAsset;
@@ -42,11 +42,19 @@ export class Meeting_detailComponent {
     });
   }
 
+  ngOnInit(){
+    this.meeting.duration = 999999;
+    this.updateMeeting(this.meeting);
+  }
+
   getMeetings(meeting_id :number){
-    this.meetingService.meetings().subscribe(
+    this.meetingService.meetings().then(
       (data) => this.getMeetingById(data.meetings, meeting_id), 
       (error) => this.getMeetingById(null, meeting_id)
-    );
+    )
+    .then((data) => {
+      this.meeting.duration = 9999;
+      this.meetingService.update(this.meeting)});
 
   }
 
@@ -55,7 +63,7 @@ export class Meeting_detailComponent {
 
       data.forEach(meeting => {
 
-        if(meeting.id == meeting_id){
+        if(meeting.id === meeting_id){
           this.meeting = meeting;
         }
       });
@@ -73,7 +81,7 @@ export class Meeting_detailComponent {
           */
     }else{
     
-      data = this.meetingService.getSavedMeetings()
+      data = this.meetingService.getSavedMeetings();
 
       data.forEach(meeting => {
             
@@ -85,10 +93,14 @@ export class Meeting_detailComponent {
     }
   }
 
+  updateMeeting(update :Meeting){
+    this.meetingService.update(update);
+  }
+
   onSwipe(args: SwipeGestureEventData) {
     if (args.direction = 2) {
     
-      this.routerExtensions.navigate(["/list"], {
+      this.routerExtensions.navigate(["/dashboard"], {
           transition: {
               name: "slideRight",
               curve: "easeOut"

@@ -84,7 +84,8 @@ export class MeetingService {
     .map(response => response.json())
     .do(data => {
     })
-    .catch(this.handleErrors);
+    .catch(this.handleErrors)
+    .toPromise();
   }
 
   createMeeting(meeting :Meeting){
@@ -104,5 +105,24 @@ export class MeetingService {
     .toPromise();
   }
 
+  update(meeting :Meeting){
+    console.log("update");
+    let id :string = meeting.id + "";
+    delete meeting.id;
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.put(
+      Config.apiUrl + "v2/meetings/" + id,
+      ("{\"meeting\": " + JSON.stringify(meeting) + "}"),
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+      console.dir(data);
+    })
+    .catch(this.handleErrors)
+    .toPromise();
+  }
 
 }

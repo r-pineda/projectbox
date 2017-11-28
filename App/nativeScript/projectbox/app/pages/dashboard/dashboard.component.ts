@@ -60,7 +60,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       (error) => this.displayProjects(false)
     );
 
-    this.meetingService.meetings().subscribe(
+    this.meetingService.meetings().then(
       (data) => this.displayMeetings(data), 
       (error) => this.displayMeetings(false)
     );
