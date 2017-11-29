@@ -49,13 +49,11 @@ export class Meeting_detailComponent implements OnInit{
 
   getMeetings(meeting_id :number){
     this.meetingService.meetings().then(
-      (data) => this.getMeetingById(data.meetings, meeting_id), 
+      (data) => this.getMeetingById(data.meetings, meeting_id),
       (error) => this.getMeetingById(null, meeting_id)
     )
     .then((data) => {
-      this.meeting.duration = 9999;
-      this.meetingService.update(this.meeting)});
-
+      Promise.resolve(this.meetingService.delete(this.meeting.id))});
   }
 
   getMeetingById(data :any, meeting_id :number){
@@ -85,10 +83,9 @@ export class Meeting_detailComponent implements OnInit{
 
       data.forEach(meeting => {
             
-        if(meeting.id == meeting_id){
+        if(meeting.id === meeting_id){
           this.meeting = meeting;
         }
-                        
       });
     }
   }

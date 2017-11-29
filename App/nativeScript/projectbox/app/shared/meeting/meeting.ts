@@ -1,10 +1,10 @@
 export interface Meeting {
-    protocol :String;
-    name :String;
-    location :String;
-    id :Number;
+    protocol :string;
+    name :string;
+    location :string;
+    id :string;
     duration :Number;
     date :Date;
-    attendees: String;
-    agenda :String
+    attendees: string;
+    agenda :string
   }

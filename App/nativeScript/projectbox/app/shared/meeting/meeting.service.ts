@@ -106,9 +106,9 @@ export class MeetingService {
   }
 
   update(meeting :Meeting){
-    console.log("update");
     let id :string = meeting.id + "";
     delete meeting.id;
+    
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", "Bearer "+ Config.token)
@@ -119,7 +119,21 @@ export class MeetingService {
     )
     .map(response => response.json())
     .do(data => {
-      console.dir(data);
+    })
+    .catch(this.handleErrors)
+    .toPromise();
+  }
+
+  delete(id :string){
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.delete(
+      Config.apiUrl + "v2/meetings/" + id,
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
     })
     .catch(this.handleErrors)
     .toPromise();
