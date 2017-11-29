@@ -38,22 +38,20 @@ export class Meeting_detailComponent implements OnInit{
   constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService) {
 
     this.route.params.subscribe((params) => {
-      this.getMeetings(params["id"]);
+      this.getMeeting(params["id"]);
     });
   }
 
-  ngOnInit(){
-    this.meeting.duration = 999999;
-    this.updateMeeting(this.meeting);
-  }
+  ngOnInit(){}
 
-  getMeetings(meeting_id :number){
-    this.meetingService.meetings().then(
+  getMeeting(meeting_id :number){
+    this.meetingService.getMeetings().then(
       (data) => this.getMeetingById(data.meetings, meeting_id),
       (error) => this.getMeetingById(null, meeting_id)
     )
     .then((data) => {
-      Promise.resolve(this.meetingService.delete(this.meeting.id))});
+      //do shit after initialization of all datasets
+    });
   }
 
   getMeetingById(data :any, meeting_id :number){
@@ -90,12 +88,16 @@ export class Meeting_detailComponent implements OnInit{
     }
   }
 
-  updateMeeting(update :Meeting){
-    this.meetingService.update(update);
+  updateMeeting(){
+    this.meetingService.update(this.meeting);
+  }
+
+  createMeeting(){
+    this.meetingService.createMeeting(this.meeting);
   }
 
   onSwipe(args: SwipeGestureEventData) {
-    if (args.direction = 2) {
+    if (args.direction === 2) {
     
       this.routerExtensions.navigate(["/dashboard"], {
           transition: {

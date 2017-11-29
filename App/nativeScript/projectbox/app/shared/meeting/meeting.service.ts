@@ -73,7 +73,7 @@ export class MeetingService {
   }
   
 
-  meetings() {
+  getMeetings() {
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", "Bearer "+ Config.token)
@@ -106,6 +106,7 @@ export class MeetingService {
   }
 
   update(meeting :Meeting){
+    console.log("UPDATE");
     let id :string = meeting.id + "";
     delete meeting.id;
     
@@ -119,6 +120,7 @@ export class MeetingService {
     )
     .map(response => response.json())
     .do(data => {
+      console.dir(data);
     })
     .catch(this.handleErrors)
     .toPromise();

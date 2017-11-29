@@ -40,11 +40,13 @@
     </StackLayout>
     <ScrollView tkMainContent class="page" orientation="vertical" isEnabled="true" width="100%" height="100%" >
         <StackLayout id="meeting-detail" shadow elevation="-20">
-            <TextField class="textfield" [text]="meeting.name"></TextField>
-                <TextField class="textfield" [text]="meeting.location"></TextField>
-                <TextField class="textfield" [text]="meeting.date"></TextField>
-                <TextField class="textfield" [text]="meeting.duration"></TextField>
-                <TextField class="textfield" [text]="meeting.attendees"></TextField>
+            <TextField class="textfield" [(ngModel)]="meeting.name"></TextField>
+                <TextField class="textfield" [(ngModel)]="meeting.location"></TextField>
+                <TextField class="textfield" [(ngModel)]="meeting.date"></TextField>
+                <TextField class="textfield" [(ngModel)]="meeting.duration"></TextField>
+                <TextField class="textfield" [(ngModel)]="meeting.attendees"></TextField>
+                <Button (tap)="updateMeeting()" text="update this Meeting!"></Button>
+                <Button (tap)="createMeeting()" text="create new Meeting!"></Button>
                 <StackLayout>
                 <TabView>
                         <TabView.items>
