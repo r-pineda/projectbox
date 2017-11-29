@@ -128,3 +128,5 @@ Fragen:
     Message bei Login Error: "ip blocked" oder "invalid credentials"
     Daten mit base64 encoded, Plugin empfohlen
     Meeting bekommt attendees mit external option. Agenda wird in einzelne Punkte aufgeteilt, als JSON string in der Datenbank abgelegt.
+    Meeting bekommt einen link zu Projects, genau wie Tickets.
+    Tasks werden bei details von Projekten mitgeliefert.
