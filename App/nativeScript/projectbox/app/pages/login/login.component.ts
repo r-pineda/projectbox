@@ -15,6 +15,7 @@ import { TextField } from "ui/text-field";
 import { GridLayout } from "ui/layouts/grid-layout";
 import { AndroidData, IOSData, Elevation } from 'nativescript-ng-shadow';
 import utilityModule = require("utils/utils");
+import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 
 @Component({
   selector: "my-app",
@@ -22,7 +23,7 @@ import utilityModule = require("utils/utils");
   templateUrl: "pages/login/login.html",
   styleUrls: ["pages/login/login-common.css", "pages/login/login.css"]
 })
-export class LoginComponent{
+export class LoginComponent implements OnInit{
   @ViewChild("box") grid: ElementRef;//elemente aus dem view selectieren, dient zur animation der box
   @ViewChild("usrn") userNameTextField: ElementRef;
   @ViewChild("pass") passWordTextField: ElementRef;
@@ -49,8 +50,8 @@ export class LoginComponent{
   )
   {
     this.user = new UserLogin();
-    this.user.email = "michael.fruehwirth@htl.rennweg.at";
-    this.user.password = "michael1234";
+    this.user.email = "rommelt.pineda@htl.rennweg.at";
+    this.user.password = "rommelt.pineda";
     page.actionBarHidden = true;
 
     // instantiate the plugin
@@ -104,6 +105,14 @@ export class LoginComponent{
 */
   }
 
+  ngOnInit(): void {
+    this.box = this.grid.nativeElement;
+    this.box.animate({
+      translate: {x:0, y:0},
+      duration: 0,
+    });
+  }
+
   login() {
     this.userService.login(this.user)
       .subscribe(
@@ -114,16 +123,14 @@ export class LoginComponent{
 
   offlineLogin(valid :any){
 
-    console.log(valid);
-
     if (valid === "403"){
       this.wrongcredentials = true;
     }else{
 
       if(this.statusService.getWasLoggedIn()){
-
-        //alert("You are offline. showing latest received data");
         this.statusService.setOfflineMode(true);
+        this.keyboardOff();
+        this.wrongcredentials = false;
         this.routerExtensions.navigate(["/dashboard"], {
             transition: {
             name: "slide",
@@ -170,7 +177,6 @@ export class LoginComponent{
     this.box.animate({
       translate: {x:0, y:0},
       duration: 0,
-      curve: AnimationCurve.easeIn
     });
   }
 

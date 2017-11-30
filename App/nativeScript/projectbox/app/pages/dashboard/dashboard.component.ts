@@ -21,6 +21,7 @@ import * as FrameModule from "ui/frame";
 import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
 import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
+import { User } from "../../shared/user/user";
 
 @Component({
   selector: "my-app",
@@ -31,11 +32,14 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 export class DashboardComponent implements AfterViewInit, OnInit {
 
+  curUser :User = new User;
   meetingdata :any;
   meetingsText :string;
   meetings :Meeting[];
   public offlinemode :boolean;
   projects :Project[];
+  avatar :string;
+
   constructor
   (
     private router: Router,
@@ -48,8 +52,9 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     private fonticon: TNSFontIconService
   )
   {
-    
-    this.meetingsText = "Lade...";
+
+    this.curUser = this.userService.getCurrentUser();
+    this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
 
     this.offlinemode = this.statusService.getOfflineMode();
   }
@@ -61,14 +66,15 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     );
 
     this.meetingService.getMeetings().then(
-      (data) => this.displayMeetings(data), 
+      (data) => this.displayMeetings(data),
       (error) => this.displayMeetings(false)
     );
   }
 
+
   displayMeetings(data :any){
 
-    //@Rommelt hier die Daten f�r View vorbereiten
+    //@Rommelt hier die Daten für View vorbereiten
 
     if(data){
 
@@ -78,8 +84,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     }else{
 
       data = this.meetingService.getSavedMeetings()
-      this.meetings = data.meetings;
-      
+      this.meetings = data.meetings; 
     }
 
     
@@ -111,6 +116,18 @@ export class DashboardComponent implements AfterViewInit, OnInit {
 */
   }
 
+  aktualisieren(){
+    this.userService.getProjects().then(
+      (data) => this.displayProjects(data),
+      (error) => this.displayProjects(false)
+    );
+
+    this.meetingService.getMeetings().then(
+      (data) => this.displayMeetings(data),
+      (error) => this.displayMeetings(false)
+    );
+  }
+
   displayProjects(data :any){
         if(data){
     
@@ -123,8 +140,6 @@ export class DashboardComponent implements AfterViewInit, OnInit {
           this.projects = data.projects;
           
         }
-        console.log(this.projects[0].name);
-    
       }
 
   showDetail(id: number) {

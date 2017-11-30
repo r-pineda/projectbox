@@ -16,4 +16,5 @@ export class User {
     initials?: any;
     inserted_at?: any;
     slack_username?: any;
+    access_token :string;
 }
