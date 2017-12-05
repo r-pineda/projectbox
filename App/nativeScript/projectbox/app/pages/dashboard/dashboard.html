@@ -29,7 +29,7 @@
                         <Image (tap)="navigateto('/dashboard')" src="~/images/dashboard.png" row="0" col="0" width="50" height="50" stretch="aspectFit" class="sideLabel"></Image>
                         <Image (tap)="navigateto('/todo')" src="~/images/task.png"  row="0" col="1" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
                         <Label (tap)="navigateto('/dashboard')" text="Dashboard" row="1" col="0" class="h4 center"></Label>
-                        <Label (tap)="navigateto('/todo')" text="TODO" row="1" col="1" class="h4 center"></Label>
+                        <Label (tap)="navigateto('/todo')" text="Tasks" row="1" col="1" class="h4 center"></Label>
                         <Image (tap)="navigateto('/meeting')" src="~/images/meeting.png"  row="2" col="0" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
                         <Image (tap)="navigateto('/ticket')" src="~/images/bug.png"  row="2" col="1" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
                         <Label (tap)="navigateto('/meeting')" text="Meeting" row="3" col="0" class="h4 center"></Label>
@@ -72,7 +72,7 @@
                 </StackLayout> 
         </GridLayout>
     
-        <Label text="TASKS" (tap)="navigateto('/ticket')" row="3" colSpan="3" class="h2"></Label>
+        <Label text="TASKS" (tap)="navigateto('/todo')" row="3" colSpan="3" class="h2"></Label>
         <StackLayout row="4" colSpan="3">
                 <GridLayout (tap)="showDetail()" columns="5, *" rows="40, auto">
                         <Border cornerRadius="10" col="0" row="0" height="40" width="5" borderColor="#DEE8E7" style="top:0;background-color:#CB1F2C;" margin="10 0 0 0">

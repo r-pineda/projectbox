@@ -42,17 +42,15 @@
         <AbsoluteLayout>
             <StackLayout>
             <Label class="h1" text="TOP-TICKETS"></Label>
-            <GridLayout *ngFor="let ticket of tickets" columns="auto,auto,*" rows="auto">
-                <Label class="border-tickets" height="50" col="0" row="0"></Label>
-                <StackLayout class="ticket" orientation="vertical" col="1" row="0" width="200" height="80">
-                    <Label class="h3" [text]="ticket.name"></Label>
-                    <Label class="h4" text="Neu"></Label>
-                </StackLayout>
-                <Label class="fa ticket indicator-tickets" [text]="'fa-arrow-down' | fonticon" height="80" col="2" row="0"></Label>
+            <GridLayout *ngFor="let ticket of tickets" columns="auto,*" rows="40,40">
+                <Label class="border-tickets" height="50" col="0" rowSpan="2"></Label>
+                <GridLayout>
+                <Label class="h3 ticket" [text]="ticket.name" col="1" row="0"></Label>
+                <Label class="h4 ticket" [text]="ticket.date" col="1" row="1"></Label>
+                <Label class="fa ticket indicator-tickets center" [text]="'fa-arrow-down' | fonticon" col="2" rowSpan="2"></Label>
+            </GridLayout>
             </GridLayout>
             <Label class="h1" text="WEITERE TICKETS"></Label>
-                <Label class="h1" text="WEITERE TICKETS"></Label>
-                <Label class="h1" text="WEITERE TICKETS"></Label>
             </StackLayout>
         </AbsoluteLayout>
     </ScrollView>
