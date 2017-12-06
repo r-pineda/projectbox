@@ -1,22 +1,30 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef} from "@angular/core";
 import { User } from "../../shared/user/user";
-import { UserService } from "../../shared/user/user.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
 import { StatusService } from "../../shared/status/status.service";
 import { Todo } from "../../shared/todo/todo";
 import { TodoService } from "../../shared/todo/todo.service";
+import "rxjs/add/operator/switchMap";
+import { ListViewEventData, RadListView } from "nativescript-pro-ui/listview";
+import * as FrameModule from "ui/frame";
+import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
+import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
+import { TNSFontIconService } from 'nativescript-ngx-fonticon';
+import { UserService } from "../../shared/user/user.service";
+
 
 @Component({
   selector: "my-app",
-  providers: [TodoService, StatusService],
+  providers: [TodoService, StatusService, UserService],
   templateUrl: "pages/todo/todo.html",
   styleUrls: ["pages/todo/todo-common.css", "pages/todo/todo.css"]
 })
 
 export class TodoComponent {
-
+  curUser :User = new User;
+  avatar :string;
   todos :Todo[];
   timestart :string;
   temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
@@ -37,10 +45,15 @@ export class TodoComponent {
     private activatedRoute: ActivatedRoute,
     private statusService :StatusService,
     private todoService :TodoService,
-    private page: Page
+    private page: Page,
+    private _changeDetectionRef: ChangeDetectorRef,
+    private fonticon: TNSFontIconService,
+    private userService: UserService
   )
   {
-    page.actionBarHidden = true;
+    this.curUser = this.userService.getCurrentUser();
+    this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
+
   }
 
   ngOnInit(): void {
@@ -85,5 +98,30 @@ export class TodoComponent {
     }
 
   }
+
+  navigateto(pagename: string) {
+    this.routerExtensions.navigate([pagename], {
+      transition: {
+          name: "slide",
+          curve: "easeOut"
+      }
+  });
+}
+
+@ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
+    private drawer: RadSideDrawer;
+
+    ngAfterViewInit() {
+        this.drawer = this.drawerComponent.sideDrawer;
+        this._changeDetectionRef.detectChanges();
+    }
+
+    public openDrawer() {
+        this.drawer.showDrawer();
+    }
+
+    public onCloseDrawerTap() {
+       this.drawer.closeDrawer();
+    }
 
 }

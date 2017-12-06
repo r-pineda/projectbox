@@ -7,13 +7,17 @@ import { Page } from "ui/page";
 import { StatusService } from "../../shared/status/status.service";
 import { Ticket } from "../../shared/ticket/ticket";
 import { TicketService } from "../../shared/ticket/ticket.service";
+import "rxjs/add/operator/switchMap";
+import { ListViewEventData, RadListView } from "nativescript-pro-ui/listview";
+import * as FrameModule from "ui/frame";
 import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
 import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
+
 @Component({
   selector: "my-app",
-  providers: [TicketService, StatusService],
+  providers: [TicketService, StatusService, UserService],
   templateUrl: "pages/ticket/ticket.html",
   styleUrls: ["pages/ticket/ticket-common.css", "pages/ticket/ticket.css"]
 })
@@ -32,18 +36,23 @@ export class TicketComponent implements AfterViewInit, OnInit {
                     //[5]endTime: Sekunden
                     //[6]errechnete dauer des Eintrags
                     //[7]TimerRunning :0 = false, 1 = true
+                    curUser :User = new User;
+                    avatar :string;
 
   constructor
   (
     private router: Router,
     private routerExtensions: RouterExtensions,
     private activatedRoute: ActivatedRoute,
+    private userService: UserService,
     private statusService :StatusService,
     private ticketService :TicketService,
     private page: Page,
     private _changeDetectionRef: ChangeDetectorRef,
     private fonticon: TNSFontIconService)
   {
+    this.curUser = this.userService.getCurrentUser();
+    this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
   }
 
   ngOnInit(): void {
@@ -114,7 +123,16 @@ export class TicketComponent implements AfterViewInit, OnInit {
   }
   */
 
-    @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
+  navigateto(pagename: string) {
+    this.routerExtensions.navigate([pagename], {
+      transition: {
+          name: "slide",
+          curve: "easeOut"
+      }
+  });
+}
+
+@ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
     private drawer: RadSideDrawer;
 
     ngAfterViewInit() {
@@ -129,5 +147,4 @@ export class TicketComponent implements AfterViewInit, OnInit {
     public onCloseDrawerTap() {
        this.drawer.closeDrawer();
     }
-
 }

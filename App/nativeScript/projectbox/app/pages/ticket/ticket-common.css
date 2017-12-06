@@ -5,37 +5,9 @@
     vertical-align: top;
 }
 
-.indicator-tickets{
-    vertical-align: middle;
-    background-color: #fff;
-}
-
-.border {
-    border-color: black black black black;
-    border-width: 1 1 1 1;
-}
-
-GridLayout {
-    border-width: 0 0 0 0;
-}
-
 .ticket {
     background-color: #fff;
 }
-
-.add-bar {
-    background-color: #CB1D00;
-    padding: 5 10;
-  }
-  .add-bar Image {
-    height: 15;
-    vertical-align: center;
-    margin-left: 10;
-    margin-right: 5;
-  }
-  TextField {
-    color: white;
-  }
   
   .data {
       margin-left: 10;
@@ -48,43 +20,12 @@ GridLayout {
     font-size: 15;
   }
   
-  .task, #task-h1 {
-    vertical-align: middle;
-    background-color: #F3F4F4;
-  }
-  
-  /* Meeting */ 
-  
-  .meeting {
-    vertical-align: middle;
-    background-color: #F3F4F4;
-    margin-bottom: 20;
-  }
-  
-  .meeting-indicator {
-    vertical-align:center;
-    text-align:center;
-  }
-  
-  .meeting-cont {
-    vertical-align:center;
-    text-align:right;
-    font-size: 50;
-  }
-  
-  .meeting-border {
-    height:100;
-    width:5;
-    top:0;
-    border-color: #C0BEBD;
-    background-color:#C0BEBD;
-    border-width: 5 5 5 5;
-  }
-  
-  .project {
-    background-color: #F3F4F4;
-  }
-  
-.projects {
-    margin: 20;
+.right {
+  text-align: right;
+  margin-right: 20;
+  vertical-align: middle;
+}
+
+AbsoluteLayout, StackLayout, GridLayout, ScrollView {
+  border:none;
 }
