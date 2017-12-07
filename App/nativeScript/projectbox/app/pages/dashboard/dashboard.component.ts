@@ -87,33 +87,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       this.meetings = data.meetings; 
     }
 
-    
-
-    
-
-    //console.dir(this.meetings[0]);
-
-    //@Rommelt: name des 1. meetings:
-
-    //console.log(this.meetings[0].name);
-
-    //@Rommelt Attribute von this.meetings[i]:
-    /*
-    protocol :String;
-    name :String;
-    location :String;
-    id :Number;
-    duration :Number;
-    date :Date;
-    attendees: String;
-    agenda :String
-    */
-    /*this.meetings[0].name = "test inApp";
-    this.meetingService.createMeeting(this.meetings[0]).then(
-      (data) => alert("Meeting mit dem Namen: " + data.meeting.name + " erfolgreich erstellt."),
-      (error) => console.log(error)
-    );
-*/
+    this.meetings.sort((a, b) => {return a.date.getTime()-b.date.getTime()})
   }
 
   aktualisieren(){
