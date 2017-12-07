@@ -33,11 +33,11 @@
                     <StackLayout class="page" width="100%">
                             <Label class="h1" text="TASKS" col="0" row="0"></Label>
                             <StackLayout col="0" row="1">
-                            <GridLayout *ngFor="let ticket of todos" columns="auto,*" rows="40,40">
+                            <GridLayout *ngFor="let ticket of todos" columns="auto,*" rows="50,50">
                                 <Label class="border-tickets" height="50" col="0" rowSpan="2"></Label>
                                 <GridLayout col="1" class="ticket" rowSpan="2" columns="*,*" rows="*,*">
-                                <Label class="h3 ticket" [text]="ticket.title" col="0" row="0"></Label>
-                                <Label class="h4 ticket" [text]="ticket.priority" col="0" row="1"></Label>
+                                <Label class="h5 ticket" [text]="ticket.title" col="0" row="0"></Label>
+                                <Label class="h6 ticket" [text]="ticket.priority" col="0" row="1"></Label>
                                 <Label class="fa ticket indicator-tickets right" [text]="'fa-arrow-down' | fonticon" col="1" rowSpan="2"></Label>
                             </GridLayout>
                             </GridLayout>

@@ -7,6 +7,7 @@ import { TicketComponent } from "./pages/ticket/ticket.component"
 
 export const routes = [
   { path: "", component: LoginComponent },
+  { path: "login", component: LoginComponent },
   { path: "dashboard", component: DashboardComponent },
   { path: "meeting_detail/:id", component: Meeting_detailComponent },
   { path: "ticket", component: TicketComponent },

@@ -87,7 +87,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       this.meetings = data.meetings; 
     }
 
-    this.meetings.sort((a, b) => {return a.date.getTime()-b.date.getTime()})
+    //this.meetings.sort((a, b) => {return a.date.getTime()-b.date.getTime()})
   }
 
   aktualisieren(){
@@ -134,7 +134,18 @@ export class DashboardComponent implements AfterViewInit, OnInit {
                   curve: "easeOut"
               }
           });
-        }
+  }
+
+  logout(){
+    this.drawer.closeDrawer();
+    this.routerExtensions.navigate(["/login"], {
+      animated:true,
+      transition: {
+          name: "slide",
+          curve: "easeOut"
+      }
+  });
+  }
       
         @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
             private drawer: RadSideDrawer;

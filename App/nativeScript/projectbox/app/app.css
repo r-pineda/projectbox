@@ -55,6 +55,7 @@ Page {
 
 .sideLabel {
   padding: 16;
+  color: #fff;
 }
 
 .listItemStackLayout {
@@ -79,6 +80,16 @@ Page {
   text-align: center;
 }
 
+.full-name {
+  margin-top: 10;
+  font-weight: bold;
+  font-size: 20;
+}
+
+.e-mail-nav {
+  font-size:12;
+}
+
 .nav-items {
   padding: 20;
 }
@@ -91,6 +102,11 @@ ActionBar {
 
 .side-nav-items {
   padding: 20;
+  color:#fff;
+}
+
+.nav-label {
+  color:#fff;
 }
 
 /* from dashboard */
