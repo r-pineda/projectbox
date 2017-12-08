@@ -1,8 +1,8 @@
 import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef } from "@angular/core";
 import { UserService } from "../../shared/user/user.service";
 import { StatusService } from "../../shared/status/status.service";
-import { Router, ActivatedRoute } from "@angular/router";
-import { RouterExtensions, PageRoute } from "nativescript-angular/router";
+/*import { Router, ActivatedRoute } from "@angular/router";*/
+import { RouterExtensions } from "nativescript-angular/router";
 import { Meeting } from "../../shared/meeting/meeting";
 import { MeetingService } from "../../shared/meeting/meeting.service";
 import { Project, Pivot } from "../../shared/user/project"
@@ -16,15 +16,15 @@ import {
   TouchGestureEventData
 } from "ui/gestures";
 import "rxjs/add/operator/switchMap";
-import { ListViewEventData, RadListView } from "nativescript-pro-ui/listview";
+/*import { ListViewEventData, RadListView } from "nativescript-pro-ui/listview";
 import * as FrameModule from "ui/frame";
 import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
-import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
+import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';*/
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { User } from "../../shared/user/user";
 
 @Component({
-  selector: "my-app",
+  selector: "app-dashboard",
   providers: [UserService, MeetingService, StatusService],
   templateUrl: "pages/dashboard/dashboard.html",
   styleUrls: ["pages/dashboard/dashboard-common.css", "pages/dashboard/dashboard.css"]
@@ -42,9 +42,9 @@ export class DashboardComponent implements AfterViewInit, OnInit {
 
   constructor
   (
-    private router: Router,
+    /*private router: Router,*/
     private routerExtensions: RouterExtensions,
-    private pageRoute: PageRoute,
+    /*private pageRoute: PageRoute,*/
     private userService: UserService,
     private meetingService :MeetingService,
     private statusService :StatusService,
@@ -53,10 +53,11 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   )
   {
 
-    this.curUser = this.userService.getCurrentUser();
+   /* this.curUser = this.userService.getCurrentUser();
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
 
     this.offlinemode = this.statusService.getOfflineMode();
+    */
   }
   
   public ngOnInit() {
@@ -69,6 +70,10 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       (data) => this.displayMeetings(data),
       (error) => this.displayMeetings(false)
     );
+  }
+
+  public ngAfterViewInit() {
+
   }
 
 
@@ -126,7 +131,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
           }
       });
   }
-
+/*
   navigateto(pagename: string) {
             this.routerExtensions.navigate([pagename], {
               transition: {
@@ -162,4 +167,5 @@ export class DashboardComponent implements AfterViewInit, OnInit {
             public onCloseDrawerTap() {
                this.drawer.closeDrawer();
             }
+            */
 }

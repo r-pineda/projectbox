@@ -1,71 +1,10 @@
 
-    <!-- Navigation -->
-    <ActionBar title="Dashboard">
-            <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="openDrawer()"></NavigationButton>
-            <StackLayout orientation="horizontal"
-            ios:horizontalAlignment="center"
-            android:horizontalAlignment="center">
-            <Label text="Dashboard" class="action-label nav-h3"></Label>
-          </StackLayout>
-          <ActionItem ios.position="right" android.position="actionBar" ios.systemIcon="13" android.systemIcon="ic_menu_refresh" (tap)="aktualisieren()"></ActionItem>
-    </ActionBar>
-    <RadSideDrawer tkExampleTitle tkToggleNavButton>
-    <StackLayout tkDrawerContent class="sideStackLayout">
-        <StackLayout class="sideTitleStackLayout">
-                    <Image [src]="avatar" width="100" height="100"></Image>
-                    <Label [text]="curUser.first_name" class="full-name"></Label>
-                    <Label [text]="curUser.email" class="e-mail-nav"></Label>
-                </StackLayout>
-       <!-- <StackLayout class="sideStackLayout">
-            <Label text="Primary" class="sideLabel sideLightGrayLabel"></Label>
-            <Label text="Social" class="sideLabel"></Label>
-            <Label text="Promotions" class="sideLabel"></Label>
-            <Label text="Labels" class="sideLabel sideLightGrayLabel"></Label>
-            <Label text="Important" class="sideLabel"></Label>
-            <Label text="Starred" class="sideLabel"></Label>
-            <Label text="Sent Mail" class="sideLabel"></Label>
-            <Label text="Drafts" class="sideLabel"></Label>
-        </StackLayout>-->
-         <GridLayout class="side-nav-items" columns="*,*" rows="*,*,*,*,*,*" >
-                        <Image (tap)="navigateto('/dashboard')" src="~/images/dashboard.png" row="0" col="0" width="50" height="50" stretch="aspectFit" class="sideLabel"></Image>
-                        <Image (tap)="navigateto('/todo')" src="~/images/task.png"  row="0" col="1" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
-                        <Label (tap)="navigateto('/dashboard')" text="Dashboard" row="1" col="0" class="h4 center nav-label"></Label>
-                        <Label (tap)="navigateto('/todo')" text="Tasks" row="1" col="1" class="h4 center nav-label"></Label>
-                        <Image (tap)="navigateto('/meeting')" src="~/images/meeting.png"  row="2" col="0" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
-                        <Image (tap)="navigateto('/ticket')" src="~/images/bug.png"  row="2" col="1" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
-                        <Label (tap)="navigateto('/meeting')" text="Meeting" row="3" col="0" class="h4 center nav-label"></Label>
-                        <Label (tap)="navigateto('/ticket')" text="Tickets" row="3" col="1" class="h4 center nav-label"></Label>
-                        <Image (tap)="navigateto('/settings')" src="~/images/settings.png" row="4" col="0" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
-                        <Image (tap)="navigateto('/login')" src="~/images/logout.png"  row="4" col="1" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
-                        <Label text="Einstellungen" row="5" col="0" class="h4 center nav-label"></Label>
-                        <Label text="Logout" row="5" col="1" class="h4 center nav-label"></Label>
-                    </GridLayout>
-    </StackLayout>
-    <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="100%">
-            <AbsoluteLayout>
-                    <StackLayout class="page" width="100%">
         <GridLayout columns="*,*,*" rows="20,auto,auto,auto,auto,auto,auto" >
         <Label *ngIf="offlinemode" row="0" colSpan="3" text="OFFLINE" style="text-align:center;background-color:rgb(99, 228, 178);"></Label>
-      
-        <!-- <ListView [items]="projects" row="1" colSpan="3">
-                <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
-                    <GridLayout columns="80,auto,auto,auto" rows="auto,auto,auto" (tap)="showDetail(item.id)" class="meeting">
-                        <Label text="HEUTE" col="0" row="0" rowSpan="3" class="meeting-indicator h4" margin="0 0 0 5"></Label>
-                        <Border cornerRadius="5" col="1" rowSpan="3" class="meeting-border" margin="5"></Border>
-                        <Label [text]="item.name" textWrap="true" class="h4" col="2" margin="5 0 0 0"></Label>
-                        <Label [text]="item.date" col="2" row="1"  class="text" margin="0"></Label>
-                        <Label [text]="item.location" col="2" row="2" class="text" margin="0 5 0 0"></Label>
-                        <Label text="..." col="3" rowSpan="3" class="meeting-indicator text"></Label>
-                    </GridLayout>
-                </ng-template>
-        
-            </ListView>-->
-        
         <GridLayout columns="auto, *" rows="auto" row="1" colSpan="3">
                 <Label text="PROJEKTE" (tap)="navigateto(ticket)" row="0" col="0" class="h2"></Label>
                 <Label text="see all >" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom" class="text" style="margin-right:10;"></Label>
         </GridLayout>
-        <!--<Label text="PROJEKTE" row="1" colSpan="3" class="h1"></Label>-->
         <GridLayout columns="*" rows="*" colSpan="3"  row="2" class="project" style="padding:5;">
             <StackLayout orientation="horizontal">   
             <Label *ngFor="let item of projects" [text]="item.name" class="h4 projects"></Label>
@@ -105,7 +44,3 @@
         </ListView>>-->
     </StackLayout>
         </GridLayout>
-    </StackLayout>
-    </AbsoluteLayout>
-    </ScrollView>
-</RadSideDrawer>

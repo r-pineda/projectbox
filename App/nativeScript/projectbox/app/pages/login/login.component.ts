@@ -131,7 +131,7 @@ export class LoginComponent implements OnInit{
         this.statusService.setOfflineMode(true);
         this.keyboardOff();
         this.wrongcredentials = false;
-        this.routerExtensions.navigate(["/dashboard"], {
+        this.routerExtensions.navigate(["/nav"], {
             transition: {
             name: "slide",
             curve: "easeOut"
@@ -150,7 +150,7 @@ export class LoginComponent implements OnInit{
     this.wrongcredentials = false;
     this.statusService.loggedIn();
     this.statusService.setOfflineMode(false);
-    this.routerExtensions.navigate(["/dashboard"], {
+    this.routerExtensions.navigate(["/nav"], {
       transition: {
           name: "slide",
           curve: "easeOut"
