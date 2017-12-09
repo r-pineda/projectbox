@@ -4,7 +4,7 @@ import { UserService } from "../../shared/user/user.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
-//import { AppShortcuts } from "nativescript-app-shortcuts";
+//import { AppShortcuts } from "nativescript-app-shortcuts"; //3D - Touch on iOS
 import { isIOS } from "tns-core-modules/platform";
 import { isAndroid } from "tns-core-modules/platform";
 import { StatusService } from "../../shared/status/status.service"

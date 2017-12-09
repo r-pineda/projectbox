@@ -48,4 +48,56 @@ export class TicketService {
   getSavedTickets (){
     return JSON.parse(getString("tickets"));
   }
+
+  createTicket(ticket :Ticket){
+    delete ticket.id;
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.post(
+      Config.apiUrl + "v2/tickets",
+      ("{\"ticket\": " + JSON.stringify(ticket) + "}"),
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+    })
+    .catch(this.handleErrors)
+    .toPromise();
+  }
+
+  updateTicket(ticket :Ticket){
+    let id :string = ticket.id + "";
+    delete ticket.id;
+    
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.put(
+      Config.apiUrl + "v2/tickets/" + id,
+      ("{\"ticket\": " + JSON.stringify(ticket) + "}"),
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+      console.dir(data);
+    })
+    .catch(this.handleErrors)
+    .toPromise();
+  }
+
+  deleteTicket(id :string){
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.delete(
+      Config.apiUrl + "v2/tickets/" + id,
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+    })
+    .catch(this.handleErrors)
+    .toPromise();
+  }
 }
