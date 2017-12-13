@@ -4,7 +4,7 @@ import { UserService } from "../../shared/user/user.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
-//import { AppShortcuts } from "nativescript-app-shortcuts";
+//import { AppShortcuts } from "nativescript-app-shortcuts"; //3D - Touch on iOS
 import { isIOS } from "tns-core-modules/platform";
 import { isAndroid } from "tns-core-modules/platform";
 import { StatusService } from "../../shared/status/status.service"
@@ -131,7 +131,7 @@ export class LoginComponent implements OnInit{
         this.statusService.setOfflineMode(true);
         this.keyboardOff();
         this.wrongcredentials = false;
-        this.routerExtensions.navigate(["/dashboard"], {
+        this.routerExtensions.navigate(["/nav"], {
             transition: {
             name: "slide",
             curve: "easeOut"
@@ -150,7 +150,7 @@ export class LoginComponent implements OnInit{
     this.wrongcredentials = false;
     this.statusService.loggedIn();
     this.statusService.setOfflineMode(false);
-    this.routerExtensions.navigate(["/dashboard"], {
+    this.routerExtensions.navigate(["/nav"], {
       transition: {
           name: "slide",
           curve: "easeOut"

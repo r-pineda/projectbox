@@ -57,7 +57,8 @@ export class TodoComponent {
   }
 
   ngOnInit(): void {
-    this.todos = this.todoService.todosDummy();
+    this.todoService.getTodos()
+    .then((data) => this.displayTodos(data))
     this.temp = new Array(this.todos.length);
     this.todos.forEach(element => {
       this.temp[element.id] = [];
@@ -65,6 +66,21 @@ export class TodoComponent {
       this.temp[element.id][7] = 0;
     });
   }
+  displayTodos(data :any){
+    
+        if(data){
+    
+          this.todoService.saveTodos(data);
+          this.todos = data.todos;
+    
+        }else{
+    
+          data = this.todoService.getSavedTodos()
+          this.todos = data.tickets;
+          
+        }
+        console.dir(this.todos);
+      }
 
   saveTime(id :any){
     console.dir(this.temp);
