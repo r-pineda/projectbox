@@ -14,10 +14,11 @@ import {
 import { Meeting } from "../../shared/meeting/meeting"
 import { MeetingService } from "../../shared/meeting/meeting.service"
 import * as camera from "nativescript-camera";
-import * as imagepicker from "nativescript-imagepicker";
+let imagepicker = require("nativescript-imagepicker");
+import * as imageSourceModule from "image-source";
 import { Image } from "ui/image";
 import { ImageAsset } from "tns-core-modules/image-asset";
-import * as fs from "tns-core-modules/file-system";
+var fs = require("file-system");
 import * as imageSource from "tns-core-modules/image-source";
 import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
 import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
@@ -33,7 +34,7 @@ import * as tabViewModule from "tns-core-modules/ui/tab-view";
 export class Meeting_detailComponent implements OnInit{
 
   meeting :Meeting;
-  public picture :ImageAsset;
+  public picture :any;
 
   constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService) {
 
@@ -119,21 +120,26 @@ export class Meeting_detailComponent implements OnInit{
 
   openGallery(){
 
+    var milliseconds = new Date().getTime();
+    var that = this;
     let context = imagepicker.create({
       mode: "single" //use "multiple" for multiple selection
     });
+
     context
     .authorize()
-    .then(function() {
-        return context.present();
-    })
-    .then(function(selection) {
-      console.log(selection[0].android);
-      let path = fs.path.normalize(selection[0].android);
-      this.picture = selection[0].android//imageSource.fromFile(path).android;
+    .then(() => context.present())
+    .then((selection) => {
+      selection.forEach(selected => {
+        selected.getImage().then(function(imagesource){
+          let folder = fs.knownFolders.documents();
+          var path = fs.path.join(folder.path, milliseconds + ".png");
+          var saved = imagesource.saveToFile(path, "png");
+          that.picture = path;
+        })
+      });
     }).catch(function (e) {
         // process error
     });
-
   }
 }
