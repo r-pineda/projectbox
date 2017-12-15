@@ -4,6 +4,7 @@ import { TodoComponent } from "./pages/todo/todo.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { TicketComponent } from "./pages/ticket/ticket.component";
 import { NavComponent } from "./pages/nav/nav.component";
+import { MeetingComponent } from "./pages/meeting/meeting.component";
 
 
 export const routes = [
@@ -13,7 +14,8 @@ export const routes = [
   { path: "meeting_detail/:id", component: Meeting_detailComponent },
   { path: "ticket", component: TicketComponent },
   { path: "todo", component: TodoComponent },
-  { path: "nav", component: NavComponent}
+  { path: "nav", component: NavComponent},
+  { path: "meeting", component: MeetingComponent}
 ];
 
 export const navigatableComponents = [
@@ -22,5 +24,6 @@ export const navigatableComponents = [
   Meeting_detailComponent,
   TodoComponent,
   DashboardComponent,
-  TicketComponent
+  TicketComponent,
+  MeetingComponent
 ];
