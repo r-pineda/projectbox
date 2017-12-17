@@ -26,6 +26,7 @@ export class TicketComponent implements AfterViewInit, OnInit {
 
   tickets :Ticket[];
   timestart :string;
+  expand: boolean;
   temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
                     //Ebene 1 des Arrays ist assoziativ mit den IDs von den Todos. die 2. Ebene enthält folgende Attribute:
                     //[0]startTime: Stunden
@@ -70,6 +71,7 @@ export class TicketComponent implements AfterViewInit, OnInit {
       (data) => this.displayTickets(data), 
       (error) => this.displayTickets(false)
     );
+    this.expand = false;
   }
 
   displayTickets(data :any){
@@ -130,6 +132,10 @@ export class TicketComponent implements AfterViewInit, OnInit {
           curve: "easeOut"
       }
   });
+}
+
+detailTicket(){
+  this.expand = true;
 }
 
 @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;

@@ -13,13 +13,17 @@
             <GridLayout columns="*" rows="auto,auto,auto">
             <Label class="h1" text="TOP-TICKETS" col="0" row="0"></Label>
             <StackLayout class="margin-ticket" col="0" row="1">
-            <GridLayout *ngFor="let ticket of tickets" columns="auto,*" rows="50,50">
+            <GridLayout *ngFor="let ticket of tickets" columns="auto,*" rows="50,50,50">
                 <Label class="border-tickets" height="50" col="0" rowSpan="2"></Label>
                 <GridLayout col="1" class="ticket" rowSpan="2" columns="*,*" rows="*,*">
                 <Label class="h3 ticket" [text]="ticket.name" col="0" row="0"></Label>
                 <Label class="h5 ticket" [text]="ticket.date" col="0" row="1"></Label>
-                <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon" col="1" rowSpan="2" (tap)="expand()"></Label>
+                <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon" col="1" rowSpan="2" (tap)="detailTicket()"></Label>
             </GridLayout>
+                <GridLayout *ngIf="expand" col="1" row="3" columns="*,*,*,*" rows="*,*,*">
+                    <Label colSpan="3" row="0" text="CCF Configuration Forge"></Label>
+                    <Label colSpan="3" row="1" text="CCF Configuration Forge CCF Configuration Forge CCF Configuration Forge CCF Configuration Forge"></Label>
+                </GridLayout>
             </GridLayout>
         </StackLayout>
             <Label class="h1" text="WEITERE TICKETS" col="0" row="2"></Label>
