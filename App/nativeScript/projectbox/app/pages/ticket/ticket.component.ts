@@ -25,8 +25,8 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 export class TicketComponent implements AfterViewInit, OnInit {
 
   tickets :Ticket[];
+  ticketForDetail :Boolean[] = new Array<Boolean>();
   timestart :string;
-  expand: boolean;
   temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
                     //Ebene 1 des Arrays ist assoziativ mit den IDs von den Todos. die 2. Ebene enthält folgende Attribute:
                     //[0]startTime: Stunden
@@ -71,7 +71,13 @@ export class TicketComponent implements AfterViewInit, OnInit {
       (data) => this.displayTickets(data), 
       (error) => this.displayTickets(false)
     );
-    this.expand = false;
+    this.tickets.forEach((element) => {
+      this.ticketForDetail[element.id] = false;
+    });
+  }
+
+  expand(id :string){
+    this.ticketForDetail[id] = !this.ticketForDetail[id];
   }
 
   displayTickets(data :any){
@@ -132,10 +138,6 @@ export class TicketComponent implements AfterViewInit, OnInit {
           curve: "easeOut"
       }
   });
-}
-
-detailTicket(){
-  this.expand = true;
 }
 
 @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
