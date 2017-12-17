@@ -3,13 +3,6 @@ StackLayout {
   width: 100%;
   padding: 10;
 }
-GridLayout {
-  border-color: black;
-  border-width: 1;
-  border-radius: 5;
-  padding:5;
-  margin:5;
-}
 
 Border{
   margin-top: 10;

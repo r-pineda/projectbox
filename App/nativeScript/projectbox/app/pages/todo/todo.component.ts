@@ -65,7 +65,7 @@ export class TodoComponent {
     this.temp = new Array(this.todos.length);
     this.todos.forEach(element => {
       this.temp[element.id] = [];
-      this.temp[element.id][6] = element.timeTaken;
+      //this.temp[element.id][6] = element.timeTaken;
       this.temp[element.id][7] = 0;
     });
     */
@@ -94,7 +94,7 @@ export class TodoComponent {
         ((this.temp[id][3] * 3600) + (this.temp[id][4] * 60) + +this.temp[id][5]) 
         - ((this.temp[id][0] * 3600) + (this.temp[id][1] * 60) + +this.temp[id][2]);
         sec -= sec%60;
-        todo.timeTaken += (sec/60);
+        //todo.timeTaken += (sec/60);
       }
     });
   }

@@ -55,6 +55,10 @@ export class Meeting_detailComponent implements OnInit{
     });
   }
 
+  cancel() {
+    this.routerExtensions.backToPreviousPage();
+  }
+
   getMeetingById(data :any, meeting_id :number){
     if(data){
 

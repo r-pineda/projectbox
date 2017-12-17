@@ -51,6 +51,7 @@ export class MeetingComponent implements OnInit{
   create: boolean;
   meetingdata :any;
   meetingsText :string;
+  meeting: Meeting;
 
   constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService) {}
 
@@ -67,6 +68,11 @@ export class MeetingComponent implements OnInit{
 
   }
 
+  cancel() {
+    console.log("cancel");
+    this.create = false;
+  }
+
   displayMeetings(data :any){
     
         if(data){
@@ -80,6 +86,10 @@ export class MeetingComponent implements OnInit{
         }
     
         //this.meetings.sort((a, b) => {return a.date.getTime()-b.date.getTime()})
+  }
+
+  createMeeting(){
+    this.meetingService.createMeeting(this.meeting);
   }
 
   onSwipe(args: SwipeGestureEventData) {

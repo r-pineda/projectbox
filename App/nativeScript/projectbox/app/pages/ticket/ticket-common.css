@@ -7,6 +7,12 @@
 
 .ticket {
     background-color: #fff;
+    margin-left: 2;
+    margin-bottom: 2;
+}
+
+.margin-ticket {
+  margin-bottom: 10;
 }
   
   .data {
@@ -24,8 +30,4 @@
   text-align: right;
   margin-right: 20;
   vertical-align: middle;
-}
-
-AbsoluteLayout, StackLayout, GridLayout, ScrollView {
-  border:none;
 }

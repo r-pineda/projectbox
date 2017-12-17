@@ -23,14 +23,7 @@
                       </GridLayout>
         </StackLayout>
         <Label text="MEETINGS" (tap)="navigateto('/ticket')" row="5" colSpan="3" class="h2"></Label>
-         <!--<ListView [items]="meetings" row="6" colSpan="3">
-           --standard listview taken from NativeScript API Reference Angular
-            we take as items the "meetings" variable from the component-->
         <StackLayout row="6" colSpan="3">
-            <!-- creating the list of meetings
-            <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
-                <!-- columns values: 'due date', 'border', 'details of meetings' -->
-                <!-- margins dont apply when defined in css file -> use as inline css -->
                 <GridLayout *ngFor="let item of meetings" columns="80,auto,auto,*" rows="auto,auto,*" (tap)="showDetail(item.id)" class="meeting"  marginBottom="10">
                     <Label text="HEUTE" col="0" row="0" rowSpan="3" class="meeting-indicator h4" margin="0 0 0 5"></Label>
                     <Border cornerRadius="5" col="1" rowSpan="3" class="meeting-border" margin="5"></Border>
@@ -39,8 +32,5 @@
                     <Label [text]="item.location" col="2" row="2" class="text" margin="0 5 0 0"></Label>
                     <Label text="..." col="3" rowSpan="3" class="meeting-cont" margin="0 20 20 20"></Label>
                 </GridLayout>
-            <!--</ng-template
-    
-        </ListView>>-->
     </StackLayout>
         </GridLayout>

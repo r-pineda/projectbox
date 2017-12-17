@@ -51,23 +51,9 @@
                 <TextField class="textfield" [(ngModel)]="meeting.duration"></TextField>
                 <Label class="h4" text="TEILNEHMER"></Label>
                 <TextField class="textfield" [(ngModel)]="meeting.attendees"></TextField>
-                <Button (tap)="updateMeeting()" text="update this Meeting!"></Button>
-                <Button (tap)="createMeeting()" text="create new Meeting!"></Button>
-                <StackLayout>
-                <TabView>
-                        <TabView.items>
-                          <TabViewItem title="Tab 1">
-                            <TabViewItem.view>
-                               <Label text="Label in Tab1"></Label>
-                            </TabViewItem.view>
-                          </TabViewItem>
-                          <TabViewItem title="Tab 2">
-                            <TabViewItem.view>
-                               <Label text="Label in Tab2"></Label>
-                            </TabViewItem.view>
-                          </TabViewItem>
-                        </TabView.items>
-                      </TabView>
+                <StackLayout orientation="horizontal" horizontalAlignment="right">
+                        <Button class="btn btn-primary btn-active" (tap)="cancel()" text="Abbrechen"></Button>
+                        <Button class="btn btn-primary btn-active" (tap)="updateMeeting()" text="Aktualisieren"></Button>
                     </StackLayout>
             </StackLayout>
     </ScrollView>
