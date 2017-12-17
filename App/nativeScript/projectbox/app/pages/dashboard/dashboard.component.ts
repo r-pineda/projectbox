@@ -22,10 +22,14 @@ import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/side
 import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';*/
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { User } from "../../shared/user/user";
+import { TodoService } from "../../shared/todo/todo.service";
+import { TicketService } from "../../shared/ticket/ticket.service";
+import { Todo } from "../../shared/todo/todo";
+import { Ticket } from "../../shared/ticket/ticket";
 
 @Component({
   selector: "app-dashboard",
-  providers: [UserService, MeetingService, StatusService],
+  providers: [UserService, MeetingService, StatusService, TodoService, TicketService],
   templateUrl: "pages/dashboard/dashboard.html",
   styleUrls: ["pages/dashboard/dashboard-common.css", "pages/dashboard/dashboard.css"]
 })
@@ -35,10 +39,13 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   curUser :User = new User;
   meetingdata :any;
   meetingsText :string;
-  meetings :Meeting[];
+  meetings :Meeting[] = new Array<Meeting>();
   public offlinemode :boolean;
   projects :Project[];
+  selectedProject :string //id of the selected project
   avatar :string;
+  todos :Todo[];
+  tickets :Ticket[];
 
   constructor
   (
@@ -47,6 +54,8 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     /*private pageRoute: PageRoute,*/
     private userService: UserService,
     private meetingService :MeetingService,
+    private todoService :TodoService,
+    private ticketService :TicketService,
     private statusService :StatusService,
     private _changeDetectionRef: ChangeDetectorRef,
     private fonticon: TNSFontIconService
@@ -70,57 +79,71 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       (data) => this.displayMeetings(data),
       (error) => this.displayMeetings(false)
     );
+
+    this.ticketService.getTickets().then(
+      (data) => this.displayTickets(data), 
+      (error) => this.displayTickets(false)
+    );
+
+    this.todoService.getTodos().then(
+      (data) => this.displayTickets(data), 
+      (error) => this.displayTickets(false)
+    );
   }
 
   public ngAfterViewInit() {
 
   }
 
+  displayTickets(data :any){
+    if(data){
+      this.ticketService.saveTickets(data);
+      this.tickets = data.tickets;
+    }else{
+      data = this.ticketService.getSavedTickets();
+      this.tickets = data.tickets;
+    }
+  }
+
+  displayTodos(data :any){
+    if(data){
+      this.todoService.saveTodos(data);
+      this.todos = data.todos;
+    }else{
+      data = this.todoService.getSavedTodos();
+      this.todos = data.tickets;
+    }
+  }
 
   displayMeetings(data :any){
-
-    //@Rommelt hier die Daten für View vorbereiten
-
-    if(data){
-
-      this.meetingService.saveMeetings(data);
-      this.meetings = data.meetings;
-
+    if(!data){
+      data = this.meetingService.getSavedMeetings();
     }else{
-
-      data = this.meetingService.getSavedMeetings()
-      this.meetings = data.meetings; 
+      this.meetingService.saveMeetings(data);
     }
-
+    if(this.selectedProject){
+      data.meetings.forEach(meeting => {
+        if(meeting.project == this.selectedProject){
+          this.meetings.push(meeting);
+        }
+      });
+    }else{
+      this.meetings = data.meetings;
+    }
     //this.meetings.sort((a, b) => {return a.date.getTime()-b.date.getTime()})
   }
-
-  aktualisieren(){
-    this.userService.getProjects().then(
-      (data) => this.displayProjects(data),
-      (error) => this.displayProjects(false)
-    );
-
-    this.meetingService.getMeetings().then(
-      (data) => this.displayMeetings(data),
-      (error) => this.displayMeetings(false)
-    );
-  }
-
   displayProjects(data :any){
-        if(data){
-    
-          this.userService.saveProjects(data);
-          this.projects = data.projects;
-    
-        }else{
-    
-          data = this.userService.getSavedProjects()
-          this.projects = data.projects;
-          
-        }
-      }
-
+    if(data){
+      this.userService.saveProjects(data);
+      this.projects = data.projects;
+    }else{
+      data = this.userService.getSavedProjects();
+      this.projects = data.projects;
+    }
+  }
+  aktualisieren(){
+    this.ngOnInit();
+  }
   showDetail(id: number) {
     
       this.routerExtensions.navigate(["/meeting_detail/" + id], {
@@ -130,6 +153,9 @@ export class DashboardComponent implements AfterViewInit, OnInit {
               curve: "easeOut"
           }
       });
+  }
+  setSelectedProject(id :string){
+    this.selectedProject = id;
   }
 /*
   navigateto(pagename: string) {

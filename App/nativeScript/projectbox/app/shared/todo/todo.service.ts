@@ -49,7 +49,7 @@ export class TodoService {
     headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.post(
       Config.apiUrl + "v2/tasks",
-      ("{\"ticket\": " + JSON.stringify(todo) + "}"),
+      ("{\"task\": " + JSON.stringify(todo) + "}"),
       { headers: headers }
     )
     .map(response => response.json())

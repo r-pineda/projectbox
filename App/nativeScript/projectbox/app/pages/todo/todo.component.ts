@@ -23,6 +23,7 @@ import { UserService } from "../../shared/user/user.service";
 })
 
 export class TodoComponent {
+  public newTodo :Todo = new Todo();
   curUser :User = new User;
   avatar :string;
   todos :Todo[];
@@ -59,12 +60,15 @@ export class TodoComponent {
   ngOnInit(): void {
     this.todoService.getTodos()
     .then((data) => this.displayTodos(data))
+
+    /*
     this.temp = new Array(this.todos.length);
     this.todos.forEach(element => {
       this.temp[element.id] = [];
       this.temp[element.id][6] = element.timeTaken;
       this.temp[element.id][7] = 0;
     });
+    */
   }
   displayTodos(data :any){
     
@@ -81,7 +85,7 @@ export class TodoComponent {
         }
         console.dir(this.todos);
       }
-
+/*
   saveTime(id :any){
     console.dir(this.temp);
     this.todos.forEach(todo => {
@@ -114,7 +118,7 @@ export class TodoComponent {
     }
 
   }
-
+*/
   navigateto(pagename: string) {
     this.routerExtensions.navigate([pagename], {
       transition: {
@@ -138,6 +142,10 @@ export class TodoComponent {
 
     public onCloseDrawerTap() {
        this.drawer.closeDrawer();
+    }
+
+    saveNewTodo(){
+      this.todoService.createTodo(this.newTodo);
     }
 
 }

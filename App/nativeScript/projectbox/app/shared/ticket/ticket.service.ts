@@ -27,7 +27,7 @@ export class TicketService {
     return Observable.throw(error);
   }
 
-  tickets() {
+  getTickets() {
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", "Bearer "+ Config.token)
@@ -38,7 +38,8 @@ export class TicketService {
     .map(response => response.json())
     .do(data => {
     })
-    .catch(this.handleErrors);
+    .catch(this.handleErrors)
+    .toPromise();
   }
 
   saveTickets(ticketsToSave :any){

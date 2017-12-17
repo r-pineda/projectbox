@@ -66,7 +66,7 @@ export class TicketComponent implements AfterViewInit, OnInit {
     });
     */
 
-    this.ticketService.tickets().subscribe(
+    this.ticketService.getTickets().then(
       (data) => this.displayTickets(data), 
       (error) => this.displayTickets(false)
     );

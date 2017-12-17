@@ -1,5 +1,6 @@
 export interface Meeting {
     protocol :string;
+    project :string;
     name :string;
     location :string;
     id :string;
