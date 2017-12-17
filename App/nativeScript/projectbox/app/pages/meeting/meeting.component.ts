@@ -24,17 +24,33 @@ import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/side
 import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import * as tabViewModule from "tns-core-modules/ui/tab-view";
+import {
+  Calendar,
+  SELECTION_MODE, // Multiple or single
+  DISPLAY_MODE, // Week or month
+  CalendarEvent, // little dots 
+  Appearance, // style customisation
+  SCROLL_ORIENTATION, // scroll orientation for iOS
+  CalendarSubtitle, // subtitles for iOS
+  Settings // Settings interface
+} from 'nativescript-fancy-calendar';
+import {registerElement} from "nativescript-angular/element-registry";
+
+registerElement('Calendar', () => Calendar);
 
 @Component({
   selector: "meeting_detail",
-  templateUrl: "pages/meeting_detail/meeting_detail.html",
+  templateUrl: "pages/meeting/meeting.html",
   providers: [UserService, MeetingService],
-  styleUrls: ["pages/meeting_detail/meeting_detail-common.css", "pages/meeting_detail/meeting_detail.css"]
+  styleUrls: ["pages/meeting/meeting-common.css"]
 })
 export class MeetingComponent implements OnInit{
 
   meetings :Meeting[];
   public picture :any;
+  create: boolean;
+  meetingdata :any;
+  meetingsText :string;
 
   constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService) {}
 
@@ -43,6 +59,12 @@ export class MeetingComponent implements OnInit{
       (data) => this.displayMeetings(data),
       (error) => this.displayMeetings(false)
     );
+    this.create = false;
+  }
+
+  cr_meeting() {
+    this.create = true;
+
   }
 
   displayMeetings(data :any){
@@ -70,5 +92,52 @@ export class MeetingComponent implements OnInit{
           }
       });
     }
+  }
+
+  showDetail(id: number) {
+    
+      this.routerExtensions.navigate(["/meeting_detail/" + id], {
+          
+          transition: {
+              name: "slide",
+              curve: "easeOut"
+          }
+      });
+  }
+
+  /* calendar */ 
+
+  settings: any;
+  subtitles: CalendarSubtitle[];
+  events: CalendarEvent[];
+  public appearance: Appearance;
+  private _calendar: Calendar;
+  
+  public calendarLoaded(event) {
+       this.settings = <Settings>{
+          displayMode: DISPLAY_MODE.MONTH, 
+          scrollOrientation: SCROLL_ORIENTATION.HORIZONTAL,
+          selectionMode: SELECTION_MODE.MULTIPLE,
+          firstWeekday: 2, // SUN: O, MON: 1, TUES: 2 etc..
+      };
+      this.appearance = <Appearance>{
+          weekdayTextColor: "#000000", //color of Tue, Wed, Thur.. (only iOS)
+          headerTitleColor: "#000000", //color of the current Month (only iOS)
+          eventColor: "#29A699", // color of dots
+          selectionColor: "#29A699", // color of the circle when a date is clicked
+          todayColor: "#29A699", // the color of the current day
+          hasBorder: true, // remove border (only iOS)
+          todaySelectionColor: "#29A699", // today color when seleted (only iOS)
+          borderRadius: 40 // border radius of the selection marker
+      };
+  }
+  
+  public dateSelected(event) {
+      console.log('date selected');
+  }
+
+
+  public monthChanged(event) {
+      console.log('month selected');
   }
 }

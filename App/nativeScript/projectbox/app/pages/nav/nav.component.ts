@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef, NgModule } from "@angular/core";
 import { UserService } from "../../shared/user/user.service";
 import { Router, ActivatedRoute, NavigationStart, NavigationEnd } from "@angular/router";
-import { RouterExtensions, PageRoute, NativeScriptRouterModule } from "nativescript-angular/router";
+import { RouterExtensions, NativeScriptRouterModule } from "nativescript-angular/router";
 import { Project, Pivot } from "../../shared/user/project";
 import "rxjs/add/operator/switchMap";
 import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
@@ -24,7 +24,6 @@ import { NavModule } from "./nav.module";
 
 @NgModule({
   bootstrap: [NavComponent],
-  entryComponents: [DashboardComponent, TodoComponent, TicketComponent],
   imports: [
       NativeScriptRouterModule,
       NativeScriptRouterModule.forRoot(routes)
@@ -35,12 +34,13 @@ export class NavComponent implements AfterViewInit, OnInit {
 
   curUser :User = new User;
   avatar :string;
+  curView :string;
 
   constructor
   (
     private router: Router,
     private routerExtensions: RouterExtensions,
-    private pageRoute: PageRoute,
+    //private pageRoute: PageRoute,
     private userService: UserService,
     private _changeDetectionRef: ChangeDetectorRef,
   )
@@ -52,6 +52,7 @@ export class NavComponent implements AfterViewInit, OnInit {
   }
   
   public ngOnInit() {
+    this.curView = 'dashboard';
   }
       
 
@@ -66,6 +67,10 @@ transition: {
 });
 }
 
+navigateto(view) {
+  this.curView = view;
+  console.log(view);
+}
 @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
     private drawer: RadSideDrawer;
 

@@ -23,6 +23,7 @@
     "nativescript-app-shortcuts": "^2.0.0",
     "nativescript-camera": "^3.1.2",
     "nativescript-couchbase": "^1.0.18",
+    "nativescript-fancy-calendar": "^3.0.2",
     "nativescript-fresco": "^3.0.6",
     "nativescript-imagepicker": "^3.0.7",
     "nativescript-ng-shadow": "^1.1.2",

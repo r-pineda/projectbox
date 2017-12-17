@@ -16,7 +16,7 @@ import { LISTVIEW_DIRECTIVES } from 'nativescript-pro-ui/listview/angular';
 import { TNSFontIconModule, TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 import { AppComponent } from "./app.component";
-import { routes, navigatableComponents } from "./app.routing";
+import { firstroute, routes, navigatableComponents } from "./app.routing";
 
 @NgModule({
   imports: [
@@ -25,7 +25,8 @@ import { routes, navigatableComponents } from "./app.routing";
     NativeScriptHttpModule,
     NativeScriptRouterModule,
     NgShadowModule, //ng-shadow plugin
-    NativeScriptRouterModule.forRoot(routes),
+    NativeScriptRouterModule.forRoot(firstroute),
+    NativeScriptRouterModule.forChild(routes),
    TNSFontIconModule.forRoot({
 			'fa': './fonts/font-awesome.css'
 		})

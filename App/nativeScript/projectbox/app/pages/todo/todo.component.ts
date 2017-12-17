@@ -16,7 +16,7 @@ import { UserService } from "../../shared/user/user.service";
 
 
 @Component({
-  selector: "my-app",
+  selector: "my-todo",
   providers: [TodoService, StatusService, UserService],
   templateUrl: "pages/todo/todo.html",
   styleUrls: ["pages/todo/todo-common.css", "pages/todo/todo.css"]

@@ -32,13 +32,13 @@
                     <Image [nsRouterLink]="['/todo']" src="~/images/task.png"  row="0" col="1" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
                     <Label [nsRouterLink]="['/dashboard']" text="Dashboard" row="1" col="0" class="h4 center nav-label"></Label>
                     <Label [nsRouterLink]="['/todo']" text="Tasks" row="1" col="1" class="h4 center nav-label"></Label>
-                    <Image [nsRouterLink]="meeting" src="~/images/meeting.png"  row="2" col="0" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
-                    <Image [nsRouterLink]="ticket" src="~/images/bug.png"  row="2" col="1" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
-                    <Label [nsRouterLink]="meeting" text="Meeting" row="3" col="0" class="h4 center nav-label"></Label>
-                    <Label [nsRouterLink]="ticket" text="Tickets" row="3" col="1" class="h4 center nav-label"></Label>
-                    <Image [nsRouterLink]="setting" src="~/images/settings.png" row="4" col="0" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
+                    <Image [nsRouterLink]="['/meeting']" src="~/images/meeting.png"  row="2" col="0" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
+                    <Image [nsRouterLink]="['/ticket']" src="~/images/bug.png"  row="2" col="1" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
+                    <Label [nsRouterLink]="['/meeting']" text="Meeting" row="3" col="0" class="h4 center nav-label"></Label>
+                    <Label [nsRouterLink]="['/ticket']" text="Tickets" row="3" col="1" class="h4 center nav-label"></Label>
+                    <Image [nsRouterLink]="['/setting']" src="~/images/settings.png" row="4" col="0" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
                     <Image [nsRouterLink]="login" src="~/images/logout.png"  row="4" col="1" width="50" height="50" stretch="aspectFill" class="sideLabel"></Image>
-                    <Label text="Einstellungen" row="5" col="0" class="h4 center nav-label"></Label>
+                    <Label [nsRouterLink]="['/setting']" text="Einstellungen" row="5" col="0" class="h4 center nav-label"></Label>
                     <Label [nsRouterLink]="login" text="Logout" row="5" col="1" class="h4 center nav-label"></Label>
                     </GridLayout>
     </StackLayout>
