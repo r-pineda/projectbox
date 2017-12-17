@@ -51,6 +51,9 @@
                 <TextField class="textfield" [(ngModel)]="meeting.duration"></TextField>
                 <Label class="h4" text="TEILNEHMER"></Label>
                 <TextField class="textfield" [(ngModel)]="meeting.attendees"></TextField>
+                <GridLayout>
+                    
+                </GridLayout>
                 <StackLayout orientation="horizontal" horizontalAlignment="right">
                         <Button class="btn btn-primary btn-active" (tap)="cancel()" text="Abbrechen"></Button>
                         <Button class="btn btn-primary btn-active" (tap)="updateMeeting()" text="Aktualisieren"></Button>

@@ -28,6 +28,7 @@ export class TodoComponent {
   avatar :string;
   todos :Todo[];
   timestart :string;
+  create :boolean;
   temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
                     //Ebene 1 des Arrays ist assoziativ mit den IDs von den Todos. die 2. Ebene enthält folgende Attribute:
                     //[0]startTime: Stunden
@@ -59,7 +60,8 @@ export class TodoComponent {
 
   ngOnInit(): void {
     this.todoService.getTodos()
-    .then((data) => this.displayTodos(data))
+    .then((data) => this.displayTodos(data));
+    this.create = false;
 
     /*
     this.temp = new Array(this.todos.length);
@@ -70,6 +72,11 @@ export class TodoComponent {
     });
     */
   }
+
+  cr_task() {
+    this.create = true;
+  }
+  
   displayTodos(data :any){
     
         if(data){
@@ -128,24 +135,7 @@ export class TodoComponent {
   });
 }
 
-@ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
-    private drawer: RadSideDrawer;
-
-    ngAfterViewInit() {
-        this.drawer = this.drawerComponent.sideDrawer;
-        this._changeDetectionRef.detectChanges();
-    }
-
-    public openDrawer() {
-        this.drawer.showDrawer();
-    }
-
-    public onCloseDrawerTap() {
-       this.drawer.closeDrawer();
-    }
-
     saveNewTodo(){
       this.todoService.createTodo(this.newTodo);
     }
-
 }
