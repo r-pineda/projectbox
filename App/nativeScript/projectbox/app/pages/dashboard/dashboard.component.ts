@@ -156,6 +156,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   }
   setSelectedProject(id :string){
     this.selectedProject = id;
+    this.ngOnInit();
   }
 /*
   navigateto(pagename: string) {
