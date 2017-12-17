@@ -1,18 +1,44 @@
 export class Todo {
-    id :number;
-    title :string;
-    dateFrom :Date;
-    dateTo :Date;
-    progress :number;
-    timeTaken :number;  //time already taken for Todo in minutes
-    isMileStone :boolean;
-    isCompleted :boolean;
-    apResponsible :string;
-    apWorker :string;       //Mitarbeiter neben dem Verantwortlichen
-    timeEstimated :number;  //in Minuten
-    priority :number;
-    chargeable :boolean;
-    priceIntern :number;
-    priceExtern :number;
-    
-  }
+  id: string;
+  user_id: string;
+  tasklist_id?: any;
+  responsible_id: string;
+  order: number;
+  name: string;
+  description?: any;
+  duration?: any;
+  priority: number;
+  progress: number;
+  due_date: string;
+  planned: boolean;
+  planned_at: string;
+  completed: boolean;
+  completed_at: string;
+  created_at: string;
+  updated_at: string;
+  start_date: string;
+  estimate: string;
+  milestone: boolean;
+  milestone_description: string;
+  number: string;
+  project_id: string;
+  phase_id: string;
+  deliverables?: any;
+  team_text?: any;
+  planned_costs: string;
+  actual_costs: string;
+  future_costs: string;
+  cost_type?: any;
+  type_id: number;
+  predecessor_id?: any;
+  rate: number;
+  rate_internal: number;
+  billable: boolean;
+  userstory_id?: any;
+  inserted_at?: any;
+  state: string;
+  has_predecessor: boolean;
+  user: string;
+  project: string;
+  trackings?: any[];
+}

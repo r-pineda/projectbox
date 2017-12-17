@@ -42,14 +42,14 @@ export class TodoService {
     .toPromise();
   }
 
-  createTodo(ticket :Todo){
-    delete ticket.id;
+  createTodo(todo :Todo){
+    delete todo.id;
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.post(
       Config.apiUrl + "v2/tasks",
-      ("{\"ticket\": " + JSON.stringify(ticket) + "}"),
+      ("{\"ticket\": " + JSON.stringify(todo) + "}"),
       { headers: headers }
     )
     .map(response => response.json())
@@ -59,16 +59,16 @@ export class TodoService {
     .toPromise();
   }
 
-  updateTodo(ticket :Todo){
-    let id :string = ticket.id + "";
-    delete ticket.id;
+  updateTodo(todo :Todo){
+    let id :string = todo.id + "";
+    delete todo.id;
     
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.put(
       Config.apiUrl + "v2/tasks/" + id,
-      ("{\"ticket\": " + JSON.stringify(ticket) + "}"),
+      ("{\"task\": " + JSON.stringify(todo) + "}"),
       { headers: headers }
     )
     .map(response => response.json())
