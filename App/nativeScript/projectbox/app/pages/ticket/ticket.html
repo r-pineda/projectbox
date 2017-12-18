@@ -14,12 +14,12 @@
             <GridLayout columns="*" rows="auto,auto,auto">
             <Label class="h1" text="TOP-TICKETS" col="0" row="0"></Label>
             <StackLayout class="margin-ticket" col="0" row="1">
-            <GridLayout *ngFor="let ticket of tickets" columns="auto,*" rows="50,50,50">
+            <GridLayout *ngFor="let ticket of tickets" columns="auto,*" rows="50,50,50" (tap)="expand(ticket.id)">
                 <Label class="border-tickets" height="50" col="0" rowSpan="2"></Label>
                 <GridLayout col="1" class="ticket" rowSpan="2" columns="*,*" rows="*,*">
                 <Label class="h3 ticket" [text]="ticket.name" col="0" row="0"></Label>
                 <Label class="h5 ticket" [text]="ticket.date" col="0" row="1"></Label>
-                <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon" col="1" rowSpan="2" (tap)="expand(ticket.id)"></Label>
+                <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon" col="1" rowSpan="2"></Label>
             </GridLayout>
                 <GridLayout *ngIf="ticketForDetail[ticket.id]" col="1" row="3" columns="*,*,*,*" rows="*,*,*">
                     <Label colSpan="3" row="0" [text]="ticket.description"></Label>
@@ -30,7 +30,7 @@
             <Label class="h1" text="WEITERE TICKETS" col="0" row="2"></Label>
         </GridLayout>
             </StackLayout>
-            <StackLayout *ngIf="create">
+            <StackLayout *ngIf="create" class="expand-detail">
                     <Label class="h4 center" text="DOWN"></Label>
                     <Label class="h4" text="TITEL"></Label>
                     <TextField class="textfield" [(ngModel)]="meeting.name"></TextField>
