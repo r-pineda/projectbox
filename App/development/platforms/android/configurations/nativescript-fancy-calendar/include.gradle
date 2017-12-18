@@ -1,0 +1,12 @@
+//default elements
+android {
+    productFlavors {
+        "F2" {
+            dimension "nativescriptfancycalendar"
+        }
+    }
+}
+
+dependencies {
+	compile 'com.prolificinteractive:material-calendarview:1.4.3'
+}

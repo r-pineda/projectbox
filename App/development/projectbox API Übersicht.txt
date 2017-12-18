@@ -1,0 +1,132 @@
+projectbox API Übersicht
+------------------------------------------------------------
+Base URL: https://secure.projectbox.eu
+------------------------------------------------------------
+Authentification 
+endpoint:   /v2/token
+method:     POST
+parameter:  username und password
+response:   JSON object mit User-Informationen
+
+Wichtig ist das Attribut: access_token. 
+Dieser Token muss bei allen weiteren Requests im Header mitgeschickt werden.
+
+Header: Authorization: Bearer access_token
+------------------------------------------------------------
+Meetings
+endpoint: /v2/meetings
+method:   GET
+response: JSON array mit allen Meetings des Users
+
+endpoint: /v2/meetings
+method:   POST
+body:     {meeting: {name: "Neues Meeting", date: "2017-08-24T14:00:36.245Z", duration: 60, location: "TBD"}}
+response: JSON object des Meetings
+
+endpoint: /v2/meetings/1
+method:   PUT
+body:     {meeting: { agenda:"Text", attendees:"Text", date:"2017-08-24T14:00:36.245Z", duration:90, location:"Agile Coderz HQ", name:"Strategiemeeting - AC & DB", protocol:"Text"}}
+response: JSON object des Meetings
+
+endpoint: /v2/meetings/1
+method:   DELETE
+body:     leer
+response: Status 200 - ok
+------------------------------------------------------------
+Tickets
+endpoint: /v2/tickets
+method:   GET
+response: JSON array mit allen Tickets des Users
+
+endpoint: /v2/tickets
+method:   POST
+body:     {ticket: {name: "Neues Ticket", date: "2017-08-24T14:00:36.245Z", ... }}
+response: JSON object des Tickets
+
+endpoint: /v2/tickets/1
+method:   PUT
+body:     {ticket: { ... }}
+response: JSON object des Tickets
+
+endpoint: /v2/tickets/1
+method:   DELETE
+body:     leer
+response: Status 200 - ok
+------------------------------------------------------------
+Tasks
+endpoint: /v2/tasks
+method:   GET
+response: JSON array mit allen Task des Users
+
+endpoint: /v2/tasks
+method:   POST
+body:     {taks: {name: "Neues Meeting", ... }}
+response: JSON object des Tasks
+
+endpoint: /v2/tasks/1
+method:   PUT
+body:     {task: { ... }}
+response: JSON object des Tasks
+
+endpoint: /v2/tasks/1
+method:   DELETE
+body:     leer
+response: Status 200 - ok
+------------------------------------------------------------
+Files
+endpoint: /v2/files
+method:   GET
+response: JSON array mit allen Task des Users
+
+endpoint: /v2/files
+method:   POST
+body:     {taks: {name: "Neues Meeting", ... }}
+response: JSON object des Tasks
+
+endpoint: /v2/files/1
+method:   PUT
+body:     {task: { ... }}
+response: JSON object des Tasks
+
+endpoint: /v2/files/1
+method:   DELETE
+body:     leer
+response: Status 200 - ok
+
+endpoint: /v2/preview/file/1
+method:   GET
+response: liefert das eigentliche file mit header für anzeige in browser
+
+endpoint: /v2/download/file/1
+method:   GET
+response: liefert das eigentliche file mit header für forced download
+------------------------------------------------------------
+Projekte
+endpoint: /v2/projects
+method:   GET
+response: JSON array mit allen Task des Users
+
+endpoint: /v2/projects
+method:   POST
+body:     {taks: {name: "Neues Meeting", ... }}
+response: JSON object des Tasks
+
+endpoint: /v2/projects/1
+method:   PUT
+body:     {task: { ... }}
+response: JSON object des Tasks
+------------------------------------------------------------
+Timetracking
+endpoint: /v2/trackings
+method:   GET
+response: JSON array mit allen Trackings des Users
+
+
+Fragen: 
+    meeting ID in PUT? Nein.
+    ProfilBild: avatar ID in User Objekt, Request URL: https://secure.projectbox.eu/v2/user/avatar/{avatar-id}
+    Message bei Login Error: "ip blocked" oder "invalid credentials"
+    Daten mit base64 encoded, Plugin empfohlen
+    Meeting bekommt attendees mit external option. Agenda wird in einzelne Punkte aufgeteilt, als JSON string in der Datenbank abgelegt.
+    Meeting bekommt einen link zu Projects, genau wie Tickets.
+    Tasks werden bei details von Projekten mitgeliefert.

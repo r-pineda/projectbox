@@ -1,0 +1,116 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "nativescript-ngx-fonticon@^4.0.0",
+        "scope": null,
+        "escapedName": "nativescript-ngx-fonticon",
+        "name": "nativescript-ngx-fonticon",
+        "rawSpec": "^4.0.0",
+        "spec": ">=4.0.0 <5.0.0",
+        "type": "range"
+      },
+      "D:\\Desktop\\projectbox\\App\\development"
+    ]
+  ],
+  "_from": "nativescript-ngx-fonticon@>=4.0.0 <5.0.0",
+  "_id": "nativescript-ngx-fonticon@4.0.0",
+  "_inCache": true,
+  "_location": "/nativescript-ngx-fonticon",
+  "_nodeVersion": "8.9.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/nativescript-ngx-fonticon-4.0.0.tgz_1510541624537_0.9570763381198049"
+  },
+  "_npmUser": {
+    "name": "walkerrunpdx",
+    "email": "walkerrunpdx@gmail.com"
+  },
+  "_npmVersion": "5.5.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "nativescript-ngx-fonticon@^4.0.0",
+    "scope": null,
+    "escapedName": "nativescript-ngx-fonticon",
+    "name": "nativescript-ngx-fonticon",
+    "rawSpec": "^4.0.0",
+    "spec": ">=4.0.0 <5.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/nativescript-ngx-fonticon/-/nativescript-ngx-fonticon-4.0.0.tgz",
+  "_shasum": "5f78184c47fbdf4e742c1fe41767c2227f058184",
+  "_shrinkwrap": null,
+  "_spec": "nativescript-ngx-fonticon@^4.0.0",
+  "_where": "D:\\Desktop\\projectbox\\App\\development",
+  "author": {
+    "name": "Nathan Walker",
+    "email": "walkerrunpdx@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/NathanWalker/nativescript-ngx-fonticon/issues"
+  },
+  "contributors": [
+    {
+      "name": "Nathanael Anderson",
+      "email": "nathan@master-technology",
+      "url": "https://github.com/nathanaela"
+    },
+    {
+      "name": "Martin Reinhardt",
+      "email": "contact@martinreinhardt-online.de",
+      "url": "https://github.com/hypery2k"
+    }
+  ],
+  "dependencies": {},
+  "description": "Use custom font icon collections seamlessly with NativeScript for Angular.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-myjjNDofg7XqcElH9qLrbLx/AwiWCb5LZHhXEfTbLNn3xPKQUywoWfKEGqDDYZqK96aYJUYEr9GMFZiaynpmnw==",
+    "shasum": "5f78184c47fbdf4e742c1fe41767c2227f058184",
+    "tarball": "https://registry.npmjs.org/nativescript-ngx-fonticon/-/nativescript-ngx-fonticon-4.0.0.tgz"
+  },
+  "gitHead": "daca8994e469e16ae9526359b15f4767ae0b75da",
+  "homepage": "https://github.com/NathanWalker/nativescript-ngx-fonticon#readme",
+  "keywords": [
+    "angular",
+    "angular2",
+    "ng",
+    "ngx",
+    "ng2",
+    "nativescript",
+    "icon",
+    "font"
+  ],
+  "license": "MIT",
+  "main": "nativescript-ngx-fonticon",
+  "maintainers": [
+    {
+      "name": "hypery2k",
+      "email": "contact@martinreinhardt-online.de"
+    },
+    {
+      "name": "walkerrunpdx",
+      "email": "walkerrunpdx@gmail.com"
+    }
+  ],
+  "module": "nativescript-ngx-fonticon.js",
+  "name": "nativescript-ngx-fonticon",
+  "nativescript": {
+    "platforms": {
+      "android": "3.0.0",
+      "ios": "3.0.0"
+    }
+  },
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NathanWalker/nativescript-ngx-fonticon.git"
+  },
+  "typings": "nativescript-ngx-fonticon.d.ts",
+  "version": "4.0.0"
+}

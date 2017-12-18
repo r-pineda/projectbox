@@ -1,0 +1,4 @@
+
+android {
+    flavorDimensions "nativescriptcamera", "nativescriptcardview", "nativescriptcouchbase", "nativescriptimagepicker", "nativescriptproui", "nativescripttelerikui", "tnscoremoduleswidgets"
+}

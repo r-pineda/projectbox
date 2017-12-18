@@ -1,0 +1,3 @@
+Entry,purpose,location
+"meetings","Save latest meeting data received from the server.","meeting.service.ts";
+"latestUser","Last logged in User on the Device for offline login","status.service.ts";

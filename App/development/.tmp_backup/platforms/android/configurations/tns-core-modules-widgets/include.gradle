@@ -1,0 +1,8 @@
+
+android {
+    productFlavors {
+        "F6" {
+            dimension "tnscoremoduleswidgets"
+        }
+    }
+}

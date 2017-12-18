@@ -1,0 +1,36 @@
+
+        <GridLayout columns="*,*,*" rows="20,auto,auto,auto,auto,auto,auto" >
+        <Label *ngIf="offlinemode" row="0" colSpan="3" text="OFFLINE" style="text-align:center;background-color:rgb(99, 228, 178);"></Label>
+        <GridLayout columns="auto, *" rows="auto" row="1" colSpan="3">
+                <Label text="PROJEKTE" (tap)="navigateto(ticket)" row="0" col="0" class="h2"></Label>
+                <Label text="see all >" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom" class="text" style="margin-right:10;"></Label>
+        </GridLayout>
+        <GridLayout columns="*" rows="*" colSpan="3"  row="2" class="project" style="padding:5;">
+            <StackLayout orientation="horizontal">   
+            <Label *ngFor="let item of projects" [text]="item.name" class="h4 projects"></Label>
+                </StackLayout> 
+        </GridLayout>
+    
+        <Label text="TASKS" (tap)="navigateto('/todo')" row="3" colSpan="3" class="h2"></Label>
+        <StackLayout row="4" colSpan="3">
+                <GridLayout (tap)="showDetail()" columns="5, *" rows="40, auto">
+                        <Border cornerRadius="10" col="0" row="0" height="40" width="5" borderColor="#DEE8E7" style="top:0;background-color:#CB1F2C;" margin="10 0 0 0">
+                           </Border>
+                        <GridLayout col="1" rowSpan="2" columns="auto" class="task" rows="*, *" padding="10">
+                                <Label text="UX - Testfälle erstellen" id="task-h1" class="h1" textWrap="true" col="0" row="0" style.fontSize="20"></Label>
+                                <Label text="Donec id elit non mi porta gravida at eget metus" class="text" col="0" row="2" style.fontSize="14" style.verticalAlignment="top" style.horizontalAlignment="left" textWrap="true"></Label>
+                        </GridLayout>
+                      </GridLayout>
+        </StackLayout>
+        <Label text="MEETINGS" (tap)="navigateto('/ticket')" row="5" colSpan="3" class="h2"></Label>
+        <StackLayout row="6" colSpan="3">
+                <GridLayout *ngFor="let item of meetings" columns="80,auto,auto,*" rows="auto,auto,*" (tap)="showDetail(item.id)" class="meeting"  marginBottom="10">
+                    <Label text="HEUTE" col="0" row="0" rowSpan="3" class="meeting-indicator h4" margin="0 0 0 5"></Label>
+                    <Border cornerRadius="5" col="1" rowSpan="3" class="meeting-border" margin="5"></Border>
+                    <Label [text]="item.name" textWrap="true" class="h4" col="2" margin="5 0 0 0"></Label>
+                    <Label [text]="item.date" col="2" row="1"  class="text" margin="0"></Label>
+                    <Label [text]="item.location" col="2" row="2" class="text" margin="0 5 0 0"></Label>
+                    <Label text="..." col="3" rowSpan="3" class="meeting-cont" margin="0 20 20 20"></Label>
+                </GridLayout>
+    </StackLayout>
+        </GridLayout>
