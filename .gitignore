@@ -57,6 +57,3 @@ freeline_project_description.json
 App/nativeScript/projectbox/platforms
 App/nativeScript/projectbox/node_modules
 *.js
-
-#MAC DS STORE
-.DS_Store
