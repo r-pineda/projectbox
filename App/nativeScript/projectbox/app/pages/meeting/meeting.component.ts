@@ -146,11 +146,15 @@ export class MeetingComponent implements OnInit{
   }
 
   filterByDate(date :Date){
+    let selectedDate = new Date(date.getFullYear(), date.getMonth(), date.getDay(), 0,0,0,0)
     this.displayedMeetings = new Array<Meeting>();
     this.meetings.forEach(meeting => {
       let meetingDate = new Date(meeting.date);
+      console.log(date);
+      console.log(meetingDate);
       if(meetingDate.getFullYear() === date.getFullYear() && meetingDate.getMonth() === date.getMonth() && meetingDate.getDay() === date.getDay()){
         this.displayedMeetings.push(meeting);
+        console.log(true);
       }
     });
   }
