@@ -32,7 +32,6 @@
   vertical-align: middle;
 }
 
-.expanded {
-  background-color: #ffffff;
-  height: 150;
+.expand-detail {
+    background-color: #ffffff;
 }

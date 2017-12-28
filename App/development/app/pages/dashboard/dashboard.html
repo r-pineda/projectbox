@@ -1,15 +1,4 @@
-<ActionBar title="Dashboard">
-        <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="openDrawer()"></NavigationButton>
-        <StackLayout orientation="horizontal"
-        ios:horizontalAlignment="center"
-        android:horizontalAlignment="center">
-        <Label text="Dashboard" class="action-label nav-h3"></Label>
-      </StackLayout>
-      <ActionItem ios.position="right" android.position="actionBar" ios.systemIcon="13" android.systemIcon="ic_menu_refresh" (tap)="aktualisieren()"></ActionItem>
-</ActionBar>
-<ScrollView orientation="vertical" isEnabled="true" width="100%" height="100%" >
-        <AbsoluteLayout>
-            <StackLayout class="page" width="100%">
+
         <GridLayout columns="*,*,*" rows="20,auto,auto,auto,auto,auto,auto" >
         <Label *ngIf="offlinemode" row="0" colSpan="3" text="OFFLINE" style="text-align:center;background-color:rgb(99, 228, 178);"></Label>
         <GridLayout columns="auto, *" rows="auto" row="1" colSpan="3">
@@ -18,7 +7,7 @@
         </GridLayout>
         <GridLayout columns="*" rows="*" colSpan="3"  row="2" class="project" style="padding:5;">
             <StackLayout orientation="horizontal">   
-            <Label *ngFor="let item of projects" [text]="item.name" class="h4 projects" verticalAlignment="middle" (tap)="setSelectedProject(item.id)"></Label>
+            <Label *ngFor="let item of projects" [text]="item.name" class="h4 projects"></Label>
                 </StackLayout> 
         </GridLayout>
     
@@ -45,6 +34,3 @@
                 </GridLayout>
     </StackLayout>
         </GridLayout>
-        </StackLayout>
-        </AbsoluteLayout>
-</ScrollView>
