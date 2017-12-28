@@ -47,6 +47,7 @@ registerElement('Calendar', () => Calendar);
 export class MeetingComponent implements OnInit{
 
   meetings :Meeting[];
+  displayedMeetings :Meeting[];
   public picture :any;
   create: boolean;
   meetingdata :any;
@@ -77,13 +78,11 @@ export class MeetingComponent implements OnInit{
     
         if(data){
           this.meetingService.saveMeetings(data);
-          this.meetings = data.meetings;
-    
         }else{
-    
           data = this.meetingService.getSavedMeetings()
-          this.meetings = data.meetings; 
         }
+        this.meetings = data.meetings;
+        this.displayedMeetings = data.meetings;
     
         //this.meetings.sort((a, b) => {return a.date.getTime()-b.date.getTime()})
   }
@@ -127,7 +126,7 @@ export class MeetingComponent implements OnInit{
        this.settings = <Settings>{
           displayMode: DISPLAY_MODE.MONTH, 
           scrollOrientation: SCROLL_ORIENTATION.HORIZONTAL,
-          selectionMode: SELECTION_MODE.MULTIPLE,
+          selectionMode: SELECTION_MODE.SINGLE,
           firstWeekday: 2, // SUN: O, MON: 1, TUES: 2 etc..
       };
       this.appearance = <Appearance>{
@@ -143,7 +142,21 @@ export class MeetingComponent implements OnInit{
   }
   
   public dateSelected(event) {
-      console.log('date selected');
+    this.filterByDate(event.data.date);
+  }
+
+  filterByDate(date :Date){
+    let selectedDate = new Date(date.getFullYear(), date.getMonth(), date.getDay(), 0,0,0,0)
+    this.displayedMeetings = new Array<Meeting>();
+    this.meetings.forEach(meeting => {
+      let meetingDate = new Date(meeting.date);
+      console.log(date);
+      console.log(meetingDate);
+      if(meetingDate.getFullYear() === date.getFullYear() && meetingDate.getMonth() === date.getMonth() && meetingDate.getDay() === date.getDay()){
+        this.displayedMeetings.push(meeting);
+        console.log(true);
+      }
+    });
   }
 
 
