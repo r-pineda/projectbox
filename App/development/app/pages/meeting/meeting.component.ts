@@ -47,6 +47,7 @@ registerElement('Calendar', () => Calendar);
 export class MeetingComponent implements OnInit{
 
   meetings :Meeting[];
+  displayedMeetings :Meeting[];
   public picture :any;
   create: boolean;
   meetingdata :any;
@@ -127,7 +128,7 @@ export class MeetingComponent implements OnInit{
        this.settings = <Settings>{
           displayMode: DISPLAY_MODE.MONTH, 
           scrollOrientation: SCROLL_ORIENTATION.HORIZONTAL,
-          selectionMode: SELECTION_MODE.MULTIPLE,
+          selectionMode: SELECTION_MODE.SINGLE,
           firstWeekday: 2, // SUN: O, MON: 1, TUES: 2 etc..
       };
       this.appearance = <Appearance>{
@@ -143,8 +144,18 @@ export class MeetingComponent implements OnInit{
   }
   
   public dateSelected(event) {
-      console.log('date selected');
-  }
+    this.filterByDate(event.data.date);
+   }
+ 
+   filterByDate(date :Date){
+     this.displayedMeetings = new Array<Meeting>();
+     this.meetings.forEach(meeting => {
+       let meetingDate = new Date(meeting.date);
+       if(meetingDate.getFullYear() === date.getFullYear() && meetingDate.getMonth() === date.getMonth() && meetingDate.getDay() === date.getDay()){
+         this.displayedMeetings.push(meeting);
+       }
+     });
+ }
 
 
   public monthChanged(event) {
