@@ -54,8 +54,8 @@ freeline.py
 freeline/
 freeline_project_description.json
 
-App/nativeScript/projectbox/platforms
-App/nativeScript/projectbox/node_modules
+App/development/platforms
+App/development/node_modules
 *.js
 
 #MAC DS STORE
