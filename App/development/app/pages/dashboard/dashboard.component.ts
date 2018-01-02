@@ -111,7 +111,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       this.todos = data.todos;
     }else{
       data = this.todoService.getSavedTodos();
-      this.todos = data.tickets;
+      this.todos = data.todos;
     }
   }
 
@@ -130,7 +130,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     }else{
       this.meetings = data.meetings;
     }
-    //this.meetings.sort((a, b) => {return a.date.getTime()-b.date.getTime()})
+    this.meetings.sort((a, b) => {return new Date(a.date).getTime() - new Date(b.date).getTime()})
   }
   displayProjects(data :any){
     if(data){

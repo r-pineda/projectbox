@@ -20,7 +20,6 @@ export class StatusService {
 
     offlineMode :boolean; 
     currentUser :string;    //noch string, TODO: user Interface anlegen
-    AccesToken :string;
 
   constructor() {}
 

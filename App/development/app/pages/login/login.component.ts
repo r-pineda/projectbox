@@ -50,8 +50,10 @@ export class LoginComponent implements OnInit{
   )
   {
     this.user = new UserLogin();
-    this.user.email = "rommelt.pineda@htl.rennweg.at";
-    this.user.password = "rommelt.pineda";
+    //this.user.email = "rommelt.pineda@htl.rennweg.at";
+    //this.user.password = "rommelt.pineda";
+    this.user.email = "michael.fruehwirth@htl.rennweg.at";
+    this.user.password = "michael1234";
     page.actionBarHidden = true;
 
     // instantiate the plugin

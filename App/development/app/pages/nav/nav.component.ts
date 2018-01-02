@@ -13,6 +13,7 @@ import { DashboardComponent } from "../dashboard/dashboard.component";
 import { TodoComponent } from "../todo/todo.component";
 import { TicketComponent } from "../ticket/ticket.component";
 import { NavModule } from "./nav.module";
+import { File } from "../../shared/user/file"
 
 @Component({
   selector: "app-nav",
@@ -27,12 +28,14 @@ import { NavModule } from "./nav.module";
   imports: [
       NativeScriptRouterModule,
       NativeScriptRouterModule.forRoot(routes)
-  ]
+  ],
+  providers: [UserService]
 })
 
 export class NavComponent implements AfterViewInit, OnInit {
 
   curUser :User = new User;
+  userFiles :File[];
   avatar :string;
   curView :string;
 
@@ -47,30 +50,44 @@ export class NavComponent implements AfterViewInit, OnInit {
   {
 
     this.curUser = this.userService.getCurrentUser();
+    this.avatar = "https://secure.projectbox.eu/v2/download/file/e8a3c9dd-637a-4fb5-9192-d6cb51854d50?access_token=" + this.curUser.access_token;
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
 
   }
   
   public ngOnInit() {
     this.curView = 'dashboard';
+    this.userService.getFiles().then(
+      (data) => this.displayFiles(data),
+      (error) => this.displayFiles(false)
+    );
+  }
+
+  displayFiles(data :any){
+    if(data){
+      this.userFiles = data.files;
+    }else{
+      data = this.userService.getSavedFiles();
+      this.userFiles = data.files;
+    }
+    console.dir(this.userFiles);
   }
       
+  logout(){
+    this.drawer.closeDrawer();
+    this.routerExtensions.navigate(["/login"], {
+      animated:true,
+      transition: {
+        name: "slide",
+        curve: "easeOut"
+      }
+    });
+  }
 
-logout(){
-this.drawer.closeDrawer();
-this.routerExtensions.navigate(["/login"], {
-animated:true,
-transition: {
-  name: "slide",
-  curve: "easeOut"
-}
-});
-}
-
-navigateto(view) {
-  this.curView = view;
-  console.log(view);
-}
+  navigateto(view) {
+    this.curView = view;
+    console.log(view);
+  }
 @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
     private drawer: RadSideDrawer;
 

@@ -19,6 +19,7 @@ import { UserLogin } from "./userLogin";
 import { User } from "./user";
 import { Config } from "../config";
 import { Project, Pivot } from "./project"
+import { File } from "../../shared/user/file";
 
 @Injectable()
 export class UserService {
@@ -95,4 +96,28 @@ export class UserService {
       console.log(e);
     });
   }
+  getFiles(){
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.get(
+      Config.apiUrl + "v2/files",
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+      this.saveFiles(data);
+    })
+    .catch(this.handleErrors)
+    .toPromise();
+  }
+
+  saveFiles(filesToSave :File[]){
+    setString("files", JSON.stringify(filesToSave));
+  }
+
+  getSavedFiles (){
+    return JSON.parse(getString("files"));
+  }
+
 }
