@@ -37,8 +37,7 @@ export class NavComponent implements AfterViewInit, OnInit {
   curUser :User = new User;
   userFiles :File[];
   avatar :string;
-  curView :string;
-  appState :string;
+  appState :string = 'dashboard';
 
   constructor
   (
@@ -57,7 +56,6 @@ export class NavComponent implements AfterViewInit, OnInit {
   }
   
   public ngOnInit() {
-    this.curView = 'dashboard';
     this.userService.getFiles().then(
       (data) => this.displayFiles(data),
       (error) => this.displayFiles(false)
@@ -85,10 +83,11 @@ export class NavComponent implements AfterViewInit, OnInit {
     });
   }
 
-  navigateto(view) {
-    this.curView = view;
-    console.log(view);
+  state(view) {
+    this.appState = view + '';
+    console.log(this.appState);
   }
+
 @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
     private drawer: RadSideDrawer;
 
