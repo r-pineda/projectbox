@@ -1,3 +1,7 @@
+import { NgModule } from '@angular/core';
+import { NativeScriptRouterModule } from 'nativescript-angular/router';
+import { Routes } from '@angular/router';
+
 import { LoginComponent } from "./pages/login/login.component";
 import { Meeting_detailComponent } from "./pages/meeting_detail/meeting_detail.component";
 import { TodoComponent } from "./pages/todo/todo.component";
@@ -6,47 +10,22 @@ import { TicketComponent } from "./pages/ticket/ticket.component";
 import { NavComponent } from "./pages/nav/nav.component";
 import { MeetingComponent } from "./pages/meeting/meeting.component";
 
-export const firstroute = [
+export const routes = [
   { path: "", component: LoginComponent },
-  { path: "login", component: LoginComponent },
-  { path: "nav", 
-    component: NavComponent,
+  { path: "nav", component: NavComponent,
     children: [
-      { path: "dashboard", component: DashboardComponent },
-      { path: "meeting_detail/:id", component: Meeting_detailComponent },
-      { path: "ticket", component: TicketComponent },
-      { path: "todo", component: TodoComponent },
-      { path: "meeting", component: MeetingComponent}
+      { path: "dashboard", component: DashboardComponent, outlet: 'dashboardoutlet' },
+      { path: "meeting_detail/:id", component: Meeting_detailComponent, outlet: 'meetingdetailoutlet' },
+      { path: "ticket", component: TicketComponent, outlet: 'ticketoutlet' },
+      { path: "todo", component: TodoComponent , outlet: 'todooutlet'},
+      { path: "meeting", component: MeetingComponent, outlet: 'meetingoutlet'}
     ]
   }
 ];
 
-export const routes = [
-  { path: "", component: LoginComponent },
-  { path: "login", component: LoginComponent },
-  { path: "nav", 
-    component: NavComponent,
-    children: [
-      { path: "dashboard", component: DashboardComponent },
-      { path: "meeting_detail/:id", component: Meeting_detailComponent },
-      { path: "ticket", component: TicketComponent },
-      { path: "todo", component: TodoComponent },
-      { path: "meeting", component: MeetingComponent}
-    ]
-  },
-  { path: "dashboard", component: DashboardComponent },
-  { path: "meeting_detail/:id", component: Meeting_detailComponent },
-  { path: "ticket", component: TicketComponent },
-  { path: "todo", component: TodoComponent },
-  { path: "meeting", component: MeetingComponent}
-];
+@NgModule({
+  imports: [NativeScriptRouterModule.forRoot(routes)],
+  exports: [NativeScriptRouterModule]
+})
 
-export const navigatableComponents = [
-  NavComponent,
-  LoginComponent,
-  Meeting_detailComponent,
-  TodoComponent,
-  DashboardComponent,
-  TicketComponent,
-  MeetingComponent
-];
+export class AppRoutingModule { }

@@ -39,7 +39,7 @@ import {registerElement} from "nativescript-angular/element-registry";
 registerElement('Calendar', () => Calendar);
 
 @Component({
-  selector: "meeting_detail",
+  selector: "pb-meeting",
   templateUrl: "pages/meeting/meeting.html",
   providers: [UserService, MeetingService],
   styleUrls: ["pages/meeting/meeting-common.css"]

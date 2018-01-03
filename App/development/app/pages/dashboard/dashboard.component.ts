@@ -28,7 +28,7 @@ import { Todo } from "../../shared/todo/todo";
 import { Ticket } from "../../shared/ticket/ticket";
 
 @Component({
-  selector: "app-dashboard",
+  selector: "pb-dashboard",
   providers: [UserService, MeetingService, StatusService, TodoService, TicketService],
   templateUrl: "pages/dashboard/dashboard.html",
   styleUrls: ["pages/dashboard/dashboard-common.css", "pages/dashboard/dashboard.css"]

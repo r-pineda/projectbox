@@ -16,7 +16,7 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 
 @Component({
-  selector: "my-app",
+  selector: "pb-ticket",
   providers: [TicketService, StatusService, UserService],
   templateUrl: "pages/ticket/ticket.html",
   styleUrls: ["pages/ticket/ticket-common.css", "pages/ticket/ticket.css"]
