@@ -24,6 +24,7 @@ import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/side
 import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import * as tabViewModule from "tns-core-modules/ui/tab-view";
+import { File } from "../../shared/user/file";
 
 @Component({
   selector: "pb-meeting_detail",
@@ -35,15 +36,36 @@ export class Meeting_detailComponent implements OnInit{
 
   meeting :Meeting;
   public picture :any;
+  userFiles :File[];
+  imageFiles :string[] = new Array<string>();
 
-  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService) {
+  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService, private userService: UserService) {
 
     this.route.params.subscribe((params) => {
       this.getMeeting(params["id"]);
     });
   }
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.userService.getFiles().then(
+      (data) => this.displayFiles(data),
+      (error) => this.displayFiles(false)
+    )
+    .then(() => {
+      this.userFiles.forEach(file => {
+        if(file.meeting_id != this.meeting.id){
+          this.userFiles.splice(this.userFiles.indexOf(file), 1);
+        }
+      });
+    })
+    .then(() => {
+      this.userFiles.forEach(file => {
+        if(file.mime.split("/")[0] === "image"){
+          this.imageFiles.push("https://secure.projectbox.eu/v2/preview/file/" + file.id + "?access_token=" + this.userService.getCurrentUser().access_token)
+        }
+      });
+    });
+  }
 
   getMeeting(meeting_id :number){
     this.meetingService.getMeetings().then(
@@ -57,6 +79,15 @@ export class Meeting_detailComponent implements OnInit{
 
   cancel() {
     this.routerExtensions.backToPreviousPage();
+  }
+
+  displayFiles(data :any){
+    if(data){
+      this.userFiles = data.files;
+    }else{
+      data = this.userService.getSavedFiles();
+      this.userFiles = data.files;
+    }
   }
 
   getMeetingById(data :any, meeting_id :number){
