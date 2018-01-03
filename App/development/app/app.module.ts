@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NgZone } from "@angular/core";
 import { isIOS } from "tns-core-modules/platform";
 import { RouterExtensions } from "nativescript-angular";
@@ -16,7 +16,17 @@ import { LISTVIEW_DIRECTIVES } from 'nativescript-pro-ui/listview/angular';
 import { TNSFontIconModule, TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 import { AppComponent } from "./app.component";
-import { firstroute, routes, navigatableComponents } from "./app.routing";
+import { routes } from "./app.routing";
+
+
+/* components */ 
+import { LoginComponent } from "./pages/login/login.component";
+import { Meeting_detailComponent } from "./pages/meeting_detail/meeting_detail.component";
+import { TodoComponent } from "./pages/todo/todo.component";
+import { DashboardComponent } from "./pages/dashboard/dashboard.component";
+import { TicketComponent } from "./pages/ticket/ticket.component";
+import { NavComponent } from "./pages/nav/nav.component";
+import { MeetingComponent } from "./pages/meeting/meeting.component";
 
 @NgModule({
   imports: [
@@ -25,19 +35,26 @@ import { firstroute, routes, navigatableComponents } from "./app.routing";
     NativeScriptHttpModule,
     NativeScriptRouterModule,
     NgShadowModule, //ng-shadow plugin
-    NativeScriptRouterModule.forRoot(firstroute),
     NativeScriptRouterModule.forChild(routes),
+    NativeScriptRouterModule.forRoot(routes),
    TNSFontIconModule.forRoot({
 			'fa': './fonts/font-awesome.css'
 		})
   ],
   declarations: [
     AppComponent,
-    navigatableComponents,
+    LoginComponent,
+    TodoComponent,
+    TicketComponent,
+    Meeting_detailComponent,
+    MeetingComponent,
+    NavComponent,
+    DashboardComponent,
     LISTVIEW_DIRECTIVES,
     SIDEDRAWER_DIRECTIVES
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule {
     constructor(private routerExtensions: RouterExtensions,

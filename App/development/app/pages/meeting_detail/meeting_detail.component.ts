@@ -26,7 +26,7 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import * as tabViewModule from "tns-core-modules/ui/tab-view";
 
 @Component({
-  selector: "meeting_detail",
+  selector: "pb-meeting_detail",
   templateUrl: "pages/meeting_detail/meeting_detail.html",
   providers: [UserService, MeetingService],
   styleUrls: ["pages/meeting_detail/meeting_detail-common.css", "pages/meeting_detail/meeting_detail.css"]

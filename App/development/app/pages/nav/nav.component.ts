@@ -38,6 +38,7 @@ export class NavComponent implements AfterViewInit, OnInit {
   userFiles :File[];
   avatar :string;
   curView :string;
+  appState :string;
 
   constructor
   (
