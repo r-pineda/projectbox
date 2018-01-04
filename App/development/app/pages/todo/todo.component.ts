@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
 import { StatusService } from "../../shared/status/status.service";
-import { Todo } from "../../shared/todo/todo";
+import { Todo, Tracking } from "../../shared/todo/todo";
 import { TodoService } from "../../shared/todo/todo.service";
 import "rxjs/add/operator/switchMap";
 import { ListViewEventData, RadListView } from "nativescript-pro-ui/listview";
@@ -24,6 +24,7 @@ import { UserService } from "../../shared/user/user.service";
 
 export class TodoComponent {
   public newTodo :Todo = new Todo();
+  public newTracking = new Tracking();
   curUser :User = new User;
   avatar :string;
   todos :Todo[];
@@ -64,18 +65,16 @@ export class TodoComponent {
       (data) => this.displayTodos(data),
       (error) => this.displayTodos(null)
     ).then(() => {
-      this.todos.forEach((todo, todoIndex) => {        //alle todos durchlaufen
-        todo.trackings.forEach((tracking, trackingIndex) => {//für jedes todo alle trackings durchlaufen
-          console.log(tracking);
+      this.todos.forEach((todo, index) => {        //alle todos durchlaufen
+        todo.trackings.forEach(tracking => {//für jedes todo alle trackings durchlaufen
           this.todoService.fillTracking(tracking)   //todoService gibt zur trackingID ein tracking objekt zurück
           .then((data) => {
-            this.todos[todoIndex].trackings[trackingIndex] = data.trackings[0];      //trackingID durch Tracking ersetzen
+            this.todos[index].trackingsFull.push(data.trackings[0]);      //trackingID durch Tracking ersetzen
           },
-          (error) => {alert("offlineTrackings not implemented")})
+          (error) => {alert("offlineTrackings not supported")})
         });
       });
-    })
-    .then(() => {console.dir(this.todos)});
+    });
     this.create = false;
 
     /*
@@ -100,6 +99,9 @@ export class TodoComponent {
           data = this.todoService.getSavedTodos();
           this.todos = data.tasks;
         }
+        this.todos.forEach(todo => {
+          todo.trackingsFull = new Array<Tracking>();
+        });
       }
 /*
   saveTime(id :any){
@@ -135,6 +137,14 @@ export class TodoComponent {
 
   }
 */
+  saveNewTracking(task_id :string){
+    //started_at, finished_at, description müssen ins frontend gebinded werden
+    this.newTracking.user = null;
+    this.newTracking.task = task_id;
+    this.newTracking.finished = true;
+    this.todoService.createTracking(this.newTracking);
+  }
+
   navigateto(pagename: string) {
     this.routerExtensions.navigate([pagename], {
       transition: {
