@@ -60,7 +60,22 @@ export class TodoComponent {
 
   ngOnInit(): void {
     this.todoService.getTodos()
-    .then((data) => this.displayTodos(data));
+    .then(
+      (data) => this.displayTodos(data),
+      (error) => this.displayTodos(null)
+    ).then(() => {
+      this.todos.forEach((todo, todoIndex) => {        //alle todos durchlaufen
+        todo.trackings.forEach((tracking, trackingIndex) => {//für jedes todo alle trackings durchlaufen
+          console.log(tracking);
+          this.todoService.fillTracking(tracking)   //todoService gibt zur trackingID ein tracking objekt zurück
+          .then((data) => {
+            this.todos[todoIndex].trackings[trackingIndex] = data.trackings[0];      //trackingID durch Tracking ersetzen
+          },
+          (error) => {alert("offlineTrackings not implemented")})
+        });
+      });
+    })
+    .then(() => {console.dir(this.todos)});
     this.create = false;
 
     /*
@@ -78,19 +93,13 @@ export class TodoComponent {
   }
   
   displayTodos(data :any){
-    
         if(data){
-    
           this.todoService.saveTodos(data);
-          this.todos = data.todos;
-    
+          this.todos = data.tasks;
         }else{
-    
-          data = this.todoService.getSavedTodos()
-          this.todos = data.tickets;
-          
+          data = this.todoService.getSavedTodos();
+          this.todos = data.tasks;
         }
-        console.dir(this.todos);
       }
 /*
   saveTime(id :any){

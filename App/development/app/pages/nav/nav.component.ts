@@ -69,7 +69,6 @@ export class NavComponent implements AfterViewInit, OnInit {
       data = this.userService.getSavedFiles();
       this.userFiles = data.files;
     }
-    console.dir(this.userFiles);
   }
       
   logout(){

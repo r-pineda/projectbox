@@ -94,6 +94,21 @@ export class TodoService {
     .toPromise();
   }
 
+  fillTracking(tracking :string){
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.get(
+        Config.apiUrl + "v2/trackings/" + tracking,
+        { headers: headers }
+      )
+      .map(response => response.json())
+      .do(data => {
+      })
+      .catch(this.handleErrors)
+      .toPromise();
+  }
+
   saveTodos(todosToSave :any){
     setString("todos", JSON.stringify(todosToSave));
   }
