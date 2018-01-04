@@ -21,6 +21,7 @@
     "add": "^2.0.6",
     "nativescript-angular": "~4.2.0",
     "nativescript-app-shortcuts": "^2.0.0",
+    "nativescript-background-http": "^3.1.0",
     "nativescript-camera": "^3.1.2",
     "nativescript-couchbase": "^1.0.18",
     "nativescript-fancy-calendar": "^3.0.2",

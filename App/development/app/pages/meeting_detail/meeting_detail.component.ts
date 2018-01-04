@@ -25,6 +25,7 @@ import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import * as tabViewModule from "tns-core-modules/ui/tab-view";
 import { File } from "../../shared/user/file";
+var bghttp = require("nativescript-background-http"); //file upload
 
 @Component({
   selector: "pb-meeting_detail",
@@ -143,13 +144,39 @@ export class Meeting_detailComponent implements OnInit{
       });
     }
   }
+  //experimental
+  uploadFile(){
+    var session = bghttp.session("image-upload");
+ 
+    var request = {
+        url: "http://myserver.com",
+        method: "POST",
+        headers: {
+            "Content-Type": "application/octet-stream",
+            "File-Name": "mobile_upload.png"
+        },
+        description: "{ 'uploading': 'mobile_upload.png' }"
+    };
+
+    let params = {name:"meeting", filename: this.picture, mimeType: 'image/png'};
+    let task = session.multipartUpload(params, request);
+ 
+    task.on("progress", this.logEvent);
+    task.on("error", this.logEvent);
+    task.on("complete", this.logEvent);
+  }
+ 
+  logEvent(e) {
+    console.log(e.eventName);
+  }
+
+  /*------------*/
 
   openCamera(){
     camera.requestPermissions();
 
     camera.takePicture().then(picture => {
       this.picture = picture;
-      console.dir(picture);
     });
   }
 
