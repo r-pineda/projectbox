@@ -39,11 +39,11 @@ export class DashboardComponent implements AfterViewInit, OnInit {
 
   curUser :User = new User;
   meetingdata :any;
-  meetingsText :string;
   meetings :Meeting[] = new Array<Meeting>();
+  displayedMeetings :Meeting[] = new Array<Meeting>();
   public offlinemode :boolean;
   projects :Project[];
-  selectedProject :string //id of the selected project
+  selectedProject :string = null; //id of the selected project
   avatar :string;
   todos :Todo[];
   tickets :Ticket[];
@@ -110,10 +110,10 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   displayTodos(data :any){
     if(data){
       this.todoService.saveTodos(data);
-      this.todos = data.todos;
+      this.todos = data.tasks;
     }else{
       data = this.todoService.getSavedTodos();
-      this.todos = data.todos;
+      this.todos = data.tasks;
     }
   }
 
@@ -123,14 +123,17 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     }else{
       this.meetingService.saveMeetings(data);
     }
+    this.meetings = data.meetings;
     if(this.selectedProject){
+      this.displayedMeetings = new Array<Meeting>();
       data.meetings.forEach(meeting => {
+        console.log(this.selectedProject + " ; " + meeting.project);
         if(meeting.project == this.selectedProject){
-          this.meetings.push(meeting);
+          this.displayedMeetings.push(meeting);
         }
       });
     }else{
-      this.meetings = data.meetings;
+      this.displayedMeetings = this.meetings;
     }
     this.meetings.sort((a, b) => {return new Date(a.date).getTime() - new Date(b.date).getTime()})
   }
@@ -143,6 +146,16 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       this.projects = data.projects;
     }
   }
+
+  filterByProject(id :string){
+    if(this.selectedProject === id){
+      this.selectedProject = null; //project de-selecten
+    }else{
+      this.selectedProject = id;
+    }
+    this.aktualisieren();
+  }
+
   aktualisieren(){
     this.ngOnInit();
   }
