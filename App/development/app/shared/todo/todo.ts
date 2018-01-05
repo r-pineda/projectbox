@@ -42,6 +42,7 @@ export class Todo {
   project: string;
   trackings?: string[];
   trackingsFull?: Tracking[];
+  comments?: Comment[];
 }
 
 export class Tracking {
@@ -56,4 +57,18 @@ export class Tracking {
   description: string;
   task: string;
   user: string;
+}
+
+export class Comment {
+  id: string;
+  project_id?: any;
+  task_id: string;
+  user_id: string;
+  message: string;
+  date: string;
+  created_at: string;
+  updated_at: string;
+  user: string;
+  project?: any;
+  task: string;
 }

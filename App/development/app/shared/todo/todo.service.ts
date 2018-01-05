@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Todo, Tracking } from './todo';
+import { Todo, Tracking, Comment } from './todo';
 import { Http, Headers, Response } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import "rxjs/add/operator/do";
@@ -73,7 +73,6 @@ export class TodoService {
     )
     .map(response => response.json())
     .do(data => {
-      console.dir(data);
     })
     .catch(this.handleErrors)
     .toPromise();
@@ -129,6 +128,21 @@ export class TodoService {
     .catch(this.handleErrors)
     .toPromise();
 
+  }
+
+  fillComments(todo_id :string){
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.get(
+      Config.apiUrl + "v2/tasks/" + todo_id,
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+    })
+    .catch(this.handleErrors)
+    .toPromise();
   }
 
   saveTodos(todosToSave :any){

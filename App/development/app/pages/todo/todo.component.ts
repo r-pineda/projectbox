@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
 import { StatusService } from "../../shared/status/status.service";
-import { Todo, Tracking } from "../../shared/todo/todo";
+import { Todo, Tracking, Comment } from "../../shared/todo/todo";
 import { TodoService } from "../../shared/todo/todo.service";
 import "rxjs/add/operator/switchMap";
 import { ListViewEventData, RadListView } from "nativescript-pro-ui/listview";
@@ -61,16 +61,22 @@ export class TodoComponent {
   }
 
   ngOnInit(): void {
+    var that = this;
     this.todoService.getTodos()
     .then(
       (data) => this.displayTodos(data),
       (error) => this.displayTodos(null)
     ).then(() => {
       this.todos.forEach((todo, index) => {        //alle todos durchlaufen
+        this.todoService.fillComments(todo.id)
+          .then(
+            (data) => {that.todos[index].comments = data.comments},
+            (error) => {alert("offlineComments not available in this version of projectbox®")}
+        )
         todo.trackings.forEach(tracking => {//für jedes todo alle trackings durchlaufen
           this.todoService.fillTracking(tracking)   //todoService gibt zur trackingID ein tracking objekt zurück
           .then((data) => {
-            this.todos[index].trackingsFull.push(data.trackings[0]);      //trackingID durch Tracking ersetzen
+            that.todos[index].trackingsFull.push(data.trackings[0]);
           },
           (error) => {alert("offlineTrackings not supported")})
         });
@@ -80,7 +86,8 @@ export class TodoComponent {
       this.todos.forEach((element) => {
         this.todoForDetail[element.id] = false;
       });
-    });
+    })
+    .then(() => {console.dir(this.todos)});
     this.create = false;
 
     /*
