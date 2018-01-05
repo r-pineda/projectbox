@@ -1,46 +1,73 @@
 <ActionBar title="">
-        <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="openDrawer()"></NavigationButton>
-        <StackLayout orientation="horizontal"
-        ios:horizontalAlignment="center"
-        android:horizontalAlignment="center">
+    <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="openDrawer()"></NavigationButton>
+    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
         <Label text="Tasks" class="action-label nav-h3"></Label>
-      </StackLayout>
-      <ActionItem (tap)="cr_task()" android.systemIcon="ic_menu_add"
-      ios.systemIcon="4" ios.position="right"></ActionItem>
+    </StackLayout>
+    <ActionItem (tap)="cr_task()" android.systemIcon="ic_menu_add" ios.systemIcon="4" ios.position="right"></ActionItem>
 </ActionBar>
-    <ScrollView orientation="vertical" isEnabled="true" width="100%" height="100%">
-            <AbsoluteLayout>
-                    <StackLayout class="page" width="100%">
-                        <StackLayout *ngIf="!create">
-                            <Label class="h1" text="TASKS" col="0" row="0"></Label>
-                            <StackLayout col="0" row="1">
-                            <GridLayout *ngFor="let ticket of todos" columns="auto,*" rows="50,50">
-                                <Label class="border-tickets" height="50" col="0" rowSpan="2"></Label>
-                                <GridLayout col="1" class="ticket" rowSpan="2" columns="*,*" rows="*,*">
-                                <Label class="h5 ticket" [text]="ticket.title" col="0" row="0"></Label>
-                                <Label class="h6 ticket" [text]="ticket.priority" col="0" row="1"></Label>
-                                <Label class="fa ticket indicator-tickets right" [text]="'fa-arrow-down' | fonticon" col="1" rowSpan="2"></Label>
+<ScrollView orientation="vertical" isEnabled="true" width="100%" height="100%">
+    <AbsoluteLayout>
+        <StackLayout class="page" width="100%">
+            <StackLayout *ngIf="!create">
+                <GridLayout columns="*" rows="auto,auto,auto">
+                    <Label class="h1" text="TOP-TASKS" col="0" row="0"></Label>
+                    <StackLayout class="margin-ticket expand-detail" col="0" row="1">
+                        <GridLayout class="margin-ticket" *ngFor="let task of todos" columns="auto,*" rows="50,50,150" (tap)="expand(task.id)">
+                            <Label class="border-tickets" height="50" col="0" rowSpan="2"></Label>
+                            <GridLayout col="1" class="ticket" rowSpan="2" columns="*,*" rows="*,*">
+                                <TextView [text]="task.name" editable="false" textWrap="true" class="longtext h4" col="0" row="0"></TextView>
+                                <Label class="text ticket" [text]="task.date" col="0" row="1"></Label>
+                                <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon" col="1" rowSpan="2"></Label>
                             </GridLayout>
-                            </GridLayout>
-                        </StackLayout>
+                            <StackLayout col="1" row="3" *ngIf="taskForDetail[task.id]" class="details">
+                    <Label class="h4" text="CCF Configuration Forge"></Label>
+                    <TextView text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore." editable="false" textWrap="true" class="longtext"></TextView>
+                    <StackLayout orientation="horizontal">
+                        <Label class="h4" text="PL"></Label>
+                        <Label class="h4" text="00:00:00"></Label>
+                        <Label class="h4" text="ED"></Label>
+                        <Label class="h4" text="DN"></Label>
+                        <Label class="h4" text="DL"></Label>
                     </StackLayout>
-                    <StackLayout *ngIf="create">
-                            <Label class="h4 center" text="DOWN"></Label>
-                            <Label class="h4" text="TITEL"></Label>
-                            <TextField class="textfield" [(ngModel)]="meeting.name"></TextField>
-                            <Label class="h4" text="ORT"></Label>
-                                <TextField class="textfield" [(ngModel)]="meeting.location"></TextField>
-                                <Label class="h4" text="DATUM"></Label>
-                                <TextField class="textfield" [(ngModel)]="meeting.date"></TextField>
-                                <Label class="h4" text="ZEIT / DAUER"></Label>
-                                <TextField class="textfield" [(ngModel)]="meeting.duration"></TextField>
-                                <Label class="h4" text="TEILNEHMER"></Label>
-                                <TextField class="textfield" [(ngModel)]="meeting.attendees"></TextField>
-                                <StackLayout orientation="horizontal" horizontalAlignment="right">
-                                    <Button class="btn btn-primary btn-active" (tap)="cancel()" text="Abbrechen"></Button>
-                                    <Button class="btn btn-primary btn-active" (tap)="createMeeting()" text="Erstellen"></Button>
-                                </StackLayout>
-                            </StackLayout>
+                </StackLayout>
+                        </GridLayout>
                     </StackLayout>
+                    <Label class="h1" text="WEITERE TICKETS" col="0" row="2"></Label>
+                </GridLayout>
+            </StackLayout>
+            <StackLayout *ngIf="create" class="expand-detail">
+                <Label class="fa" [text]="'fa-angle-down' | fonticon"></Label>
+                <Label class="h4" text="TITEL"></Label>
+                <TextField class="textfield" [(ngModel)]="newTodo.name"></TextField>
+                <Label class="h4" text="ORT"></Label>
+                <TextField class="textfield" [(ngModel)]="newTodo.location"></TextField>
+                <Label class="h4" text="STATUS"></Label>
+                <TextField class="textfield" [(ngModel)]="newTodo.completed"></TextField>
+                <Label class="h4" text="PROJEKT"></Label>
+                <TextField class="textfield" [(ngModel)]="newTodo.project"></TextField>
+                <Label class="h4" text="VERANTWORTLICHER"></Label>
+                <TextField class="textfield" [(ngModel)]="newTodo.responsible"></TextField>
+                <Label class="h4" text="BESCHREIBUNG"></Label>
+                <TextField class="textfield" [(ngModel)]="newTodo.description"></TextField>
+                <StackLayout class="hr"></StackLayout>
+                <StackLayout orientation="horizontal">
+                    <Label class="h3" text="TOP-TICKET"></Label>
+                    <Switch checked="false" (checkedChange)="onFirstChecked($event)"></Switch>
+                </StackLayout>
+                <StackLayout class="hr"></StackLayout>
+                <GridLayout columns="*,*" rows="*">
+                    <Label class="h4" text="Timetracking" col="0" row="0" horizontalAlignment="center" (tap)="showTimeTrack()"></Label>
+                    <Label class="h4" text="Kommentare" col="1" row="0" horizontalAlignment="center" (tap)="showComments()"></Label>
+                </GridLayout>
+                <GridLayout columns="*,*" rows="*">
+                    <Label class="h3" col="0" row="0" text="Gesamtdauer"></Label>
+                    <Label class="h3" col="1" row="0" text="00:00:00" horizontalAlignment="right"></Label>
+                </GridLayout>
+                <StackLayout orientation="horizontal" horizontalAlignment="right">
+                    <Button class="btn btn-primary btn-active" (tap)="cancel()" text="Abbrechen"></Button>
+                    <Button class="btn btn-primary btn-active" (tap)="createTicket()" text="Erstellen"></Button>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
     </AbsoluteLayout>
-    </ScrollView>
+</ScrollView>

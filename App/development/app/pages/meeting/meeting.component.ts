@@ -66,11 +66,9 @@ export class MeetingComponent implements OnInit{
 
   cr_meeting() {
     this.create = true;
-
   }
 
   cancel() {
-    console.log("cancel");
     this.create = false;
   }
 

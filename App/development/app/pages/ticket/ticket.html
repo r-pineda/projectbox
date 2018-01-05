@@ -8,23 +8,32 @@
   <ActionItem (tap)="cr_ticket()" android.systemIcon="ic_menu_add"
   ios.systemIcon="4" ios.position="right"></ActionItem>
 </ActionBar>
-    <ScrollView orientation="vertical" isEnabled="true" width="100%" height="100%" >
+    <ScrollView orientation="vertical" isEnabled="true" width="100%" height="100%">
         <AbsoluteLayout>
             <StackLayout class="page" width="100%">
-                <StackLayout *ngIf="!create">
+                <StackLayout *ngIf="!create" class="expand-detail">
             <GridLayout columns="*" rows="auto,auto,auto">
             <Label class="h1" text="TOP-TICKETS" col="0" row="0"></Label>
             <StackLayout class="margin-ticket" col="0" row="1">
-            <GridLayout *ngFor="let ticket of tickets" columns="auto,*" rows="50,50,50" (tap)="expand(ticket.id)">
+            <GridLayout class="margin-ticket" *ngFor="let ticket of tickets" columns="auto,*" rows="50,50,150" (tap)="expand(ticket.id)">
                 <Label class="border-tickets" height="50" col="0" rowSpan="2"></Label>
                 <GridLayout col="1" class="ticket" rowSpan="2" columns="*,*" rows="*,*">
-                <Label class="h3 ticket" [text]="ticket.name" col="0" row="0"></Label>
-                <Label class="h5 ticket" [text]="ticket.date" col="0" row="1"></Label>
+                <TextView [text]="ticket.name" editable="false" textWrap="true" class="longtext h4" col="0" row="0"></TextView>
+                <Label class="text ticket" [text]="ticket.date" col="0" row="1"></Label>
                 <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon" col="1" rowSpan="2"></Label>
             </GridLayout>
-                <StackLayout *ngIf="ticketForDetail[ticket.id]" class="details">
-                    <Label class="h4" [text]="ticket.project"></Label>
-                    <Label [text]="ticket.description"></Label>
+                <StackLayout col="1" row="3" *ngIf="ticketForDetail[ticket.id]" class="details">
+                    <!--<Label class="h4" [text]="ticket.project"></Label>
+                    <Label class="h5" [text]="ticket.description"></Label>-->
+                    <Label class="h4" text="CCF Configuration Forge"></Label>
+                    <TextView text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore." editable="false" textWrap="true" class="longtext"></TextView>
+                    <StackLayout orientation="horizontal">
+                        <Label class="h4" text="PL"></Label>
+                        <Label class="h4" text="00:00:00"></Label>
+                        <Label class="h4" text="ED"></Label>
+                        <Label class="h4" text="DN"></Label>
+                        <Label class="h4" text="DL"></Label>
+                    </StackLayout>
                 </StackLayout>
             </GridLayout>
         </StackLayout>
@@ -32,20 +41,36 @@
         </GridLayout>
             </StackLayout>
             <StackLayout *ngIf="create" class="expand-detail">
-                    <Label class="h4 center" text="DOWN"></Label>
+                    <Label class="fa" [text]="'fa-angle-down' | fonticon"></Label>
                     <Label class="h4" text="TITEL"></Label>
-                    <TextField class="textfield" [(ngModel)]="meeting.name"></TextField>
+                    <TextField class="textfield" [(ngModel)]="newTicket.name"></TextField>
                     <Label class="h4" text="ORT"></Label>
-                        <TextField class="textfield" [(ngModel)]="meeting.location"></TextField>
-                        <Label class="h4" text="DATUM"></Label>
-                        <TextField class="textfield" [(ngModel)]="meeting.date"></TextField>
-                        <Label class="h4" text="ZEIT / DAUER"></Label>
-                        <TextField class="textfield" [(ngModel)]="meeting.duration"></TextField>
-                        <Label class="h4" text="TEILNEHMER"></Label>
-                        <TextField class="textfield" [(ngModel)]="meeting.attendees"></TextField>
+                        <TextField class="textfield" [(ngModel)]="newTicket.location"></TextField>
+                        <Label class="h4" text="STATUS"></Label>
+                        <TextField class="textfield" [(ngModel)]="newTicket.completed"></TextField>
+                        <Label class="h4" text="PROJEKT"></Label>
+                        <TextField class="textfield" [(ngModel)]="newTicket.project"></TextField>
+                        <Label class="h4" text="VERANTWORTLICHER"></Label>
+                        <TextField class="textfield" [(ngModel)]="newTicket.responsible"></TextField>
+                        <Label class="h4" text="BESCHREIBUNG"></Label>
+                        <TextField class="textfield" [(ngModel)]="newTicket.description"></TextField>
+                        <StackLayout class="hr"></StackLayout>
+                        <StackLayout orientation="horizontal">
+                           <Label class="h3" text="TOP-TICKET"></Label>
+                           <Switch checked="false" (checkedChange)="onFirstChecked($event)"></Switch>
+                        </StackLayout>
+                        <StackLayout class="hr"></StackLayout>
+                        <GridLayout columns="*,*" rows="*">
+                                <Label class="h4" text="Timetracking" col="0" row="0" horizontalAlignment="center" (tap)="showTimeTrack()"></Label>
+                                <Label class="h4" text="Kommentare" col="1" row="0" horizontalAlignment="center" (tap)="showComments()"></Label>
+                            </GridLayout>
+                        <GridLayout columns="*,*" rows="*">
+                                <Label class="h3" col="0" row="0" text="Gesamtdauer"></Label>
+                                <Label class="h3" col="1" row="0" text="00:00:00" horizontalAlignment="right"></Label>
+                            </GridLayout>
                         <StackLayout orientation="horizontal" horizontalAlignment="right">
                             <Button class="btn btn-primary btn-active" (tap)="cancel()" text="Abbrechen"></Button>
-                            <Button class="btn btn-primary btn-active" (tap)="createMeeting()" text="Erstellen"></Button>
+                            <Button class="btn btn-primary btn-active" (tap)="createTicket()" text="Erstellen"></Button>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>

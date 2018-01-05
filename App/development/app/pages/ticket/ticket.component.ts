@@ -13,6 +13,7 @@ import * as FrameModule from "ui/frame";
 import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
 import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
+import * as dialogs from "ui/dialogs";
 
 
 @Component({
@@ -26,6 +27,7 @@ export class TicketComponent implements AfterViewInit, OnInit {
 
   tickets :Ticket[];
   ticketForDetail :Boolean[];
+  create: boolean;
   timestart :string;
   temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
                     //Ebene 1 des Arrays ist assoziativ mit den IDs von den Todos. die 2. Ebene enthält folgende Attribute:
@@ -39,6 +41,7 @@ export class TicketComponent implements AfterViewInit, OnInit {
                     //[7]TimerRunning :0 = false, 1 = true
                     curUser :User = new User;
                     avatar :string;
+public newTicket :Ticket = new Ticket();
 
   constructor
   (
@@ -76,7 +79,6 @@ export class TicketComponent implements AfterViewInit, OnInit {
         this.ticketForDetail[element.id] = false;
       });
     });
-    console.dir(this.ticketForDetail);
   }
 
   expand(id :string){
@@ -96,6 +98,22 @@ export class TicketComponent implements AfterViewInit, OnInit {
       this.tickets = data.tickets;
       
     }
+  }
+
+  cr_ticket() {
+    this.create = true;
+        this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
+  }
+
+  cancel() {
+    this.create = false;
+          this.page.css = "Page { background-color: #dee8e7; } .page { padding-left: 20; background-color: #dee8e7;}";
+  }
+
+  createTicket() {
+      this.ticketService.createTicket(this.newTicket);
+      alert("Ticket erstellt");
+      this.create = false;
   }
 
   /*

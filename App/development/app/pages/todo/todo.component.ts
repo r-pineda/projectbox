@@ -28,6 +28,7 @@ export class TodoComponent {
   curUser :User = new User;
   avatar :string;
   todos :Todo[];
+  todoForDetail :Boolean[];
   timestart :string;
   create :boolean;
   temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
@@ -74,6 +75,11 @@ export class TodoComponent {
           (error) => {alert("offlineTrackings not supported")})
         });
       });
+        
+         this.todoForDetail = new Array<Boolean>(this.todos.length);
+      this.todos.forEach((element) => {
+        this.todoForDetail[element.id] = false;
+      });
     });
     this.create = false;
 
@@ -89,8 +95,18 @@ export class TodoComponent {
 
   cr_task() {
     this.create = true;
+    this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
   }
-  
+
+  cancel() {
+    this.create = false;
+    this.page.css = "Page { background-color: #dee8e7; } .page { padding-left: 20; background-color: #dee8e7;}";
+  }
+
+ expand(id :string){
+    this.todoForDetail[id] = !this.todoForDetail[id];
+  }
+
   displayTodos(data :any){
         if(data){
           this.todoService.saveTodos(data);
@@ -154,7 +170,9 @@ export class TodoComponent {
   });
 }
 
-    saveNewTodo(){
+    createTodo(){
       this.todoService.createTodo(this.newTodo);
+        alert("Task erstellt");
+      this.create = false;
     }
 }
