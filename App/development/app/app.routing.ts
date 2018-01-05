@@ -15,12 +15,12 @@ export const routes = [
   { path: "nav", component: NavComponent,
     children: [
       { path: "dashboard", component: DashboardComponent, outlet: 'dashboardoutlet' },
-      { path: "meeting_detail/:id", component: Meeting_detailComponent, outlet: 'meetingdetailoutlet' },
       { path: "ticket", component: TicketComponent, outlet: 'ticketoutlet' },
       { path: "todo", component: TodoComponent , outlet: 'todooutlet'},
       { path: "meeting", component: MeetingComponent, outlet: 'meetingoutlet'}
     ]
-  }
+  },
+  { path: "meeting_detail/:id", component: Meeting_detailComponent }
 ];
 
 @NgModule({

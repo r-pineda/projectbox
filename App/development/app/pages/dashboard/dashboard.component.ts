@@ -26,6 +26,7 @@ import { TodoService } from "../../shared/todo/todo.service";
 import { TicketService } from "../../shared/ticket/ticket.service";
 import { Todo } from "../../shared/todo/todo";
 import { Ticket } from "../../shared/ticket/ticket";
+import { NavComponent } from "../nav/nav.component";
 
 @Component({
   selector: "pb-dashboard",
@@ -58,7 +59,8 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     private ticketService :TicketService,
     private statusService :StatusService,
     private _changeDetectionRef: ChangeDetectorRef,
-    private fonticon: TNSFontIconService
+    private fonticon: TNSFontIconService,
+    private navState: NavComponent
   )
   {
 
@@ -153,46 +155,15 @@ export class DashboardComponent implements AfterViewInit, OnInit {
               curve: "easeOut"
           }
       });
+
+
   }
   setSelectedProject(id :string){
     this.selectedProject = id;
     this.ngOnInit();
   }
-/*
-  navigateto(pagename: string) {
-            this.routerExtensions.navigate([pagename], {
-              transition: {
-                  name: "slide",
-                  curve: "easeOut"
-              }
-          });
-  }
 
-  logout(){
-    this.drawer.closeDrawer();
-    this.routerExtensions.navigate(["/login"], {
-      animated:true,
-      transition: {
-          name: "slide",
-          curve: "easeOut"
-      }
-  });
+  state(view) {
+    this.navState.appState = view + '';
   }
-      
-        @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
-            private drawer: RadSideDrawer;
-        
-            ngAfterViewInit() {
-                this.drawer = this.drawerComponent.sideDrawer;
-                this._changeDetectionRef.detectChanges();
-            }
-        
-            public openDrawer() {
-                this.drawer.showDrawer();
-            }
-        
-            public onCloseDrawerTap() {
-               this.drawer.closeDrawer();
-            }
-            */
 }

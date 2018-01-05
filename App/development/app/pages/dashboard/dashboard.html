@@ -1,4 +1,4 @@
-<ActionBar title="Dashboard">
+<ActionBar title="">
                 <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="openDrawer()"></NavigationButton>
                 <StackLayout orientation="horizontal"
                 ios:horizontalAlignment="center"
@@ -19,7 +19,7 @@
                 </StackLayout> 
         </GridLayout>
     
-        <Label text="TASKS" (tap)="navigateto('/todo')" row="3" colSpan="3" class="h2"></Label>
+        <Label text="TASKS" (tap)="state('todo')" row="3" colSpan="3" class="h2"></Label>
         <StackLayout row="4" colSpan="3">
                 <GridLayout (tap)="showDetail()" columns="5, *" rows="40, auto">
                         <Border cornerRadius="10" col="0" row="0" height="40" width="5" borderColor="#DEE8E7" style="top:0;background-color:#CB1F2C;" margin="10 0 0 0">
@@ -30,10 +30,10 @@
                         </GridLayout>
                       </GridLayout>
         </StackLayout>
-        <Label text="MEETINGS" (tap)="navigateto('/ticket')" row="5" colSpan="3" class="h2"></Label>
+        <Label text="MEETINGS" (tap)="state('meeting')" row="5" colSpan="3" class="h2"></Label>
         <StackLayout row="6" colSpan="3">
-                <GridLayout *ngFor="let item of meetings" columns="80,auto,auto,*" rows="auto,auto,*" (tap)="showDetail(item.id)" class="meeting"  marginBottom="10">
-                    <Label text="HEUTE" col="0" row="0" rowSpan="3" class="meeting-indicator h4" margin="0 0 0 5"></Label>
+                <GridLayout *ngFor="let item of meetings" columns="80,auto,auto,*" rows="auto,auto,*" [nsRouterLink]="['/meeting_detail', item.id]" class="meeting"  marginBottom="10" shadow="2">
+                    <Label text="HEUTE" col="0" row="0" rowSpan="3" class="meeting-indicator h4" margin="0 0 0 5" shadow="2"></Label>
                     <Border cornerRadius="5" col="1" rowSpan="3" class="meeting-border" margin="5"></Border>
                     <Label [text]="item.name" textWrap="true" class="h4" col="2" margin="5 0 0 0"></Label>
                     <Label [text]="item.date" col="2" row="1"  class="text" margin="0"></Label>

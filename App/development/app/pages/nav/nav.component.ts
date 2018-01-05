@@ -84,7 +84,6 @@ export class NavComponent implements AfterViewInit, OnInit {
 
   state(view) {
     this.appState = view + '';
-    console.log(this.appState);
   }
 
 @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
