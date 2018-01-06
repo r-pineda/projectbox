@@ -108,18 +108,22 @@ export class TodoService {
       .toPromise();
   }
 
-  createTracking(tracking :Tracking){
-    delete tracking.id;
-    delete tracking.task_id;
-    delete tracking.user_id;
-    delete tracking.created_at;
-    delete tracking.updated_at;
+  createComment(comment :Comment){
+    delete comment.id;
+    delete comment.task_id;
+    delete comment.date;
+    comment.created_at = null;
+    comment.project = null;
+    comment.user = null;
+    delete comment.project_id;
+    delete comment.updated_at;
+    delete comment.user_id;
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.post(
-      Config.apiUrl + "v2/trackings",
-      ("{\"tracking\": " + JSON.stringify(tracking) + "}"),
+      Config.apiUrl + "v2/comments",
+      ("{\"comment\": " + JSON.stringify(comment) + "}"),
       { headers: headers }
     )
     .map(response => response.json())
@@ -127,7 +131,21 @@ export class TodoService {
     })
     .catch(this.handleErrors)
     .toPromise();
+  }
 
+  deleteComment(comment_id :string){
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.delete(
+      Config.apiUrl + "v2/comments/" + comment_id,
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+    })
+    .catch(this.handleErrors)
+    .toPromise();
   }
 
   fillComments(todo_id :string){
@@ -151,5 +169,43 @@ export class TodoService {
 
   getSavedTodos (){
     return JSON.parse(getString("todos"));
+  }
+
+  createTracking(tracking :Tracking){
+    delete tracking.id;
+    delete tracking.task_id;
+    delete tracking.user_id;
+    delete tracking.created_at;
+    delete tracking.updated_at;
+    tracking.user = null;
+    tracking.finished = true;
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.post(
+      Config.apiUrl + "v2/trackings",
+      ("{\"tracking\": " + JSON.stringify(tracking) + "}"),
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+    })
+    .catch(this.handleErrors)
+    .toPromise();
+  }
+
+  deleteTracking(tracking_id :string){
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.delete(
+      Config.apiUrl + "v2/trackings/" + tracking_id,
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+    })
+    .catch(this.handleErrors)
+    .toPromise();
   }
 }

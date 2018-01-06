@@ -32,7 +32,7 @@
                 </StackLayout>
                         </GridLayout>
                     </StackLayout>
-                    <Label class="h1" text="WEITERE TICKETS" col="0" row="2"></Label>
+                    <Label class="h1" (tap)="testCreate()" text="WEITERE TICKETS" col="0" row="2"></Label>
                 </GridLayout>
             </StackLayout>
             <StackLayout *ngIf="create" class="expand-detail">

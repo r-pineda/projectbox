@@ -25,13 +25,14 @@ import { UserService } from "../../shared/user/user.service";
 export class TodoComponent {
   public newTodo :Todo = new Todo();
   public newTracking = new Tracking();
+  public newComment = new Comment();
   curUser :User = new User;
   avatar :string;
   todos :Todo[];
   todoForDetail :Boolean[];
   timestart :string;
   create :boolean;
-  temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
+  //temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
                     //Ebene 1 des Arrays ist assoziativ mit den IDs von den Todos. die 2. Ebene enthält folgende Attribute:
                     //[0]startTime: Stunden
                     //[1]startTime: Minuten
@@ -66,27 +67,7 @@ export class TodoComponent {
     .then(
       (data) => this.displayTodos(data),
       (error) => this.displayTodos(null)
-    ).then(() => {
-      this.todos.forEach((todo, index) => {        //alle todos durchlaufen
-        this.todoService.fillComments(todo.id)
-          .then(
-            (data) => {that.todos[index].comments = data.comments},
-            (error) => {alert("offlineComments not available in this version of projectbox®")}
-        )
-        todo.trackings.forEach(tracking => {//für jedes todo alle trackings durchlaufen
-          this.todoService.fillTracking(tracking)   //todoService gibt zur trackingID ein tracking objekt zurück
-          .then((data) => {
-            that.todos[index].trackingsFull.push(data.trackings[0]);
-          },
-          (error) => {alert("offlineTrackings not supported")})
-        });
-      });
-        
-         this.todoForDetail = new Array<Boolean>(this.todos.length);
-      this.todos.forEach((element) => {
-        this.todoForDetail[element.id] = false;
-      });
-    })
+    )
     .then(() => {console.dir(this.todos)});
     this.create = false;
 
@@ -125,6 +106,26 @@ export class TodoComponent {
         this.todos.forEach(todo => {
           todo.trackingsFull = new Array<Tracking>();
         });
+
+        this.todos.forEach((todo, index) => {        //alle todos durchlaufen
+          this.todoService.fillComments(todo.id)
+            .then(
+              (data) => {this.todos[index].comments = data.comments},
+              (error) => {alert("offlineComments not available in this version of projectbox®")}
+          )
+          todo.trackings.forEach(tracking => {//für jedes todo alle trackings durchlaufen
+            this.todoService.fillTracking(tracking)   //todoService gibt zur trackingID ein tracking objekt zurück
+            .then((data) => {
+              this.todos[index].trackingsFull.push(data.trackings[0]);
+            },
+            (error) => {alert("offlineTrackings not supported")})
+          });
+        });
+          
+        this.todoForDetail = new Array<Boolean>(this.todos.length);
+        this.todos.forEach((element) => {
+          this.todoForDetail[element.id] = false;
+        });
       }
 /*
   saveTime(id :any){
@@ -160,11 +161,9 @@ export class TodoComponent {
 
   }
 */
-  saveNewTracking(task_id :string){
+  createTracking(task_id :string){
     //started_at, finished_at, description müssen ins frontend gebinded werden
-    this.newTracking.user = null;
     this.newTracking.task = task_id;
-    this.newTracking.finished = true;
     this.todoService.createTracking(this.newTracking);
   }
 
@@ -179,7 +178,11 @@ export class TodoComponent {
 
     createTodo(){
       this.todoService.createTodo(this.newTodo);
-        alert("Task erstellt");
       this.create = false;
+    }
+
+    createComment(task_id :string){
+      this.newComment.task = task_id;
+      this.todoService.createComment(this.newComment);
     }
 }

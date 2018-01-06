@@ -129,6 +129,7 @@ export class LoginComponent implements OnInit{
 
     if (valid === "403"){
       this.wrongcredentials = true;
+      alert("Incorrect username/password");
     }else{
 
       if(this.statusService.getWasLoggedIn()){
