@@ -7,11 +7,13 @@ import { DashboardComponent } from "../dashboard/dashboard.component";
 import { TicketComponent } from "../ticket/ticket.component";
 import { TodoComponent} from "../todo/todo.component";
 import { NavComponent } from "../nav/nav.component";
+import { SettingsComponent } from "../settings/settings.component";
+import { MeetingComponent } from "../meeting/meeting.component";
 
 
 @NgModule({
     bootstrap: [NavComponent],
-    entryComponents: [DashboardComponent, TicketComponent, TodoComponent],
+    entryComponents: [DashboardComponent, TicketComponent, TodoComponent, SettingsComponent, MeetingComponent],
     imports: [
         NativeScriptRouterModule,
         NativeScriptRouterModule.forRoot(routes)

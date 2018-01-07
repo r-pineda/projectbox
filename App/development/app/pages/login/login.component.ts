@@ -18,7 +18,7 @@ import utilityModule = require("utils/utils");
 import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 
 @Component({
-  selector: "my-app",
+  selector: "pb-login",
   providers: [UserService, StatusService],
   templateUrl: "pages/login/login.html",
   styleUrls: ["pages/login/login-common.css", "pages/login/login.css"]

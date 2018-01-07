@@ -1,0 +1,31 @@
+<ActionBar title="">
+    <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="openDrawer()"></NavigationButton>
+    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
+        <Label text="Einstellungen" class="action-label nav-h3"></Label>
+    </StackLayout>
+</ActionBar>
+<ScrollView orientation="vertical" isEnabled="true" width="100%" height="100%">
+    <AbsoluteLayout>
+        <StackLayout class="page marginitem" width="100%">
+                <Label class="h3" text="DATEN"></Label>
+                <GridLayout class="listitem" columns="*,*" rows="*">
+                    <Label class="h5" text="Lokale Speicherung der Daten"></Label>
+                    <Switch checked="false" col="1" row="0" (checkedChange)="onFirstChecked($event)" horizontalAlignment="right"></Switch>
+                </GridLayout>
+                <GridLayout class="listitem" columns="*,*" rows="*">
+                    <Label class="h5" text="Tutorial"></Label>
+                    <Switch checked="false" col="1" row="0" (checkedChange)="onFirstChecked($event)" horizontalAlignment="right"></Switch>
+                </GridLayout>
+                <Label class="h3" text="ALLGEMEIN"></Label>
+                <GridLayout class="listitem" columns="*,*" rows="*">
+                    <Label class="h5" text="Über die App"></Label>
+                </GridLayout>
+                <GridLayout class="listitem" columns="*,*" rows="*">
+                    <Label class="h5" text="Kontakt"></Label>
+                </GridLayout>
+                <GridLayout class="listitem" columns="*,*" rows="*">
+                    <Label class="h5" text="Datenschutz / Lizenzen"></Label>
+                </GridLayout>
+        </StackLayout>
+    </AbsoluteLayout>
+</ScrollView>

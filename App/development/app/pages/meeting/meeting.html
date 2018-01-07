@@ -16,14 +16,14 @@
         <Calendar [settings]="settings" [events]="events" [appearance]="appearance"
         (dateSelected)="dateSelected($event)" (monthChanged)="monthChanged($event)" (loaded)="calendarLoaded($event)">
 </Calendar>
-                    <GridLayout *ngFor="let item of displayedMeetings" columns="80,auto,auto,*" rows="auto,auto,*" (tap)="showDetail(item.id)" class="meeting"  marginBottom="10">
-                        <Label text="HEUTE" col="0" row="0" rowSpan="3" class="meeting-indicator h4" margin="0 0 0 5"></Label>
-                        <Border cornerRadius="5" col="1" rowSpan="3" class="meeting-border" margin="5"></Border>
-                        <Label [text]="item.name" textWrap="true" class="h4" col="2" margin="5 0 0 0"></Label>
-                        <Label [text]="item.date" col="2" row="1"  class="text" margin="0"></Label>
-                        <Label [text]="item.location" col="2" row="2" class="text" margin="0 5 0 0"></Label>
-                        <Label text="..." col="3" rowSpan="3" class="meeting-cont" margin="0 20 20 20"></Label>
-                    </GridLayout>
+                    <GridLayout *ngFor="let item of meetings" columns="80,auto,auto,*" rows="auto,auto,*" [nsRouterLink]="['/meeting_detail', item.id]" class="meeting"  marginBottom="10" shadow="2">
+                    <Label text="HEUTE" col="0" row="0" rowSpan="3" class="meeting-indicator h4" margin="0 0 0 5" shadow="2"></Label>
+                    <Border cornerRadius="5" col="1" rowSpan="3" class="meeting-border" margin="5"></Border>
+                    <Label [text]="item.name" textWrap="true" class="h4" col="2" margin="5 0 0 0"></Label>
+                    <Label [text]="item.date" col="2" row="1"  class="text" margin="0"></Label>
+                    <Label [text]="item.location" col="2" row="2" class="text" margin="0 5 0 0"></Label>
+                    <Label text="..." col="3" rowSpan="3" class="meeting-cont" margin="0 20 20 20"></Label>
+                </GridLayout>
         </StackLayout>
     <StackLayout *ngIf="create">
             <StackLayout id="meeting-detail">

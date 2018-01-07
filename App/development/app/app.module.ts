@@ -27,6 +27,7 @@ import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { TicketComponent } from "./pages/ticket/ticket.component";
 import { NavComponent } from "./pages/nav/nav.component";
 import { MeetingComponent } from "./pages/meeting/meeting.component";
+import { SettingsComponent } from "./pages/settings/settings.component";
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { MeetingComponent } from "./pages/meeting/meeting.component";
     MeetingComponent,
     NavComponent,
     DashboardComponent,
+    SettingsComponent,
     LISTVIEW_DIRECTIVES,
     SIDEDRAWER_DIRECTIVES
   ],
