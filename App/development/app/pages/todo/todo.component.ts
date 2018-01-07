@@ -70,6 +70,7 @@ export class TodoComponent {
     )
     .then(() => {console.dir(this.todos)});
     this.create = false;
+    this.page.css = ".details { height: 0;}";
 
     /*
     this.temp = new Array(this.todos.length);
@@ -93,6 +94,7 @@ export class TodoComponent {
 
  expand(id :string){
     this.todoForDetail[id] = !this.todoForDetail[id];
+    this.page.css = ".details { height: auto; }";
   }
 
   displayTodos(data :any){
@@ -121,7 +123,7 @@ export class TodoComponent {
             (error) => {alert("offlineTrackings not supported")})
           });
         });
-          
+
         this.todoForDetail = new Array<Boolean>(this.todos.length);
         this.todos.forEach((element) => {
           this.todoForDetail[element.id] = false;
@@ -132,8 +134,8 @@ export class TodoComponent {
     console.dir(this.temp);
     this.todos.forEach(todo => {
       if(id == todo.id){
-        let sec :number = 
-        ((this.temp[id][3] * 3600) + (this.temp[id][4] * 60) + +this.temp[id][5]) 
+        let sec :number =
+        ((this.temp[id][3] * 3600) + (this.temp[id][4] * 60) + +this.temp[id][5])
         - ((this.temp[id][0] * 3600) + (this.temp[id][1] * 60) + +this.temp[id][2]);
         sec -= sec%60;
         //todo.timeTaken += (sec/60);
@@ -179,6 +181,7 @@ export class TodoComponent {
     createTodo(){
       this.todoService.createTodo(this.newTodo);
       this.create = false;
+      this.ngOnInit();
     }
 
     createComment(task_id :string){

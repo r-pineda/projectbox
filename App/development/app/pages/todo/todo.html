@@ -11,23 +11,34 @@
             <StackLayout *ngIf="!create">
                 <GridLayout columns="*" rows="auto,auto,auto">
                     <Label class="h1" text="TOP-TASKS" col="0" row="0"></Label>
-                    <StackLayout class="margin-ticket expand-detail" col="0" row="1">
-                        <GridLayout class="margin-ticket" *ngFor="let task of todos" columns="auto,*" rows="50,50,150" (tap)="expand(task.id)">
-                            <Label class="border-tickets" height="50" col="0" rowSpan="2"></Label>
-                            <GridLayout col="1" class="ticket" rowSpan="2" columns="*,*" rows="*,*">
-                                <TextView [text]="task.name" editable="false" textWrap="true" class="longtext h4" col="0" row="0"></TextView>
-                                <Label class="text ticket" [text]="task.date" col="0" row="1"></Label>
+                    <StackLayout class="marginitem" col="0" row="1">
+                        <GridLayout class="marginitem" *ngFor="let task of todos" columns="auto,*" rows="auto,30,150" (tap)="expand(task.id)">
+                            <Label class="borderitem" height="50" col="0" rowSpan="2"></Label>
+                            <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
+                                <StackLayout col="0" row="0" orientation="horizontal">
+                                    <Image src="~/images/toptask.png" width="25" height="25" stretch="aspectFit"></Image>
+                                    <TextView [text]="task.name" editable="false" textWrap="true" class="longtext h4" col="0" row="0"></TextView>
+                                </StackLayout>
+                                <Label class="text ticket" [text]="task.created_at" col="0" row="1"></Label>
                                 <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon" col="1" rowSpan="2"></Label>
                             </GridLayout>
-                            <StackLayout col="1" row="3" *ngIf="taskForDetail[task.id]" class="details">
+                            <StackLayout col="1" row="3" *ngIf="todoForDetail[task.id]" class="details">
                     <Label class="h4" text="CCF Configuration Forge"></Label>
                     <TextView text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore." editable="false" textWrap="true" class="longtext"></TextView>
                     <StackLayout orientation="horizontal">
-                        <Label class="h4" text="PL"></Label>
-                        <Label class="h4" text="00:00:00"></Label>
-                        <Label class="h4" text="ED"></Label>
-                        <Label class="h4" text="DN"></Label>
-                        <Label class="h4" text="DL"></Label>
+                        <StackLayout class="btn-img" (tap)="cancel()">
+                            <Image src="~/images/play2.png" width="15" height="15" stretch="aspectFit"></Image>
+                        </StackLayout>
+                        <Label class="h4 time" verticalAlignment="center" text="00:00:00"></Label>
+                        <StackLayout class="btn-img" (tap)="cancel()">
+                            <Image src="~/images/edit2.png" width="15" height="15" stretch="aspectFit"></Image>
+                        </StackLayout>
+                        <StackLayout class="btn-img" (tap)="cancel()">
+                            <Image src="~/images/done2.png" width="15" height="15" stretch="aspectFit"></Image>
+                        </StackLayout>
+                        <StackLayout class="btn-img attention" (tap)="cancel()">
+                            <Image src="~/images/delete2.png" width="15" height="15" stretch="aspectFit"></Image>
+                        </StackLayout>
                     </StackLayout>
                 </StackLayout>
                         </GridLayout>
@@ -35,37 +46,43 @@
                     <Label class="h1" (tap)="testCreate()" text="WEITERE TICKETS" col="0" row="2"></Label>
                 </GridLayout>
             </StackLayout>
-            <StackLayout *ngIf="create" class="expand-detail">
-                <Label class="fa" [text]="'fa-angle-down' | fonticon"></Label>
-                <Label class="h4" text="TITEL"></Label>
+            <StackLayout *ngIf="create" class="form-taskticket">
+                <Label class="fa" [text]="'fa-angle-down' | fonticon" horizontalAlignment="center"></Label>
+                <Label class="h5" text="TITEL"></Label>
                 <TextField class="textfield" [(ngModel)]="newTodo.name"></TextField>
-                <Label class="h4" text="ORT"></Label>
-                <TextField class="textfield" [(ngModel)]="newTodo.location"></TextField>
-                <Label class="h4" text="STATUS"></Label>
-                <TextField class="textfield" [(ngModel)]="newTodo.completed"></TextField>
-                <Label class="h4" text="PROJEKT"></Label>
+                <Label class="h5" text="DEADLINE"></Label>
+                <TextField class="textfield" [(ngModel)]="newTodo.planned"></TextField>
+                <Label class="h5" text="VERANTWORTLICHER"></Label>
+                <TextField class="textfield" [(ngModel)]="newTodo.user"></TextField>
+                <Label class="h5" text="PROJEKT"></Label>
                 <TextField class="textfield" [(ngModel)]="newTodo.project"></TextField>
-                <Label class="h4" text="VERANTWORTLICHER"></Label>
-                <TextField class="textfield" [(ngModel)]="newTodo.responsible"></TextField>
-                <Label class="h4" text="BESCHREIBUNG"></Label>
+                <Label class="h5" text="BESCHREIBUNG"></Label>
                 <TextField class="textfield" [(ngModel)]="newTodo.description"></TextField>
-                <StackLayout class="hr"></StackLayout>
-                <StackLayout orientation="horizontal">
-                    <Label class="h3" text="TOP-TICKET"></Label>
-                    <Switch checked="false" (checkedChange)="onFirstChecked($event)"></Switch>
-                </StackLayout>
-                <StackLayout class="hr"></StackLayout>
+                <Label class="field-seperator" height="2"></Label>
                 <GridLayout columns="*,*" rows="*">
-                    <Label class="h4" text="Timetracking" col="0" row="0" horizontalAlignment="center" (tap)="showTimeTrack()"></Label>
-                    <Label class="h4" text="Kommentare" col="1" row="0" horizontalAlignment="center" (tap)="showComments()"></Label>
+                    <Label class="h3"  col="0" row="0" text="TOP-TASK"></Label>
+                    <Switch checked="false" col="1" row="0" (checkedChange)="onFirstChecked($event)" horizontalAlignment="right"></Switch>
                 </GridLayout>
+                <Label class="field-seperator" height="2"></Label>
+                <GridLayout columns="*,*" rows="*,*">
+                    <Image src="~/images/timetracking.png" row="0" col="0" width="20" height="20" stretch="aspectFit"></Image>
+                    <Image src="~/images/kommentare.png" row="0" col="1" width="40" height="20" stretch="aspectFit"></Image>
+                    <Label class="h4" text="Timetracking" col="0" row="1" horizontalAlignment="center" (tap)="showTimeTrack()"></Label>
+                    <Label class="h4" text="Kommentare" col="1" row="1" horizontalAlignment="center" (tap)="showComments()"></Label>
+                </GridLayout>
+                <Label class="field-seperator" height="2"></Label>
                 <GridLayout columns="*,*" rows="*">
                     <Label class="h3" col="0" row="0" text="Gesamtdauer"></Label>
                     <Label class="h3" col="1" row="0" text="00:00:00" horizontalAlignment="right"></Label>
                 </GridLayout>
+                <Label class="field-seperator" height="2"></Label>
                 <StackLayout orientation="horizontal" horizontalAlignment="right">
-                    <Button class="btn btn-primary btn-active" (tap)="cancel()" text="Abbrechen"></Button>
-                    <Button class="btn btn-primary btn-active" (tap)="createTicket()" text="Erstellen"></Button>
+                    <StackLayout class="btn-img" (tap)="cancel()">
+                        <Image src="~/images/abbrechen2.png" width="30" height="30" stretch="aspectFit"></Image>
+                    </StackLayout>
+                    <StackLayout class="btn-img" (tap)="createTodo()">
+                        <Image src="~/images/save.png" width="30" height="30" stretch="aspectFit"></Image>
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
