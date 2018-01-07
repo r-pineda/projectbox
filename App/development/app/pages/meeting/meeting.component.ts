@@ -35,6 +35,7 @@ import {
   Settings // Settings interface
 } from 'nativescript-fancy-calendar';
 import {registerElement} from "nativescript-angular/element-registry";
+import { Page } from "ui/page";
 
 registerElement('Calendar', () => Calendar);
 
@@ -54,7 +55,7 @@ export class MeetingComponent implements OnInit{
   meetingsText :string;
   meeting: Meeting;
 
-  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService) {}
+  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService, private page: Page, private fonticon: TNSFontIconService) {}
 
   ngOnInit(){
     this.meetingService.getMeetings().then(
@@ -66,10 +67,12 @@ export class MeetingComponent implements OnInit{
 
   cr_meeting() {
     this.create = true;
+     this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
   }
 
   cancel() {
     this.create = false;
+     this.page.css = "Page { background-color: #dee8e7; } .page { padding-left: 20; background-color: #dee8e7;}";
   }
 
   displayMeetings(data :any){
