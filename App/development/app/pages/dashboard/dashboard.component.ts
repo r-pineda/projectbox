@@ -27,6 +27,7 @@ import { TicketService } from "../../shared/ticket/ticket.service";
 import { Todo } from "../../shared/todo/todo";
 import { Ticket } from "../../shared/ticket/ticket";
 import { NavComponent } from "../nav/nav.component";
+import { AndroidData, IOSData, Elevation } from 'nativescript-ng-shadow';
 
 @Component({
   selector: "pb-dashboard",
@@ -47,6 +48,13 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   avatar :string;
   todos :Todo[];
   tickets :Ticket[];
+  fabShadowA: AndroidData = {
+    elevation: Elevation.CARD_PICKED_UP,
+  };
+  fabShadowI: IOSData = {
+    elevation: Elevation.CARD_PICKED_UP,
+  };
+
 
   constructor
   (

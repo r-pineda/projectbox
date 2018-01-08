@@ -11,8 +11,8 @@
         <Label text="PROJEKTE" (tap)="navigateto(ticket)" row="0" col="0" class="h2"></Label>
         <Label text="see all >" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom" class="text" style="margin-right:10;"></Label>
     </GridLayout>
-    <GridLayout columns="*" rows="*" colSpan="3" row="2" class="project" style="padding:5;">
-        <StackLayout orientation="horizontal">
+    <GridLayout columns="*" rows="150" colSpan="3" row="2" class="project" style="padding:5;">
+        <StackLayout orientation="horizontal" verticalAlignment="center">
             <Label *ngFor="let item of projects" [text]="item.name" (tap)="filterByProject(item.id)" class="h4 projects"></Label>
         </StackLayout>
     </GridLayout>
@@ -28,7 +28,7 @@
     </StackLayout>
     <Label text="MEETINGS" (tap)="state('meeting')" row="5" colSpan="3" class="h2"></Label>
     <StackLayout row="6" colSpan="3">
-        <GridLayout *ngFor="let item of displayedMeetings" columns="80,auto,auto,*" rows="auto,auto,*" [nsRouterLink]="['/meeting_detail', item.id]" class="meeting" marginBottom="10" shadow="2">
+        <GridLayout *ngFor="let item of displayedMeetings" columns="80,auto,auto,*" rows="auto,auto,*" [nsRouterLink]="['/meeting_detail', item.id]" class="meeting" marginBottom="10" shadow elevation="10">
             <Label text="HEUTE" col="0" row="0" rowSpan="3" class="meeting-indicator h4" margin="0 0 0 5" shadow="2"></Label>
             <Border cornerRadius="5" col="1" rowSpan="3" class="meeting-border" margin="5"></Border>
             <Label [text]="item.name" textWrap="true" class="h4" col="2" margin="5 0 0 0"></Label>
