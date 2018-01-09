@@ -149,17 +149,17 @@ export class Meeting_detailComponent implements OnInit{
     var session = bghttp.session("image-upload");
  
     var request = {
-        url: "http://myserver.com",
+        url: "https://secure.projectbox.eu/v2/files",
         method: "POST",
         headers: {
             "Content-Type": "application/octet-stream",
             "File-Name": "mobile_upload.png"
         },
-        description: "{ 'uploading': 'mobile_upload.png' }"
+        description: "{ 'uploading': 'mobile_upload.png' }" //wie body bei normalem post
     };
 
-    let params = {name:"meeting", filename: this.picture, mimeType: 'image/png'};
-    let task = session.multipartUpload(params, request);
+    //let params = {name:"meeting", filename: this.picture, mimeType: 'image/png'};
+    let task = session.uploadFile(this.picture, request);
  
     task.on("progress", this.logEvent);
     task.on("error", this.logEvent);
