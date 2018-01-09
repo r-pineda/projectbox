@@ -20,7 +20,7 @@
     <Label text="TASKS" (tap)="nav.state('todo')" class="h2"></Label>
     <StackLayout>
         <GridLayout class="marginitem" *ngFor="let task of displayedTodos" columns="auto,*" rows="auto,auto">
-            <Label class="borderitem" height="50" col="0" rowSpan="2"></Label>
+            <Label class="borderitem" [ngStyle]="{'border-color': task.color}" height="50" col="0" rowSpan="2"></Label>
             <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
                 <StackLayout col="0" row="0" orientation="horizontal">
                     <Image src="~/images/toptask.png" width="25" height="25" stretch="aspectFit"></Image>

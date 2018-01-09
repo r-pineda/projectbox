@@ -205,6 +205,6 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   }
 
   state(view) {
-    this.navState.appState = view + '';
+    this.nav.appState = view + '';
   }
 }
