@@ -75,7 +75,6 @@ export class UserService {
     )
     .map(response => response.json())
     .do(data => {
-      console.log(data.projects[0].color);
     })
     .catch(this.handleErrors)
     .toPromise();

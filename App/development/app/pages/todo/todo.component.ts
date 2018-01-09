@@ -34,6 +34,8 @@ export class TodoComponent {
   timestart :string;
   create :boolean;
   nav: NavComponent;
+  public projectSelection :string[] = new Array<string>();//testen ob assotiativ funktioniert. || array[project_id] = project_name
+  public phaseSelection :string[] = new Array<string>(); //dropdown selection zur auswahl der phase in der ein task created werden soll. wird befüllt nachdem der user ein Projekt ausgewählt hat.
   //temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
                     //Ebene 1 des Arrays ist assoziativ mit den IDs von den Todos. die 2. Ebene enthält folgende Attribute:
                     //[0]startTime: Stunden
@@ -72,8 +74,15 @@ export class TodoComponent {
       (data) => this.displayTodos(data),
       (error) => this.displayTodos(null)
     );
+    this.userService.getProjects()
+    .then((data) => {
+      data.projects.forEach((project) => {
+        this.projectSelection[project.id] = project.name;
+      });
+    })
     this.create = false;
     this.page.css = ".details { height: 0;}";
+    this.phaseSelection.push("Select a project first!")
 
     /*
     this.temp = new Array(this.todos.length);
@@ -116,7 +125,7 @@ export class TodoComponent {
           this.userService.getSingleProject(todo.project_id)
             .then(
               (data) => {this.todos[index].color = data.projects[0].color},
-              (error) => {alert("sorry, not happening!")}
+              (error) => {}
             )
           this.todoService.fillComments(todo.id)
             .then(
@@ -189,7 +198,8 @@ export class TodoComponent {
     createTodo(){
       this.newTodo.name = "created with mobile app";
       this.newTodo.project = "619492ee-6fb5-4afd-b0b1-d6140392951a";
-      this.todoService.createTodo(this.newTodo);
+      this.getPhases();
+      //this.todoService.createTodo(this.newTodo);
       this.create = false;
       this.ngOnInit();
     }
@@ -197,5 +207,17 @@ export class TodoComponent {
     createComment(task_id :string){
       this.newComment.task = task_id;
       this.todoService.createComment(this.newComment);
+    }
+
+    getPhases(){
+      this.userService.getSingleProject(this.newTodo.project)
+        .then(
+          (data) => {
+            this.phaseSelection = new Array<string>();
+            data.phases.forEach((phase) => {
+              this.phaseSelection.push(phase.name);
+            });
+          },
+          (error) => {})
     }
 }
