@@ -65,6 +65,22 @@ export class UserService {
     return JSON.parse(getString("curUser")); 
   }
 
+  getSingleProject(proj_id :string){
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.get(
+      Config.apiUrl + "v2/projects/" + proj_id,
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+      console.log(data.projects[0].color);
+    })
+    .catch(this.handleErrors)
+    .toPromise();
+  }
+
   getProjects(){
     let headers = new Headers();
     headers.append("Content-Type", "application/json");

@@ -67,8 +67,7 @@ export class TodoComponent {
     .then(
       (data) => this.displayTodos(data),
       (error) => this.displayTodos(null)
-    )
-    .then(() => {console.dir(this.todos)});
+    );
     this.create = false;
     this.page.css = ".details { height: 0;}";
 
@@ -110,6 +109,11 @@ export class TodoComponent {
         });
 
         this.todos.forEach((todo, index) => {        //alle todos durchlaufen
+          this.userService.getSingleProject(todo.project_id)
+            .then(
+              (data) => {this.todos[index].color = data.projects[0].color},
+              (error) => {alert("sorry, not happening!")}
+            )
           this.todoService.fillComments(todo.id)
             .then(
               (data) => {this.todos[index].comments = data.comments},

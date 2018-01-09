@@ -51,6 +51,7 @@ export class Todo {
   comments?: Comment[];
   customer: any = null;
   parent: any = null;
+  color: string;
 }
 
 export class Tracking {
