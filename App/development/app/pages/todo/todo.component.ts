@@ -13,6 +13,7 @@ import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/side
 import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { UserService } from "../../shared/user/user.service";
+import { NavComponent } from "../nav/nav.component";
 
 
 @Component({
@@ -32,6 +33,7 @@ export class TodoComponent {
   todoForDetail :Boolean[];
   timestart :string;
   create :boolean;
+  nav: NavComponent;
   //temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
                     //Ebene 1 des Arrays ist assoziativ mit den IDs von den Todos. die 2. Ebene enthält folgende Attribute:
                     //[0]startTime: Stunden
@@ -53,9 +55,11 @@ export class TodoComponent {
     private page: Page,
     private _changeDetectionRef: ChangeDetectorRef,
     private fonticon: TNSFontIconService,
-    private userService: UserService
+    private userService: UserService,
+    private navState: NavComponent
   )
   {
+    this.nav = navState;
     this.curUser = this.userService.getCurrentUser();
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
 
