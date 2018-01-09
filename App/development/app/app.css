@@ -146,11 +146,9 @@ h1 {
 
 .project {
     background-color: #FAF9FA;
-}
-
-.projects {
-    padding:20;
-    background-color: #FAF9FA;
+    margin-right:20;
+    padding:15;
+    height:70;
 }
 
 
@@ -159,6 +157,7 @@ h1 {
 .meeting {
     vertical-align: middle;
     background-color: #FAF9FA;
+    padding: 10;
     margin-bottom: 20;
 }
 
@@ -184,7 +183,6 @@ h1 {
 
 .borderitem {
     margin-top: 5;
-    border-color: blue blue blue blue;
     border-width: 2 2 2 2;
     border-radius: 2;
     vertical-align: top;

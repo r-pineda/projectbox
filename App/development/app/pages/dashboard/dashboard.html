@@ -13,8 +13,8 @@
     </GridLayout>
     <StackLayout orientation="horizontal">
         <StackLayout orientation="horizontal" *ngFor="let item of projects">
-            <Label class="borderitem" [ngStyle]="{'background-color': item.color}" height="50"></Label>
-            <Label [text]="item.name" (tap)="filterByProject(item.id)" class="h4 projects" verticalAlignment="stretch"></Label>
+            <Label class="borderitem" [ngStyle]="{'border-color': item.color}" height="60"></Label>
+            <Label [text]="item.name" (tap)="filterByProject(item.id)" class="h4 project" verticalAlignment="stretch"></Label>
         </StackLayout>
     </StackLayout>
     <Label text="TASKS" (tap)="nav.state('todo')" class="h2"></Label>
