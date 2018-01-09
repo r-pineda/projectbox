@@ -57,7 +57,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   fabShadowI: IOSData = {
     elevation: Elevation.CARD_PICKED_UP,
   };
-  navState :NavComponent;
+  private navState :NavComponent;
 
 
   constructor
@@ -72,10 +72,10 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     private statusService :StatusService,
     private _changeDetectionRef: ChangeDetectorRef,
     private fonticon: TNSFontIconService,
-    private navState: NavComponent
+    private _navState: NavComponent
   )
   {
-      this.navState = navState;
+      this.navState = _navState;
 
    /* this.curUser = this.userService.getCurrentUser();
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
@@ -124,7 +124,6 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       if (data) {
           this.todoService.saveTodos(data);
           this.todos = data.tasks;
-          console.dir(this.todos);
       } else {
           data = this.todoService.getSavedTodos();
           this.todos = data.tasks;
@@ -140,6 +139,10 @@ export class DashboardComponent implements AfterViewInit, OnInit {
           this.displayedTodos = this.todos;
       }
       this.displayedTodos.splice(3,this.displayedTodos.length-1);
+      this.displayedTodos.forEach((todo) => {
+        var options = { weekday: 'narrow', year: 'numeric', month: 'long', day: 'numeric' };
+        todo.due_date_string = new Date(todo.due_date).toLocaleDateString('de-DE', options);
+      });
   }
 
   displayMeetings(data :any){

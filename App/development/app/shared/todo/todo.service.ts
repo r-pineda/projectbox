@@ -44,6 +44,7 @@ export class TodoService {
 
   createTodo(todo :Todo){
     delete todo.id;
+    delete todo.due_date_string;
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", "Bearer "+ Config.token)
@@ -54,6 +55,7 @@ export class TodoService {
     )
     .map(response => response.json())
     .do(data => {
+      console.dir(data);
     })
     .catch(this.handleErrors)
     .toPromise();

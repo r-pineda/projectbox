@@ -179,6 +179,8 @@ export class TodoComponent {
 }
 
     createTodo(){
+      this.newTodo.name = "created with mobile app";
+      this.newTodo.project = "619492ee-6fb5-4afd-b0b1-d6140392951a";
       this.todoService.createTodo(this.newTodo);
       this.create = false;
       this.ngOnInit();
