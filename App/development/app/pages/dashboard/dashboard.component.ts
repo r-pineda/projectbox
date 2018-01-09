@@ -27,7 +27,7 @@ import { TicketService } from "../../shared/ticket/ticket.service";
 import { Todo } from "../../shared/todo/todo";
 import { Ticket } from "../../shared/ticket/ticket";
 import { NavComponent } from "../nav/nav.component";
-import { AndroidData, IOSData, Elevation } from 'nativescript-ng-shadow';
+import { IOSData, Elevation, AndroidData, ShapeEnum } from 'nativescript-ng-shadow';
 
 @Component({
   selector: "pb-dashboard",
@@ -42,6 +42,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   meetingdata :any;
   meetings :Meeting[] = new Array<Meeting>();
   displayedMeetings :Meeting[] = new Array<Meeting>();
+  displayedTodos :Todo[] = new Array<Todo>();
   public offlinemode :boolean;
   projects :Project[];
   selectedProject :string = null; //id of the selected project
@@ -49,11 +50,14 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   todos :Todo[];
   tickets :Ticket[];
   fabShadowA: AndroidData = {
-    elevation: Elevation.CARD_PICKED_UP,
-  };
+        elevation: 6,
+        bgcolor: '#ff1744',
+        shape: ShapeEnum.OVAL,
+    };
   fabShadowI: IOSData = {
     elevation: Elevation.CARD_PICKED_UP,
   };
+  navState :NavComponent;
 
 
   constructor
@@ -71,6 +75,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     private navState: NavComponent
   )
   {
+      this.navState = navState;
 
    /* this.curUser = this.userService.getCurrentUser();
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
@@ -96,8 +101,8 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     );
 
     this.todoService.getTodos().then(
-      (data) => this.displayTickets(data), 
-      (error) => this.displayTickets(false)
+      (data) => this.displayTodos(data),
+      (error) => this.displayTodos(false)
     );
   }
 
@@ -115,14 +120,26 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     }
   }
 
-  displayTodos(data :any){
-    if(data){
-      this.todoService.saveTodos(data);
-      this.todos = data.tasks;
-    }else{
-      data = this.todoService.getSavedTodos();
-      this.todos = data.tasks;
-    }
+  displayTodos(data :any) {
+      if (data) {
+          this.todoService.saveTodos(data);
+          this.todos = data.tasks;
+          console.dir(this.todos);
+      } else {
+          data = this.todoService.getSavedTodos();
+          this.todos = data.tasks;
+      }
+      if (this.selectedProject) {
+          this.displayedTodos = new Array<Todo>();
+          data.tasks.forEach(todo => {
+              if (todo.project == this.selectedProject) {
+                  this.displayedTodos.push(todo);
+              }
+          });
+      } else {
+          this.displayedTodos = this.todos;
+      }
+      this.displayedTodos.splice(3,this.displayedTodos.length-1);
   }
 
   displayMeetings(data :any){
@@ -135,7 +152,6 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     if(this.selectedProject){
       this.displayedMeetings = new Array<Meeting>();
       data.meetings.forEach(meeting => {
-        console.log(this.selectedProject + " ; " + meeting.project);
         if(meeting.project == this.selectedProject){
           this.displayedMeetings.push(meeting);
         }
@@ -143,7 +159,8 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     }else{
       this.displayedMeetings = this.meetings;
     }
-    this.meetings.sort((a, b) => {return new Date(a.date).getTime() - new Date(b.date).getTime()})
+    this.meetings.sort((a, b) => {return new Date(a.date).getTime() - new Date(b.date).getTime()});
+      this.displayedMeetings.splice(3,this.displayedMeetings.length-1);
   }
   displayProjects(data :any){
     if(data){

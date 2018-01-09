@@ -1,3 +1,14 @@
+<ActionBar title="" [ngSwitch]="appState">
+        <ActionItem src="~/images/navicon.png" ios.position="left" android.position="actionBar" (tap)="showDrawer()"></ActionItem>
+    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
+        <Label text="Dashboard" *ngSwitchCase="'dashboard'" class="action-label nav-h3"></Label>
+        <Label text="Tasks" *ngSwitchCase="'todo'" class="action-label nav-h3"></Label>
+        <Label text="Meeting" *ngSwitchCase="'meeting'" class="action-label nav-h3"></Label>
+        <Label text="Ticket" *ngSwitchCase="'ticket'" class="action-label nav-h3"></Label>
+        <Label text="Einstellungen" *ngSwitchCase="'settings'" class="action-label nav-h3"></Label>
+    </StackLayout>
+    <ActionItem ios.position="right" android.position="actionBar" ios.systemIcon="13" android.systemIcon="ic_menu_refresh" (tap)="aktualisieren()" style="background-color:#fff;"></ActionItem>
+</ActionBar>
 <RadSideDrawer tkExampleTitle tkToggleNavButton>
     <StackLayout tkDrawerContent class="sideStackLayout">
         <StackLayout class="sideTitleStackLayout">
@@ -23,6 +34,7 @@
     <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="100%">
             <AbsoluteLayout>
                     <StackLayout class="page" width="100%" [ngSwitch]="appState">
+                        <Label class="fa" [text]="'fa-bars' | fonticon" (tap)="openDrawer()"></Label>
                        <pb-dashboard *ngSwitchCase="'dashboard'"></pb-dashboard>
                        <pb-todo *ngSwitchCase="'todo'"></pb-todo>
                        <pb-meeting *ngSwitchCase="'meeting'"></pb-meeting>

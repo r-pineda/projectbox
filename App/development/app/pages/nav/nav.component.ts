@@ -14,6 +14,7 @@ import { TodoComponent } from "../todo/todo.component";
 import { TicketComponent } from "../ticket/ticket.component";
 import { NavModule } from "./nav.module";
 import { File } from "../../shared/user/file"
+import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 @Component({
   selector: "app-nav",
@@ -45,7 +46,8 @@ export class NavComponent implements AfterViewInit, OnInit {
     private routerExtensions: RouterExtensions,
     //private pageRoute: PageRoute,
     private userService: UserService,
-    private _changeDetectionRef: ChangeDetectorRef,
+    private fonticon: TNSFontIconService,
+    private _changeDetectionRef: ChangeDetectorRef
   )
   {
 
@@ -84,6 +86,7 @@ export class NavComponent implements AfterViewInit, OnInit {
 
   state(view) {
     this.appState = view + '';
+    this.onCloseDrawerTap();
   }
 
 @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;

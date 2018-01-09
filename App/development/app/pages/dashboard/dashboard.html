@@ -1,32 +1,28 @@
-<ActionBar title="">
-    <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="openDrawer()"></NavigationButton>
-    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
-        <Label text="Dashboard" class="action-label nav-h3"></Label>
-    </StackLayout>
-    <ActionItem ios.position="right" android.position="actionBar" ios.systemIcon="13" android.systemIcon="ic_menu_refresh" (tap)="aktualisieren()"></ActionItem>
-</ActionBar>
 <GridLayout columns="*,*,*" rows="20,auto,auto,auto,auto,auto,auto">
     <Label *ngIf="offlinemode" row="0" colSpan="3" text="OFFLINE" style="text-align:center;background-color:rgb(99, 228, 178);"></Label>
     <GridLayout columns="auto, *" rows="auto" row="1" colSpan="3">
         <Label text="PROJEKTE" (tap)="navigateto(ticket)" row="0" col="0" class="h2"></Label>
         <Label text="see all >" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom" class="text" style="margin-right:10;"></Label>
     </GridLayout>
-    <GridLayout columns="*" rows="150" colSpan="3" row="2" class="project" style="padding:5;">
-        <StackLayout orientation="horizontal" verticalAlignment="center">
+    <GridLayout columns="*" rows="150" colSpan="3" row="2">
+        <StackLayout orientation="horizontal" style="padding:10;" class="project" verticalAlignment="center">
             <Label *ngFor="let item of projects" [text]="item.name" (tap)="filterByProject(item.id)" class="h4 projects"></Label>
         </StackLayout>
     </GridLayout>
-    <Label text="TASKS" (tap)="state('todo')" row="3" colSpan="3" class="h2"></Label>
+    <Label text="TASKS" (tap)="navState.state('todo')" row="3" colSpan="3" class="h2"></Label>
     <StackLayout row="4" colSpan="3">
-        <GridLayout (tap)="showDetail()" columns="5, *" rows="40, auto">
-            <Border cornerRadius="10" col="0" row="0" height="40" width="5" borderColor="#DEE8E7" style="top:0;background-color:#CB1F2C;" margin="10 0 0 0"> </Border>
-            <GridLayout col="1" rowSpan="2" columns="auto" class="task" rows="*, *" padding="10">
-                <Label text="UX - Testfälle erstellen" id="task-h1" class="h1" textWrap="true" col="0" row="0" style.fontSize="20"></Label>
-                <Label text="Donec id elit non mi porta gravida at eget metus" class="text" col="0" row="2" style.fontSize="14" style.verticalAlignment="top" style.horizontalAlignment="left" textWrap="true"></Label>
+        <GridLayout class="marginitem" *ngFor="let task of displayedTodos" columns="auto,*" rows="auto,auto">
+            <Label class="borderitem" height="50" col="0" rowSpan="2"></Label>
+            <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
+                <StackLayout col="0" row="0" orientation="horizontal">
+                    <Image src="~/images/toptask.png" width="25" height="25" stretch="aspectFit"></Image>
+                    <TextView [text]="task.name" editable="false" textWrap="true" class="longtext h4" col="0" row="0"></TextView>
+                </StackLayout>
+                <Label class="text ticket" [text]="task.created_at" col="0" row="1"></Label>
             </GridLayout>
         </GridLayout>
     </StackLayout>
-    <Label text="MEETINGS" (tap)="state('meeting')" row="5" colSpan="3" class="h2"></Label>
+    <Label text="MEETINGS" (tap)="navState.state('meeting')" row="5" colSpan="3" class="h2"></Label>
     <StackLayout row="6" colSpan="3">
         <GridLayout *ngFor="let item of displayedMeetings" columns="80,auto,auto,*" rows="auto,auto,*" [nsRouterLink]="['/meeting_detail', item.id]" class="meeting" marginBottom="10" shadow elevation="10">
             <Label text="HEUTE" col="0" row="0" rowSpan="3" class="meeting-indicator h4" margin="0 0 0 5" shadow="2"></Label>
