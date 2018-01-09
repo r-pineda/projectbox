@@ -155,7 +155,13 @@ export class LoginComponent implements OnInit{
     this.wrongcredentials = false;
     this.statusService.loggedIn();
     this.statusService.setOfflineMode(false);
-    this.routerExtensions.navigate(["/nav"], {
+    /*this.routerExtensions.navigate(["/nav"], {
+      transition: {
+          name: "slide",
+          curve: "easeOut"
+      }
+    })*/
+      this.routerExtensions.navigate(["/tutorial"], {
       transition: {
           name: "slide",
           curve: "easeOut"

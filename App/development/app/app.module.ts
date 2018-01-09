@@ -28,6 +28,8 @@ import { TicketComponent } from "./pages/ticket/ticket.component";
 import { NavComponent } from "./pages/nav/nav.component";
 import { MeetingComponent } from "./pages/meeting/meeting.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
+import { OnboardingModule } from "./pages/onboarding/onboarding.module";
+import { TutorialComponent } from "./pages/tutorial/tutorial.component";
 
 @NgModule({
   imports: [
@@ -36,6 +38,7 @@ import { SettingsComponent } from "./pages/settings/settings.component";
     NativeScriptHttpModule,
     NativeScriptRouterModule,
     NgShadowModule, //ng-shadow plugin
+    OnboardingModule,
     NativeScriptRouterModule.forChild(routes),
     NativeScriptRouterModule.forRoot(routes),
    TNSFontIconModule.forRoot({
@@ -52,6 +55,7 @@ import { SettingsComponent } from "./pages/settings/settings.component";
     NavComponent,
     DashboardComponent,
     SettingsComponent,
+    TutorialComponent,
     LISTVIEW_DIRECTIVES,
     SIDEDRAWER_DIRECTIVES
   ],

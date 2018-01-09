@@ -10,6 +10,7 @@ import { TicketComponent } from "./pages/ticket/ticket.component";
 import { NavComponent } from "./pages/nav/nav.component";
 import { MeetingComponent } from "./pages/meeting/meeting.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
+import { TutorialComponent } from "./pages/tutorial/tutorial.component";
 
 export const routes = [
   { path: "", component: LoginComponent },
@@ -23,7 +24,8 @@ export const routes = [
     ]
   },
   { path: "meeting_detail/:id", component: Meeting_detailComponent },
-  { path: "login", component: LoginComponent }
+  { path: "login", component: LoginComponent },
+  { path: "tutorial", component: TutorialComponent }
     
 ];
 
