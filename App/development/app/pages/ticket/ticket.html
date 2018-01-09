@@ -1,10 +1,3 @@
-<ActionBar title="">
-    <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="openDrawer()"></NavigationButton>
-    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
-        <Label text="Tickets" class="action-label nav-h3"></Label>
-    </StackLayout>
-    <ActionItem (tap)="cr_ticket()" android.systemIcon="ic_menu_add" ios.systemIcon="4" ios.position="right"></ActionItem>
-</ActionBar>
 <ScrollView orientation="vertical" isEnabled="true" width="100%" height="100%">
     <AbsoluteLayout>
         <StackLayout class="page" width="100%">
@@ -78,10 +71,10 @@
                 <Label class="field-seperator" height="2"></Label>
                 <StackLayout orientation="horizontal" horizontalAlignment="right">
                     <StackLayout class="btn-img" (tap)="cancel()">
-                        <Image src="~/images/abbrechen2.png" width="30" height="30" stretch="aspectFit"></Image>
+                        <Image src="~/images/abbrechen2.png" width="20" height="20" stretch="aspectFit"></Image>
                     </StackLayout>
-                    <StackLayout class="btn-img" (tap)="createTodo()">
-                        <Image src="~/images/save.png" width="30" height="30" stretch="aspectFit"></Image>
+                    <StackLayout class="btn-img" (tap)="createTicket()">
+                        <Image src="~/images/save.png" width="20" height="20" stretch="aspectFit"></Image>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
