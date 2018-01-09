@@ -1,3 +1,10 @@
+<ActionBar title="">
+    <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="nav.openDrawer()"></NavigationButton>
+    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
+        <Label text="Tickets" class="action-label nav-h3"></Label>
+    </StackLayout>
+    <ActionItem (tap)="cr_ticket()" android.systemIcon="ic_menu_add" ios.systemIcon="4" ios.position="right"></ActionItem>
+</ActionBar>
 <ScrollView orientation="vertical" isEnabled="true" width="100%" height="100%">
     <AbsoluteLayout>
         <StackLayout class="page" width="100%">
@@ -5,14 +12,14 @@
                 <GridLayout columns="*" rows="auto,auto,auto">
                     <Label class="h1" text="TOP-TICKETS" col="0" row="0"></Label>
                     <StackLayout class="marginitem" col="0" row="1">
-                        <GridLayout class="marginitem" *ngFor="let ticket of tickets" columns="auto,*" rows="auto,30,150" (tap)="expand(ticket.id)">
+                        <GridLayout class="marginitem" *ngFor="let ticket of tickets" columns="auto,*" rows="auto,auto,auto" (tap)="expand(ticket.id)">
                             <Label class="borderitem" height="50" col="0" rowSpan="2"></Label>
                             <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
                                 <StackLayout col="0" row="0" orientation="horizontal">
                                     <Image src="~/images/toptask.png" width="25" height="25" stretch="aspectFit"></Image>
                                     <TextView [text]="ticket.name" editable="false" textWrap="true" class="longtext h4" col="0" row="0"></TextView>
                                 </StackLayout>
-                                <Label class="text ticket" [text]="ticket.date" col="0" row="1"></Label>
+                                <Label class="text ticket" [text]="ticket.id" col="0" row="1"></Label>
                                 <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon" col="1" rowSpan="2"></Label>
                             </GridLayout>
                             <StackLayout col="1" row="3" *ngIf="ticketForDetail[ticket.id]" class="details">

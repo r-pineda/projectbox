@@ -57,7 +57,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   fabShadowI: IOSData = {
     elevation: Elevation.CARD_PICKED_UP,
   };
-  private navState :NavComponent;
+  private nav :NavComponent;
 
 
   constructor
@@ -72,10 +72,10 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     private statusService :StatusService,
     private _changeDetectionRef: ChangeDetectorRef,
     private fonticon: TNSFontIconService,
-    private _navState: NavComponent
+    private navState: NavComponent
   )
   {
-      this.navState = _navState;
+      this.nav = navState;
 
    /* this.curUser = this.userService.getCurrentUser();
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;

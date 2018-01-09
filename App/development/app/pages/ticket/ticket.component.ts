@@ -14,6 +14,7 @@ import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/side
 import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import * as dialogs from "ui/dialogs";
+import { NavComponent } from "../nav/nav.component";
 
 
 @Component({
@@ -23,7 +24,7 @@ import * as dialogs from "ui/dialogs";
   styleUrls: ["pages/ticket/ticket-common.css", "pages/ticket/ticket.css"]
 })
 
-export class TicketComponent implements AfterViewInit, OnInit {
+export class TicketComponent implements OnInit {
 
   tickets :Ticket[];
   ticketForDetail :Boolean[];
@@ -42,6 +43,7 @@ export class TicketComponent implements AfterViewInit, OnInit {
                     curUser :User = new User;
                     avatar :string;
 public newTicket :Ticket = new Ticket();
+nav: NavComponent;
 
   constructor
   (
@@ -51,10 +53,13 @@ public newTicket :Ticket = new Ticket();
     private userService: UserService,
     private statusService :StatusService,
     private ticketService :TicketService,
-    private page: Page,
     private _changeDetectionRef: ChangeDetectorRef,
-    private fonticon: TNSFontIconService)
+    private page: Page,
+    private fonticon: TNSFontIconService,
+    private navState: NavComponent
+    )
   {
+    this.nav = navState;
     this.curUser = this.userService.getCurrentUser();
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
   }
@@ -150,29 +155,4 @@ public newTicket :Ticket = new Ticket();
 
   }
   */
-
-  navigateto(pagename: string) {
-    this.routerExtensions.navigate([pagename], {
-      transition: {
-          name: "slide",
-          curve: "easeOut"
-      }
-  });
-}
-
-@ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
-    private drawer: RadSideDrawer;
-
-    ngAfterViewInit() {
-        this.drawer = this.drawerComponent.sideDrawer;
-        this._changeDetectionRef.detectChanges();
-    }
-
-    public openDrawer() {
-        this.drawer.showDrawer();
-    }
-
-    public onCloseDrawerTap() {
-       this.drawer.closeDrawer();
-    }
 }
