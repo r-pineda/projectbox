@@ -25,6 +25,8 @@ import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import * as tabViewModule from "tns-core-modules/ui/tab-view";
 import { File } from "../../shared/user/file";
+import { NavComponent } from "../nav/nav.component";
+
 var bghttp = require("nativescript-background-http"); //file upload
 
 @Component({
@@ -40,7 +42,7 @@ export class Meeting_detailComponent implements OnInit{
   userFiles :File[];
   imageFiles :string[] = new Array<string>();
 
-  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService, private userService: UserService) {
+  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService, private userService: UserService, private nav: NavComponent) {
 
     this.route.params.subscribe((params) => {
       this.getMeeting(params["id"]);
