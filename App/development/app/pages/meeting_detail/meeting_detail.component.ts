@@ -36,7 +36,7 @@ var bghttp = require("nativescript-background-http"); //file upload
 export class Meeting_detailComponent implements OnInit{
 
   meeting :Meeting;
-  public picture :any;
+  public picture :ImageAsset;
   userFiles :File[];
   imageFiles :string[] = new Array<string>();
 
@@ -48,6 +48,7 @@ export class Meeting_detailComponent implements OnInit{
   }
 
   ngOnInit(){
+    console.dir(fs.knownFolders.currentApp().contains());
     this.userService.getFiles().then(
       (data) => this.displayFiles(data),
       (error) => this.displayFiles(false)
@@ -146,20 +147,23 @@ export class Meeting_detailComponent implements OnInit{
   }
   //experimental
   uploadFile(){
+    console.log("uploading...");
     var session = bghttp.session("image-upload");
  
     var request = {
-        url: "https://secure.projectbox.eu/v2/files",
+        url: "https://secure.projectbox.eu/v2/upload/files",
         method: "POST",
         headers: {
             "Content-Type": "application/octet-stream",
-            "File-Name": "mobile_upload.png"
+            "File-Name": "mobile_upload.png",
+            "Authorization": "Bearer " + "NTaZgx8MVQGMlXmM2kI6dGbXRGH42UBm"
         },
         description: "{ 'uploading': 'mobile_upload.png' }" //wie body bei normalem post
     };
+    var params = [{name: "meeting", value: this.meeting.id}, {name:"file", filename: fs.knownFolders.currentApp().path + "/images/logo_log.png", mimeType: 'image/png'}];
 
     //let params = {name:"meeting", filename: this.picture, mimeType: 'image/png'};
-    let task = session.uploadFile(this.picture, request);
+    let task = session.multipartUpload(params, request);
  
     task.on("progress", this.logEvent);
     task.on("error", this.logEvent);

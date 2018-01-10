@@ -100,8 +100,8 @@ export class TodoComponent {
   }
 
   cancel() {
-    this.create = false;
-    this.page.css = "Page { background-color: #dee8e7; } .page { padding-left: 20; background-color: #dee8e7;}";
+  /*  this.create = false;
+    this.page.css = "Page { background-color: #dee8e7; } .page { padding-left: 20; background-color: #dee8e7;}";*/
   }
 
  expand(id :string){
