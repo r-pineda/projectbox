@@ -17,7 +17,7 @@ import { File } from "../../shared/user/file"
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 @Component({
-  selector: "app-nav",
+  selector: "pb-nav",
   providers: [UserService],
   templateUrl: "pages/nav/nav.html",
   styleUrls: ["pages/nav/nav-common.css"]

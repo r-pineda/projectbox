@@ -24,6 +24,7 @@
     "nativescript-background-http": "^3.1.0",
     "nativescript-camera": "^3.1.2",
     "nativescript-couchbase": "^1.0.18",
+    "nativescript-drop-down": "^3.2.0",
     "nativescript-fancy-calendar": "^3.0.2",
     "nativescript-fresco": "^3.0.6",
     "nativescript-imagepicker": "^3.0.7",

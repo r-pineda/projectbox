@@ -32,7 +32,7 @@ var bghttp = require("nativescript-background-http"); //file upload
 @Component({
   selector: "pb-meeting_detail",
   templateUrl: "pages/meeting_detail/meeting_detail.html",
-  providers: [UserService, MeetingService],
+  providers: [UserService, MeetingService, NavComponent],
   styleUrls: ["pages/meeting_detail/meeting_detail-common.css", "pages/meeting_detail/meeting_detail.css"]
 })
 export class Meeting_detailComponent implements OnInit{
@@ -42,7 +42,7 @@ export class Meeting_detailComponent implements OnInit{
   userFiles :File[];
   imageFiles :string[] = new Array<string>();
 
-  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService, private userService: UserService, private nav: NavComponent) {
+  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private nav: NavComponent, private meetingService: MeetingService, private userService: UserService) {
 
     this.route.params.subscribe((params) => {
       this.getMeeting(params["id"]);

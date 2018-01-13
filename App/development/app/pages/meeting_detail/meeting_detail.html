@@ -1,33 +1,51 @@
 <ActionBar title="">
     <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="openDrawer()"></NavigationButton>
-    <StackLayout orientation="horizontal"
-    ios:horizontalAlignment="center"
-    android:horizontalAlignment="center">
-    <Label text="Meeting - Detailansicht" class="action-label nav-h3"></Label>
-  </StackLayout>
-  <ActionItem (tap)="cr_ticket()" android.systemIcon="ic_menu_add"
-  ios.systemIcon="4" ios.position="right"></ActionItem>
+    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
+        <Label text="Meeting - Detailansicht" class="action-label nav-h3"></Label>
+    </StackLayout>
+    <ActionItem (tap)="cr_ticket()" android.systemIcon="ic_menu_add" ios.systemIcon="4" ios.position="right"></ActionItem>
 </ActionBar>
 <pb-nav></pb-nav>
-    <ScrollView tkMainContent class="page" orientation="vertical" isEnabled="true" width="100%" height="100%" >
-        <StackLayout id="meeting-detail" shadow elevation="-20">
+<ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="100%">
+    <AbsoluteLayout>
+        <StackLayout class="page" width="100%" [ngSwitch]="appState">
             <Label class="h4 center" text="DOWN"></Label>
-            <Label class="h4" text="TITEL"></Label>
+            <!--<StackLayout orientation="horizontal" horizontalAlignment="right">
+                <Button class="btn btn-primary btn-active" (tap)="openCamera()" text="Abbrechen"></Button>
+                <Button class="btn btn-primary btn-active" (tap)="uploadFile()" text="Aktualisieren"></Button>
+            </StackLayout>-->
+            <Label class="fa" [text]="'fa-angle-down' | fonticon" horizontalAlignment="center"></Label>
+            <Label class="h5" text="TITEL"></Label>
             <TextField class="textfield" [(ngModel)]="meeting.name"></TextField>
-            <Label class="h4" text="ORT"></Label>
-                <TextField class="textfield" [(ngModel)]="meeting.location"></TextField>
-                <Label class="h4" text="DATUM"></Label>
-                <TextField class="textfield" [(ngModel)]="meeting.date"></TextField>
-                <Label class="h4" text="ZEIT / DAUER"></Label>
-                <TextField class="textfield" [(ngModel)]="meeting.duration"></TextField>
-                <Label class="h4" text="TEILNEHMER"></Label>
-                <TextField class="textfield" [(ngModel)]="meeting.attendees"></TextField>
-                <GridLayout>
-                    
-                </GridLayout>
-                <StackLayout orientation="horizontal" horizontalAlignment="right">
-                        <Button class="btn btn-primary btn-active" (tap)="openCamera()" text="Abbrechen"></Button>
-                        <Button class="btn btn-primary btn-active" (tap)="uploadFile()" text="Aktualisieren"></Button>
-                    </StackLayout>
+            <Label class="h5" text="DEADLINE"></Label>
+            <TextField class="textfield" [(ngModel)]="meeting.location"></TextField>
+            <Label class="h5" text="VERANTWORTLICHER"></Label>
+            <TextField class="textfield" [(ngModel)]="meeting.date"></TextField>
+            <Label class="h5" text="PROJEKT"></Label>
+            <TextField class="textfield" [(ngModel)]="meeting.duration"></TextField>
+            <Label class="h5" text="BESCHREIBUNG"></Label>
+            <TextField class="textfield" [(ngModel)]="meeting.attendees"></TextField>
+            <GridLayout columns="*,*,*" rows="*,*">
+                <Image src="~/images/timetracking.png" row="0" col="0" width="20" height="20" stretch="aspectFit"></Image>
+                <Image src="~/images/kommentare.png" row="0" col="1" width="40" height="20" stretch="aspectFit"></Image>
+                <Image src="~/images/kommentare.png" row="0" col="2" width="40" height="20" stretch="aspectFit"></Image>
+                <Label class="h4" text="Timetracking" col="0" row="1" horizontalAlignment="center" (tap)="showTimeTrack()"></Label>
+                <Label class="h4" text="Kommentare" col="1" row="1" horizontalAlignment="center" (tap)="showComments()"></Label>
+                <Label class="h4" text="Kommentare" col="2" row="1" horizontalAlignment="center" (tap)="showFiles()"></Label>
+            </GridLayout>
+            <StackLayout [ngSwitch]="meeting_tabs">
+                <StackLayout *ngSwitchCase="'agenda'"></StackLayout>
+                <TextView hint="Füge hier deinen Text ein" *ngSwitchCase="'protokoll'"></TextView>
+                <StackLayout *ngSwitchCase="'files'"></StackLayout>
             </StackLayout>
-    </ScrollView>
+            <StackLayout orientation="horizontal" horizontalAlignment="right">
+                <StackLayout class="btn-img" (tap)="cancel()">
+                    <Image src="~/images/abbrechen2.png" width="30" height="30" stretch="aspectFit"></Image>
+                </StackLayout>
+                <StackLayout class="btn-img" (tap)="createTodo()">
+                    <Image src="~/images/save.png" width="30" height="30" stretch="aspectFit"></Image>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </AbsoluteLayout>
+</ScrollView>
