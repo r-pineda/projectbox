@@ -58,11 +58,11 @@ export class Tracking {
   id: string;
   user_id: string;
   task_id: string;
-  started_at: string;
+  started_at: Date;
   finished: boolean;
-  finished_at: string;
-  created_at: string;
-  updated_at: string;
+  finished_at: Date;
+  created_at: Date;
+  updated_at: Date;
   description: string;
   task: string;
   user: string;
@@ -74,9 +74,9 @@ export class Comment {
   task_id: string;
   user_id: string;
   message: string;
-  date: string;
-  created_at: string;
-  updated_at: string;
+  date: Date;
+  created_at: Date;
+  updated_at: Date;
   user: string;
   project?: any;
   task: string;

@@ -63,7 +63,8 @@ export class TodoService {
   updateTodo(todo :Todo){
     let id :string = todo.id + "";
     delete todo.id;
-    
+    delete todo.trackingsFull;
+    delete todo.due_date_string;
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", "Bearer "+ Config.token)
@@ -201,6 +202,25 @@ export class TodoService {
     headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.delete(
       Config.apiUrl + "v2/trackings/" + tracking_id,
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+    })
+    .catch(this.handleErrors)
+    .toPromise();
+  }
+
+  updateTracking(tracking :Tracking){
+    let id :string = tracking.id + "";
+    delete tracking.id;
+    
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token)
+    return this.http.put(
+      Config.apiUrl + "v2/trackings/" + id,
+      ("{\"tracking\": " + JSON.stringify(tracking) + "}"),
       { headers: headers }
     )
     .map(response => response.json())

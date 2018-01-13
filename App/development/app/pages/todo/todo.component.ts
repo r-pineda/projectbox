@@ -26,6 +26,7 @@ import { NavComponent } from "../nav/nav.component";
 export class TodoComponent {
   public newTodo :Todo = new Todo();
   public newTracking = new Tracking();
+  public newTimerTracking = new Tracking();
   public newComment = new Comment();
   curUser :User = new User;
   avatar :string;
@@ -36,6 +37,10 @@ export class TodoComponent {
   nav: NavComponent;
   public projectSelection :string[] = new Array<string>();//testen ob assotiativ funktioniert. || array[project_id] = project_name
   public phaseSelection :string[] = new Array<string>(); //dropdown selection zur auswahl der phase in der ein task created werden soll. wird befüllt nachdem der user ein Projekt ausgewählt hat.
+  currentTracking :Tracking;
+
+  
+  
   //temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
                     //Ebene 1 des Arrays ist assoziativ mit den IDs von den Todos. die 2. Ebene enthält folgende Attribute:
                     //[0]startTime: Stunden
@@ -136,9 +141,16 @@ export class TodoComponent {
             this.todoService.fillTracking(tracking)   //todoService gibt zur trackingID ein tracking objekt zurück
             .then((data) => {
               this.todos[index].trackingsFull.push(data.trackings[0]);
+              console.log("scanning for unfinished trackings..... " + data.trackings[0].id);
+              if(!data.trackings[0].finished){
+                this.currentTracking = data.trackings[0];
+                console.log("unfinished Tracking detected! name: " + this.currentTracking.description);
+              }
             },
-            (error) => {alert("offlineTrackings not supported")})
+            (error) => {alert("offlineTrackings not supported")});
+                        
           });
+          
         });
 
         this.todoForDetail = new Array<Boolean>(this.todos.length);
@@ -196,9 +208,9 @@ export class TodoComponent {
 }
 
     createTodo(){
-      this.newTodo.name = "created with mobile app";
-      this.newTodo.project = "619492ee-6fb5-4afd-b0b1-d6140392951a";
-      this.getPhases();
+      //this.newTodo.name = "created with mobile app";
+      //this.newTodo.project = "619492ee-6fb5-4afd-b0b1-d6140392951a";
+      //this.getPhases();
       //this.todoService.createTodo(this.newTodo);
       this.create = false;
       this.ngOnInit();
@@ -219,5 +231,34 @@ export class TodoComponent {
             });
           },
           (error) => {})
+    }
+
+    startTimer(task_id :string){
+      if(!this.currentTracking){
+        this.currentTracking = new Tracking();
+        this.currentTracking.task = task_id;
+        this.currentTracking.started_at = new Date();
+        this.currentTracking.finished = false;
+        this.currentTracking.description = "mobile tracking";
+        this.currentTracking.user = null
+        this.todoService.createTracking(this.currentTracking)
+        .then((data) => {
+          this.todos.forEach((todo) => {
+            if(todo.id === task_id){
+              todo.trackings.push(data.trackings[0].id);
+              todo.trackingsFull.push(data.trackings[0]);
+              this.todoService.updateTodo(todo);
+            }
+          });
+        });
+      }else{
+        alert("stop your currently running timer first!");
+      }
+    }
+
+    stopTimer(){
+      this.currentTracking.finished = true;
+      this.currentTracking.finished_at = new Date();
+      this.todoService.updateTracking(this.currentTracking);
     }
 }
