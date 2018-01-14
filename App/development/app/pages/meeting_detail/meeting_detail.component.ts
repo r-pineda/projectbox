@@ -26,6 +26,7 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import * as tabViewModule from "tns-core-modules/ui/tab-view";
 import { File } from "../../shared/user/file";
 import { NavComponent } from "../nav/nav.component";
+import { Page } from "ui/page";
 
 var bghttp = require("nativescript-background-http"); //file upload
 
@@ -41,12 +42,15 @@ export class Meeting_detailComponent implements OnInit{
   public picture :ImageAsset;
   userFiles :File[];
   imageFiles :string[] = new Array<string>();
+  meeting_tabs: String;
 
-  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private nav: NavComponent, private meetingService: MeetingService, private userService: UserService) {
+  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private page: Page, private nav: NavComponent, private meetingService: MeetingService, private userService: UserService) {
 
     this.route.params.subscribe((params) => {
       this.getMeeting(params["id"]);
     });
+      
+     this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
   }
 
   ngOnInit(){
@@ -209,5 +213,9 @@ export class Meeting_detailComponent implements OnInit{
     }).catch(function (e) {
         // process error
     });
+  }
+
+  state(id) {
+      this.meeting_tabs = id;
   }
 }
