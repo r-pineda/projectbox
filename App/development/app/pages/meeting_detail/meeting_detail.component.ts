@@ -24,9 +24,10 @@ import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/side
 import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import * as tabViewModule from "tns-core-modules/ui/tab-view";
-import { File } from "../../shared/user/file";
+import { FileObject } from "../../shared/user/fileObject";
 import { NavComponent } from "../nav/nav.component";
 import { Page } from "ui/page";
+var PhotoViewer = require("nativescript-photoviewer");
 
 var bghttp = require("nativescript-background-http"); //file upload
 
@@ -38,9 +39,10 @@ var bghttp = require("nativescript-background-http"); //file upload
 })
 export class Meeting_detailComponent implements OnInit{
 
+  photoViewer = new PhotoViewer();
   meeting :Meeting;
   public picture :ImageAsset;
-  userFiles :File[];
+  userFiles :FileObject[];
   imageFiles :string[] = new Array<string>();
   meeting_tabs: String;
 
@@ -54,22 +56,23 @@ export class Meeting_detailComponent implements OnInit{
   }
 
   ngOnInit(){
-    console.dir(fs.knownFolders.currentApp().contains());
     this.userService.getFiles().then(
       (data) => this.displayFiles(data),
       (error) => this.displayFiles(false)
     )
     .then(() => {
+      /*
       this.userFiles.forEach(file => {
         if(file.meeting_id != this.meeting.id){
           this.userFiles.splice(this.userFiles.indexOf(file), 1);
         }
       });
+      */
     })
     .then(() => {
       this.userFiles.forEach(file => {
         if(file.mime.split("/")[0] === "image"){
-          this.imageFiles.push("https://secure.projectbox.eu/v2/preview/file/" + file.id + "?access_token=" + this.userService.getCurrentUser().access_token)
+          file.imagesrc = ("https://secure.projectbox.eu/v2/preview/file/" + file.id + "?access_token=" + this.userService.getCurrentUser().access_token)
         }
       });
     });
@@ -152,6 +155,7 @@ export class Meeting_detailComponent implements OnInit{
     }
   }
   //experimental
+  /*
   uploadFile(){
     console.log("uploading...");
     var session = bghttp.session("image-upload");
@@ -179,6 +183,7 @@ export class Meeting_detailComponent implements OnInit{
   logEvent(e) {
     console.log(e.eventName);
   }
+  */
 
   /*------------*/
 
@@ -217,5 +222,13 @@ export class Meeting_detailComponent implements OnInit{
 
   state(id) {
       this.meeting_tabs = id;
+  }
+
+  showImage(src :string){
+    this.imageFiles = new Array<string>();
+    this.userFiles.forEach((file) => {
+      this.imageFiles.push(file.imagesrc);
+    });
+    this.photoViewer.showViewer(this.imageFiles);
   }
 }

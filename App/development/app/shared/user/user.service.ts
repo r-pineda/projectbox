@@ -19,7 +19,7 @@ import { UserLogin } from "./userLogin";
 import { User } from "./user";
 import { Config } from "../config";
 import { Project, Pivot } from "./project"
-import { File } from "../../shared/user/file";
+import { FileObject } from "../../shared/user/fileObject";
 
 @Injectable()
 export class UserService {
@@ -127,7 +127,7 @@ export class UserService {
     .toPromise();
   }
 
-  saveFiles(filesToSave :File[]){
+  saveFiles(filesToSave :FileObject[]){
     setString("files", JSON.stringify(filesToSave));
   }
 

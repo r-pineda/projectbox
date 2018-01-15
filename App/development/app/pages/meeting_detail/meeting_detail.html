@@ -43,13 +43,12 @@
                         </StackLayout>
                     </StackLayout>
                     <StackLayout *ngSwitchCase="'files'">
-                        <GridLayout columns="auto,*" rows="*,*">
-                              <Image src="~/images/timetracking.png" rowSpan="1" col="0" width="10" stretch="aspectFit"></Image>
-                              <Label text="image001.jpeg" row="0" col="1"></Label>
-                              <Label text="200 KB" row="1" col="1"></Label>
+                        <GridLayout columns="auto,*" rows="*,*" *ngFor="let file of userFiles">
+                              <Image (tap)="showImage(file.imagesrc)" [src]="file.imagesrc" rowSpan="2" col="0" width="100" height="100"></Image>
+                              <Label [text]="file.name" row="0" col="1"></Label>
+                              <!--<Label [text]="imagefile.name"></Label>-->
+                              <Label [text]="file.size" row="1" col="1"></Label>
                         </GridLayout>
-                        <Label [text]="file.name" *ngFor="let file of userFiles"></Label>
-                        <Label [text]="image.name" *ngFor="let image of imageFiles"></Label>
                     </StackLayout>
                 </StackLayout>
                 <StackLayout orientation="horizontal" horizontalAlignment="right">

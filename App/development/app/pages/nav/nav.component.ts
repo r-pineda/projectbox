@@ -13,7 +13,7 @@ import { DashboardComponent } from "../dashboard/dashboard.component";
 import { TodoComponent } from "../todo/todo.component";
 import { TicketComponent } from "../ticket/ticket.component";
 import { NavModule } from "./nav.module";
-import { File } from "../../shared/user/file"
+import { FileObject } from "../../shared/user/fileObject"
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 @Component({
@@ -36,7 +36,7 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 export class NavComponent implements AfterViewInit, OnInit {
 
   curUser :User = new User;
-  userFiles :File[];
+  userFiles :FileObject[];
   avatar :string;
   appState :string = 'dashboard';
 

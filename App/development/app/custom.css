@@ -86,32 +86,32 @@ background-color: #dee8e7;
 
 .nav-h1,
 .h1 {
-    font-size: 36;
+    font-size: 30;
 }
 
 .nav-h2,
 .h2 {
-    font-size: 30;
+    font-size: 25;
 }
 
 .nav-h3,
 .h3 {
-    font-size: 24;
+    font-size: 20;
 }
 
 .nav-h4,
 .h4 {
-    font-size: 18;
+    font-size: 15;
 }
 
 .nav-h5,
 .h5 {
-    font-size: 14;
+    font-size: 12;
 }
 
 .nav-h6,
 .h6 {
-    font-size: 12;
+    font-size: 10;
 }
 
 .page label.text-primary,
