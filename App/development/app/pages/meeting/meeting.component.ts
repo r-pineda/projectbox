@@ -86,6 +86,7 @@ export class MeetingComponent implements OnInit{
           data = this.meetingService.getSavedMeetings()
           this.meetings = data.meetings; 
         }
+        this.displayedMeetings = data.meetings;
     
         //this.meetings.sort((a, b) => {return a.date.getTime()-b.date.getTime()})
   }
@@ -137,7 +138,7 @@ export class MeetingComponent implements OnInit{
           headerTitleColor: "#000000", //color of the current Month (only iOS)
           eventColor: "#29A699", // color of dots
           selectionColor: "#29A699", // color of the circle when a date is clicked
-          todayColor: "#29A699", // the color of the current day
+          todayColor: "#BDC3C7", // the color of the current day
           hasBorder: true, // remove border (only iOS)
           todaySelectionColor: "#29A699", // today color when seleted (only iOS)
           borderRadius: 40 // border radius of the selection marker
@@ -152,7 +153,7 @@ export class MeetingComponent implements OnInit{
      this.displayedMeetings = new Array<Meeting>();
      this.meetings.forEach(meeting => {
        let meetingDate = new Date(meeting.date);
-       if(meetingDate.getFullYear() === date.getFullYear() && meetingDate.getMonth() === date.getMonth() && meetingDate.getDay() === date.getDay()){
+       if(meetingDate.getFullYear() === date.getFullYear() && meetingDate.getMonth() === date.getMonth() && meetingDate.getDate() === date.getDate()){
          this.displayedMeetings.push(meeting);
        }
      });

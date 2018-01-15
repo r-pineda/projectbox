@@ -154,8 +154,7 @@ export class Meeting_detailComponent implements OnInit{
       });
     }
   }
-  //experimental
-  /*
+
   uploadFile(){
     console.log("uploading...");
     var session = bghttp.session("image-upload");
@@ -170,7 +169,7 @@ export class Meeting_detailComponent implements OnInit{
         },
         description: "{ 'uploading': 'mobile_upload.png' }" //wie body bei normalem post
     };
-    var params = [{name: "meeting", value: this.meeting.id}, {name:"file", filename: fs.knownFolders.currentApp().path + "/images/logo_log.png", mimeType: 'image/png'}];
+    var params = [{name: "meeting", value: this.meeting.id}, {name:"file", filename: /*fs.knownFolders.currentApp().path + "/images/logo_log.png" */"", mimeType: 'image/png'}];
 
     //let params = {name:"meeting", filename: this.picture, mimeType: 'image/png'};
     let task = session.multipartUpload(params, request);
@@ -183,7 +182,6 @@ export class Meeting_detailComponent implements OnInit{
   logEvent(e) {
     console.log(e.eventName);
   }
-  */
 
   /*------------*/
 
