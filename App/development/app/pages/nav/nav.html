@@ -22,7 +22,7 @@
     </StackLayout>
     <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="100%">
             <AbsoluteLayout>
-                    <StackLayout class="page" width="100%" [ngSwitch]="appState">
+                    <StackLayout width="100%" [ngSwitch]="appState">
                        <pb-dashboard *ngSwitchCase="'dashboard'"></pb-dashboard>
                        <pb-todo *ngSwitchCase="'todo'"></pb-todo>
                        <pb-meeting *ngSwitchCase="'meeting'"></pb-meeting>

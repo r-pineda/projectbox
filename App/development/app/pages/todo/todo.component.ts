@@ -41,7 +41,7 @@ export class TodoComponent {
 
   
   
-  //temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
+  //temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung.
                     //Ebene 1 des Arrays ist assoziativ mit den IDs von den Todos. die 2. Ebene enthält folgende Attribute:
                     //[0]startTime: Stunden
                     //[1]startTime: Minuten
@@ -105,8 +105,8 @@ export class TodoComponent {
   }
 
   cancel() {
-  /*  this.create = false;
-    this.page.css = "Page { background-color: #dee8e7; } .page { padding-left: 20; background-color: #dee8e7;}";*/
+    this.create = false;
+    this.page.css = "Page { background-color: #dee8e7; } .page { padding-left: 20; background-color: #dee8e7;}";
   }
 
  expand(id :string){

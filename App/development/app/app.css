@@ -112,6 +112,10 @@ ActionBar {
 
 /* from dashboard */
 
+StackLayout, GridLayout {
+    background-color: none;
+}
+
 .add-bar {
     background-color: #CB1D00;
     padding: 5 10;
@@ -145,10 +149,8 @@ h1 {
 /* projects */
 
 .project {
-    background-color: #FAF9FA;
-    margin-right:20;
-    padding:15;
-    height:70;
+    background-color: #FFFFFF;
+    margin-right: 20;
 }
 
 
@@ -156,8 +158,7 @@ h1 {
 
 .meeting {
     vertical-align: middle;
-    background-color: #FAF9FA;
-    padding: 10;
+    background-color: #FFFFFF;
     margin-bottom: 20;
 }
 
@@ -186,14 +187,16 @@ h1 {
     border-width: 2 2 2 2;
     border-radius: 2;
     vertical-align: top;
+    background:none;
 }
 
 .listitem {
-    background-color: #FAF9FA;
+    background-color: #FFFFFF;
     padding: 10;
 }
 
 .marginitem {
+    /*background-color: #FFFFFF;*/
     margin-bottom: 10;
 }
 
@@ -220,7 +223,7 @@ h1 {
 
 .details {
     margin-top: 0;
-    background-color: #FAF9FA;
+    background-color: #FFFFFF;
     color: #000000;
     padding: 10;
     width: 90%;
@@ -228,9 +231,8 @@ h1 {
 }
 
 .longtext {
-    background-color: #FAF9FA;
-    border-bottom-color: #ffffff;
-    border-color: #ffffff;
+    background-color: #FFFFFF;
+    border-bottom-color: #FAF9FA;
 }
 
 .fa {
@@ -261,5 +263,5 @@ h1 {
 }
 
 .time {
-    margin-right: 50;
+    margin-right: 20;
 }

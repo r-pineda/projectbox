@@ -131,8 +131,9 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       }
       this.displayedTodos.splice(3,this.displayedTodos.length-1);
       this.displayedTodos.forEach((todo) => {
-        var options = { weekday: 'narrow', year: 'numeric', month: 'long', day: 'numeric' };
-        todo.due_date_string = new Date(todo.due_date).toLocaleDateString('de-DE', options);
+        //var options = { weekday: 'narrow', year: 'numeric', month: 'long', day: 'numeric' };
+          var options = { year: 'numeric', month: 'long', day: 'numeric'};
+          todo.due_date_string = "bis " + new Date(todo.due_date).toLocaleDateString('de-DE', options);
       });
   }
 

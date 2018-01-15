@@ -10,21 +10,26 @@
         <StackLayout class="page" width="100%">
             <StackLayout *ngIf="!create">
                 <GridLayout columns="*" rows="auto,auto,auto">
-                    <Label class="h1" text="TOP-TICKETS" col="0" row="0"></Label>
+                    <Label class="h1" text="TOP-TASKS" col="0" row="0"></Label>
                     <StackLayout class="marginitem" col="0" row="1">
-                        <GridLayout class="marginitem" *ngFor="let ticket of tickets" columns="auto,*" rows="auto,auto,auto" (tap)="expand(ticket.id)">
+                        <GridLayout class="marginitem" *ngFor="let ticket of tickets" columns="auto,*" rows="auto,auto,auto"
+                                    (tap)="expand(ticket.id)">
                             <Label class="borderitem" height="50" col="0" rowSpan="2"></Label>
                             <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
                                 <StackLayout col="0" row="0" orientation="horizontal">
                                     <Image src="~/images/toptask.png" width="25" height="25" stretch="aspectFit"></Image>
-                                    <TextView [text]="ticket.name" editable="false" textWrap="true" class="longtext h4" col="0" row="0"></TextView>
+                                    <TextView [text]="ticket.name" editable="false" textWrap="true" class="longtext h4" col="0"
+                                              row="0"></TextView>
                                 </StackLayout>
                                 <Label class="text ticket" [text]="ticket.id" col="0" row="1"></Label>
-                                <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon" col="1" rowSpan="2"></Label>
+                                <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon" col="1"
+                                       rowSpan="2"></Label>
                             </GridLayout>
                             <StackLayout col="1" row="3" *ngIf="ticketForDetail[ticket.id]" class="details">
                                 <Label class="h4" text="CCF Configuration Forge"></Label>
-                                <TextView text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore." editable="false" textWrap="true" class="longtext"></TextView>
+                                <TextView
+                                        text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore."
+                                        editable="false" textWrap="true" class="longtext"></TextView>
                                 <StackLayout orientation="horizontal">
                                     <StackLayout class="btn-img" (tap)="cancel()">
                                         <Image src="~/images/play2.png" width="15" height="15" stretch="aspectFit"></Image>
@@ -43,21 +48,21 @@
                             </StackLayout>
                         </GridLayout>
                     </StackLayout>
-                    <Label class="h1" text="WEITERE TICKETS" col="0" row="2"></Label>
+                    <Label class="h1" text="WEITERE TASKS" col="0" row="2"></Label>
                 </GridLayout>
             </StackLayout>
             <StackLayout *ngIf="create" class="form-taskticket">
                 <Label class="fa" [text]="'fa-angle-down' | fonticon" horizontalAlignment="center"></Label>
                 <Label class="h5" text="TITEL"></Label>
-                <TextField class="textfield" [(ngModel)]="newTodo.name"></TextField>
+                <TextField class="textfield" [(ngModel)]="newTicket.name"></TextField>
                 <Label class="h5" text="DEADLINE"></Label>
-                <TextField class="textfield" [(ngModel)]="newTodo.planned"></TextField>
+                <TextField class="textfield" [(ngModel)]="newTicket.planned"></TextField>
                 <Label class="h5" text="VERANTWORTLICHER"></Label>
-                <TextField class="textfield" [(ngModel)]="newTodo.user"></TextField>
+                <TextField class="textfield" [(ngModel)]="newTicket.user"></TextField>
                 <Label class="h5" text="PROJEKT"></Label>
-                <TextField class="textfield" [(ngModel)]="newTodo.project"></TextField>
+                <TextField class="textfield" [(ngModel)]="newTicket.project"></TextField>
                 <Label class="h5" text="BESCHREIBUNG"></Label>
-                <TextField class="textfield" [(ngModel)]="newTodo.description"></TextField>
+                <TextField class="textfield" [(ngModel)]="newTicket.description"></TextField>
                 <Label class="field-seperator" height="2"></Label>
                 <GridLayout columns="*,*" rows="*">
                     <Label class="h3" col="0" row="0" text="TOP-TASK"></Label>
