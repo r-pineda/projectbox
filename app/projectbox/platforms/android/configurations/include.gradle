@@ -1,0 +1,4 @@
+
+android {
+    flavorDimensions "nativescriptbackgroundhttp", "nativescriptcamera", "nativescriptcouchbase", "nativescriptfancycalendar", "nativescriptfresco", "nativescriptimagepicker", "nativescriptngshadow", "nativescriptphotoviewer", "nativescriptproui", "tnscoremoduleswidgets"
+}
