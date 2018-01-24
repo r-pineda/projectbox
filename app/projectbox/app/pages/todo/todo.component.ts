@@ -14,6 +14,7 @@ import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { UserService } from "../../shared/user/user.service";
 import { NavComponent } from "../nav/nav.component";
+var timer = require("timer");
 
 
 @Component({
@@ -38,19 +39,9 @@ export class TodoComponent {
   public projectSelection :string[] = new Array<string>();//testen ob assotiativ funktioniert. || array[project_id] = project_name
   public phaseSelection :string[] = new Array<string>(); //dropdown selection zur auswahl der phase in der ein task created werden soll. wird befüllt nachdem der user ein Projekt ausgewählt hat.
   currentTracking :Tracking;
-
-  
-  
-  //temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung.
-                    //Ebene 1 des Arrays ist assoziativ mit den IDs von den Todos. die 2. Ebene enthält folgende Attribute:
-                    //[0]startTime: Stunden
-                    //[1]startTime: Minuten
-                    //[2]startTime: Sekunden
-                    //[3]endTime: Stunden
-                    //[4]endTime: Minuten
-                    //[5]endTime: Sekunden
-                    //[6]errechnete dauer des Eintrags
-                    //[7]TimerRunning :0 = false, 1 = true
+  timerString :string;
+  tracker :any;
+  trackedSeconds :number;
 
   constructor
   (
@@ -158,40 +149,7 @@ export class TodoComponent {
           this.todoForDetail[element.id] = false;
         });
       }
-/*
-  saveTime(id :any){
-    console.dir(this.temp);
-    this.todos.forEach(todo => {
-      if(id == todo.id){
-        let sec :number =
-        ((this.temp[id][3] * 3600) + (this.temp[id][4] * 60) + +this.temp[id][5])
-        - ((this.temp[id][0] * 3600) + (this.temp[id][1] * 60) + +this.temp[id][2]);
-        sec -= sec%60;
-        //todo.timeTaken += (sec/60);
-      }
-    });
-  }
 
-
-  play_stop(id :any){
-    if(this.temp[id][7] == 0){
-      this.temp[id][7] = 1;
-      let date :Date = new Date();
-      this.temp[id][0] = date.getHours();
-      this.temp[id][1] = date.getMinutes();
-      this.temp[id][2] = date.getSeconds();
-    }else{
-      this.temp[id][7] = 0;
-      let date :Date = new Date();
-      this.temp[id][3] = date.getHours();
-      this.temp[id][4] = date.getMinutes();
-      this.temp[id][5] = date.getSeconds();
-      this.saveTime(id);
-      console.dir(this.temp);
-    }
-
-  }
-*/
   createTracking(task_id :string){
     //started_at, finished_at, description müssen ins frontend gebinded werden
     this.newTracking.task = task_id;
@@ -251,6 +209,16 @@ export class TodoComponent {
             }
           });
         });
+        this.timerString = "00:00:00";
+        this.tracker = setInterval(() => {
+          this.trackedSeconds++;
+          let minsecs = this.trackedSeconds%60;
+          let hours = (this.trackedSeconds-minsecs)/60;
+          let seconds = minsecs%60;
+          let minutes = (minsecs-seconds)/60;
+          this.timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
+      }, 1000);
+
       }else{
         alert("stop your currently running timer first!");
       }
