@@ -42,8 +42,9 @@ export class TicketComponent implements OnInit {
                     //[7]TimerRunning :0 = false, 1 = true
                     curUser :User = new User;
                     avatar :string;
-public newTicket :Ticket = new Ticket();
-nav: NavComponent;
+  public newTicket :Ticket = new Ticket();
+  nav: NavComponent;
+  meeting_tabs: String;
 
   constructor
   (
@@ -120,6 +121,10 @@ nav: NavComponent;
       alert("Ticket erstellt");
       this.create = false;
   }
+
+    state(id) {
+        this.meeting_tabs = id;
+    }
 
   /*
   saveTime(id :any){

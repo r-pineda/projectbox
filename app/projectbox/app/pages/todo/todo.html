@@ -59,19 +59,7 @@
         <Label class="h5" text="VERANTWORTLICHER"></Label>
         <TextField class="textfield" [(ngModel)]="newTodo.user"></TextField>
         <Label class="h5" text="PROJEKT"></Label>
-        <!--<TextField class="textfield" [(ngModel)]="newTodo.project"></TextField>-->
-        <DropDown #dd
-                  backroundColor="red"
-                  [items]="items"
-                  [(ngModel)]="selectedIndex"
-                  (selectedIndexChanged)="onchange($event)"
-                  (opened)="onopen()"
-                  (closed)="onclose()"
-                  ></DropDown>
-        <Label text="Selected Index:"
-               fontSize="18"
-               verticalAlignment="bottom"></Label>
-        <TextField [text]="selectedIndex"></TextField>
+        <TextField class="textfield" [(ngModel)]="newTodo.project"></TextField>
         <Label class="h5" text="BESCHREIBUNG"></Label>
         <TextField class="textfield" [(ngModel)]="newTodo.description"></TextField>
         <Label class="field-seperator" height="2"></Label>
@@ -82,13 +70,22 @@
         </GridLayout>
         <Label class="field-seperator" height="2"></Label>
         <GridLayout columns="*,*" rows="*,*">
-            <Image src="~/images/timetracking.png" row="0" col="0" width="20" height="20" stretch="aspectFit"></Image>
-            <Image src="~/images/kommentare.png" row="0" col="1" width="40" height="20" stretch="aspectFit"></Image>
-            <Label class="h4" text="Timetracking" col="0" row="1" horizontalAlignment="center"
-                   (tap)="showTimeTrack()"></Label>
-            <Label class="h4" text="Kommentare" col="1" row="1" horizontalAlignment="center"
-                   (tap)="showComments()"></Label>
+            <Image src="~/images/timetracking.png" (tap)="state('timetracking')" row="0" col="0" width="20" height="20" stretch="aspectFit"></Image>
+            <Image src="~/images/kommentare.png" (tap)="state('kommentare')" row="0" col="1" width="40" height="20" stretch="aspectFit"></Image>
+            <Label class="h4" text="Timetracking" (tap)="state('timetracking')" col="0" row="1" horizontalAlignment="center"></Label>
+            <Label class="h4" text="Kommentare" (tap)="state('kommentare')" col="1" row="1" horizontalAlignment="center"></Label>
         </GridLayout>
+        <StackLayout [ngSwitch]="task_tabs">
+            <StackLayout *ngSwitchCase="'timetracking'">
+                <Label text="TEXT"></Label>
+            </StackLayout>
+            <StackLayout *ngSwitchCase="'kommentare'">
+                <TextView hint="Füge hier deinen Text ein" height="150"></TextView>
+                <StackLayout class="btn-img" (tap)="cancel()">
+                    <Image src="~/images/abbrechen2.png" width="30" height="30" stretch="aspectFit"></Image>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
         <Label class="field-seperator" height="2"></Label>
         <GridLayout columns="*,*" rows="*">
             <Label class="h3" col="0" row="0" text="Gesamtdauer"></Label>
