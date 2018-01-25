@@ -7,7 +7,6 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NgShadowModule } from 'nativescript-ng-shadow';
-import { DropDownModule } from "nativescript-drop-down/angular";
 import { Http } from "@angular/http";
 //import { AppShortcuts } from "nativescript-app-shortcuts";
 /* Navigation */
@@ -48,7 +47,6 @@ import { TicketService } from "./shared/ticket/ticket.service";
     NativeScriptRouterModule,
     NgShadowModule, //ng-shadow plugin
     OnboardingModule,
-      DropDownModule,
     NativeScriptRouterModule.forChild(routes),
     NativeScriptRouterModule.forRoot(routes),
    TNSFontIconModule.forRoot({
