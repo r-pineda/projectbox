@@ -48,6 +48,7 @@ export class TodoService {
   createTodo(todo :Todo){
     delete todo.id;
     delete todo.due_date_string;
+    console.log("{\"task\": " + JSON.stringify(todo) + "}");
     return this.http.post(
       Config.apiUrl + "v2/tasks",
       ("{\"task\": " + JSON.stringify(todo) + "}"),
@@ -55,6 +56,7 @@ export class TodoService {
     )
     .map(response => response.json())
     .do(data => {
+
     })
     .catch(this.handleErrors)
     .toPromise();
