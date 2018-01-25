@@ -48,7 +48,6 @@ export class TodoService {
   createTodo(todo :Todo){
     delete todo.id;
     delete todo.due_date_string;
-    console.log("{\"task\": " + JSON.stringify(todo) + "}");
     return this.http.post(
       Config.apiUrl + "v2/tasks",
       ("{\"task\": " + JSON.stringify(todo) + "}"),
@@ -164,7 +163,7 @@ export class TodoService {
     delete tracking.created_at;
     delete tracking.updated_at;
     tracking.user = null;
-    tracking.finished = true;
+    console.log("{\"tracking\": " + JSON.stringify(tracking) + "}");
     return this.http.post(
       Config.apiUrl + "v2/trackings",
       ("{\"tracking\": " + JSON.stringify(tracking) + "}"),

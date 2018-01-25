@@ -60,6 +60,7 @@ export class TodoComponent {
     this.nav = navState;
     this.curUser = this.userService.getCurrentUser();
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
+    this.timerString = "00:00:00";
 
   }
 
@@ -132,7 +133,6 @@ export class TodoComponent {
             this.todoService.fillTracking(tracking)   //todoService gibt zur trackingID ein tracking objekt zurück
             .then((data) => {
               this.todos[index].trackingsFull.push(data.trackings[0]);
-              console.log("scanning for unfinished trackings..... " + data.trackings[0].id);
               if(!data.trackings[0].finished){
                 this.currentTracking = data.trackings[0];
                 console.log("unfinished Tracking detected! name: " + this.currentTracking.description);
@@ -197,6 +197,7 @@ export class TodoComponent {
         this.currentTracking = new Tracking();
         this.currentTracking.task = task_id;
         this.currentTracking.started_at = new Date();
+        this.currentTracking.finished_at = null;
         this.currentTracking.finished = false;
         this.currentTracking.description = "mobile tracking";
         this.currentTracking.user = null
@@ -210,7 +211,6 @@ export class TodoComponent {
             }
           });
         });
-        this.timerString = "00:00:00";
         this.tracker = setInterval(() => {
           this.trackedSeconds++;
           let minsecs = this.trackedSeconds%60;
