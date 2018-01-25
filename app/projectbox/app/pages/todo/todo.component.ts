@@ -166,10 +166,11 @@ export class TodoComponent {
 }
 
     createTodo(){
-      //this.newTodo.name = "created with mobile app";
-      //this.newTodo.project = "619492ee-6fb5-4afd-b0b1-d6140392951a";
+      this.newTodo.name = "created with mobile app";
+      this.newTodo.project = "619492ee-6fb5-4afd-b0b1-d6140392951a";
       //this.getPhases();
-      //this.todoService.createTodo(this.newTodo);
+      this.newTodo.phase = "ece30d4b-b36d-46b2-abd5-b4aad4ffcdef";
+      this.todoService.createTodo(this.newTodo);
       this.create = false;
       this.ngOnInit();
     }
