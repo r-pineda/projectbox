@@ -37,10 +37,37 @@
                         <Label [text]="meeting.agenda"></Label>
                     </StackLayout>
                     <StackLayout *ngSwitchCase="'protokoll'">
-                        <TextView hint="Füge hier deinen Text ein" height="150"></TextView>
-                        <StackLayout class="btn-img" (tap)="cancel()">
-                            <Image src="~/images/abbrechen2.png" width="30" height="30" stretch="aspectFit"></Image>
+                        <StackLayout>
+                            <GridLayout rows="auto, auto" columns="auto, *">
+                                <StackLayout class="btn-img" rowSpan="1" col="0">
+                                    <Image src="~/images/abbrechen2.png" width="20" height="20" stretch="aspectFit"></Image>
+                                </StackLayout>
+                                <TextView text="MANUEL GAFOZ Neue DEADLINE: Ende Jänner" editable="false" textWrap="true"
+                                          class="longtext h4" col="1"
+                                          row="0"></TextView>
+                                <Label text="16. Oktober 2017 um 16:35" col="1" row="1"></Label>
+                            </GridLayout>
                         </StackLayout>
+                        <StackLayout>
+                            <GridLayout rows="auto, auto" columns="auto, *">
+                                <StackLayout class="btn-img" rowSpan="1" col="0">
+                                    <Image src="~/images/abbrechen2.png" width="20" height="20" stretch="aspectFit"></Image>
+                                </StackLayout>
+                                <TextView text="MANUEL GAFOZ Neue DEADLINE: Ende Jänner" editable="false" textWrap="true"
+                                          class="longtext h4" col="1"
+                                          row="0"></TextView>
+                                <Label text="16. Oktober 2017 um 16:35" col="1" row="1"></Label>
+                            </GridLayout>
+                        </StackLayout>
+                        <GridLayout rows="*" columns="auto,*,auto" orientation="horizontal">
+                            <StackLayout class="btn-img" row="0" col="0">
+                                <Image src="~/images/abbrechen2.png" width="20" height="20" stretch="aspectFit"></Image>
+                            </StackLayout>
+                            <TextView hint="Kommentieren" class="textfield" row="0" col="1"></TextView>
+                            <StackLayout class="btn-img" (tap)="submit()" row="0" col="2">
+                                <Image src="~/images/send.png" width="20" height="20" stretch="aspectFit"></Image>
+                            </StackLayout>
+                        </GridLayout>
                     </StackLayout>
                     <StackLayout *ngSwitchCase="'files'">
                         <Button (tap)="openCamera()">Take a photo</Button>
