@@ -38,6 +38,7 @@ export class TodoComponent {
   timerString :string;
   tracker :any;
   trackedSeconds :number;
+  task_tabs: string;
 
   constructor
   (
