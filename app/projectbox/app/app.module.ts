@@ -7,6 +7,7 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NgShadowModule } from 'nativescript-ng-shadow';
+import { Http } from "@angular/http";
 //import { AppShortcuts } from "nativescript-app-shortcuts";
 /* Navigation */
 import { SIDEDRAWER_DIRECTIVES } from "nativescript-pro-ui/sidedrawer/angular";
@@ -30,6 +31,13 @@ import { MeetingComponent } from "./pages/meeting/meeting.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
 import { OnboardingModule } from "./pages/onboarding/onboarding.module";
 import { TutorialComponent } from "./pages/tutorial/tutorial.component";
+
+
+/*services*/
+import { UserService } from "./shared/user/user.service";
+import { MeetingService } from "./shared/meeting/meeting.service";
+import { TodoService } from "./shared/todo/todo.service";
+import { TicketService } from "./shared/ticket/ticket.service";
 
 @NgModule({
   imports: [
@@ -60,11 +68,21 @@ import { TutorialComponent } from "./pages/tutorial/tutorial.component";
     SIDEDRAWER_DIRECTIVES
   ],
   bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA],
+  providers:[
+    UserService,
+    MeetingService,
+    TicketService,
+    TodoService
+  ]
 })
 export class AppModule {
     constructor(private routerExtensions: RouterExtensions,
-              //private zone: NgZone
+              //private zone: NgZone,
+              private userService :UserService,
+              private meetingService :MeetingService,
+              private ticketService :TicketService,
+              private todoService :TodoService
             ) {
 /*
     new AppShortcuts().setQuickActionCallback(shortcutItem => {
