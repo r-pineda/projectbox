@@ -165,11 +165,11 @@ export class Meeting_detailComponent implements OnInit{
         headers: {
             "Content-Type": "application/octet-stream",
             "File-Name": "mobile_upload.png",
-            "Authorization": "Bearer " + "NTaZgx8MVQGMlXmM2kI6dGbXRGH42UBm"
+            "Authorization": "Bearer " + this.userService.getCurrentUser().access_token
         },
         description: "{ 'uploading': 'mobile_upload.png' }" //wie body bei normalem post
     };
-    var params = [{name: "meeting", value: this.meeting.id}, {name:"file", filename: /*fs.knownFolders.currentApp().path + "/images/logo_log.png" */"", mimeType: 'image/png'}];
+    var params = [{name: "meeting", value: this.meeting.id}, {name:"file", filename: this.picture , mimeType: 'image/png'}];
 
     //let params = {name:"meeting", filename: this.picture, mimeType: 'image/png'};
     let task = session.multipartUpload(params, request);
@@ -189,7 +189,14 @@ export class Meeting_detailComponent implements OnInit{
     camera.requestPermissions();
 
     camera.takePicture().then(picture => {
-      this.picture = picture;
+      var milliseconds = new Date().getTime();
+      picture.getImageAsync((image) => {
+        let folder = fs.knownFolders.documents();
+        var path = fs.path.join(folder.path, milliseconds + ".png");
+        var saved = image.saveToFile(path, "png");
+        this.picture = path;
+        this.uploadFile();
+      });
     });
   }
 
@@ -211,6 +218,7 @@ export class Meeting_detailComponent implements OnInit{
           var path = fs.path.join(folder.path, milliseconds + ".png");
           var saved = imagesource.saveToFile(path, "png");
           that.picture = path;
+          that.uploadFile();
         })
       });
     }).catch(function (e) {
