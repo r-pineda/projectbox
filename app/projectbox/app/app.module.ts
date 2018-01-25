@@ -7,6 +7,7 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NgShadowModule } from 'nativescript-ng-shadow';
+import { DropDownModule } from "nativescript-drop-down/angular";
 //import { AppShortcuts } from "nativescript-app-shortcuts";
 /* Navigation */
 import { SIDEDRAWER_DIRECTIVES } from "nativescript-pro-ui/sidedrawer/angular";
@@ -39,6 +40,7 @@ import { TutorialComponent } from "./pages/tutorial/tutorial.component";
     NativeScriptRouterModule,
     NgShadowModule, //ng-shadow plugin
     OnboardingModule,
+      DropDownModule,
     NativeScriptRouterModule.forChild(routes),
     NativeScriptRouterModule.forRoot(routes),
    TNSFontIconModule.forRoot({

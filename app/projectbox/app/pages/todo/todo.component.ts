@@ -7,13 +7,10 @@ import { StatusService } from "../../shared/status/status.service";
 import { Todo, Tracking, Comment } from "../../shared/todo/todo";
 import { TodoService } from "../../shared/todo/todo.service";
 import "rxjs/add/operator/switchMap";
-import { ListViewEventData, RadListView } from "nativescript-pro-ui/listview";
-import * as FrameModule from "ui/frame";
-import { RadSideDrawerComponent, SideDrawerType } from "nativescript-pro-ui/sidedrawer/angular";
-import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { UserService } from "../../shared/user/user.service";
 import { NavComponent } from "../nav/nav.component";
+import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 var timer = require("timer");
 
 
@@ -88,6 +85,10 @@ export class TodoComponent {
       this.temp[element.id][7] = 0;
     });
     */
+      this.items = [];
+      this.projectSelection.forEach((name) => {
+          this.items.push(name);
+      });
   }
 
   cr_task() {
@@ -228,5 +229,23 @@ export class TodoComponent {
       this.currentTracking.finished = true;
       this.currentTracking.finished_at = new Date();
       this.todoService.updateTracking(this.currentTracking);
+    }
+
+    /* dropdown */
+
+    public selectedIndex = 1;
+    public items :string[] = new Array<string>();
+
+
+    public onchange(args: SelectedIndexChangedEventData) {
+        console.log(`Drop Down selected index changed from ${args.oldIndex} to ${args.newIndex}`);
+    }
+
+    public onopen() {
+        console.log("Drop Down opened.");
+    }
+
+    public onclose() {
+        console.log("Drop Down closed.");
     }
 }
