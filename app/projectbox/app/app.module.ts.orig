@@ -7,8 +7,11 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NgShadowModule } from 'nativescript-ng-shadow';
+<<<<<<< HEAD
 import { DropDownModule } from "nativescript-drop-down/angular";
+=======
 import { Http } from "@angular/http";
+>>>>>>> 68094c562e373ff86b47039444ed6fb039116bb2
 //import { AppShortcuts } from "nativescript-app-shortcuts";
 /* Navigation */
 import { SIDEDRAWER_DIRECTIVES } from "nativescript-pro-ui/sidedrawer/angular";
