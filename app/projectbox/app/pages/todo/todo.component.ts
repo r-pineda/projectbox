@@ -99,7 +99,7 @@ export class TodoComponent {
 
  expand(id :string){
     this.todoForDetail[id] = !this.todoForDetail[id];
-    /*this.page.css = ".details { height: auto; }";*/
+    this.page.css = ".details { height: auto; }";
   }
 
   displayTodos(data :any){
@@ -225,5 +225,9 @@ export class TodoComponent {
       this.currentTracking.finished = true;
       this.currentTracking.finished_at = new Date();
       this.todoService.updateTracking(this.currentTracking);
+    }
+
+    state(id) {
+        this.task_tabs = id;
     }
 }
