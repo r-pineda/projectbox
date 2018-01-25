@@ -112,9 +112,9 @@ ActionBar {
 
 /* from dashboard */
 
-StackLayout, GridLayout {
-    background-color: none;
-}
+/*StackLayout, GridLayout {
+    background-color:;
+}*/
 
 .add-bar {
     background-color: #CB1D00;
