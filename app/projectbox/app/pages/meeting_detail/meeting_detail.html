@@ -43,6 +43,8 @@
                         </StackLayout>
                     </StackLayout>
                     <StackLayout *ngSwitchCase="'files'">
+                        <Button (tap)="openCamera()">Take a photo</Button>
+                        <Button (tap)="openGallery()">Select an image from Gallery</Button>
                         <GridLayout columns="auto,*" rows="*,*" *ngFor="let file of userFiles">
                               <Image (tap)="showImage(file.imagesrc)" [src]="file.imagesrc" rowSpan="2" col="0" width="100" height="100"></Image>
                               <Label [text]="file.name" row="0" col="1"></Label>

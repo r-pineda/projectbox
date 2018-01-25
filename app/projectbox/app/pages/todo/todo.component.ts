@@ -230,4 +230,11 @@ export class TodoComponent {
     state(id) {
         this.task_tabs = id;
     }
+
+    getAvatar(user_id){
+      this.userService.getUser(user_id)
+        .then((data) => {
+          return this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + data.avatar + "?access_token=" + this.curUser.access_token;
+        });
+    }
 }

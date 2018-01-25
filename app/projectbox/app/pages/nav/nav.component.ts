@@ -52,7 +52,6 @@ export class NavComponent implements AfterViewInit, OnInit {
   {
 
     this.curUser = this.userService.getCurrentUser();
-    this.avatar = "https://secure.projectbox.eu/v2/download/file/e8a3c9dd-637a-4fb5-9192-d6cb51854d50?access_token=" + this.curUser.access_token;
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
 
   }
