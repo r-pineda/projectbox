@@ -10,7 +10,6 @@ import "rxjs/add/operator/switchMap";
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { UserService } from "../../shared/user/user.service";
 import { NavComponent } from "../nav/nav.component";
-import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 var timer = require("timer");
 
 
@@ -57,7 +56,6 @@ export class TodoComponent {
     this.nav = navState;
     this.curUser = this.userService.getCurrentUser();
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
-    this.timerString = "00:00:00";
 
   }
 
@@ -86,10 +84,6 @@ export class TodoComponent {
       this.temp[element.id][7] = 0;
     });
     */
-      this.items = [];
-      this.projectSelection.forEach((name) => {
-          this.items.push(name);
-      });
   }
 
   cr_task() {
@@ -104,7 +98,7 @@ export class TodoComponent {
 
  expand(id :string){
     this.todoForDetail[id] = !this.todoForDetail[id];
-    this.page.css = ".details { height: auto; }";
+    /*this.page.css = ".details { height: auto; }";*/
   }
 
   displayTodos(data :any){
@@ -134,15 +128,16 @@ export class TodoComponent {
             this.todoService.fillTracking(tracking)   //todoService gibt zur trackingID ein tracking objekt zurück
             .then((data) => {
               this.todos[index].trackingsFull.push(data.trackings[0]);
+              console.log("scanning for unfinished trackings..... " + data.trackings[0].id);
               if(!data.trackings[0].finished){
                 this.currentTracking = data.trackings[0];
                 console.log("unfinished Tracking detected! name: " + this.currentTracking.description);
               }
             },
             (error) => {alert("offlineTrackings not supported")});
-                        
+
           });
-          
+
         });
 
         this.todoForDetail = new Array<Boolean>(this.todos.length);
@@ -167,11 +162,10 @@ export class TodoComponent {
 }
 
     createTodo(){
-      this.newTodo.name = "created with mobile app";
-      this.newTodo.project = "619492ee-6fb5-4afd-b0b1-d6140392951a";
+      //this.newTodo.name = "created with mobile app";
+      //this.newTodo.project = "619492ee-6fb5-4afd-b0b1-d6140392951a";
       //this.getPhases();
-      this.newTodo.phase = "ece30d4b-b36d-46b2-abd5-b4aad4ffcdef";
-      this.todoService.createTodo(this.newTodo);
+      //this.todoService.createTodo(this.newTodo);
       this.create = false;
       this.ngOnInit();
     }
@@ -198,7 +192,6 @@ export class TodoComponent {
         this.currentTracking = new Tracking();
         this.currentTracking.task = task_id;
         this.currentTracking.started_at = new Date();
-        this.currentTracking.finished_at = null;
         this.currentTracking.finished = false;
         this.currentTracking.description = "mobile tracking";
         this.currentTracking.user = null
@@ -212,6 +205,7 @@ export class TodoComponent {
             }
           });
         });
+        this.timerString = "00:00:00";
         this.tracker = setInterval(() => {
           this.trackedSeconds++;
           let minsecs = this.trackedSeconds%60;
@@ -230,23 +224,5 @@ export class TodoComponent {
       this.currentTracking.finished = true;
       this.currentTracking.finished_at = new Date();
       this.todoService.updateTracking(this.currentTracking);
-    }
-
-    /* dropdown */
-
-    public selectedIndex = 1;
-    public items :string[] = new Array<string>();
-
-
-    public onchange(args: SelectedIndexChangedEventData) {
-        console.log(`Drop Down selected index changed from ${args.oldIndex} to ${args.newIndex}`);
-    }
-
-    public onopen() {
-        console.log("Drop Down opened.");
-    }
-
-    public onclose() {
-        console.log("Drop Down closed.");
     }
 }
