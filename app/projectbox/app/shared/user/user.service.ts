@@ -102,15 +102,6 @@ export class UserService {
   getSavedProjects (){
     return JSON.parse(getString("projects"));
   }
-
-  getAvatar(){
-    var http = require("http");
-    http.getFile("https://secure.projectbox.eu/v2/user/avatar/" + this.getCurrentUser().avatar + "?access_token=" + Config.token).then(function (r) {
-      console.dir(r);
-    }, function (e) {
-      console.log(e);
-    });
-  }
   getFiles(){
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -122,6 +113,21 @@ export class UserService {
     .map(response => response.json())
     .do(data => {
       this.saveFiles(data);
+    })
+    .catch(this.handleErrors)
+    .toPromise();
+  }
+
+  getUser(user_id :string){
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Authorization", "Bearer "+ Config.token);
+    return this.http.get(
+      Config.apiUrl + "v2/users/" + user_id,
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
     })
     .catch(this.handleErrors)
     .toPromise();
