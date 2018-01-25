@@ -16,7 +16,8 @@ slides = [
         backgroundColor: '#29A699',
         imageUrl: 'res://step1',
         animation: 'slide_left'
-    }
+    },
+    
 ];
     
   constructor(private router: Router,

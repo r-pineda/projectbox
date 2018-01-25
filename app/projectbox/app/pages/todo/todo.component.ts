@@ -102,7 +102,7 @@ export class TodoComponent {
 
  expand(id :string){
     this.todoForDetail[id] = !this.todoForDetail[id];
-    this.page.css = ".details { height: auto; }";
+    /*this.page.css = ".details { height: auto; }";*/
   }
 
   displayTodos(data :any){
