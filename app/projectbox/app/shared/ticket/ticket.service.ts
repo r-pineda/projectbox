@@ -20,7 +20,13 @@ import {
 @Injectable()
 export class TicketService {
 
-  constructor(private http: Http) {}
+  headers :Headers = new Headers();
+
+  constructor(private http: Http) {
+    this.headers.append("Content-Type", "application/json");
+    this.headers.append("Authorization", "Bearer "+ Config.token);
+  }
+
 
   handleErrors(error: Response) {
     console.log(JSON.stringify(error.json()));
@@ -28,12 +34,9 @@ export class TicketService {
   }
 
   getTickets() {
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.get(
       Config.apiUrl + "v2/tickets",
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
@@ -52,13 +55,10 @@ export class TicketService {
 
   createTicket(ticket :Ticket){
     delete ticket.id;
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.post(
       Config.apiUrl + "v2/tickets",
       ("{\"ticket\": " + JSON.stringify(ticket) + "}"),
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
@@ -71,14 +71,10 @@ export class TicketService {
   updateTicket(ticket :Ticket){
     let id :string = ticket.id + "";
     delete ticket.id;
-    
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.put(
       Config.apiUrl + "v2/tickets/" + id,
       ("{\"ticket\": " + JSON.stringify(ticket) + "}"),
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
@@ -89,12 +85,9 @@ export class TicketService {
   }
 
   deleteTicket(id :string){
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.delete(
       Config.apiUrl + "v2/tickets/" + id,
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {

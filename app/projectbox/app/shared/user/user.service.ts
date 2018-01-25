@@ -23,7 +23,12 @@ import { FileObject } from "../../shared/user/fileObject";
 
 @Injectable()
 export class UserService {
-  constructor(private http: Http) {}
+  headers :Headers = new Headers();
+
+  constructor(private http: Http) {
+    this.headers.append("Content-Type", "application/json");
+  }
+
 
   //Wahrscheinlicher Fall: wenn der Request nicht 200~ zurückgibt, wird automatisch ein Error geworfen und er springt sofort zum catch
   handleErrors(error: Response) {
@@ -47,6 +52,7 @@ export class UserService {
     .do(data => {
       this.setCurrentUser(data);
       Config.token = data.access_token;
+      this.headers.append("Authorization", "Bearer "+ Config.token);
     })
     .catch((err: any) => {
       if(err == "Response with status: 403 Forbidden for URL: https://secure.projectbox.eu/v2/token"){
@@ -66,12 +72,9 @@ export class UserService {
   }
 
   getSingleProject(proj_id :string){
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.get(
       Config.apiUrl + "v2/projects/" + proj_id,
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
@@ -81,12 +84,9 @@ export class UserService {
   }
 
   getProjects(){
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.get(
       Config.apiUrl + "v2/projects",
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
@@ -112,12 +112,9 @@ export class UserService {
     });
   }
   getFiles(){
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.get(
       Config.apiUrl + "v2/files",
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {

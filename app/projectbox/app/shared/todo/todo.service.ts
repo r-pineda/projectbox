@@ -20,7 +20,13 @@ import {
 @Injectable()
 export class TodoService {
 
-  constructor(private http: Http) {}
+  headers :Headers = new Headers();
+
+  constructor(private http: Http) {
+    this.headers.append("Content-Type", "application/json");
+    this.headers.append("Authorization", "Bearer "+ Config.token);
+  }
+
 
   handleErrors(error: Response) {
     console.log(JSON.stringify(error.json()));
@@ -28,12 +34,9 @@ export class TodoService {
   }
 
   getTodos() {
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.get(
       Config.apiUrl + "v2/tasks",
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
@@ -45,13 +48,10 @@ export class TodoService {
   createTodo(todo :Todo){
     delete todo.id;
     delete todo.due_date_string;
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.post(
       Config.apiUrl + "v2/tasks",
       ("{\"task\": " + JSON.stringify(todo) + "}"),
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
@@ -65,13 +65,10 @@ export class TodoService {
     delete todo.id;
     delete todo.trackingsFull;
     delete todo.due_date_string;
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.put(
       Config.apiUrl + "v2/tasks/" + id,
       ("{\"task\": " + JSON.stringify(todo) + "}"),
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
@@ -81,12 +78,9 @@ export class TodoService {
   }
 
   deleteTodo(id :string){
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.delete(
       Config.apiUrl + "v2/tasks/" + id,
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
@@ -96,12 +90,9 @@ export class TodoService {
   }
 
   fillTracking(tracking :string){
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.get(
         Config.apiUrl + "v2/trackings/" + tracking,
-        { headers: headers }
+        { headers: this.headers }
       )
       .map(response => response.json())
       .do(data => {
@@ -120,13 +111,10 @@ export class TodoService {
     delete comment.project_id;
     delete comment.updated_at;
     delete comment.user_id;
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.post(
       Config.apiUrl + "v2/comments",
       ("{\"comment\": " + JSON.stringify(comment) + "}"),
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
@@ -136,12 +124,9 @@ export class TodoService {
   }
 
   deleteComment(comment_id :string){
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.delete(
       Config.apiUrl + "v2/comments/" + comment_id,
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
@@ -151,12 +136,9 @@ export class TodoService {
   }
 
   fillComments(todo_id :string){
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.get(
       Config.apiUrl + "v2/tasks/" + todo_id,
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
@@ -181,15 +163,15 @@ export class TodoService {
     delete tracking.updated_at;
     tracking.user = null;
     tracking.finished = true;
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.post(
       Config.apiUrl + "v2/trackings",
       ("{\"tracking\": " + JSON.stringify(tracking) + "}"),
-      { headers: headers }
+      { headers: this.headers }
     )
-    .map(response => response.json())
+    .map(response => {
+      console.dir(response);
+      return response.json()
+    })
     .do(data => {
     })
     .catch(this.handleErrors)
@@ -197,12 +179,9 @@ export class TodoService {
   }
 
   deleteTracking(tracking_id :string){
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.delete(
       Config.apiUrl + "v2/trackings/" + tracking_id,
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
@@ -214,14 +193,10 @@ export class TodoService {
   updateTracking(tracking :Tracking){
     let id :string = tracking.id + "";
     delete tracking.id;
-    
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Authorization", "Bearer "+ Config.token)
     return this.http.put(
       Config.apiUrl + "v2/trackings/" + id,
       ("{\"tracking\": " + JSON.stringify(tracking) + "}"),
-      { headers: headers }
+      { headers: this.headers }
     )
     .map(response => response.json())
     .do(data => {
