@@ -1,8 +1,0 @@
-<StackLayout>
-    <GridLayout *ngFor="let todo of todos" columns="auto, auto" rows="auto, auto">
-        <Label row="0" col="0" colSpan="2" [text]="todo.id"></Label>
-        <Image col="0", row="1" keyboardType="number" [src]="(temp[todo.id][7]==1) ? 'res://stop_btn' : 'res://play_btn'" (tap)="play_stop(todo.id)"></Image>
-        <Label row="1" col="0" text="Zeit für dises TODO in m:"></Label>
-        <Label row="1" col="1" [text] = "todo.timeTaken"></Label>
-    </GridLayout>
-</StackLayout>

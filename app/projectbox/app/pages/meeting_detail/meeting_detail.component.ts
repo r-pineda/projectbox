@@ -27,6 +27,8 @@ import * as tabViewModule from "tns-core-modules/ui/tab-view";
 import { FileObject } from "../../shared/user/fileObject";
 import { NavComponent } from "../nav/nav.component";
 import { Page } from "ui/page";
+import { SelectedIndexChangedEventData } from "nativescript-drop-down";
+
 var PhotoViewer = require("nativescript-photoviewer");
 
 var bghttp = require("nativescript-background-http"); //file upload
@@ -53,6 +55,11 @@ export class Meeting_detailComponent implements OnInit{
     });
       
      this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
+
+      this.items = [];
+      for (var i = 0; i < 5; i++) {
+          this.items.push("data item " + i);
+      }
   }
 
   ngOnInit(){
@@ -237,4 +244,21 @@ export class Meeting_detailComponent implements OnInit{
     });
     this.photoViewer.showViewer(this.imageFiles);
   }
+
+  /* drop down */
+    public selectedIndex = 1;
+    public items: Array<string>;
+
+
+    public onchange(args: SelectedIndexChangedEventData) {
+        console.log(`Drop Down selected index changed from ${args.oldIndex} to ${args.newIndex}`);
+    }
+
+    public onopen() {
+        console.log("Drop Down opened.");
+    }
+
+    public onclose() {
+        console.log("Drop Down closed.");
+    }
 }

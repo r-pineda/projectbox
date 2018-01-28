@@ -1,3 +1,4 @@
+<Page xmlns:dd="nativescript-drop-down">
 <ActionBar title="">
     <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow"
                       (tap)="openDrawer()"></NavigationButton>
@@ -19,14 +20,23 @@
                        horizontalAlignment="center"></Label>
                 <Label class="h5" text="TITEL"></Label>
                 <TextField class="textfield" [(ngModel)]="meeting.name"></TextField>
-                <Label class="h5" text="DEADLINE"></Label>
-                <TextField class="textfield" [(ngModel)]="meeting.location"></TextField>
-                <Label class="h5" text="VERANTWORTLICHER"></Label>
+                <Label class="h5" text="DATUM"></Label>
                 <TextField class="textfield" [(ngModel)]="meeting.date"></TextField>
+                <GridLayout columns="*,*" rows="*,*">
+                    <Label class="h5" text="BEGINN" col="0" row="0"></Label>
+                    <TextField class="textfield" [(ngModel)]="meeting.date" col="0" row="1" style="margin-right:5;"></TextField>
+                    <Label class="h5" text="ENDE" col="1" row="0"></Label>
+                    <TextField class="textfield" [(ngModel)]="meeting.date" col="1" row="1"></TextField>
+                </GridLayout>
                 <Label class="h5" text="PROJEKT"></Label>
-                <TextField class="textfield" [(ngModel)]="meeting.duration"></TextField>
-                <Label class="h5" text="BESCHREIBUNG"></Label>
+                <!--<TextField class="textfield" [(ngModel)]="meeting.project"></TextField>-->
+                <dd:DropDown items="{{ items }}" selectedIndex="{{ selectedIndex }}"
+                             opened="dropDownOpened" closed="dropDownClosed"
+                             selectedIndexChanged="dropDownSelectedIndexChanged"
+                             row="0" colSpan="2" />
+                <Label class="h5" text="TEILNEHMER"></Label>
                 <TextField class="textfield" [(ngModel)]="meeting.attendees"></TextField>
+                <Label class="hr"></Label>
                 <GridLayout columns="*,*,*" rows="*,*">
                     <Image src="~/images/timetracking.png" (tap)="state('agenda')" row="0" col="0" width="20"
                            height="20" stretch="aspectFit"></Image>
@@ -41,13 +51,14 @@
                     <Label class="h4" text="Files" col="2" row="1" horizontalAlignment="center"
                            (tap)="state('files')"></Label>
                 </GridLayout>
+                <Label class="hr"></Label>
                 <StackLayout [ngSwitch]="meeting_tabs">
                     <StackLayout *ngSwitchCase="'agenda'">
                         <StackLayout>
                             <GridLayout rows="*,*" columns="*,*, auto">
-                                <TextView hint="Agendapunkt" class="textfield" row="0" colSpan="2"></TextView>
-                                <TextView hint="Verantwortlicher" class="textfield" row="1" col="0"></TextView>
-                                <TextView hint="Dauer" class="textfield" row="1" col="1"></TextView>
+                                <TextView hint="Agendapunkt" class="textfield agenda" row="0" colSpan="2"></TextView>
+                                <TextView hint="Verantwortlicher" class="textfield agenda" row="1" col="0" style="margin-right:5;"></TextView>
+                                <TextView hint="Dauer" class="textfield agenda" row="1" col="1"></TextView>
                                 <StackLayout class="btn-img" col="2" rowSpan="2" width="20" height="20">
                                     <Image src="~/images/abbrechen2.png"
                                            stretch="aspectFit"></Image>
@@ -56,7 +67,7 @@
                         </StackLayout>
                     </StackLayout>
                     <StackLayout *ngSwitchCase="'protokoll'">
-                        <StackLayout>
+                        <StackLayout class="tabs">
                             <GridLayout rows="auto, auto" columns="auto, *">
                                 <StackLayout class="btn-img" row="0" col="0" verticalAlignment="center">
                                     <Image src="~/images/abbrechen2.png" width="20" height="20"
@@ -69,7 +80,7 @@
                                 <Label text="16. Oktober 2017 um 16:35" col="1" row="1"></Label>
                             </GridLayout>
                         </StackLayout>
-                        <StackLayout>
+                        <StackLayout class="tabs">
                             <GridLayout rows="auto, auto" columns="auto, *">
                                 <StackLayout class="btn-img" row="0" col="0" verticalAlignment="center">
                                     <Image src="~/images/abbrechen2.png" width="20" height="20"
@@ -82,7 +93,7 @@
                                 <Label text="16. Oktober 2017 um 16:35" col="1" row="1"></Label>
                             </GridLayout>
                         </StackLayout>
-                        <StackLayout>
+                        <StackLayout class="tabs">
                             <GridLayout rows="auto, auto" columns="auto, *">
                                 <StackLayout class="btn-img" row="0" col="0" verticalAlignment="center">
                                     <Image src="~/images/abbrechen2.png" width="20" height="20"
@@ -129,3 +140,4 @@
         </StackLayout>
     </AbsoluteLayout>
 </ScrollView>
+</Page>
