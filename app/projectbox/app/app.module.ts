@@ -24,6 +24,7 @@ import { routes } from "./app.routing";
 import { LoginComponent } from "./pages/login/login.component";
 import { Meeting_detailComponent } from "./pages/meeting_detail/meeting_detail.component";
 import { TodoComponent } from "./pages/todo/todo.component";
+import { Todo_detailComponent } from "./pages/todo_detail/todo_detail.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { TicketComponent } from "./pages/ticket/ticket.component";
 import { NavComponent } from "./pages/nav/nav.component";
@@ -62,6 +63,7 @@ import { NativeScriptUIDataFormModule } from "nativescript-pro-ui/dataform/angul
     AppComponent,
     LoginComponent,
     TodoComponent,
+    Todo_detailComponent,
     TicketComponent,
     Meeting_detailComponent,
     MeetingComponent,

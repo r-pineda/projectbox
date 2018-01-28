@@ -205,4 +205,16 @@ export class TodoService {
     .catch(this.handleErrors)
     .toPromise();
   }
+
+  getSingleTodo(todo_id :string){
+    return this.http.get(
+      Config.apiUrl + "v2/tasks/" + todo_id,
+      { headers: this.headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+    })
+    .catch(this.handleErrors)
+    .toPromise();
+  }
 }

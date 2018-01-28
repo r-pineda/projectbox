@@ -10,6 +10,7 @@ import { TicketComponent } from "./pages/ticket/ticket.component";
 import { NavComponent } from "./pages/nav/nav.component";
 import { MeetingComponent } from "./pages/meeting/meeting.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
+import { Todo_detailComponent } from "./pages/todo_detail/todo_detail.component";
 import { TutorialComponent } from "./pages/tutorial/tutorial.component";
 
 export const routes = [
@@ -24,6 +25,7 @@ export const routes = [
     ]
   },
   { path: "meeting_detail/:id", component: Meeting_detailComponent },
+  { path: "todo_detail/:id", component: Todo_detailComponent },
   { path: "login", component: LoginComponent },
   { path: "tutorial", component: TutorialComponent }
     

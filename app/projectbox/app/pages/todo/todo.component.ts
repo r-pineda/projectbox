@@ -129,7 +129,6 @@ export class TodoComponent {
             this.todoService.fillTracking(tracking)   //todoService gibt zur trackingID ein tracking objekt zurück
             .then((data) => {
               this.todos[index].trackingsFull.push(data.trackings[0]);
-              console.log("scanning for unfinished trackings..... " + data.trackings[0].id);
               if(!data.trackings[0].finished){
                 this.currentTracking = data.trackings[0];
                 console.log("unfinished Tracking detected! name: " + this.currentTracking.description);
@@ -236,5 +235,14 @@ export class TodoComponent {
         .then((data) => {
           return this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + data.avatar + "?access_token=" + this.curUser.access_token;
         });
+    }
+
+    goToDetail(todo_id :string){
+      this.routerExtensions.navigate(["todo_detail/" + todo_id], {
+        transition: {
+            name: "slideTop",
+            curve: "easeOut"
+        }
+    });
     }
 }
