@@ -56,8 +56,6 @@ freeline.py
 freeline/
 freeline_project_description.json
 
-app/projectbox/platforms
-app/projectbox/node_modules
 *.js
 
 #MAC DS STORE
