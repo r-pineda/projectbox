@@ -143,16 +143,16 @@ export class OnboardingComponent implements OnInit {
                     x: 0,
                     y: 0
                 },
-                delay: 300,
-                duration: 1000
+                delay: 100,
+                duration: 300
             });
             current.animate({
                 translate: {
                     x: 0,
                     y: (upwards ? -1 : 1) * platform.screen.mainScreen.heightDIPs
                 },
-                duration: 1000,
-                delay: 300
+                duration: 300,
+                delay: 100
             }).then(() => {
                 this.animating = false;
                 resolve(true);
@@ -167,16 +167,16 @@ export class OnboardingComponent implements OnInit {
                     x: 0,
                     y: 0
                 },
-                delay: 300,
-                duration: 1000
+                delay: 100,
+                duration: 300
             });
             current.animate({
                 translate: {
                     x: (left ? -1 : 1) * platform.screen.mainScreen.widthDIPs,
                     y: 0
                 },
-                duration: 1000,
-                delay: 300
+                duration: 300,
+                delay: 100
             }).then(() => {
                 this.animating = false;
                 resolve(true);

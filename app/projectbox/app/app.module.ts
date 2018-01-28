@@ -39,6 +39,10 @@ import { MeetingService } from "./shared/meeting/meeting.service";
 import { TodoService } from "./shared/todo/todo.service";
 import { TicketService } from "./shared/ticket/ticket.service";
 
+/*proui*/
+import { NativeScriptUIDataFormModule } from "nativescript-pro-ui/dataform/angular";
+// import { NativeScriptUIAutoCompleteTextViewModule } from "nativescript-pro-ui/autocomplete/angular";
+
 @NgModule({
   imports: [
     NativeScriptModule,
@@ -47,6 +51,7 @@ import { TicketService } from "./shared/ticket/ticket.service";
     NativeScriptRouterModule,
     NgShadowModule, //ng-shadow plugin
     OnboardingModule,
+    NativeScriptUIDataFormModule,
     NativeScriptRouterModule.forChild(routes),
     NativeScriptRouterModule.forRoot(routes),
    TNSFontIconModule.forRoot({

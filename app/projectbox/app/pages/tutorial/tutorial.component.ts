@@ -12,62 +12,56 @@ slides = [
         title: 'Task-Modul',
         description: 'Legen Sie Tasks an, bestimmen Sie Deadlines, weisen Sie Verantwortliche zu, oder tracken Sie ihre eigene Arbeitszeit.',
         okButtonText: 'Weiter',
-        skipButtonText: 'Überspringen',
         backgroundColor: '#29A699',
-        imageUrl: '~/images/export_tasks.PNG',
+        imageUrl: '~/images/tutorial_1.png',
         animation: 'slide_left'
     },
     {
         title: 'Meeting-Modul',
         description: 'Planen Sie Meetings, teilen Sie Agenda, Protokoll und andere Datieen und laden Sie Kollegen ein.',
         okButtonText: 'Weiter',
-        skipButtonText: 'Überspringen',
         backgroundColor: '#29A699',
-        imageUrl: '~/images/export_meetings.PNG',
+        imageUrl: '~/images/tutorial_2.png',
         animation: 'slide_left'
     },
     {
         title: 'Ticket-Modul',
         description: 'Behalten Sie Bugs im Auge und legen Sie Tickets an. Geben Sie Ihren Tickets einen Status und tracken Sie ihre Arbeitszeit.',
         okButtonText: 'Weiter',
-        skipButtonText: 'Überspringen',
         backgroundColor: '#29A699',
-        imageUrl: '~/images/export_tickets.PNG',
+        imageUrl: '~/images/tutorial_3.png',
         animation: 'slide_left'
     },
     {
         title: 'Dashboard',
         description: 'Auf dem Dashboard werden Ihnen auf einem Blick die aktuellsten Tasks, Meetings und Tickets angzezeigt.',
         okButtonText: 'Weiter',
-        skipButtonText: 'Überspringen',
         backgroundColor: '#29A699',
-        imageUrl: '~/images/export_dashboard.PNG',
+        imageUrl:  '~/images/tutorial_4.png',
         animation: 'slide_left'
     },
     {
         title: 'Navigation',
         description: 'Die Navigationsleiste ermöglicht Ihnen ein unkompliziertes Navigieren zwischen den einzelnen Modulen der Applikation.',
         okButtonText: 'Weiter',
-        skipButtonText: 'Überspringen',
         backgroundColor: '#29A699',
-        imageUrl: '~/images/export_navigation.PNG',
+        imageUrl:  '~/images/tutorial_5.png',
         animation: 'slide_left'
     },
-    /*{
+    {
         title: 'Easy-Access',
         description: 'Wechseln Sie mithilfe des Easy-Access Features noch schneller zwischen den Modulen. Einfach horizontal swipen.',
         okButtonText: 'Weiter',
-        skipButtonText: 'Überspringen',
         backgroundColor: '#29A699',
-        imageUrl: '~/images/export.PNG',
+        imageUrl:  '~/images/tutorial_6.png',
         animation: 'slide_left'
-    },*/
+    },
     {
-        title: 'Sie haben das Tutorial abgeschlossen',
-        description: 'Fahren Sie jetzt mit Ihren Projekten fort.',
+        title: 'Easy-Access',
+        description: 'Wechseln Sie mithilfe des Easy-Access Features noch schneller zwischen den Modulen. Einfach horizontal swipen.',
         okButtonText: 'Weiter',
-        skipButtonText: 'Überspringen',
         backgroundColor: '#29A699',
+        imageUrl:  '~/images/tutorial_7.png',
         animation: 'slide_left'
     }
 ];

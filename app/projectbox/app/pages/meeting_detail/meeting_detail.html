@@ -1,9 +1,11 @@
 <ActionBar title="">
-    <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="openDrawer()"></NavigationButton>
+    <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow"
+                      (tap)="openDrawer()"></NavigationButton>
     <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
         <Label text="Meeting - Detailansicht" class="action-label nav-h3"></Label>
     </StackLayout>
-    <ActionItem (tap)="cr_ticket()" android.systemIcon="ic_menu_add" ios.systemIcon="4" ios.position="right"></ActionItem>
+    <ActionItem (tap)="cr_ticket()" android.systemIcon="ic_menu_add" ios.systemIcon="4"
+                ios.position="right"></ActionItem>
 </ActionBar>
 <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="100%">
     <AbsoluteLayout>
@@ -13,7 +15,8 @@
                 <Button class="btn btn-primary btn-active" (tap)="uploadFile()" text="Aktualisieren"></Button>
             </StackLayout>-->
             <StackLayout class="form-taskticket">
-                <Label class="fa" [text]="'fa-angle-down' | fonticon" (tap)="cancel()" horizontalAlignment="center"></Label>
+                <Label class="fa" [text]="'fa-angle-down' | fonticon" (tap)="cancel()"
+                       horizontalAlignment="center"></Label>
                 <Label class="h5" text="TITEL"></Label>
                 <TextField class="textfield" [(ngModel)]="meeting.name"></TextField>
                 <Label class="h5" text="DEADLINE"></Label>
@@ -25,24 +28,42 @@
                 <Label class="h5" text="BESCHREIBUNG"></Label>
                 <TextField class="textfield" [(ngModel)]="meeting.attendees"></TextField>
                 <GridLayout columns="*,*,*" rows="*,*">
-                    <Image src="~/images/timetracking.png" (tap)="state('agenda')" row="0" col="0" width="20" height="20" stretch="aspectFit"></Image>
-                    <Image src="~/images/kommentare.png" (tap)="state('protokoll')" row="0" col="1" width="40" height="20" stretch="aspectFit"></Image>
-                    <Image src="~/images/kommentare.png" (tap)="state('files')" row="0" col="2" width="40" height="20" stretch="aspectFit"></Image>
-                    <Label class="h4" text="Agenda" col="0" row="1" horizontalAlignment="center" (tap)="state('agenda')"></Label>
-                    <Label class="h4" text="Kommentare" col="1" row="1" horizontalAlignment="center" (tap)="state('protokoll')"></Label>
-                    <Label class="h4" text="Files" col="2" row="1" horizontalAlignment="center" (tap)="state('files')"></Label>
+                    <Image src="~/images/timetracking.png" (tap)="state('agenda')" row="0" col="0" width="20"
+                           height="20" stretch="aspectFit"></Image>
+                    <Image src="~/images/kommentare.png" (tap)="state('protokoll')" row="0" col="1" width="40"
+                           height="20" stretch="aspectFit"></Image>
+                    <Image src="~/images/kommentare.png" (tap)="state('files')" row="0" col="2" width="40" height="20"
+                           stretch="aspectFit"></Image>
+                    <Label class="h4" text="Agenda" col="0" row="1" horizontalAlignment="center"
+                           (tap)="state('agenda')"></Label>
+                    <Label class="h4" text="Kommentare" col="1" row="1" horizontalAlignment="center"
+                           (tap)="state('protokoll')"></Label>
+                    <Label class="h4" text="Files" col="2" row="1" horizontalAlignment="center"
+                           (tap)="state('files')"></Label>
                 </GridLayout>
                 <StackLayout [ngSwitch]="meeting_tabs">
                     <StackLayout *ngSwitchCase="'agenda'">
-                        <Label [text]="meeting.agenda"></Label>
+                        <StackLayout>
+                            <GridLayout rows="*,*" columns="*,*, auto">
+                                <TextView hint="Agendapunkt" class="textfield" row="0" colSpan="2"></TextView>
+                                <TextView hint="Verantwortlicher" class="textfield" row="1" col="0"></TextView>
+                                <TextView hint="Dauer" class="textfield" row="1" col="1"></TextView>
+                                <StackLayout class="btn-img" col="2" rowSpan="2" width="20" height="20">
+                                    <Image src="~/images/abbrechen2.png"
+                                           stretch="aspectFit"></Image>
+                                </StackLayout>
+                            </GridLayout>
+                        </StackLayout>
                     </StackLayout>
                     <StackLayout *ngSwitchCase="'protokoll'">
                         <StackLayout>
                             <GridLayout rows="auto, auto" columns="auto, *">
-                                <StackLayout class="btn-img" rowSpan="1" col="0">
-                                    <Image src="~/images/abbrechen2.png" width="20" height="20" stretch="aspectFit"></Image>
+                                <StackLayout class="btn-img" row="0" col="0" verticalAlignment="center">
+                                    <Image src="~/images/abbrechen2.png" width="20" height="20"
+                                           stretch="aspectFit" verticalAlignment="center"></Image>
                                 </StackLayout>
-                                <TextView text="MANUEL GAFOZ Neue DEADLINE: Ende Jänner" editable="false" textWrap="true"
+                                <TextView text="MANUEL GAFOZ Neue DEADLINE: Ende Jänner" editable="false"
+                                          textWrap="true"
                                           class="longtext h4" col="1"
                                           row="0"></TextView>
                                 <Label text="16. Oktober 2017 um 16:35" col="1" row="1"></Label>
@@ -50,10 +71,25 @@
                         </StackLayout>
                         <StackLayout>
                             <GridLayout rows="auto, auto" columns="auto, *">
-                                <StackLayout class="btn-img" rowSpan="1" col="0">
-                                    <Image src="~/images/abbrechen2.png" width="20" height="20" stretch="aspectFit"></Image>
+                                <StackLayout class="btn-img" row="0" col="0" verticalAlignment="center">
+                                    <Image src="~/images/abbrechen2.png" width="20" height="20"
+                                           stretch="aspectFit" verticalAlignment="center"></Image>
                                 </StackLayout>
-                                <TextView text="MANUEL GAFOZ Neue DEADLINE: Ende Jänner" editable="false" textWrap="true"
+                                <TextView text="MANUEL GAFOZ Neue DEADLINE: Ende Jänner" editable="false"
+                                          textWrap="true"
+                                          class="longtext h4" col="1"
+                                          row="0"></TextView>
+                                <Label text="16. Oktober 2017 um 16:35" col="1" row="1"></Label>
+                            </GridLayout>
+                        </StackLayout>
+                        <StackLayout>
+                            <GridLayout rows="auto, auto" columns="auto, *">
+                                <StackLayout class="btn-img" row="0" col="0" verticalAlignment="center">
+                                    <Image src="~/images/abbrechen2.png" width="20" height="20"
+                                           stretch="aspectFit" verticalAlignment="center"></Image>
+                                </StackLayout>
+                                <TextView text="MANUEL GAFOZ Neue DEADLINE: Ende Jänner" editable="false"
+                                          textWrap="true"
                                           class="longtext h4" col="1"
                                           row="0"></TextView>
                                 <Label text="16. Oktober 2017 um 16:35" col="1" row="1"></Label>
@@ -73,10 +109,11 @@
                         <Button (tap)="openCamera()">Take a photo</Button>
                         <Button (tap)="openGallery()">Select an image from Gallery</Button>
                         <GridLayout columns="auto,*" rows="*,*" *ngFor="let file of userFiles">
-                              <Image (tap)="showImage(file.imagesrc)" [src]="file.imagesrc" rowSpan="2" col="0" width="100" height="100"></Image>
-                              <Label [text]="file.name" row="0" col="1"></Label>
-                              <!--<Label [text]="imagefile.name"></Label>-->
-                              <Label [text]="file.size" row="1" col="1"></Label>
+                            <Image (tap)="showImage(file.imagesrc)" [src]="file.imagesrc" rowSpan="2" col="0"
+                                   width="100" height="100"></Image>
+                            <Label [text]="file.name" row="0" col="1"></Label>
+                            <!--<Label [text]="imagefile.name"></Label>-->
+                            <Label [text]="file.size" row="1" col="1"></Label>
                         </GridLayout>
                     </StackLayout>
                 </StackLayout>
