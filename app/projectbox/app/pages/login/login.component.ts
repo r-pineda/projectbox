@@ -161,7 +161,7 @@ export class LoginComponent implements OnInit{
           curve: "easeOut"
       }
     })*/
-      this.routerExtensions.navigate(["/tutorial"], {
+      this.routerExtensions.navigate(["/nav"], {
       transition: {
           name: "slide",
           curve: "easeOut"
