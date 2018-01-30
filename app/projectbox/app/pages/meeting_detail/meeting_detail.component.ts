@@ -48,13 +48,13 @@ export class Meeting_detailComponent implements OnInit{
   imageFiles :string[] = new Array<string>();
   meeting_tabs: String;
 
+
   constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private page: Page, private nav: NavComponent, private meetingService: MeetingService, private userService: UserService) {
 
     this.route.params.subscribe((params) => {
       this.getMeeting(params["id"]);
     });
-      
-     this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
+
 
       this.items = [];
       for (var i = 0; i < 5; i++) {
@@ -83,6 +83,8 @@ export class Meeting_detailComponent implements OnInit{
         }
       });
     });
+
+      this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
   }
 
   getMeeting(meeting_id :number){

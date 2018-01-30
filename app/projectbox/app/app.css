@@ -35,7 +35,7 @@ TextField, TextView {
 
 .text,
 Label,
-.TextField, TextField, TextView {
+.TextField, TextField, TextView, DropDown {
     font-family: "Mukta-Light";
 }
 .page {

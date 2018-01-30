@@ -26,6 +26,7 @@
     "nativescript-couchbase": "^1.0.18",
     "nativescript-drop-down": "^3.2.0",
     "nativescript-fancy-calendar": "^3.0.2",
+    "nativescript-floatingactionbutton": "^4.1.3",
     "nativescript-fresco": "^3.0.6",
     "nativescript-imagepicker": "^3.0.7",
     "nativescript-ng-shadow": "^1.1.2",

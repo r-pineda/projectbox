@@ -42,7 +42,8 @@ import { TicketService } from "./shared/ticket/ticket.service";
 
 /* forms components */
 import { DropDownModule } from "nativescript-drop-down/angular";
-
+import { registerElement } from "nativescript-angular/element-registry";
+registerElement("Fab", () => require("nativescript-floatingactionbutton").Fab);
 
 @NgModule({
   imports: [
