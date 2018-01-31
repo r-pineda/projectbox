@@ -266,3 +266,12 @@ h1 {
 .tabs {
     margin-bottom: 10;
 }
+
+.fab-button {
+    height: 70;
+    width: 70;
+    margin: 15;
+    background-color: #ff4081;
+    horizontal-align: right;
+    vertical-align: bottom;
+}
