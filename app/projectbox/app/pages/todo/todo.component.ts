@@ -37,8 +37,9 @@ export class TodoComponent {
   currentTracking :Tracking;
   timerString :string;
   tracker :any;
-  trackedSeconds :number;
+  trackedSeconds :number = 0;
   task_tabs: string;
+  timer_button: string;
 
   constructor
   (
@@ -75,7 +76,8 @@ export class TodoComponent {
     })
     this.create = false;
     this.page.css = ".details { height: 0;}";
-    this.phaseSelection.push("Select a project first!")
+    this.phaseSelection.push("Select a project first!");
+    this.timer_button = "~/images/play2.png";
 
     /*
     this.temp = new Array(this.todos.length);
@@ -131,7 +133,6 @@ export class TodoComponent {
               this.todos[index].trackingsFull.push(data.trackings[0]);
               if(!data.trackings[0].finished){
                 this.currentTracking = data.trackings[0];
-                console.log("unfinished Tracking detected! name: " + this.currentTracking.description);
               }
             },
             (error) => {alert("offlineTrackings not supported")});
@@ -188,15 +189,15 @@ export class TodoComponent {
     }
 
     startTimer(task_id :string){
-      if(!this.currentTracking){
+      if(this.currentTracking){
         this.currentTracking = new Tracking();
         this.currentTracking.task = task_id;
         this.currentTracking.started_at = new Date();
         this.currentTracking.finished = false;
         this.currentTracking.description = "mobile tracking";
         this.currentTracking.user = null
-        this.todoService.createTracking(this.currentTracking)
-        .then((data) => {
+        /*this.todoService.createTracking(this.currentTracking)
+          .then((data) => {
           this.todos.forEach((todo) => {
             if(todo.id === task_id){
               todo.trackings.push(data.trackings[0].id);
@@ -204,8 +205,9 @@ export class TodoComponent {
               this.todoService.updateTodo(todo);
             }
           });
-        });
+        }); */
         this.timerString = "00:00:00";
+        this.timer_button = "~/images/stop2.png";
         this.tracker = setInterval(() => {
           this.trackedSeconds++;
           let minsecs = this.trackedSeconds%60;
@@ -215,15 +217,21 @@ export class TodoComponent {
           this.timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
       }, 1000);
 
-      }else{
-        alert("stop your currently running timer first!");
-      }
+       }else{
+        this.currentTracking.finished = true;
+        this.currentTracking.finished_at = new Date();
+        this.todoService.updateTracking(this.currentTracking);
+        clearInterval(this.tracker);
+        this.currentTracking = null;
+        this.timerString = "01:10:12";
+        this.timer_button = "~/images/play2.png";
+      } 
     }
+  
 
-    stopTimer(){
-      this.currentTracking.finished = true;
-      this.currentTracking.finished_at = new Date();
-      this.todoService.updateTracking(this.currentTracking);
+    
+  stopTimer(){
+      
     }
 
     state(id) {

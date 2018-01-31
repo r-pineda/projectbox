@@ -68,13 +68,13 @@ export class Meeting_detailComponent implements OnInit{
       (error) => this.displayFiles(false)
     )
     .then(() => {
-      /*
+      
       this.userFiles.forEach(file => {
         if(file.meeting_id != this.meeting.id){
           this.userFiles.splice(this.userFiles.indexOf(file), 1);
         }
       });
-      */
+      
     })
     .then(() => {
       this.userFiles.forEach(file => {

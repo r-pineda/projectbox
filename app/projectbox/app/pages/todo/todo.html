@@ -31,7 +31,7 @@
                                 editable="false" textWrap="true" class="longtext"></TextView>
                         <StackLayout orientation="horizontal">
                             <StackLayout (tap)="startTimer(task.id)" class="btn-img">
-                                <Image src="~/images/play2.png" width="15" height="15" stretch="aspectFit"></Image>
+                                <Image [src]="timer_button" width="15" height="15" stretch="aspectFit"></Image>
                             </StackLayout>
                             <Label class="h4 time" verticalAlignment="center" [text]="timerString"></Label>
                             <StackLayout class="btn-img" (tap)="goToDetail(task.id)">
