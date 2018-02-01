@@ -133,15 +133,15 @@ export class TodoComponent {
               this.todos[index].trackingsFull.push(data.trackings[0]);
               if(!data.trackings[0].finished){
                 this.currentTrackings[todo.id] = data.trackings[0];
-              }else{
-                this.currentTrackings[todo.id] = new Tracking();
-                this.currentTrackings[todo.id].finished = true;
               }
             },
             (error) => {});
 
           });
-
+          if(!this.currentTrackings[todo.id]){
+            this.currentTrackings[todo.id] = new Tracking();
+            this.currentTrackings[todo.id].finished = true;
+          }
         });
 
         this.todoForDetail = new Array<boolean>(this.todos.length);
