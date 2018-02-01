@@ -66,6 +66,8 @@ export class Tracking {
   description: string;
   task: string;
   user: string;
+  trackedSeconds :number = 0;
+  timerString :string;
 }
 
 export class Comment {
