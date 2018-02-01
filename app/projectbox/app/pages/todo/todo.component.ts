@@ -133,6 +133,7 @@ export class TodoComponent {
               this.todos[index].trackingsFull.push(data.trackings[0]);
               if(!data.trackings[0].finished){
                 this.currentTrackings[todo.id] = data.trackings[0];
+                console.dir(this.currentTrackings)
               }
             },
             (error) => {});
