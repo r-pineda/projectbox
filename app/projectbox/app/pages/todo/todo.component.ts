@@ -75,18 +75,6 @@ export class TodoComponent {
     this.create = false;
     this.page.css = ".details { height: 0;}";
     this.phaseSelection.push("Select a project first!");
-    this.tracker = setInterval(() => {
-      this.currentTrackings.forEach((tracking) =>{
-        if(!tracking.finished){
-          tracking.trackedSeconds++;
-          let minsecs = tracking.trackedSeconds%3600;
-          let hours = (tracking.trackedSeconds-minsecs)/3600;
-          let seconds = minsecs%60;
-          let minutes = (minsecs-seconds)/60;
-          tracking.timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
-        }
-      });
-    }, 1000);
   }
 
   cr_task() {
@@ -117,16 +105,21 @@ export class TodoComponent {
         });
 
         this.todos.forEach((todo, index) => {        //alle todos durchlaufen
+          /*Projektfarben für tasks herausfinden*/
           this.userService.getSingleProject(todo.project_id)
             .then(
               (data) => {this.todos[index].color = data.projects[0].color},
               (error) => {}
-            )
+            );
+            /*-*/
+            /*kommentare für task laden und in das objekt hinzufügen*/
           this.todoService.fillComments(todo.id)
             .then(
               (data) => {this.todos[index].comments = data.comments},
               (error) => {}
-          )
+          );
+          /*-*/
+          /*trackings*/
           todo.trackings.forEach(tracking => {//für jedes todo alle trackings durchlaufen
             this.todoService.fillTracking(tracking)   //todoService gibt zur trackingID ein tracking objekt zurück
             .then((data) => {
@@ -135,13 +128,29 @@ export class TodoComponent {
                 this.currentTrackings[todo.id] = data.trackings[0];
               }
             },
-            (error) => {});
-
+            (error) => {})
+            .then(() => {
+              if(!this.currentTrackings[todo.id]){
+                this.currentTrackings[todo.id] = new Tracking();
+                this.currentTrackings[todo.id].finished = true;
+              }
+              this.currentTrackings[todo.id].timerString = "00:00:00";
+              this.tracker = setInterval(() => {
+                console.dir(this.currentTrackings);
+                this.currentTrackings.forEach((tracking) =>{
+                  if(!tracking.finished){
+                    console.log("im if");
+                    tracking.trackedSeconds++;
+                    let minsecs = tracking.trackedSeconds%3600;
+                    let hours = (tracking.trackedSeconds-minsecs)/3600;
+                    let seconds = minsecs%60;
+                    let minutes = (minsecs-seconds)/60;
+                    tracking.timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
+                  }
+                });
+              }, 1000);
+            });
           });
-          if(!this.currentTrackings[todo.id]){
-            this.currentTrackings[todo.id] = new Tracking();
-            this.currentTrackings[todo.id].finished = true;
-          }
         });
 
         this.todoForDetail = new Array<boolean>(this.todos.length);
@@ -214,8 +223,7 @@ export class TodoComponent {
        }else{
         this.currentTrackings[task_id].finished = true;
         this.currentTrackings[task_id].finished_at = new Date();
-        this.todoService.updateTracking(this.currentTrackings[task_id]);
-        clearInterval(this.tracker);
+        //this.todoService.updateTracking(this.currentTrackings[task_id]);
       } 
     }
   

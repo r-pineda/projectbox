@@ -33,7 +33,7 @@
                             <StackLayout (tap)="startTimer(task.id)" class="btn-img">
                                 <Image [src]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'" width="15" height="15" stretch="aspectFit"></Image>
                             </StackLayout>
-                            <Label class="h4 time" verticalAlignment="center" [text]="timerString"></Label>
+                            <Label class="h4 time" verticalAlignment="center" [text]="currentTrackings[task.id].timerString"></Label>
                             <StackLayout class="btn-img" (tap)="goToDetail(task.id)">
                                 <Image src="~/images/edit2.png" width="15" height="15" stretch="aspectFit"></Image>
                             </StackLayout>
