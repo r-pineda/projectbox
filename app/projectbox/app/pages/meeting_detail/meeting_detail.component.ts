@@ -47,6 +47,7 @@ export class Meeting_detailComponent implements OnInit{
   userFiles :FileObject[];
   imageFiles :string[] = new Array<string>();
   meeting_tabs: String;
+  public projectSelection :string[] = new Array<string>();
 
 
   constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private page: Page, private nav: NavComponent, private meetingService: MeetingService, private userService: UserService) {
@@ -85,6 +86,13 @@ export class Meeting_detailComponent implements OnInit{
     });
 
       this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
+
+      this.userService.getProjects()
+      .then((data) => {
+        data.projects.forEach((project) => {
+          this.projectSelection[project.id] = project.name;
+        });
+      });
   }
 
   getMeeting(meeting_id :number){

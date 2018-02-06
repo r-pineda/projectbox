@@ -30,21 +30,12 @@ export class TicketComponent implements OnInit {
   ticketForDetail :Boolean[];
   create: boolean;
   timestart :string;
-  temp :number[][]; //dient zur temporären speicherungen der Zeiterfassung. 
-                    //Ebene 1 des Arrays ist assoziativ mit den IDs von den Todos. die 2. Ebene enthält folgende Attribute:
-                    //[0]startTime: Stunden
-                    //[1]startTime: Minuten
-                    //[2]startTime: Sekunden
-                    //[3]endTime: Stunden
-                    //[4]endTime: Minuten
-                    //[5]endTime: Sekunden
-                    //[6]errechnete dauer des Eintrags
-                    //[7]TimerRunning :0 = false, 1 = true
-                    curUser :User = new User;
-                    avatar :string;
+  curUser :User = new User;
+  avatar :string;
   public newTicket :Ticket = new Ticket();
   nav: NavComponent;
   meeting_tabs: String;
+  public projectSelection :string[] = new Array<string>();
 
   constructor
   (
@@ -66,16 +57,6 @@ export class TicketComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    /*
-    this.temp = new Array(this.tickets.length);
-    this.tickets.forEach(element => {
-      this.temp[element.id] = [];
-      this.temp[element.id][6] = element.timeTaken;
-      this.temp[element.id][7] = 0;
-    });
-    */
-
     this.ticketService.getTickets().then(
       (data) => this.displayTickets(data), 
       (error) => this.displayTickets(false)
@@ -85,6 +66,13 @@ export class TicketComponent implements OnInit {
         this.ticketForDetail[element.id] = false;
       });
     });
+
+    this.userService.getProjects()
+      .then((data) => {
+        data.projects.forEach((project) => {
+          this.projectSelection[project.id] = project.name;
+        });
+      });
   }
 
   expand(id :string){

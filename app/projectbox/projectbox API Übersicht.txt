@@ -132,3 +132,5 @@ Fragen:
     Tasks werden bei details von Projekten mitgeliefert.
     //
     Multipart-FileUpload
+    //
+    im interval ist currentTrackings null -> forEach geht nicht

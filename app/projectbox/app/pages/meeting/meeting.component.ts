@@ -59,8 +59,17 @@ export class MeetingComponent implements OnInit {
     meetingsText: string;
     meeting: Meeting;
     nav: NavComponent;
+    public projectSelection :string[] = new Array<string>();
 
-    constructor(private route: ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private meetingService: MeetingService, private navState: NavComponent, private page: Page, private fonticon: TNSFontIconService) {
+    constructor(private route: ActivatedRoute,
+        private router: Router,
+        private routerExtensions: RouterExtensions,
+        private meetingService: MeetingService,
+        private navState: NavComponent,
+        private page: Page,
+        private fonticon: TNSFontIconService,
+        private userService :UserService
+    ) {
         this.nav = navState;
     }
 
@@ -71,6 +80,12 @@ export class MeetingComponent implements OnInit {
         );
         this.create = false;
         this.page.css = "Page { background-color: #dee8e7; } .page { padding-left: 0; padding:20; background-color: #dee8e7;} #meetinglist { padding-left: 20; }";
+        this.userService.getProjects()
+            .then((data) => {
+                data.projects.forEach((project) => {
+                this.projectSelection[project.id] = project.name;
+            });
+        });
     }
 
     cr_meeting() {
