@@ -134,3 +134,4 @@ Fragen:
     Multipart-FileUpload
     //
     im interval ist currentTrackings null -> forEach geht nicht
+        notiz an mich selbst: assoziativ X forEach geht nicht

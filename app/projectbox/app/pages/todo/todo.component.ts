@@ -128,30 +128,27 @@ export class TodoComponent {
                 this.currentTrackings[todo.id] = data.trackings[0];
               }
             },
-            (error) => {})
-            .then(() => {
-              if(!this.currentTrackings[todo.id]){
-                this.currentTrackings[todo.id] = new Tracking();
-                this.currentTrackings[todo.id].finished = true;
-              }
-              this.currentTrackings[todo.id].timerString = "00:00:00";
-              this.tracker = setInterval(() => {
-                console.dir(this.currentTrackings);
-                this.currentTrackings.forEach((tracking) =>{
-                  if(!tracking.finished){
-                    console.log("im if");
-                    tracking.trackedSeconds++;
-                    let minsecs = tracking.trackedSeconds%3600;
-                    let hours = (tracking.trackedSeconds-minsecs)/3600;
-                    let seconds = minsecs%60;
-                    let minutes = (minsecs-seconds)/60;
-                    tracking.timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
-                  }
-                });
-              }, 1000);
-            });
+            (error) => {});
           });
+          if(!this.currentTrackings[todo.id]){  //wenn noch kein Tracking vorhanden ist
+            this.currentTrackings[todo.id] = new Tracking();
+            this.currentTrackings[todo.id].finished = true;
+          }
+          this.currentTrackings[todo.id].timerString = "00:00:00"; //default wert für alle timerStrings
         });
+        
+        this.tracker = setInterval(() => { //Interval der currentTrackings nach unfinished dursucht und bei all diesen eins raufzählt
+          this.todos.forEach((todo) =>{
+            if(!this.currentTrackings[todo.id].finished){
+              this.currentTrackings[todo.id].trackedSeconds++;
+              let minsecs = this.currentTrackings[todo.id].trackedSeconds%3600;
+              let hours = (this.currentTrackings[todo.id].trackedSeconds-minsecs)/3600;
+              let seconds = minsecs%60;
+              let minutes = (minsecs-seconds)/60;
+              this.currentTrackings[todo.id].timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
+            }
+          });
+        }, 1000);
 
         this.todoForDetail = new Array<boolean>(this.todos.length);
         this.todos.forEach((element) => {
@@ -209,6 +206,7 @@ export class TodoComponent {
         this.currentTrackings[task_id].description = "mobile tracking";
         this.currentTrackings[task_id].user = null;
         this.currentTrackings[task_id].trackedSeconds = 0;
+        this.currentTrackings[task_id].timerString = "00:00:00";
         /*this.todoService.createTracking(this.currentTracking)
           .then((data) => {
           this.todos.forEach((todo) => {
