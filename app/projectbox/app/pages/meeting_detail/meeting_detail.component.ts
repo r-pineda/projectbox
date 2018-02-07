@@ -203,19 +203,28 @@ export class Meeting_detailComponent implements OnInit{
   /*------------*/
 
   openCamera(){
+    var milliseconds = new Date().getTime();
+    var that = this;
     camera.requestPermissions();
-
-    camera.takePicture().then(picture => {
-      var milliseconds = new Date().getTime();
-      picture.getImageAsync((image) => {
-        let folder = fs.knownFolders.documents();
-        var path = fs.path.join(folder.path, milliseconds + ".png");
-        var saved = image.saveToFile(path, "png");
-        this.picture = path;
-        this.uploadFile();
-      });
+    camera.takePicture()
+        .then((imageAsset) => {
+            console.log("Result is an image asset instance");
+            let source = new imageSource.ImageSource();
+            source.fromAsset(imageAsset).then((source) => {
+                let folder = fs.knownFolders.documents();
+                let fileName = "test.png"
+                let path = fs.path.join(folder.path, milliseconds + ".png");
+                let saved = source.saveToFile(path, "png");
+                if(saved){
+                    console.log("saved image")
+                }
+                that.picture = path;
+                that.uploadFile();
+            })
+        }).catch((err) => {
+        console.log("Error -> " + err.message);
     });
-  }
+}
 
   openGallery(){
 
