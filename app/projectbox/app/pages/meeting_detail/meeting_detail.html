@@ -34,9 +34,8 @@
                     <!--<TextField class="textfield" [(ngModel)]="meeting.project"></TextField>-->
                     <DropDown #dd
                               style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
-                              [items]="items"
-                              [(ngModel)]="selectedIndex"
-                              (selectedIndexChanged)="onchange($event)"
+                              [items]="projectNames"
+                              [(ngModel)]="projectSelection"
                               (opened)="onopen()"
                               (closed)="onclose()"></DropDown>
                     <Label class="h5" text="TEILNEHMER"></Label>

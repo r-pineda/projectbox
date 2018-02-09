@@ -48,6 +48,7 @@ export class Meeting_detailComponent implements OnInit{
   imageFiles :string[] = new Array<string>();
   meeting_tabs: String;
   public projectSelection :string[] = new Array<string>();
+  public projectNames: string[] = new Array<string>();
 
 
   constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private page: Page, private nav: NavComponent, private meetingService: MeetingService, private userService: UserService) {
@@ -91,6 +92,7 @@ export class Meeting_detailComponent implements OnInit{
       .then((data) => {
         data.projects.forEach((project) => {
           this.projectSelection[project.id] = project.name;
+          this.projectNames.push(project.name);
         });
       });
   }

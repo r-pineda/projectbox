@@ -90,7 +90,7 @@ export class MeetingComponent implements OnInit {
 
     cr_meeting() {
         this.create = true;
-        this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
+        this.page.css = "Page { background-color: #ffffff; } .form-taskticket { padding-left: 0; padding:20; background-color: #ffffff;}";
     }
 
     cancel() {
