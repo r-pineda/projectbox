@@ -73,6 +73,7 @@ export class TicketComponent implements OnInit {
           this.projectSelection[project.id] = project.name;
         });
       });
+      this.page.css = "Page { background-color: #ECEDEE; } .page { padding-left: 20; background-color: #ECEDEE;}";
   }
 
   expand(id :string){
@@ -101,7 +102,7 @@ export class TicketComponent implements OnInit {
 
   cancel() {
     this.create = false;
-          this.page.css = "Page { background-color: #dee8e7; } .page { padding-left: 20; background-color: #dee8e7;}";
+    this.page.css = "Page { background-color: #ECEDEE; } .page { padding-left: 20; background-color: #ECEDEE;}";
   }
 
   createTicket() {

@@ -179,7 +179,6 @@ h1 {
     border-width: 2 2 2 2;
     border-radius: 2;
     vertical-align: top;
-    background:none;
 }
 
 .listitem {
@@ -268,10 +267,10 @@ h1 {
 }
 
 .fab-button {
-    height: 70;
-    width: 70;
+    height: 45;
+    width: 45;
     margin: 15;
-    background-color: #ff4081;
+    background-color: #29a699;
     horizontal-align: right;
     vertical-align: bottom;
 }
