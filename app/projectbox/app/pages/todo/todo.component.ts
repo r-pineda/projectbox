@@ -10,7 +10,7 @@ import "rxjs/add/operator/switchMap";
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { UserService } from "../../shared/user/user.service";
 import { NavComponent } from "../nav/nav.component";
-import {DropDown, ValueList} from "nativescript-drop-down";
+import {DropDown, ValueList, SelectedIndexChangedEventData} from "nativescript-drop-down";
 var timer = require("timer");
 
 
@@ -36,11 +36,13 @@ export class TodoComponent {
   public projectSelection :string[] = new Array<string>();//testen ob assotiativ funktioniert. || array[project_id] = project_name
   public phaseSelection :string[] = new Array<string>(); //dropdown selection zur auswahl der phase in der ein task created werden soll. wird befüllt nachdem der user ein Projekt ausgewählt hat.
   currentTrackings :Tracking[] = new Array<Tracking>();
-  public projectList = new ValueList<string>();
+  public projectList: string[] = new Array<string>();
   timerString :string;
   tracker :any;
   task_tabs: string;
-
+  selectedProject: string;
+  projectIds :string[] = new Array<string>();
+  phaseIds :string[] = new Array<string>();
   projectdd = this.page.getViewById<DropDown>("projectdd");
   phasedd = this.page.getViewById<DropDown>("phasedd");
 
@@ -75,10 +77,9 @@ export class TodoComponent {
     .then((data) => {
       data.projects.forEach((project) => {
         this.projectSelection[project.id] = project.name;
-        this.projectList.push({value: project.id, display: project.name});
+        this.projectIds[this.projectList.push(project.name)-1] = project.id;
       });
     })
-      this.projectdd.items = this.projectList;
     this.create = false;
     this.page.css = ".details { height: 0;}";
     this.phaseSelection.push("Select a project first!");
@@ -193,19 +194,21 @@ export class TodoComponent {
       this.todoService.createComment(this.newComment);
     }
 
-    getPhases(){
-      this.newTodo.project = this.projectList.getValue(this.projectdd.selectedIndex);
-      console.log(this.projectdd.selectedIndex + "in der Methode");
-      console.log(this.newTodo.project + "im Objekt");
+    getPhases(args: SelectedIndexChangedEventData){
+      this.newTodo.project = this.projectIds[args.newIndex];
       this.userService.getSingleProject(this.newTodo.project)
         .then(
           (data) => {
             this.phaseSelection = new Array<string>();
             data.phases.forEach((phase) => {
-              this.phaseSelection.push(phase.name);
+              this.phaseIds[this.phaseSelection.push(phase.name)-1] = phase.id;
             });
           },
           (error) => {})
+    }
+
+    selectPhase(args: SelectedIndexChangedEventData){
+      this.newTodo.phase = this.phaseIds[args.newIndex];
     }
 
     startTimer(task_id :string){
@@ -263,10 +266,8 @@ export class TodoComponent {
     }
 
     public onopen() {
-        console.log("Drop Down opened.");
     }
 
     public onclose() {
-        this.getPhases();
     }
 }

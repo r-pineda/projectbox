@@ -59,15 +59,18 @@
         <TextField class="textfield" [(ngModel)]="newTodo.user"></TextField>
         <Label class="h5" text="PROJEKT"></Label>
         <!--<TextField class="textfield" [(ngModel)]="newTodo.project"></TextField>-->
-        <DropDown #projectdd
+        <DropDown #dd
                   style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
                   [items]="projectList"
+                  [selectedIndex]="selectedProject"
+                  (selectedIndexChanged)="getPhases($event)"
                   (opened)="onopen()"
                   (closed)="getPhases()"></DropDown>
         <Label class="h5" text="PHASE"></Label>
         <DropDown #phasedd
                   style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
                   [items]="phaseSelection"
+                  (selectedIndexChanged)="selectPhase($event)"
                   (opened)="onopen()"
                   (closed)="onclose()"></DropDown>
         <Label class="h5" text="BESCHREIBUNG"></Label>
