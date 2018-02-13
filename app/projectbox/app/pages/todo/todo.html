@@ -1,9 +1,11 @@
 <ActionBar title="">
-    <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left" android:horizontalAlignment="left"></Label>
-    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
-        <Label text="Tasks" class="action-label nav-h3"></Label>
-    </StackLayout>
-    <Label class="fa" (tap)="cr_task()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right" android:horizontalAlignment="right"></Label>
+    <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
+        <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
+               android:horizontalAlignment="left" row="0" col="0"></Label>
+        <Label text="Tasks" class="nav-h3" row="0" col="1"></Label>
+        <Label class="fa" (tap)="cr_task()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right"
+               android:horizontalAlignment="right" row="0" col="2"></Label>
+    </GridLayout>
 </ActionBar>
 <StackLayout class="page" width="100%">
     <StackLayout *ngIf="!create">
@@ -30,9 +32,11 @@
                                 editable="false" textWrap="true" class="longtext"></TextView>
                         <StackLayout orientation="horizontal">
                             <StackLayout (tap)="startTimer(task.id)" class="btn-img">
-                                <Image [src]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'" width="15" height="15" stretch="aspectFit"></Image>
+                                <Image [src]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'"
+                                       width="15" height="15" stretch="aspectFit"></Image>
                             </StackLayout>
-                            <Label class="h4 time" verticalAlignment="center" [text]="currentTrackings[task.id].timerString"></Label>
+                            <Label class="h4 time" verticalAlignment="center"
+                                   [text]="currentTrackings[task.id].timerString"></Label>
                             <StackLayout class="btn-img" (tap)="goToDetail(task.id)">
                                 <Image src="~/images/edit2.png" width="15" height="15" stretch="aspectFit"></Image>
                             </StackLayout>
@@ -71,7 +75,7 @@
                   style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
                   [items]="phaseSelection"
                   (selectedIndexChanged)="selectPhase($event)"
-                  (opened)="onopen()"
+                  (opened)="onopen()" A
                   (closed)="onclose()"></DropDown>
         <Label class="h5" text="BESCHREIBUNG"></Label>
         <TextField class="textfield" [(ngModel)]="newTodo.description"></TextField>

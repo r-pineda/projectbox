@@ -47,6 +47,9 @@ Label,
     text-align: center;
 }
 
+.padding-right-10 {
+    padding: 10;
+}
 
 /* Navigation */
 
@@ -98,6 +101,11 @@ ActionBar {
 
 .nav-label {
     color: #fff;
+}
+
+.action-label {
+    width: 20;
+    height: 20;
 }
 
 
@@ -227,7 +235,7 @@ h1 {
 }
 
 .fa {
-    font-size: 40;
+    font-size: 30;
 }
 
 .field-seperator {

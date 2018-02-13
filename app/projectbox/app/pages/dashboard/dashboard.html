@@ -1,30 +1,36 @@
 <ActionBar title="">
-    <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left" android:horizontalAlignment="left"></Label>
-    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
-        <Label text="Dashboard" class="action-label nav-h3"></Label>
-    </StackLayout>
-    <Label class="fa" (tap)="aktualisieren()" [text]="'fa-repeat' | fonticon" ios:horizontalAlignment="right" android:horizontalAlignment="right"></Label>
+    <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
+        <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
+               android:horizontalAlignment="left" row="0" col="0"></Label>
+        <Label text="Dashboard" class="nav-h3" row="0" col="1"></Label>
+        <Label class="fa" (tap)="aktualisieren()" [text]="'fa-repeat' | fonticon" ios:horizontalAlignment="right"
+               android:horizontalAlignment="right" row="0" col="2"></Label>
+    </GridLayout>
 </ActionBar>
 <StackLayout class="page">
     <Label *ngIf="offlinemode" text="OFFLINE" style="text-align:center;background-color:rgb(99, 228, 178);"></Label>
     <GridLayout columns="auto, *" rows="auto">
         <Label text="PROJEKTE" (tap)="showAllProjects()" row="0" col="0" class="h2"></Label>
-        <Label text="see all >" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom" class="text" style="margin-right:10;" (tap)="showAllProjects()"></Label>
+        <Label text="see all >" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom"
+               class="text" style="margin-right:10;" (tap)="showAllProjects()"></Label>
     </GridLayout>
     <StackLayout orientation="horizontal">
         <StackLayout orientation="horizontal" *ngFor="let item of projects" shadow="10" class="project">
             <Label class="borderitem" [ngStyle]="{'border-color': item.color}" height="60"></Label>
-            <TextView [text]="item.name" id="item.id" (tap)="filterByProject(item.id)" editable="false" textWrap="true" class="h4 longtext" width="100" height="100"></TextView>
+            <TextView [text]="item.name" id="item.id" (tap)="filterByProject(item.id)" editable="false" textWrap="true"
+                      class="h4 longtext" width="100" height="100"></TextView>
         </StackLayout>
     </StackLayout>
     <Label text="TASKS" (tap)="nav.state('todo')" class="h2"></Label>
     <StackLayout>
-        <GridLayout class="marginitem" *ngFor="let task of displayedTodos" columns="auto,*" rows="auto,auto" shadow="10">
+        <GridLayout class="marginitem" *ngFor="let task of displayedTodos" columns="auto,*" rows="auto,auto"
+                    shadow="10">
             <Label class="borderitem" [ngStyle]="{'border-color': task.color}" height="50" col="0" rowSpan="2"></Label>
             <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
                 <StackLayout col="0" row="0" orientation="horizontal">
                     <Image src="~/images/toptask.png" width="25" height="25" stretch="aspectFit"></Image>
-                    <TextView [text]="task.name" editable="false" textWrap="true" class="longtext h4" col="0" row="0"></TextView>
+                    <TextView [text]="task.name" editable="false" textWrap="true" class="longtext h4" col="0"
+                              row="0"></TextView>
                 </StackLayout>
                 <Label class="text ticket" [text]="task.due_date_string" col="0" row="1"></Label>
             </GridLayout>
@@ -32,7 +38,8 @@
     </StackLayout>
     <Label text="MEETINGS" class="h2" (tap)="nav.state('meeting')"></Label>
     <StackLayout>
-        <GridLayout *ngFor="let item of displayedMeetings" class="marginitem" columns="auto, *" rows="auto" [nsRouterLink]="['/meeting_detail', item.id]" shadow="10">
+        <GridLayout *ngFor="let item of displayedMeetings" class="marginitem" columns="auto, *" rows="auto"
+                    [nsRouterLink]="['/meeting_detail', item.id]" shadow="10">
             <Label class="borderitem" height="60" col="0" row="0"></Label>
             <GridLayout columns="80,auto,auto,*" rows="auto,auto,*" col="1" row="0">
                 <Label text="HEUTE" col="0" row="0" rowSpan="3" class="meeting-indicator h4" margin="0 0 0 5"></Label>

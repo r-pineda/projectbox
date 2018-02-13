@@ -1,8 +1,9 @@
 <ActionBar title="">
-    <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left" android:horizontalAlignment="left"></Label>
-    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
-        <Label text="Einstellungen" class="action-label nav-h3"></Label>
-    </StackLayout>
+    <GridLayout rows="*,*" columns="*" class="padding-right-10">
+        <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
+               android:horizontalAlignment="left" row="0" col="0"></Label>
+        <Label text="Einstellungen" class="nav-h3" row="0" col="1"></Label>
+    </GridLayout>
 </ActionBar>
 <ScrollView orientation="vertical" isEnabled="true" width="100%" height="100%">
     <AbsoluteLayout>
