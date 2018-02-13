@@ -1,11 +1,9 @@
 <ActionBar title="">
-    <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow"
-                      (tap)="nav.openDrawer()"></NavigationButton>
+    <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left" android:horizontalAlignment="left"></Label>
     <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
-        <Label text="Meeting" class="action-label nav-h3"></Label>
+        <Label text="Meetings" class="action-label nav-h3"></Label>
     </StackLayout>
-    <ActionItem (tap)="cr_meeting()" android.systemIcon="ic_menu_add" ios.systemIcon="4"
-                ios.position="right"></ActionItem>
+    <Label class="fa" (tap)="cr_meeting()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right" android:horizontalAlignment="right"></Label>
 </ActionBar>
 <ScrollView orientation="vertical" isEnabled="true" width="100%" height="100%">
     <AbsoluteLayout>

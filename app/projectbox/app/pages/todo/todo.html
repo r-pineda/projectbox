@@ -1,10 +1,9 @@
 <ActionBar title="">
-    <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow"
-                      (tap)="nav.openDrawer()"></NavigationButton>
+    <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left" android:horizontalAlignment="left"></Label>
     <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
         <Label text="Tasks" class="action-label nav-h3"></Label>
     </StackLayout>
-    <ActionItem (tap)="cr_task()" android.systemIcon="ic_menu_add" ios.systemIcon="4" ios.position="right"></ActionItem>
+    <Label class="fa" (tap)="cr_task()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right" android:horizontalAlignment="right"></Label>
 </ActionBar>
 <StackLayout class="page" width="100%">
     <StackLayout *ngIf="!create">
@@ -59,7 +58,18 @@
         <Label class="h5" text="VERANTWORTLICHER"></Label>
         <TextField class="textfield" [(ngModel)]="newTodo.user"></TextField>
         <Label class="h5" text="PROJEKT"></Label>
-        <TextField class="textfield" [(ngModel)]="newTodo.project"></TextField>
+        <!--<TextField class="textfield" [(ngModel)]="newTodo.project"></TextField>-->
+        <DropDown #projectdd
+                  style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
+                  [items]="projectList"
+                  (opened)="onopen()"
+                  (closed)="getPhases()"></DropDown>
+        <Label class="h5" text="PHASE"></Label>
+        <DropDown #phasedd
+                  style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
+                  [items]="phaseSelection"
+                  (opened)="onopen()"
+                  (closed)="onclose()"></DropDown>
         <Label class="h5" text="BESCHREIBUNG"></Label>
         <TextField class="textfield" [(ngModel)]="newTodo.description"></TextField>
         <Label class="field-seperator" height="2"></Label>

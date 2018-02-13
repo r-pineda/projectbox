@@ -1,9 +1,11 @@
 <ActionBar title="">
-    <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow" (tap)="nav.openDrawer()"></NavigationButton>
+    <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow"
+                      (tap)="nav.openDrawer()"></NavigationButton>
     <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
         <Label text="Tickets" class="action-label nav-h3"></Label>
     </StackLayout>
-    <ActionItem (tap)="cr_ticket()" android.systemIcon="ic_menu_add" ios.systemIcon="4" ios.position="right"></ActionItem>
+    <ActionItem (tap)="cr_ticket()" android.systemIcon="ic_menu_add" ios.systemIcon="4"
+                ios.position="right"></ActionItem>
 </ActionBar>
 <ScrollView orientation="vertical" isEnabled="true" width="100%" height="100%">
     <AbsoluteLayout>
@@ -12,17 +14,21 @@
                 <GridLayout columns="*" rows="auto,auto,auto">
                     <Label class="h1" text="TOP-TASKS" col="0" row="0"></Label>
                     <StackLayout class="marginitem" col="0" row="1">
-                        <GridLayout class="marginitem" *ngFor="let ticket of tickets" columns="auto,*" rows="auto,auto,auto"
+                        <GridLayout class="marginitem" *ngFor="let ticket of tickets" columns="auto,*"
+                                    rows="auto,auto,auto"
                                     (tap)="expand(ticket.id)">
                             <Label class="borderitem" height="50" col="0" rowSpan="2"></Label>
                             <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
                                 <StackLayout col="0" row="0" orientation="horizontal">
-                                    <Image src="~/images/toptask.png" width="25" height="25" stretch="aspectFit"></Image>
-                                    <TextView [text]="ticket.name" editable="false" textWrap="true" class="longtext h4" col="0"
+                                    <Image src="~/images/toptask.png" width="25" height="25"
+                                           stretch="aspectFit"></Image>
+                                    <TextView [text]="ticket.name" editable="false" textWrap="true" class="longtext h4"
+                                              col="0"
                                               row="0"></TextView>
                                 </StackLayout>
                                 <Label class="text ticket" [text]="ticket.id" col="0" row="1"></Label>
-                                <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon" col="1"
+                                <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon"
+                                       col="1"
                                        rowSpan="2"></Label>
                             </GridLayout>
                             <StackLayout col="1" row="3" *ngIf="ticketForDetail[ticket.id]" class="details">
@@ -32,17 +38,21 @@
                                         editable="false" textWrap="true" class="longtext"></TextView>
                                 <StackLayout orientation="horizontal">
                                     <StackLayout class="btn-img" (tap)="cancel()">
-                                        <Image src="~/images/play2.png" width="15" height="15" stretch="aspectFit"></Image>
+                                        <Image src="~/images/play2.png" width="15" height="15"
+                                               stretch="aspectFit"></Image>
                                     </StackLayout>
                                     <Label class="h4 time" verticalAlignment="center" text="00:00:00"></Label>
                                     <StackLayout class="btn-img" (tap)="cancel()">
-                                        <Image src="~/images/edit2.png" width="15" height="15" stretch="aspectFit"></Image>
+                                        <Image src="~/images/edit2.png" width="15" height="15"
+                                               stretch="aspectFit"></Image>
                                     </StackLayout>
                                     <StackLayout class="btn-img" (tap)="cancel()">
-                                        <Image src="~/images/done2.png" width="15" height="15" stretch="aspectFit"></Image>
+                                        <Image src="~/images/done2.png" width="15" height="15"
+                                               stretch="aspectFit"></Image>
                                     </StackLayout>
                                     <StackLayout class="btn-img attention" (tap)="cancel()">
-                                        <Image src="~/images/delete2.png" width="15" height="15" stretch="aspectFit"></Image>
+                                        <Image src="~/images/delete2.png" width="15" height="15"
+                                               stretch="aspectFit"></Image>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -52,7 +62,7 @@
                 </GridLayout>
             </StackLayout>
             <StackLayout *ngIf="create" class="form-taskticket">
-                <!--<Label class="fa" [text]="'fa-angle-down' | fonticon" horizontalAlignment="center"></Label>
+                <Label class="fa" [text]="'fa-angle-down' | fonticon" horizontalAlignment="center"></Label>
                 <Label class="h5" text="TITEL"></Label>
                 <TextField class="textfield" [(ngModel)]="newTicket.name"></TextField>
                 <Label class="h5" text="DEADLINE"></Label>
@@ -60,30 +70,81 @@
                 <Label class="h5" text="VERANTWORTLICHER"></Label>
                 <TextField class="textfield" [(ngModel)]="newTicket.user"></TextField>
                 <Label class="h5" text="PROJEKT"></Label>
-                <TextField class="textfield" [(ngModel)]="newTicket.project"></TextField>
+                <!--<TextField class="textfield" [(ngModel)]="newTodo.project"></TextField>-->
+                <DropDown #dd
+                          style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
+                          [items]="projectNames"
+                          [(ngModel)]="newTicket.project"
+                          (opened)="onopen()"
+                          (closed)="onclose()"></DropDown>
+                <Label class="h5" text="PHASE"></Label>
+                <DropDown #dd
+                          style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
+                          [items]="phaseSelection"
+                          [(ngModel)]="newTicket.phase"
+                          (opened)="onopen()"
+                          (closed)="onclose()"></DropDown>
                 <Label class="h5" text="BESCHREIBUNG"></Label>
                 <TextField class="textfield" [(ngModel)]="newTicket.description"></TextField>
                 <Label class="field-seperator" height="2"></Label>
                 <GridLayout columns="*,*" rows="*">
                     <Label class="h3" col="0" row="0" text="TOP-TASK"></Label>
-                    <Switch checked="false" col="1" row="0" (checkedChange)="onFirstChecked($event)" horizontalAlignment="right"></Switch>
+                    <Switch checked="false" col="1" row="0" (checkedChange)="onFirstChecked($event)"
+                            horizontalAlignment="right"></Switch>
                 </GridLayout>
                 <Label class="field-seperator" height="2"></Label>
                 <GridLayout columns="*,*" rows="*,*">
-                    <Image src="~/images/timetracking.png" (tap)="state('timetracking')" row="0" col="0" width="20" height="20" stretch="aspectFit"></Image>
-                    <Image src="~/images/kommentare.png" (tap)="state('kommentare')" row="0" col="1" width="40" height="20" stretch="aspectFit"></Image>
-                    <Label class="h4" text="Timetracking" (tap)="state('timetracking')" col="0" row="1" horizontalAlignment="center"></Label>
-                    <Label class="h4" text="Kommentare" (tap)="state('kommentare')" col="1" row="1" horizontalAlignment="center"></Label>
+                    <Image src="~/images/timetracking.png" (tap)="state('timetracking')" row="0" col="0" width="20"
+                           height="20"
+                           stretch="aspectFit"></Image>
+                    <Image src="~/images/kommentare.png" (tap)="state('kommentare')" row="0" col="1" width="40"
+                           height="20"
+                           stretch="aspectFit"></Image>
+                    <Label class="h4" text="Timetracking" (tap)="state('timetracking')" col="0" row="1"
+                           horizontalAlignment="center"></Label>
+                    <Label class="h4" text="Kommentare" (tap)="state('kommentare')" col="1" row="1"
+                           horizontalAlignment="center"></Label>
                 </GridLayout>
                 <StackLayout [ngSwitch]="task_tabs">
                     <StackLayout *ngSwitchCase="'timetracking'">
                         <Label text="TEXT"></Label>
                     </StackLayout>
                     <StackLayout *ngSwitchCase="'kommentare'">
-                        <TextView hint="Füge hier deinen Text ein" height="150"></TextView>
-                        <StackLayout class="btn-img" (tap)="cancel()">
-                            <Image src="~/images/abbrechen2.png" width="30" height="30" stretch="aspectFit"></Image>
+                        <StackLayout>
+                            <GridLayout rows="auto, auto" columns="auto, *">
+                                <StackLayout class="btn-img" rowSpan="1" col="0">
+                                    <Image src="~/images/abbrechen2.png" width="20" height="20"
+                                           stretch="aspectFit"></Image>
+                                </StackLayout>
+                                <TextView text="MANUEL GAFOZ Neue DEADLINE: Ende Jänner" editable="false"
+                                          textWrap="true"
+                                          class="longtext h4" col="1"
+                                          row="0"></TextView>
+                                <Label text="16. Oktober 2017 um 16:35" col="1" row="1"></Label>
+                            </GridLayout>
                         </StackLayout>
+                        <StackLayout>
+                            <GridLayout rows="auto, auto" columns="auto, *">
+                                <StackLayout class="btn-img" rowSpan="1" col="0">
+                                    <Image src="~/images/abbrechen2.png" width="20" height="20"
+                                           stretch="aspectFit"></Image>
+                                </StackLayout>
+                                <TextView text="MANUEL GAFOZ Neue DEADLINE: Ende Jänner" editable="false"
+                                          textWrap="true"
+                                          class="longtext h4" col="1"
+                                          row="0"></TextView>
+                                <Label text="16. Oktober 2017 um 16:35" col="1" row="1"></Label>
+                            </GridLayout>
+                        </StackLayout>
+                        <GridLayout rows="*" columns="auto,*,auto" orientation="horizontal">
+                            <StackLayout class="btn-img" row="0" col="0">
+                                <Image src="~/images/abbrechen2.png" width="20" height="20" stretch="aspectFit"></Image>
+                            </StackLayout>
+                            <TextView hint="Kommentieren" class="textfield" row="0" col="1"></TextView>
+                            <StackLayout class="btn-img" (tap)="submit()" row="0" col="2">
+                                <Image src="~/images/send.png" width="20" height="20" stretch="aspectFit"></Image>
+                            </StackLayout>
+                        </GridLayout>
                     </StackLayout>
                 </StackLayout>
                 <Label class="field-seperator" height="2"></Label>
@@ -94,48 +155,12 @@
                 <Label class="field-seperator" height="2"></Label>
                 <StackLayout orientation="horizontal" horizontalAlignment="right">
                     <StackLayout class="btn-img" (tap)="cancel()">
-                        <Image src="~/images/abbrechen2.png" width="20" height="20" stretch="aspectFit"></Image>
+                        <Image src="~/images/abbrechen2.png" width="30" height="30" stretch="aspectFit"></Image>
                     </StackLayout>
-                    <StackLayout class="btn-img" (tap)="createTicket()">
-                        <Image src="~/images/save.png" width="20" height="20" stretch="aspectFit"></Image>
+                    <StackLayout class="btn-img" (tap)="createTodo()">
+                        <Image src="~/images/save.png" width="30" height="30" stretch="aspectFit"></Image>
                     </StackLayout>
-                </StackLayout>-->
-                <RadDataForm [source]="ticketOrder" tkExampleTitle tkToggleNavButton>
-                    <TKEntityProperty tkDataFormProperty name="movie" displayName="Movie Name" index="0" [converter]="movieConverter" [valuesProvider]="movieNames">
-                        <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
-                    </TKEntityProperty>
-                    <TKEntityProperty tkDataFormProperty name="date" index="1">
-                        <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
-                    </TKEntityProperty>
-                    <TKEntityProperty tkDataFormProperty name="time" index="2">
-                        <TKPropertyEditor tkEntityPropertyEditor type="TimePicker"></TKPropertyEditor>
-                    </TKEntityProperty>
-                    <!-- >> angular-dataform-editors-html -->
-                    <TKEntityProperty tkDataFormProperty name="type" displayName="Type" index="3" valuesProvider="2D, 3D">
-                        <TKPropertyEditor tkEntityPropertyEditor type="SegmentedEditor"></TKPropertyEditor>
-                    </TKEntityProperty>
-                    <!-- << angular-dataform-editors-html -->
-                    <!-- >> angular-dataform-property-readonly-html -->
-                    <TKEntityProperty tkDataFormProperty name="price" index="4" readOnly="true">
-                        <TKPropertyEditor tkEntityPropertyEditor type="Decimal"></TKPropertyEditor>
-                    </TKEntityProperty>
-                    <!-- << angular-dataform-property-readonly-html -->
-                    <TKEntityProperty tkDataFormProperty name="numberOfTickets" displayName="Number of Tickets" index="5">
-                        <TKPropertyEditor tkEntityPropertyEditor type="Stepper"></TKPropertyEditor>
-                    </TKEntityProperty>
-                    <TKEntityProperty tkDataFormProperty name="contactName" displayName="Contact Name" index="6">
-                        <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
-                    </TKEntityProperty>
-                    <TKEntityProperty tkDataFormProperty name="contactPhone" displayName="Contact Phone" index="7">
-                        <TKPropertyEditor tkEntityPropertyEditor type="Phone"></TKPropertyEditor>
-                    </TKEntityProperty>
-                    <TKEntityProperty tkDataFormProperty name="contactEmail" displayName="Contact Email" index="8">
-                        <TKPropertyEditor tkEntityPropertyEditor type="Email"></TKPropertyEditor>
-                    </TKEntityProperty>
-                    <TKEntityProperty tkDataFormProperty name="agreeTerms" displayName="I Agree with Terms" index="9">
-                        <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
-                    </TKEntityProperty>
-                </RadDataForm>
+                </StackLayout>
             </StackLayout>
         </StackLayout>
     </AbsoluteLayout>

@@ -1,21 +1,20 @@
-<Page xmlns:dd="nativescript-drop-down">
-    <ActionBar title="">
-        <NavigationButton text="Sandwich-Bar" android.systemIcon="ic_menu_moreoverflow"
-                          (tap)="openDrawer()"></NavigationButton>
-        <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
-            <Label text="Meeting - Detailansicht" class="action-label nav-h3"></Label>
-        </StackLayout>
-        <ActionItem (tap)="cr_ticket()" android.systemIcon="ic_menu_add" ios.systemIcon="4"
-                    ios.position="right"></ActionItem>
-    </ActionBar>
-    <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="100%">
-        <AbsoluteLayout>
-            <StackLayout class="page" width="100%">
-                <!--<StackLayout orientation="horizontal" horizontalAlignment="right">
-                    <Button class="btn btn-primary btn-active" (tap)="openCamera()" text="Abbrechen"></Button>
-                    <Button class="btn btn-primary btn-active" (tap)="uploadFile()" text="Aktualisieren"></Button>
-                </StackLayout>-->
-                <GridLayout rows="auto, *">
+<ActionBar title="">
+    <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
+           android:horizontalAlignment="left"></Label>
+    <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
+        <Label text="Meeting-Detail" class="action-label nav-h3"></Label>
+    </StackLayout>
+    <!--<Label class="fa" (tap)="cr_task()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right"
+           android:horizontalAlignment="right"></Label>-->
+</ActionBar>
+<ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="100%">
+    <AbsoluteLayout>
+        <StackLayout class="page" width="100%">
+            <!--<StackLayout orientation="horizontal" horizontalAlignment="right">
+                <Button class="btn btn-primary btn-active" (tap)="openCamera()" text="Abbrechen"></Button>
+                <Button class="btn btn-primary btn-active" (tap)="uploadFile()" text="Aktualisieren"></Button>
+            </StackLayout>-->
+            <GridLayout rows="auto, *">
                 <StackLayout class="form-taskticket" row="1">
                     <Label class="fa" [text]="'fa-angle-down' | fonticon" (tap)="cancel()"
                            horizontalAlignment="center"></Label>
@@ -143,8 +142,7 @@
                              class="fab-button"></FAB>
                     </StackLayout>
                 </StackLayout>
-                </GridLayout>
-            </StackLayout>
-        </AbsoluteLayout>
-    </ScrollView>
-</Page>
+            </GridLayout>
+        </StackLayout>
+    </AbsoluteLayout>
+</ScrollView>
