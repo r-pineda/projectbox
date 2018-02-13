@@ -48,7 +48,7 @@ Label,
 }
 
 .padding-right-10 {
-    padding: 10;
+    padding-right: 10;
 }
 
 /* Navigation */
@@ -262,7 +262,7 @@ h1 {
 }
 
 .time {
-    margin-right: 20;
+    margin-right: 30;
 }
 
 /* general forms */

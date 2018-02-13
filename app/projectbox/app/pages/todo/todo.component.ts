@@ -82,7 +82,7 @@ export class TodoComponent {
     })
     this.create = false;
     this.page.css = ".details { height: 0;}";
-    this.phaseSelection.push("Select a project first!");
+    this.phaseSelection.push("Zuerst ein Projekt auswählen!");
   }
 
   cr_task() {
@@ -92,7 +92,7 @@ export class TodoComponent {
 
   cancel() {
     this.create = false;
-    this.page.css = "Page { background-color: #dee8e7; } .page { padding-left: 20; background-color: #dee8e7;}";
+    this.page.css = "Page { background-color: #ECEDEE; } .page { padding-left: 10; background-color: #ECEDEE;}";
   }
 
  expand(id :string){

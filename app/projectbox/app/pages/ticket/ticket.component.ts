@@ -102,7 +102,7 @@ export class TicketComponent implements OnInit {
 
   cancel() {
     this.create = false;
-    this.page.css = "Page { background-color: #ECEDEE; } .page { padding-left: 20; background-color: #ECEDEE;}";
+    this.page.css = "Page { background-color: #ECEDEE; } .page { padding-left: 10; background-color: #ECEDEE;}";
   }
 
   createTicket() {

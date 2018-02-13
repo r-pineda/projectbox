@@ -1,5 +1,5 @@
 <ActionBar title="">
-    <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
+    <GridLayout rows="*,*,*" columns="*">
         <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
                android:horizontalAlignment="left" row="0" col="0"></Label>
         <Label text="Tasks" class="nav-h3" row="0" col="1"></Label>
@@ -26,9 +26,9 @@
                                rowSpan="2"></Label>
                     </GridLayout>
                     <StackLayout col="1" row="3" *ngIf="todoForDetail[task.id]" class="details">
-                        <Label class="h4" text="CCF Configuration Forge"></Label>
+                        <Label class="h4" [text]="task.project"></Label>
                         <TextView
-                                text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore."
+                                [text]="description"
                                 editable="false" textWrap="true" class="longtext"></TextView>
                         <StackLayout orientation="horizontal">
                             <StackLayout (tap)="startTimer(task.id)" class="btn-img">
@@ -40,10 +40,10 @@
                             <StackLayout class="btn-img" (tap)="goToDetail(task.id)">
                                 <Image src="~/images/edit2.png" width="15" height="15" stretch="aspectFit"></Image>
                             </StackLayout>
-                            <StackLayout class="btn-img" (tap)="cancel()">
+                            <StackLayout class="btn-img" (tap)="done(task.id)">
                                 <Image src="~/images/done2.png" width="15" height="15" stretch="aspectFit"></Image>
                             </StackLayout>
-                            <StackLayout class="btn-img attention" (tap)="cancel()">
+                            <StackLayout class="btn-img attention" (tap)="delete(task.id)">
                                 <Image src="~/images/delete2.png" width="15" height="15" stretch="aspectFit"></Image>
                             </StackLayout>
                         </StackLayout>

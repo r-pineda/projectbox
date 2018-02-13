@@ -79,7 +79,7 @@ export class MeetingComponent implements OnInit {
             (error) => this.displayMeetings(false)
         );
         this.create = false;
-        this.page.css = "Page { background-color: #dee8e7; } .page { padding-left: 0; padding:20; background-color: #dee8e7;} #meetinglist { padding-left: 20; }";
+        this.page.css = "Page { background-color: #ECEDEE; } .page { padding-left: 0; padding:20; background-color: #ECEDEE;} #meetinglist { padding-left: 20; }";
         this.userService.getProjects()
             .then((data) => {
                 data.projects.forEach((project) => {
@@ -95,7 +95,7 @@ export class MeetingComponent implements OnInit {
 
     cancel() {
         this.create = false;
-        this.page.css = "Page { background-color: #dee8e7; } .page { padding-left: 20; background-color: #dee8e7;}";
+        this.page.css = "Page { background-color: #ECEDEE; } .page { padding-left: 10; background-color: #ECEDEE;}";
     }
 
     displayMeetings(data: any) {
