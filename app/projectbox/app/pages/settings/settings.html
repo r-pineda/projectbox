@@ -11,7 +11,7 @@
                 <Label class="h3" text="DATEN"></Label>
                 <GridLayout class="listitem" columns="*,*" rows="*">
                     <Label class="h5" text="Lokale Speicherung der Daten"></Label>
-                    <Switch checked="false" col="1" row="0" (checkedChange)="onFirstChecked($event)" horizontalAlignment="right"></Switch>
+                    <Switch [(ngModel)]="offlineData" col="1" row="0" (checkedChange)="toggleOffline()" horizontalAlignment="right"></Switch>
                 </GridLayout>
                 <GridLayout class="listitem" columns="*,*" rows="*">
                     <Label class="h5" text="Tutorial"></Label>
