@@ -10,14 +10,14 @@
 <StackLayout class="page" width="100%">
     <StackLayout *ngIf="!create">
         <GridLayout columns="*" rows="auto,auto,auto">
-            <Label class="h1" text="TOP-TASKS" col="0" row="0"></Label>
+            <Label class="h1" text="TASKS" col="0" row="0"></Label>
             <StackLayout class="marginitem" col="0" row="1">
                 <GridLayout class="marginitem" *ngFor="let task of todos" columns="auto,*" rows="auto,auto,auto"
                             (tap)="expand(task.id)">
                     <Label class="borderitem" height="50" col="0" rowSpan="2"></Label>
                     <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
                         <StackLayout col="0" row="0" orientation="horizontal">
-                            <Image src="~/images/toptask.png" width="25" height="25" stretch="aspectFit"></Image>
+                            <!--<Image src="~/images/toptask.png" width="25" height="25" stretch="aspectFit"></Image>-->
                             <TextView [text]="task.name" editable="false" textWrap="true" class="longtext h4" col="0"
                                       row="0"></TextView>
                         </StackLayout>
@@ -50,7 +50,6 @@
                     </StackLayout>
                 </GridLayout>
             </StackLayout>
-            <Label class="h1" text="WEITERE TASKS" col="0" row="2"></Label>
         </GridLayout>
     </StackLayout>
     <StackLayout *ngIf="create" class="form-taskticket">
@@ -80,11 +79,11 @@
         <Label class="h5" text="BESCHREIBUNG"></Label>
         <TextField class="textfield" [(ngModel)]="newTodo.description"></TextField>
         <Label class="field-seperator" height="2"></Label>
-        <GridLayout columns="*,*" rows="*">
+        <!--<GridLayout columns="*,*" rows="*">
             <Label class="h3" col="0" row="0" text="TOP-TASK"></Label>
             <Switch checked="false" col="1" row="0" (checkedChange)="onFirstChecked($event)"
                     horizontalAlignment="right"></Switch>
-        </GridLayout>
+        </GridLayout>-->
         <Label class="field-seperator" height="2"></Label>
         <GridLayout columns="*,*" rows="*,*">
             <Image src="~/images/timetracking.png" (tap)="state('timetracking')" row="0" col="0" width="20" height="20"

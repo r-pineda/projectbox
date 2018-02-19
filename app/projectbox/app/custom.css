@@ -5,18 +5,9 @@
 }
 
 .action-bar {
-    background-color: #29a699;
+    background-color: #03A698;
 }
 
-
-/*
-.page {
-background-color: #dee8e7;
-}
-
-.tab-view {
-background-color: #dee8e7;
-}*/
 
 .list-group,
 .list-group-item {
@@ -29,7 +20,7 @@ background-color: #dee8e7;
 }
 
 .segmented-bar {
-    selected-background-color: #29a699;
+    selected-background-color: #03A698;
 }
 
 .segmented-bar {
@@ -45,11 +36,11 @@ background-color: #dee8e7;
 }
 
 .switch[checked=true] {
-    background-color: #29a699;
+    background-color: #03A698;
 }
 
 .activity-indicator {
-    color: #29a699;
+    color: #03A698;
 }
 
 .slider {
@@ -57,11 +48,11 @@ background-color: #dee8e7;
 }
 
 .slider {
-    background-color: #29a699;
+    background-color: #03A698;
 }
 
 .progress {
-    color: #29a699;
+    color: #03A698;
 }
 
 .img-circle {
@@ -152,11 +143,11 @@ background-color: #dee8e7;
 }
 
 .btn-primary {
-    color: #29a699;
+    color: #03A698;
 }
 
 .btn-outline {
-    border-color: #29a699;
+    border-color: #03A698;
 }
 
 .btn-outline {
@@ -212,7 +203,7 @@ background-color: #dee8e7;
 }
 
 .tab-view {
-    tab-background-color: #29a699;
+    tab-background-color: #03A698;
 }
 
 .tab-view {
@@ -220,7 +211,7 @@ background-color: #dee8e7;
 }
 
 .sidedrawer-header {
-    background-color: #29a699;
+    background-color: #03A698;
 }
 
 .sidedrawer-header-brand {

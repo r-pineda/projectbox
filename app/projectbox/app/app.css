@@ -1,16 +1,12 @@
 @import '~/nativescript-theme-core/css/core.light.css';
 @import url("~/custom.css");
+
+/* use font awesome for this class */
 .fa {
     font-family: FontAwesome, fontawesome-webfont;
 }
 
-
-TextField, TextView {
-    padding: 10;
-    font-size: 15;
-    background-color: #EBEBEB;
-    margin-bottom: 10;
-}
+/* typography */
 
 .h1,
 .h2,
@@ -18,10 +14,7 @@ TextField, TextView {
 .h4,
 .h5 {
     font-family: "Montserrat-Medium";
-}
-
-.h5 {
-    color: #a2a2a2;
+    color: #222222;
 }
 
 .nav-h1,
@@ -30,7 +23,7 @@ TextField, TextView {
 .nav-h4,
 .nav-h5 {
     font-family: "Montserrat-Medium";
-    color: #fff;
+    color: #fafafa;
 }
 
 .text,
@@ -40,7 +33,7 @@ Label,
 }
 .page {
     padding-left: 10;
-    background-color: #ECEDEE;
+    background-color: #EBEBEB;
 }
 
 .center {
@@ -51,17 +44,25 @@ Label,
     padding-right: 10;
 }
 
+
+TextField, TextView {
+    padding: 10;
+    font-size: 15;
+    background-color: #EBEBEB;
+    margin-bottom: 10;
+}
+
 /* Navigation */
 
 .sideStackLayout {
-    background-color: #29A699;
+    background-color: #03A698;
     color: #FFFFFF;
 }
 
 .sideTitleStackLayout {
     padding: 16;
     font-weight: bold;
-    background-color: #29A699;
+    background-color: #03A698;
 }
 
 .sideLabel {
@@ -90,7 +91,7 @@ Label,
 
 ActionBar {
     color: #fff;
-    background-color: #29A699;
+    background-color: #03A698;
     text-align: center;
 }
 
@@ -251,8 +252,8 @@ h1 {
     border-width: 1;
     padding: 10;
     color: #ffffff;
-    border-color: #29a699;
-    background-color: #29a699;
+    border-color: #03A698;
+    background-color: #03A698;
     margin-right: 10;
 }
 
@@ -278,7 +279,7 @@ h1 {
     height: 45;
     width: 45;
     margin: 15;
-    background-color: #29a699;
+    background-color: #03A698;
     horizontal-align: right;
     vertical-align: bottom;
 }
