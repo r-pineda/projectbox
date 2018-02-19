@@ -108,6 +108,7 @@ export class TodoComponent {
           data = this.todoService.getSavedTodos();
           this.todos = data.tasks;
         }
+        this.todos.sort((a, b) => {return new Date(a.due_date).getTime() - new Date(b.due_date).getTime()});
         this.todos.forEach(todo => {
           todo.trackingsFull = new Array<Tracking>();
         });

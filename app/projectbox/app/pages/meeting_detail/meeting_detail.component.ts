@@ -190,7 +190,6 @@ export class Meeting_detailComponent implements OnInit{
     };
     var params = [{name: "meeting", value: this.meeting.id}, {name:"file", filename: this.picture , mimeType: 'image/png'}];
 
-    //let params = {name:"meeting", filename: this.picture, mimeType: 'image/png'};
     let task = session.multipartUpload(params, request);
  
     task.on("progress", this.logEvent);
@@ -201,8 +200,6 @@ export class Meeting_detailComponent implements OnInit{
   logEvent(e) {
     console.log(e.eventName);
   }
-
-  /*------------*/
 
   openCamera(){
     var milliseconds = new Date().getTime();
