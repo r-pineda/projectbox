@@ -1,4 +1,4 @@
 export class Config {
-  static apiUrl = "https://secure.projectbox.eu/";
+  static apiUrl = "https://api.agiletoolz.com/";
   static token = "";
 }
