@@ -28,6 +28,11 @@ import { FileObject } from "../../shared/user/fileObject";
 import { NavComponent } from "../nav/nav.component";
 import { Page } from "ui/page";
 import { SelectedIndexChangedEventData } from "nativescript-drop-down";
+import * as dialogs from "ui/dialogs";
+
+/* date picker */
+import { DatePicker } from "ui/date-picker";
+import { EventData } from "data/observable";
 
 var PhotoViewer = require("nativescript-photoviewer");
 
@@ -156,10 +161,12 @@ export class Meeting_detailComponent implements OnInit{
 
   updateMeeting(){
     this.meetingService.update(this.meeting);
+    this.cancel();
   }
 
   createMeeting(){
     this.meetingService.createMeeting(this.meeting);
+    this.cancel();
   }
 
   onSwipe(args: SwipeGestureEventData) {
@@ -225,6 +232,20 @@ export class Meeting_detailComponent implements OnInit{
     });
 }
 
+  sourcepic() {
+      dialogs.action({
+          message: "Quelle des Bildes",
+          cancelButtonText: "Abbrechen",
+          actions: ["Kamera", "Gallerie"]
+      }).then(result => {
+          if(result == "Kamera"){
+              this.openCamera();
+          }else if(result == "Gallerie"){
+              this.openGallery();
+          }
+      });
+  }
+
   openGallery(){
 
     var milliseconds = new Date().getTime();
@@ -278,5 +299,24 @@ export class Meeting_detailComponent implements OnInit{
 
     public onclose() {
         console.log("Drop Down closed.");
+    }
+
+    /* date pciker */
+    onPickerLoaded(args) {
+        let datePicker = <DatePicker>args.object;
+
+        var d = new Date();
+
+        datePicker.year = d.getFullYear();
+        datePicker.month = d.getMonth()
+        datePicker.day = d.getDay();
+        datePicker.minDate = new Date(2000, 0, 1);
+        datePicker.maxDate = new Date(2040, 12, 31);
+    }
+
+    onDateChanged(args) {
+        console.log("Date changed");
+        console.log("New value: " + args.value);
+        console.log("Old value: " + args.oldValue);
     }
 }

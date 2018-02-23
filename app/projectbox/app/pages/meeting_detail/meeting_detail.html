@@ -19,13 +19,14 @@
                     <Label class="h5" text="TITEL"></Label>
                     <TextField class="textfield" [(ngModel)]="meeting.name"></TextField>
                     <Label class="h5" text="DATUM"></Label>
-                    <TextField class="textfield" [(ngModel)]="meeting.date"></TextField>
+                    <DatePicker (loaded)="onPickerLoaded($event)" (dateChange)="onDateChanged($event)" verticalAlignment="center"></DatePicker>
+                    <!--<TextField class="textfield" [(ngModel)]="meeting.date"></TextField>-->
                     <GridLayout columns="*,*" rows="*,*">
                         <Label class="h5" text="BEGINN" col="0" row="0"></Label>
                         <TextField class="textfield" [(ngModel)]="meeting.date" col="0" row="1"
                                    style="margin-right:5;"></TextField>
-                        <Label class="h5" text="ENDE" col="1" row="0"></Label>
-                        <TextField class="textfield" [(ngModel)]="meeting.date" col="1" row="1"></TextField>
+                        <Label class="h5" text="DAUER IN MINUTEN" col="1" row="0"></Label>
+                        <TextField class="textfield" keyboardType="number" [(ngModel)]="meeting.duration" col="1" row="1"></TextField>
                     </GridLayout>
                     <Label class="h5" text="PROJEKT"></Label>
                     <!--<TextField class="textfield" [(ngModel)]="meeting.project"></TextField>-->
@@ -39,18 +40,18 @@
                     <TextField class="textfield" [(ngModel)]="meeting.attendees"></TextField>
                     <Label class="hr"></Label>
                     <GridLayout columns="*,*,*" rows="*,*">
-                        <Image src="~/images/timetracking.png" (tap)="state('agenda')" row="0" col="0" width="20"
+                        <Image [src]="meeting_tabs == 'agenda' ? '~/images/agenda_t.png' : '~/images/agenda_g.png'" (tap)="state('agenda')" row="0" col="0" width="20"
                                height="20" stretch="aspectFit"></Image>
-                        <Image src="~/images/kommentare.png" (tap)="state('protokoll')" row="0" col="1" width="40"
+                        <Image [src]="meeting_tabs == 'protokoll' ? '~/images/protokoll_t.png' : '~/images/protokoll_g.png'" (tap)="state('protokoll')" row="0" col="1" width="40"
                                height="20" stretch="aspectFit"></Image>
-                        <Image src="~/images/kommentare.png" (tap)="state('files')" row="0" col="2" width="40"
+                        <Image src="~/images/files.png" (tap)="state('files')" row="0" col="2" width="40"
                                height="20"
                                stretch="aspectFit"></Image>
-                        <Label class="h4" text="Agenda" col="0" row="1" horizontalAlignment="center"
+                        <Label class="h4" text="Agenda" [style.color]="meeting_tabs == 'agenda' ? '#03A698' : '#222222'" col="0" row="1" horizontalAlignment="center"
                                (tap)="state('agenda')"></Label>
-                        <Label class="h4" text="Kommentare" col="1" row="1" horizontalAlignment="center"
+                        <Label class="h4" text="Protokoll" [style.color]="meeting_tabs == 'protokoll' ? '#03A698' : '#222222'" col="1" row="1" horizontalAlignment="center"
                                (tap)="state('protokoll')"></Label>
-                        <Label class="h4" text="Files" col="2" row="1" horizontalAlignment="center"
+                        <Label class="h4" text="Files" [style.color]="meeting_tabs == 'files' ? '#03A698' : '#222222'" col="2" row="1" horizontalAlignment="center"
                                (tap)="state('files')"></Label>
                     </GridLayout>
                     <Label class="hr"></Label>
@@ -63,15 +64,14 @@
                                     <TextView hint="Verantwortlicher" class="textfield agenda" row="1" col="0"
                                               style="margin-right:5;"></TextView>
                                     <TextView hint="Dauer" class="textfield agenda" row="1" col="1"></TextView>
-                                    <StackLayout class="btn-img" col="2" rowSpan="2" width="20" height="20">
-                                        <Image src="~/images/abbrechen2.png"
-                                               stretch="aspectFit"></Image>
-                                    </StackLayout>
+                                    <FAB icon="~/images/send.png" (tap)="cancel()" rippleColor="#f1f1f1"
+                                         class="fab-button"></FAB>
                                 </GridLayout>
                             </StackLayout>
                         </StackLayout>
                         <StackLayout *ngSwitchCase="'protokoll'">
-                            <StackLayout class="tabs">
+                            <TextView  style="margin-top: 15px"  height="500px" hint="Inhalt vom Protokoll eingeben"  returnKeyType="send" class="input"></TextView>
+                            <!--<StackLayout class="tabs">
                                 <GridLayout rows="auto, auto" columns="auto, *">
                                     <StackLayout class="btn-img" row="0" col="0" verticalAlignment="center">
                                         <Image src="~/images/abbrechen2.png" width="20" height="20"
@@ -119,11 +119,23 @@
                                 <StackLayout class="btn-img" (tap)="submit()" row="0" col="2">
                                     <Image src="~/images/send.png" width="20" height="20" stretch="aspectFit"></Image>
                                 </StackLayout>
-                            </GridLayout>
+                            </GridLayout>-->
                         </StackLayout>
                         <StackLayout *ngSwitchCase="'files'">
-                            <Button (tap)="openCamera()">Take a photo</Button>
-                            <Button (tap)="openGallery()">Select an image from Gallery</Button>
+                            <GridLayout columns="*,*" rows="*">
+                                <StackLayout orientation="horizontal" row="0" col="0">
+                                    <StackLayout class="btn-img">
+                                        <Image src="~/images/files.png" width="20" height="20" (tap)="sourcepic()" stretch="aspectFit"></Image>
+                                    </StackLayout>
+                                    <Label verticalAlignment="center" text="Datei hinzufügen"></Label>
+                                </StackLayout>
+                            <StackLayout orientation="horizontal" row="0" col="1">
+                            <StackLayout class="btn-img">
+                                <Image src="~/images/photo-camera.png" width="20" height="20" (tap)="sourcepic()" stretch="aspectFit"></Image>
+                            </StackLayout>
+                                <Label verticalAlignment="center" text="Foto hinzufügen"></Label>
+                            </StackLayout>
+                            </GridLayout>
                             <GridLayout columns="auto,*" rows="*,*" *ngFor="let file of userFiles">
                                 <Image (tap)="showImage(file.imagesrc)" [src]="file.imagesrc" rowSpan="2" col="0"
                                        width="100" height="100"></Image>
@@ -136,7 +148,7 @@
                     <StackLayout orientation="horizontal">
                         <FAB icon="~/images/abbrechen2.png" (tap)="cancel()" rippleColor="#f1f1f1"
                              class="fab-button"></FAB>
-                        <FAB icon="~/images/save.png" rippleColor="#f1f1f1" (tap)="update()"
+                        <FAB icon="~/images/save.png" rippleColor="#f1f1f1" (tap)="updateMeeting()"
                              class="fab-button"></FAB>
                     </StackLayout>
                 </StackLayout>
