@@ -1,0 +1,23 @@
+Generell:
+- Datum formatieren:
+	- dd.mm.yy
+	- dd.mm.yyyy
+	- dd. month year
+	- bis heute / morgen (ev. funktion schreiben?)
+
+
+Meeting:
+- files:
+	- file extension bzw. file type in eigener variable auslagern? 
+	(neben dem namen der datei wird eig. ein icon angezeigt und nicht das bild selber, bild icon -> jpg, png; document icon -> pdf)
+	- 
+
+Dashboard:
+
+Ticket:
+
+Task:
+
+
+Einstellungen:
+- persistent speichern (ob offline oder tutorial angezeigt wird)
