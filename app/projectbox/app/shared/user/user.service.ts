@@ -49,7 +49,7 @@ export class UserService {
       Config.token = data.access_token;
     })
     .catch((err: any) => {
-      if(err == "Response with status: 403 Forbidden for URL: https://secure.projectbox.eu/v2/token"){
+      if(err.indexOf("403")){
         return Observable.throw("403");
       }else{
         return Observable.throw(err);
