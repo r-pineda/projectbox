@@ -17,7 +17,7 @@
       <file leaf-file-name="todo_detail.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/todo_detail/todo_detail.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
+            <state relative-caret-position="567">
               <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
               <folding>
                 <element signature="e#0#93#0" expanded="true" />
@@ -36,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="todo_detail.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="todo_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/todo_detail/todo_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="67" column="41" lean-forward="false" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
+            <state relative-caret-position="380">
+              <caret line="50" column="51" lean-forward="false" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -49,8 +49,30 @@
       <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3825">
-              <caret line="252" column="8" lean-forward="false" selection-start-line="252" selection-start-column="8" selection-end-line="252" selection-end-column="8" />
+            <state relative-caret-position="3137">
+              <caret line="204" column="25" lean-forward="false" selection-start-line="204" selection-start-column="25" selection-end-line="204" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/pages/dashboard/dashboard.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="37" column="25" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+              <folding>
+                <element signature="n#style#0;n#Label#1;n#GridLayout#0;n#StackLayout#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/pages/dashboard/dashboard.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="261">
+              <caret line="118" column="14" lean-forward="true" selection-start-line="118" selection-start-column="14" selection-end-line="118" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -59,8 +81,8 @@
       <file leaf-file-name="meeting_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/meeting_detail/meeting_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="56" column="61" lean-forward="false" selection-start-line="56" selection-start-column="61" selection-end-line="56" selection-end-column="61" />
+            <state relative-caret-position="663">
+              <caret line="142" column="41" lean-forward="false" selection-start-line="142" selection-start-column="41" selection-end-line="142" selection-end-column="41" />
               <folding>
                 <element signature="n#style#0;n#TextView#0;n#StackLayout#1;n#StackLayout#0;n#StackLayout#0;n#GridLayout#0;n#StackLayout#0;n#AbsoluteLayout#0;n#ScrollView#0;n#!!top" expanded="true" />
                 <element signature="e#5598#9380#0" expanded="false" />
@@ -75,7 +97,7 @@
       <file leaf-file-name="meeting_detail.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/meeting_detail/meeting_detail.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
+            <state relative-caret-position="1513">
               <caret line="116" column="2" lean-forward="false" selection-start-line="116" selection-start-column="2" selection-end-line="118" selection-end-column="3" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
@@ -89,7 +111,7 @@
       <file leaf-file-name="todo.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/todo/todo.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-130">
+            <state relative-caret-position="493">
               <caret line="41" column="2" lean-forward="false" selection-start-line="41" selection-start-column="2" selection-end-line="41" selection-end-column="20" />
               <folding>
                 <element signature="e#0#93#0" expanded="true" />
@@ -102,18 +124,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>border-tic</find>
-      <find>border-tickets</find>
-      <find>fab</find>
-      <find>outerbox</find>
-      <find>#outerbox</find>
       <find>fonticon</find>
       <find>borderitem</find>
       <find>listitem</find>
       <find>marginitem</find>
       <find>longtex</find>
       <find>StackLayout</find>
-      <find>project</find>
       <find>detail</find>
       <find>FAF9Fa</find>
       <find>none</find>
@@ -124,7 +140,6 @@
       <find>p</find>
       <find>name</find>
       <find>textfield</find>
-      <find>page</find>
       <find>NavComp</find>
       <find>protoco</find>
       <find>state</find>
@@ -132,6 +147,13 @@
       <find>field</find>
       <find>bt</find>
       <find>btn</find>
+      <find>page</find>
+      <find>#FFFFFF</find>
+      <find>#fff</find>
+      <find>stacklayout</find>
+      <find>project</find>
+      <find>border</find>
+      <find>stacklayoiu</find>
     </findStrings>
     <replaceStrings>
       <replace>field-seperator</replace>
@@ -150,7 +172,6 @@
         <option value="$PROJECT_DIR$/app/pages/meeting/meeting.component.ts" />
         <option value="$PROJECT_DIR$/app/pages/nav/nav.html" />
         <option value="$PROJECT_DIR$/app/pages/dashboard/dashboard-common.css" />
-        <option value="$PROJECT_DIR$/app/pages/dashboard/dashboard.html" />
         <option value="$PROJECT_DIR$/app/custom.css" />
         <option value="$PROJECT_DIR$/app/pages/ticket/ticket.component.ts" />
         <option value="$PROJECT_DIR$/app/pages/todo/todo.html" />
@@ -162,7 +183,6 @@
         <option value="$PROJECT_DIR$/app/pages/onboarding/components/onboarding-slide/onboarding-slide.component.html" />
         <option value="$PROJECT_DIR$/app/pages/tutorial/tutorial.component.ts" />
         <option value="$PROJECT_DIR$/app/pages/dashboard/dashboard2.html" />
-        <option value="$PROJECT_DIR$/app/pages/dashboard/dashboard.component.ts" />
         <option value="$PROJECT_DIR$/platforms/android/build/intermediates/assets/F0F1F2F3F4F5F6F7F8F9/debug/app/tns_modules/nativescript-pro-ui/dataform/angular/dataform-directives.metadata.json" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/app/pages/login/login.component.ts" />
@@ -170,8 +190,10 @@
         <option value="$PROJECT_DIR$/app/pages/meeting_detail/meeting_detail.component.ts" />
         <option value="$PROJECT_DIR$/app/pages/meeting_detail/meeting_detail.html" />
         <option value="$PROJECT_DIR$/app/pages/todo_detail/todo_detail.component.ts" />
-        <option value="$PROJECT_DIR$/app/app.css" />
         <option value="$PROJECT_DIR$/app/pages/todo_detail/todo_detail.html" />
+        <option value="$PROJECT_DIR$/app/app.css" />
+        <option value="$PROJECT_DIR$/app/pages/dashboard/dashboard.component.ts" />
+        <option value="$PROJECT_DIR$/app/pages/dashboard/dashboard.html" />
       </list>
     </option>
   </component>
@@ -190,8 +212,8 @@
     <handled-path value="$PROJECT_DIR$/platforms/android/src/main/assets/app/tns_modules/resolve/test/resolver/biz/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="578" />
-    <option name="y" value="-11" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -229,6 +251,13 @@
               <item name="projectbox" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projectbox" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projectbox" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projectbox" type="b2602c69:ProjectViewProjectNode" />
@@ -348,19 +377,20 @@
       <workItem from="1517382503243" duration="2601000" />
       <workItem from="1519381628400" duration="617000" />
       <workItem from="1519388677771" duration="8813000" />
-      <workItem from="1519570183467" duration="4054000" />
+      <workItem from="1519570183467" duration="4153000" />
+      <workItem from="1519586731247" duration="3716000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80833000" />
+    <option name="totallyTimeSpent" value="84648000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1780822" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1780822" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -438,8 +468,10 @@
         <option value="$PROJECT_DIR$/app/pages/onboarding/components/onboarding-slide/onboarding-slide.component.js" />
         <option value="$PROJECT_DIR$/app/pages/onboarding/components/onboarding/onboarding.component.js" />
         <option value="$PROJECT_DIR$/app/pages/todo_detail/todo_detail.component.js" />
+        <option value="$PROJECT_DIR$/platforms/android/src/main/assets/app/app.routing.js" />
+        <option value="$PROJECT_DIR$/platforms/android/src/main/assets/app/app.component.js" />
+        <option value="$PROJECT_DIR$/platforms/android/src/main/assets/app/app.module.js" />
         <option value="$PROJECT_DIR$/platforms/android/src/main/assets/app/main.js" />
-        <option value="$PROJECT_DIR$/platforms/android/src/main/assets/app/shared/config.js" />
       </list>
     </option>
   </component>
@@ -496,13 +528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="1" lean-forward="false" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -605,14 +630,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/dashboard/dashboard2.html" />
-    <entry file="file://$PROJECT_DIR$/app/pages/dashboard/dashboard.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="66" column="3" lean-forward="false" selection-start-line="66" selection-start-column="3" selection-end-line="66" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/meeting/meeting.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -706,13 +723,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/dashboard/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="18" column="18" lean-forward="false" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -768,7 +778,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/todo/todo.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-130">
+        <state relative-caret-position="493">
           <caret line="41" column="2" lean-forward="false" selection-start-line="41" selection-start-column="2" selection-end-line="41" selection-end-column="20" />
           <folding>
             <element signature="e#0#93#0" expanded="true" />
@@ -780,18 +790,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="103" column="41" lean-forward="false" selection-start-line="103" selection-start-column="41" selection-end-line="103" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/meeting_detail/meeting_detail.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
+        <state relative-caret-position="1513">
           <caret line="116" column="2" lean-forward="false" selection-start-line="116" selection-start-column="2" selection-end-line="118" selection-end-column="3" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
             <element signature="e#861#922#0" expanded="true" />
             <element signature="e#1485#1529#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/pages/meeting_detail/meeting_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="142" column="41" lean-forward="false" selection-start-line="142" selection-start-column="41" selection-end-line="142" selection-end-column="41" />
+          <folding>
+            <element signature="n#style#0;n#TextView#0;n#StackLayout#1;n#StackLayout#0;n#StackLayout#0;n#GridLayout#0;n#StackLayout#0;n#AbsoluteLayout#0;n#ScrollView#0;n#!!top" expanded="true" />
+            <element signature="e#5598#9380#0" expanded="false" />
+            <element signature="n#style#0;n#GridLayout#1;n#StackLayout#2;n#StackLayout#0;n#StackLayout#0;n#GridLayout#0;n#StackLayout#0;n#AbsoluteLayout#0;n#ScrollView#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Label#0;n#GridLayout#1;n#StackLayout#2;n#StackLayout#0;n#StackLayout#0;n#GridLayout#0;n#StackLayout#0;n#AbsoluteLayout#0;n#ScrollView#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Label#1;n#GridLayout#1;n#StackLayout#2;n#StackLayout#0;n#StackLayout#0;n#GridLayout#0;n#StackLayout#0;n#AbsoluteLayout#0;n#ScrollView#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -806,7 +829,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/todo_detail/todo_detail.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
+        <state relative-caret-position="567">
           <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
           <folding>
             <element signature="e#0#93#0" expanded="true" />
@@ -814,32 +837,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/meeting_detail/meeting_detail.html">
+    <entry file="file://$PROJECT_DIR$/app/custom.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="56" column="61" lean-forward="false" selection-start-line="56" selection-start-column="61" selection-end-line="56" selection-end-column="61" />
-          <folding>
-            <element signature="n#style#0;n#TextView#0;n#StackLayout#1;n#StackLayout#0;n#StackLayout#0;n#GridLayout#0;n#StackLayout#0;n#AbsoluteLayout#0;n#ScrollView#0;n#!!top" expanded="true" />
-            <element signature="e#5598#9380#0" expanded="false" />
-            <element signature="n#style#0;n#GridLayout#1;n#StackLayout#2;n#StackLayout#0;n#StackLayout#0;n#GridLayout#0;n#StackLayout#0;n#AbsoluteLayout#0;n#ScrollView#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Label#0;n#GridLayout#1;n#StackLayout#2;n#StackLayout#0;n#StackLayout#0;n#GridLayout#0;n#StackLayout#0;n#AbsoluteLayout#0;n#ScrollView#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Label#1;n#GridLayout#1;n#StackLayout#2;n#StackLayout#0;n#StackLayout#0;n#GridLayout#0;n#StackLayout#0;n#AbsoluteLayout#0;n#ScrollView#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="527">
+          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3825">
-          <caret line="252" column="8" lean-forward="false" selection-start-line="252" selection-start-column="8" selection-end-line="252" selection-end-column="8" />
+        <state relative-caret-position="3137">
+          <caret line="204" column="25" lean-forward="false" selection-start-line="204" selection-start-column="25" selection-end-line="204" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/todo_detail/todo_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="67" column="41" lean-forward="false" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
+        <state relative-caret-position="380">
+          <caret line="50" column="51" lean-forward="false" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/pages/dashboard/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="37" column="25" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#Label#1;n#GridLayout#0;n#StackLayout#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/pages/dashboard/dashboard.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="118" column="14" lean-forward="true" selection-start-line="118" selection-start-column="14" selection-end-line="118" selection-end-column="14" />
           <folding />
         </state>
       </provider>

@@ -6,6 +6,10 @@
     font-family: FontAwesome, fontawesome-webfont;
 }
 
+Page, .page {
+    background-color: #EBEBEB;
+}
+
 /* typography */
 
 .h1,
@@ -31,9 +35,9 @@ Label,
 .TextField, TextField, TextView, DropDown {
     font-family: "Mukta-Light";
 }
+
 .page {
     padding-left: 10;
-    background-color: #EBEBEB;
 }
 
 .center {
@@ -46,11 +50,10 @@ Label,
 
 .no-margin-left {
     margin-left: 0;
-
+}
 
 .no-margin-right {
     margin-right: 0;
-}
 }
 
 margin-left-10 {
@@ -159,7 +162,7 @@ h1 {
 /* projects */
 
 .project {
-    background-color: #FFFFFF;
+    background-color: rgba(255, 0, 0, 0.0);
     margin-right: 20;
 }
 
@@ -168,7 +171,7 @@ h1 {
 
 .meeting {
     vertical-align: middle;
-    background-color: #FFFFFF;
+    background-color: #FAFAFA;
     margin-bottom: 20;
 }
 
@@ -195,10 +198,11 @@ h1 {
     border-width: 2 2 2 2;
     border-radius: 2;
     vertical-align: top;
+    background-color: rgba(255, 0, 0, 0.0);
 }
 
 .listitem {
-    background-color: #FFFFFF;
+    background-color: #FAFAFA;
     padding: 10;
 }
 
@@ -230,7 +234,7 @@ h1 {
 
 .details {
     margin-top: 0;
-    background-color: #FFFFFF;
+    background-color: #FAFAFA;
     color: #000000;
     padding: 10;
     width: 90%;
@@ -238,7 +242,7 @@ h1 {
 }
 
 .longtext {
-    background-color: #FFFFFF;
+    background-color: #FAFAFA;
     border-bottom-color: #FAF9FA;
 }
 

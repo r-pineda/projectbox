@@ -48,6 +48,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   avatar :string;
   todos :Todo[];
   tickets :Ticket[];
+  all_projects :boolean = false;
   private nav :NavComponent;
 
 
@@ -198,5 +199,9 @@ export class DashboardComponent implements AfterViewInit, OnInit {
 
   state(view) {
     this.nav.appState = view + '';
+  }
+
+  showAllProjects() {
+    this.all_projects = true;
   }
 }
