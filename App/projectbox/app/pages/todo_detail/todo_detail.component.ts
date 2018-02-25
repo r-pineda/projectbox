@@ -31,6 +31,7 @@ export class Todo_detailComponent {
   tracker :any;
   trackedSeconds :number;
   currentTracking :Tracking;
+  task_tabs: string;
 
   constructor
   (
@@ -48,6 +49,10 @@ export class Todo_detailComponent {
     this.route.params.subscribe((params) => {
       this.getTodo(params["id"]);
     });
+
+    this.task_tabs = 'timetracking';
+
+    this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
   }
 
   ngOnInit(): void {}
@@ -114,15 +119,20 @@ export class Todo_detailComponent {
       this.todoService.updateTracking(this.currentTracking);
     }
 
+*/
+
     state(id) {
         this.task_tabs = id;
     }
-*/
 
     getAvatar(user_id){
       this.userService.getUser(user_id)
         .then((data) => {
           return "https://secure.projectbox.eu/v2/user/avatar/" + data.avatar + "?access_token=" + this.userService.getCurrentUser().access_token;
         });
+    }
+
+    cancel() {
+        this.routerExtensions.backToPreviousPage();
     }
 }

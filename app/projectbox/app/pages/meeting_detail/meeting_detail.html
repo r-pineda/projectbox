@@ -38,7 +38,7 @@
                               (closed)="onclose()"></DropDown>
                     <Label class="h5" text="TEILNEHMER"></Label>
                     <TextField class="textfield" [(ngModel)]="meeting.attendees"></TextField>
-                    <Label class="hr"></Label>
+                    <Label class="field-seperator" height="1"></Label>
                     <GridLayout columns="*,*,*" rows="*,*">
                         <Image [src]="meeting_tabs == 'agenda' ? '~/images/agenda_t.png' : '~/images/agenda_g.png'" (tap)="state('agenda')" row="0" col="0" width="20"
                                height="20" stretch="aspectFit"></Image>
@@ -54,7 +54,7 @@
                         <Label class="h4" text="Files" [style.color]="meeting_tabs == 'files' ? '#03A698' : '#222222'" col="2" row="1" horizontalAlignment="center"
                                (tap)="state('files')"></Label>
                     </GridLayout>
-                    <Label class="hr"></Label>
+                    <Label class="field-seperator" height="1"></Label>
                     <StackLayout [ngSwitch]="meeting_tabs">
                         <StackLayout *ngSwitchCase="'agenda'">
                             <StackLayout>

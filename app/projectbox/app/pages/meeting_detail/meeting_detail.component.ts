@@ -100,6 +100,8 @@ export class Meeting_detailComponent implements OnInit{
           this.projectNames.push(project.name);
         });
       });
+
+      this.meeting_tabs = 'agenda';
   }
 
   getMeeting(meeting_id :number){
