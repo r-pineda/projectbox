@@ -7,64 +7,70 @@
                android:horizontalAlignment="right" row="0" col="2"></Label>
     </GridLayout>
 </ActionBar>
-<StackLayout class="page">
-    <Label *ngIf="offlinemode" text="OFFLINE" style="text-align:center;background-color:rgb(99, 228, 178);"></Label>
-    <GridLayout columns="auto, *" rows="auto">
-        <Label text="PROJEKTE" (tap)="showAllProjects()" row="0" col="0" class="h2"></Label>
-        <Label text="see all >" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom"
-               class="text" style="margin-right:10;" (tap)="showAllProjects()"></Label>
-    </GridLayout>
-    <StackLayout orientation="horizontal" *ngIf="!all_projects">
-        <StackLayout orientation="horizontal" *ngFor="let item of projects" class="project" shadow="10">
-            <Label class="borderitem" [ngStyle]="{'border-color': item.color}" height="60"></Label>
-            <TextView [text]="item.name" id="item.id" (tap)="filterByProject(item.id)" editable="false" textWrap="true"
-                      class="h4 longtext" width="100" height="100"
-                      [style.background-color]="selectedProject == item.id? '#03A698' : '#fafafa'"
-                      [style.color]="selectedProject == item.id? '#fafafa' : '#222222'"></TextView>
+<AbsoluteLayout width="100%">
+    <StackLayout class="page" width="100%">
+        <GridLayout columns="auto, *" rows="auto">
+            <Label text="PROJEKTE" (tap)="showAllProjects()" row="0" col="0" class="h2"></Label>
+            <Label text="see all >" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom"
+                   class="text" style="margin-right:10;" (tap)="showAllProjects()"></Label>
+        </GridLayout>
+        <StackLayout orientation="horizontal" *ngIf="!all_projects">
+            <StackLayout orientation="horizontal" *ngFor="let item of projects" class="project">
+                <Label class="borderitem" [ngStyle]="{'border-color': item.color}" height="60"></Label>
+                <TextView [text]="item.name" id="item.id" (tap)="filterByProject(item.id)" editable="false"
+                          textWrap="true"
+                          class="h4 longtext" width="100" height="100"
+                          [style.background-color]="selectedProject == item.id? '#03A698' : '#fff'"
+                          [style.color]="selectedProject == item.id? '#fff' : '#222222'" shadow="10"></TextView>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout *ngIf="all_projects">
+            <GridLayout class="marginitem" *ngFor="let item of projects"
+                        columns="auto,*" rows="auto,auto"
+                        (tap)="filterByProject(item.id)">
+                <Label class="borderitem" [ngStyle]="{'border-color': item.color}" height="50" col="0"
+                       rowSpan="2"></Label>
+                <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*"
+                            [style.background-color]="selectedProject == item.id? '#03A698' : '#fff'"
+                            [style.color]="selectedProject == item.id? '#fff' : '#222222'" shadow="10">
+                    <TextView [text]="item.name" col="0" row="0" editable="false" textWrap="true" class="longtext h4"
+                              col="0"
+                              row="0"></TextView>
+                    <Label class="text ticket" [text]="task.due_date_string" col="0" row="1"></Label>
+                </GridLayout>
+            </GridLayout>
+        </StackLayout>
+        <Label text="TASKS" (tap)="nav.state('todo')" class="h2"></Label>
+        <StackLayout>
+            <GridLayout class="marginitem" *ngFor="let task of displayedTodos"
+                        [nsRouterLink]="['/todo_detail', task.id]"
+                        columns="auto,*" rows="auto,auto">
+                <Label class="borderitem" [ngStyle]="{'border-color': task.color}" height="50" col="0"
+                       rowSpan="2"></Label>
+                <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*" shadow="10">
+                    <Label [text]="task.name" col="0" row="0" class="h4 longtext"></Label>
+                    <Label class="text ticket" [text]="task.due_date_string" col="0" row="1"></Label>
+                </GridLayout>
+            </GridLayout>
+        </StackLayout>
+        <Label text="MEETINGS" class="h2" (tap)="nav.state('meeting')"></Label>
+        <StackLayout>
+            <GridLayout *ngFor="let item of displayedMeetings" class="marginitem" columns="auto, *" rows="auto"
+                        [nsRouterLink]="['/meeting_detail', item.id]">
+                <Label class="borderitem" [ngStyle]="{'border-color' : item.color}" height="60" col="0" row="0"></Label>
+                <GridLayout columns="80,auto,auto,*" rows="auto,auto,*" col="1" row="0" class="padding-topbot-10"
+                            shadow="10">
+                    <Label [text]="item.date" col="0" row="0" rowSpan="3" class="meeting-indicator h4"
+                           margin="0 0 0 5"></Label>
+                    <Label col="1" rowSpan="3" class="hr-light" width="1" height="80%" margin="5"></Label>
+                    <Label [text]="item.name" textWrap="true" class="h4" col="2" margin="5 0 0 0"></Label>
+                    <Label [text]="item.date" col="2" row="1" class="text" margin="0"></Label>
+                    <Label [text]="item.location" col="2" row="2" class="text" margin="0 5 0 0"></Label>
+                    <Label text="..." col="3" rowSpan="3" class="meeting-cont" margin="0 20 20 20"></Label>
+                </GridLayout>
+            </GridLayout>
         </StackLayout>
     </StackLayout>
-    <StackLayout *ngIf="all_projects">
-        <GridLayout class="marginitem" *ngFor="let item of projects"
-                    columns="auto,*" rows="auto,auto"
-                    shadow="10" (tap)="filterByProject(item.id)">
-            <Label class="borderitem" [ngStyle]="{'border-color': item.color}" height="50" col="0" rowSpan="2"></Label>
-            <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*"
-                        [style.background-color]="selectedProject == item.id? '#03A698' : '#fafafa'"
-                        [style.color]="selectedProject == item.id? '#fafafa' : '#222222'">
-                <TextView [text]="item.name" col="0" row="0" editable="false" textWrap="true" class="longtext h4"
-                          col="0"
-                          row="0"></TextView>
-                <Label class="text ticket" [text]="task.due_date_string" col="0" row="1"></Label>
-            </GridLayout>
-        </GridLayout>
-    </StackLayout>
-    <Label text="TASKS" (tap)="nav.state('todo')" class="h2"></Label>
-    <StackLayout>
-        <GridLayout class="marginitem" *ngFor="let task of displayedTodos" [nsRouterLink]="['/todo_detail', task.id]"
-                    columns="auto,*" rows="auto,auto"
-                    shadow="10">
-            <Label class="borderitem" [ngStyle]="{'border-color': task.color}" height="50" col="0" rowSpan="2"></Label>
-            <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
-                <TextView [text]="task.name" col="0" row="0" editable="false" textWrap="true" class="longtext h4"
-                          col="0"
-                          row="0"></TextView>
-                <Label class="text ticket" [text]="task.due_date_string" col="0" row="1"></Label>
-            </GridLayout>
-        </GridLayout>
-    </StackLayout>
-    <Label text="MEETINGS" class="h2" (tap)="nav.state('meeting')"></Label>
-    <StackLayout>
-        <GridLayout *ngFor="let item of displayedMeetings" class="marginitem" columns="auto, *" rows="auto"
-                    [nsRouterLink]="['/meeting_detail', item.id]" shadow="10">
-            <Label class="borderitem" [ngStyle]="{'border-color' : item.color}" height="60" col="0" row="0"></Label>
-            <GridLayout columns="80,auto,auto,*" rows="auto,auto,*" col="1" row="0">
-                <Label text="HEUTE" col="0" row="0" rowSpan="3" class="meeting-indicator h4" margin="0 0 0 5"></Label>
-                <Label col="1" rowSpan="3" class="hr-light" width="1" height="80%" margin="5"></Label>
-                <Label [text]="item.name" textWrap="true" class="h4" col="2" margin="5 0 0 0"></Label>
-                <Label [text]="item.date" col="2" row="1" class="text" margin="0"></Label>
-                <Label [text]="item.location" col="2" row="2" class="text" margin="0 5 0 0"></Label>
-                <Label text="..." col="3" rowSpan="3" class="meeting-cont" margin="0 20 20 20"></Label>
-            </GridLayout>
-        </GridLayout>
-    </StackLayout>
-</StackLayout>
+    <Label *ngIf="offlinemode" class="h3" text="OFFLINE" verticalalignment="bottom"
+           style="text-align:center;background-color:#03A698;color:#fff;padding: 10;bottom:0;left:0;width:100%;"></Label>
+</AbsoluteLayout>

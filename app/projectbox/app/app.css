@@ -56,10 +56,14 @@ Label,
     margin-right: 0;
 }
 
-margin-left-10 {
+.margin-left-10 {
     margin-left: 10;
 }
 
+.padding-topbot-10 {
+    padding-top: 5;
+    padding-bottom: 5;
+}
 
 TextField, TextView {
     padding: 10;
@@ -243,7 +247,6 @@ h1 {
 
 .longtext {
     background-color: #FAFAFA;
-    border-bottom-color: #FAF9FA;
 }
 
 .fa {

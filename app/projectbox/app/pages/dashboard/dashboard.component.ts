@@ -50,6 +50,9 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   tickets :Ticket[];
   all_projects :boolean = false;
   private nav :NavComponent;
+  monthNames = ["Jänner", "Februar", "März", "April", "Mai", "Juni",
+        "Juli", "August", "September", "Oktober", "November", "Dezember"
+    ];
 
 
   constructor
@@ -71,9 +74,8 @@ export class DashboardComponent implements AfterViewInit, OnInit {
 
    /* this.curUser = this.userService.getCurrentUser();
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
-
+*/
     this.offlinemode = this.statusService.getOfflineMode();
-    */
   }
   
   public ngOnInit() {
@@ -134,7 +136,8 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       this.displayedTodos.forEach((todo) => {
         //var options = { weekday: 'narrow', year: 'numeric', month: 'long', day: 'numeric' };
           var options = { year: 'numeric', month: 'long', day: 'numeric'};
-          todo.due_date_string = "bis " + new Date(todo.due_date).toLocaleDateString('de-DE', options);
+          var date = new Date(todo.due_date);
+          todo.due_date_string = "bis " + date.getDay() + ". " + this.monthNames[date.getMonth()] + " " + date.getFullYear();
       });
   }
 
@@ -149,6 +152,8 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       this.displayedMeetings = new Array<Meeting>();
       data.meetings.forEach(meeting => {
         if(meeting.project == this.selectedProject){
+            var date = new Date(meeting.date);
+            meeting.date = date.getDay() + "." + date.getMonth() + "." + date.getFullYear().toString().substring(2,3);
           this.displayedMeetings.push(meeting);
         }
       });

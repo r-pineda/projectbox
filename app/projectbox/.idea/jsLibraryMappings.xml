@@ -2,5 +2,7 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="PROJECT" libraries="{tsconfig$roots}" />
+    <excludedPredefinedLibrary name="projectbox/platforms/android/build/intermediates/assets/F0F1F2F3F4F5F6F7F8F9F10/debug/app/tns_modules/nativescript-imagepicker/node_modules" />
+    <excludedPredefinedLibrary name="projectbox/platforms/android/src/main/assets/app/tns_modules/nativescript-imagepicker/node_modules" />
   </component>
 </project>
