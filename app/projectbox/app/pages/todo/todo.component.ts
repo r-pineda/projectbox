@@ -37,7 +37,7 @@ export class TodoComponent {
   public phaseSelection :string[] = new Array<string>(); //dropdown selection zur auswahl der phase in der ein task created werden soll. wird befüllt nachdem der user ein Projekt ausgewählt hat.
   currentTrackings :Tracking[] = new Array<Tracking>();
   public projectList: string[] = new Array<string>();
-  timerString :string;
+  //timerString :string;
   tracker :any;
   task_tabs: string;
   selectedProject: string;

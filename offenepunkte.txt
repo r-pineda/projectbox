@@ -13,6 +13,9 @@ Meeting:
 	- 
 
 Dashboard:
+- warum wird schatten erst beim zurückkehren auf die seite angezeigt?
+- projekt in pb-farbe setzen
+
 
 Ticket:
 

@@ -37,7 +37,9 @@ Label,
 }
 
 .page {
+    padding-top: 20;
     padding-left: 10;
+    padding-bottom: 20;
 }
 
 .center {
@@ -48,12 +50,22 @@ Label,
     padding-right: 10;
 }
 
+.no-margin {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
 .no-margin-left {
     margin-left: 0;
 }
 
 .no-margin-right {
     margin-right: 0;
+}
+
+.margin-right-10 {
+    margin-right: 10;
 }
 
 .margin-left-10 {
@@ -167,7 +179,7 @@ h1 {
 
 .project {
     background-color: rgba(255, 0, 0, 0.0);
-    margin-right: 20;
+    margin-right: 10;
 }
 
 
@@ -175,7 +187,7 @@ h1 {
 
 .meeting {
     vertical-align: middle;
-    background-color: #FAFAFA;
+    background-color: #FFF;
     margin-bottom: 20;
 }
 
@@ -206,7 +218,7 @@ h1 {
 }
 
 .listitem {
-    background-color: #FAFAFA;
+    background-color: #FFF;
     padding: 10;
 }
 
@@ -238,15 +250,15 @@ h1 {
 
 .details {
     margin-top: 0;
-    background-color: #FAFAFA;
-    color: #000000;
+    background-color: #FFF;
+    color: #222222;
     padding: 10;
     width: 90%;
     margin-right: 5%;
 }
 
 .longtext {
-    background-color: #FAFAFA;
+    background-color: #FFF;
 }
 
 .fa {
@@ -289,9 +301,21 @@ h1 {
     margin-right: 30;
 }
 
+.tt-actions {
+    margin-left: 10;
+}
+
+.tabs-font-size {
+    font-size: 15;
+}
+
+.bg-gray {
+    background-color: #EBEBEB;
+}
+
 /* general forms */
 .form-taskticket .h5 {
-    color: #95989A;
+    color: #222222;
 }
 
 .tabs {
