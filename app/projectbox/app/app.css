@@ -10,6 +10,7 @@ Page, .page {
     background-color: #EBEBEB;
 }
 
+
 /* typography */
 
 .h1,
@@ -75,6 +76,10 @@ Label,
 .padding-topbot-10 {
     padding-top: 5;
     padding-bottom: 5;
+}
+
+.full-width {
+    width: 100%;
 }
 
 TextField, TextView {
