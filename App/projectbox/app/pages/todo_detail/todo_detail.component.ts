@@ -70,6 +70,7 @@ export class Todo_detailComponent {
     this.todoService.getSingleTodo(todo_id)
       .then((data) => {
         this.todo = data.tasks[0];
+        this.todo.comments = data.comments;
         console.dir(this.todo);
       });
     
