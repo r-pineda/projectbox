@@ -11,7 +11,7 @@
     <StackLayout class="page" width="100%">
         <GridLayout columns="auto, *" rows="auto">
             <Label text="PROJEKTE" (tap)="showAllProjects()" row="0" col="0" class="h2"></Label>
-            <Label text="see all >" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom"
+            <Label text="alle >" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom"
                    class="text" style="margin-right:10;" (tap)="showAllProjects()"></Label>
         </GridLayout>
         <StackLayout orientation="horizontal" *ngIf="!all_projects">

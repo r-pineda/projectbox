@@ -5,16 +5,17 @@
         <Label text="Task-Detailansicht" class="nav-h3" row="0" col="1"></Label>
     </GridLayout>
 </ActionBar>
+<pb-nav></pb-nav>
 <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="100%">
     <AbsoluteLayout>
         <StackLayout class="page" width="100%">
             <StackLayout class="form-taskticket">
                 <Label class="fa" [text]="'fa-angle-down' | fonticon" horizontalAlignment="center"></Label>
-                <Label class="h5" text="TITEL"></Label>
+                <Label class="h5" text="Titel"></Label>
                 <TextField class="textfield" [(ngModel)]="todo.name"></TextField>
-                <Label class="h5" text="DEADLINE"></Label>
+                <Label class="h5" text="Deadline"></Label>
                 <TextField class="textfield" hint="DD.MM.YYYY" [(ngModel)]="todo.planned"></TextField>
-                <Label class="h5" text="PROJEKT"></Label>
+                <Label class="h5" text="Projekt"></Label>
                 <!--<TextField class="textfield" [(ngModel)]="todo.project"></TextField>-->
                 <DropDown #dd
                           style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
@@ -23,70 +24,93 @@
                           (selectedIndexChanged)="getPhases($event)"
                           (opened)="onopen()"
                           (closed)="getPhases()"></DropDown>
-                <Label class="h5" text="PHASE"></Label>
+                <Label class="h5" text="Phase"></Label>
                 <DropDown #phasedd
                           style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
                           [items]="phaseSelection"
                           (selectedIndexChanged)="selectPhase($event)"
                           (opened)="onopen()" A
                           (closed)="onclose()"></DropDown>
-                <Label class="h5" text="VERANTWORTLICHER"></Label>
+                <Label class="h5" text="Verantwortlicher"></Label>
                 <TextField class="textfield" [(ngModel)]="todo.user"></TextField>
-                <Label class="h5" text="BESCHREIBUNG"></Label>
+                <Label class="h5" text="Beschreibung"></Label>
                 <TextField class="textfield" [(ngModel)]="todo.description"></TextField>
                 <Label class="field-seperator" height="1"></Label>
                 <GridLayout columns="*,*" rows="*,*">
-                    <Image [src]="task_tabs == 'timetracking' ? '~/images/timetracking_t.png' : '~/images/timetracking_g.png'" (tap)="state('timetracking')" row="0" col="0" width="20"
+                    <Image [src]="task_tabs == 'timetracking' ? '~/images/timetracking_t.png' : '~/images/timetracking_g.png'"
+                           (tap)="state('timetracking')" row="0" col="0" width="20"
                            height="20"
                            stretch="aspectFit"></Image>
-                    <Image [src]="task_tabs == 'kommentare' ? '~/images/kommentare_t.png' : '~/images/kommentare_g.png'" (tap)="state('kommentare')" row="0" col="1" width="40"
+                    <Image [src]="task_tabs == 'kommentare' ? '~/images/kommentare_t.png' : '~/images/kommentare_g.png'"
+                           (tap)="state('kommentare')" row="0" col="1" width="40"
                            height="20"
                            stretch="aspectFit"></Image>
-                    <Label class="h4" text="Timetracking" [style.color]="task_tabs == 'timetracking' ? '#03A698' : '#222222'" (tap)="state('timetracking')" col="0" row="1"
+                    <Label class="h4" text="Timetracking"
+                           [style.color]="task_tabs == 'timetracking' ? '#03A698' : '#222222'"
+                           (tap)="state('timetracking')" col="0" row="1"
                            horizontalAlignment="center"></Label>
-                    <Label class="h4" text="Kommentare" [style.color]="task_tabs == 'kommentare' ? '#03A698' : '#222222'" (tap)="state('kommentare')" col="1" row="1"
+                    <Label class="h4" text="Kommentare"
+                           [style.color]="task_tabs == 'kommentare' ? '#03A698' : '#222222'" (tap)="state('kommentare')"
+                           col="1" row="1"
                            horizontalAlignment="center"></Label>
                 </GridLayout>
                 <Label class="field-seperator" height="1"></Label>
                 <StackLayout [ngSwitch]="task_tabs">
                     <StackLayout *ngSwitchCase="'timetracking'">
-                        <GridLayout columns="*,*" rows="*">
+                        <GridLayout columns="*,*" rows="*, *">
                             <Label class="h5" col="0" row="0" text="Gesamtdauer"></Label>
                             <Label class="h5" col="1" row="0" text="00:00:00" horizontalAlignment="right"></Label>
+                            <StackLayout colSpan="2" row="1">
+                                <Label class="field-seperator no-margin" height="1"></Label>
+                                <StackLayout orientation="horizontal" class="bg-gray">
+                                    <Label class="tabs-font-size" text="21.10.2017"
+                                           horizontalAlignment="right"></Label>
+                                </StackLayout>
+                                <Label class="field-seperator no-margin" height="1"></Label>
+                                <StackLayout orientation="horizontal">
+                                    <Label class="text" text="18:04"></Label>
+                                    <Label class="text" text=" - "></Label>
+                                    <Label class="text" text="18:07"></Label>
+                                    <Label class="text" text="00:03:27" horizontalAlignment="right"></Label>
+                                    <Label class="text indicators-tickets" text="X" horizontalAlignment="right"></Label>
+                                </StackLayout>
+                            </StackLayout>
                         </GridLayout>
                     </StackLayout>
-                    <StackLayout *ngSwitchCase="'kommentare'">
-                        <StackLayout>
-                            <GridLayout rows="auto, auto" columns="auto, *">
-                                <Image src='~/images/user.png' width="30" height="30"
-                                       stretch="aspectFit" rowSpan="1" col="0"></Image>
-                                <TextView text="MANUEL GAFOZ Neue DEADLINE: Ende Jänner" editable="false"
-                                          textWrap="true"
-                                          class="longtext h4" col="1"
-                                          row="0"></TextView>
-                                <Label text="16. Oktober 2017 um 16:35" col="1" row="1"></Label>
-                            </GridLayout>
-                            <GridLayout rows="auto" columns="auto, *, auto">
-                                    <Image src='~/images/user.png' width="30" height="30"
-                                           stretch="aspectFit" row="0" col="0"></Image>
-                                <TextField class="textfield" hint="Kommentieren" [(ngModel)]="newComment.message" col="1" row="0"></TextField>
-                                <StackLayout class="btn-img margin-left-10" (tap)="createComment(task.id)" row="0" col="2">
-                                    <Image src="~/images/send.png" width="30" height="30" stretch="aspectFit"></Image>
-                                </StackLayout>
-                            </GridLayout>
-                        </StackLayout>
-                    </StackLayout>
-                </StackLayout>
-                <Label class="field-seperator" height="1"></Label>
-                <StackLayout orientation="horizontal" horizontalAlignment="right">
-                    <StackLayout class="btn-img" (tap)="cancel()">
-                        <Image src="~/images/abbrechen2.png" width="30" height="30" stretch="aspectFit"></Image>
-                    </StackLayout>
-                    <StackLayout class="btn-img" (tap)="createTodo()">
-                        <Image src="~/images/save.png" width="30" height="30" stretch="aspectFit"></Image>
+                <StackLayout *ngSwitchCase="'kommentare'">
+                    <StackLayout>
+                        <GridLayout rows="auto, auto" columns="auto, *">
+                            <Image src='~/images/user.png' width="30" height="30"
+                                   stretch="aspectFit" rowSpan="1" col="0"></Image>
+                            <TextView text="MANUEL GAFOZ Neue DEADLINE: Ende Jänner" editable="false"
+                                      textWrap="true"
+                                      class="longtext h4" col="1"
+                                      row="0"></TextView>
+                            <Label text="16. Oktober 2017 um 16:35" col="1" row="1"></Label>
+                        </GridLayout>
+                        <GridLayout rows="auto" columns="auto, *, auto">
+                            <Image src='~/images/user.png' width="30" height="30"
+                                   stretch="aspectFit" row="0" col="0"></Image>
+                            <TextField class="textfield" hint="Kommentieren" [(ngModel)]="newComment.message"
+                                       col="1" row="0"></TextField>
+                            <StackLayout class="btn-img margin-left-10" (tap)="createComment(task.id)" row="0"
+                                         col="2">
+                                <Image src="~/images/send.png" width="30" height="30" stretch="aspectFit"></Image>
+                            </StackLayout>
+                        </GridLayout>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
+            <Label class="field-seperator" height="1"></Label>
+            <StackLayout orientation="horizontal" horizontalAlignment="right">
+                <StackLayout class="btn-img" (tap)="cancel()">
+                    <Image src="~/images/abbrechen2.png" width="30" height="30" stretch="aspectFit"></Image>
+                </StackLayout>
+                <StackLayout class="btn-img" (tap)="createTodo()">
+                    <Image src="~/images/save.png" width="30" height="30" stretch="aspectFit"></Image>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
         </StackLayout>
     </AbsoluteLayout>
 </ScrollView>
