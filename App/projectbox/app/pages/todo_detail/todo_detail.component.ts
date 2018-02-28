@@ -76,9 +76,11 @@ export class Todo_detailComponent {
               .then((data) => {
                 comment.userImage = "https://api.agiletoolz.com/v2/user/avatar/" + data.users[0].avatar + "?access_token=" + this.userService.getCurrentUser().access_token;
               });
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            comment.date = comment.created_at.toLocaleDateString('de-DE', options);
         });
       });
-    
+
   }
 
     createComment(task_id :string){

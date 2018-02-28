@@ -134,8 +134,6 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       }
       this.displayedTodos.splice(3,this.displayedTodos.length-1);
       this.displayedTodos.forEach((todo) => {
-        //var options = { weekday: 'narrow', year: 'numeric', month: 'long', day: 'numeric' };
-          var options = { year: 'numeric', month: 'long', day: 'numeric'};
           var date = new Date(todo.due_date);
           todo.due_date_string = "bis " + date.getDay() + ". " + this.monthNames[date.getMonth()] + " " + date.getFullYear();
       });
@@ -153,7 +151,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       data.meetings.forEach(meeting => {
         if(meeting.project == this.selectedProject){
             var date = new Date(meeting.date);
-            meeting.date = date.getDay() + "." + date.getMonth() + "." + date.getFullYear().toString().substring(2,3);
+            meeting.date = date.getDay() + "." + date.getMonth() + "." + date.getFullYear().toString();
           this.displayedMeetings.push(meeting);
         }
       });

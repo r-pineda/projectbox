@@ -25,19 +25,17 @@
             </StackLayout>
         </StackLayout>
         <StackLayout *ngIf="all_projects">
-            <GridLayout class="marginitem" *ngFor="let item of projects"
+            <GridLayout class="marginitem" *ngFor="let ite of projects"
                         columns="auto,*" rows="auto,auto"
-                        (tap)="filterByProject(item.id)">
-                <Label class="borderitem" [ngStyle]="{'border-color': item.color}" height="50" col="0"
+                        (tap)="filterByProject(ite.id)">
+                <Label class="borderitem" [ngStyle]="{'border-color': ite.color}" height="30" col="0"
                        rowSpan="2"></Label>
-                <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*"
-                            [style.background-color]="selectedProject == item.id? '#03A698' : '#fff'"
-                            [style.color]="selectedProject == item.id? '#fff' : '#222222'" shadow="10">
-                    <TextView [text]="item.name" col="0" row="0" editable="false" textWrap="true" class="longtext h4"
-                              col="0"
-                              row="0"></TextView>
-                    <Label class="text ticket" [text]="task.due_date_string" col="0" row="1"></Label>
-                </GridLayout>
+                <StackLayout class="listitem" rowSpan="2" col="1"
+                            [style.background-color]="selectedProject == ite.id? '#03A698' : '#fff'"
+                            [style.color]="selectedProject == ite.id? '#fff' : '#222222'" shadow="10">
+                    <Label [text]="ite.name" col="0" row="0" class="longtext h4" [style.background-color]="selectedProject == ite.id? '#03A698' : '#fff'"
+                           [style.color]="selectedProject == ite.id? '#fff' : '#222222'"></Label>
+                </StackLayout>
             </GridLayout>
         </StackLayout>
         <Label text="TASKS" (tap)="nav.state('todo')" class="h2"></Label>
@@ -64,7 +62,7 @@
                            margin="0 0 0 5"></Label>
                     <Label col="1" rowSpan="3" class="hr-light" width="1" height="80%" margin="5"></Label>
                     <Label [text]="item.name" textWrap="true" class="h4" col="2" margin="5 0 0 0"></Label>
-                    <Label [text]="item.date" col="2" row="1" class="text" margin="0"></Label>
+                    <Label [text]="item.duration + ' Minuten'" col="2" row="1" class="text" margin="0"></Label>
                     <Label [text]="item.location" col="2" row="2" class="text" margin="0 5 0 0"></Label>
                     <Label text="..." col="3" rowSpan="3" class="meeting-cont" margin="0 20 20 20"></Label>
                 </GridLayout>
