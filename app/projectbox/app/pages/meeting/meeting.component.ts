@@ -60,6 +60,7 @@ export class MeetingComponent implements OnInit {
     meeting: Meeting;
     nav: NavComponent;
     public projectSelection :string[] = new Array<string>();
+    direction: number;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -116,18 +117,6 @@ export class MeetingComponent implements OnInit {
 
     createMeeting() {
         this.meetingService.createMeeting(this.meeting);
-    }
-
-    onSwipe(args: SwipeGestureEventData) {
-        if (args.direction === 2) {
-
-            this.routerExtensions.navigate(["/dashboard"], {
-                transition: {
-                    name: "slideRight",
-                    curve: "easeOut"
-                }
-            });
-        }
     }
 
     showDetail(id: number) {
@@ -187,5 +176,24 @@ export class MeetingComponent implements OnInit {
 
     public monthChanged(event) {
         console.log('month selected');
+    }
+
+    /* gesten */
+    onSwipe(args: SwipeGestureEventData) {
+        this.direction = args.direction;
+        /* nach rechts */
+        if (this.direction == 2) {
+            this.nav.state('todo');
+        }
+
+        /* nach links */
+        if (this.direction == 1) {
+            this.nav.state('meeting');
+        }
+
+        /* nach unten */
+        if (this.direction == 4) {
+            this.nav.state('ticket');
+        }
     }
 }

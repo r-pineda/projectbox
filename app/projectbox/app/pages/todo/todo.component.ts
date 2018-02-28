@@ -11,6 +11,7 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { UserService } from "../../shared/user/user.service";
 import { NavComponent } from "../nav/nav.component";
 import {DropDown, ValueList, SelectedIndexChangedEventData} from "nativescript-drop-down";
+import {SwipeGestureEventData} from "tns-core-modules/ui/gestures";
 var timer = require("timer");
 
 
@@ -45,6 +46,7 @@ export class TodoComponent {
   phaseIds :string[] = new Array<string>();
   projectdd = this.page.getViewById<DropDown>("projectdd");
   phasedd = this.page.getViewById<DropDown>("phasedd");
+  direction: number;
 
   constructor
   (
@@ -266,9 +268,23 @@ export class TodoComponent {
     });
     }
 
-    public onopen() {
-    }
 
-    public onclose() {
+    /* gesten */
+    onSwipe(args: SwipeGestureEventData) {
+        this.direction = args.direction;
+        /* nach rechts */
+        if (this.direction == 2) {
+            this.nav.state('todo');
+        }
+
+        /* nach links */
+        if (this.direction == 1) {
+            this.nav.state('meeting');
+        }
+
+        /* nach unten */
+        if (this.direction == 4) {
+            this.nav.state('ticket');
+        }
     }
 }

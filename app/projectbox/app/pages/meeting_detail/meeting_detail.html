@@ -1,4 +1,4 @@
-<ActionBar title="">
+<ActionBar title="" (swipe)="onSwipe($event)">
     <GridLayout rows="*,*" columns="*" class="padding-right-10">
         <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
                android:horizontalAlignment="left" row="0" col="0"></Label>

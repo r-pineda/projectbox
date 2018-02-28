@@ -53,7 +53,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   monthNames = ["Jänner", "Februar", "März", "April", "Mai", "Juni",
         "Juli", "August", "September", "Oktober", "November", "Dezember"
     ];
-
+  public direction: number;
 
   constructor
   (
@@ -207,4 +207,23 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   showAllProjects() {
     this.all_projects = true;
   }
+
+  /* gesten */
+    onSwipe(args: SwipeGestureEventData) {
+        this.direction = args.direction;
+        /* nach rechts */
+        if (this.direction == 2) {
+            this.state('todo');
+        }
+
+        /* nach links */
+        if (this.direction == 1) {
+            this.state('meeting');
+        }
+
+        /* nach unten */
+        if (this.direction == 4) {
+            this.state('ticket');
+        }
+    }
 }
