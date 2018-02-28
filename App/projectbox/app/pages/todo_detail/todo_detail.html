@@ -79,15 +79,17 @@
                     </StackLayout>
                 <StackLayout *ngSwitchCase="'kommentare'">
                     <StackLayout>
-                        <GridLayout rows="auto, auto" columns="auto, *">
-                            <Image src='~/images/user.png' width="30" height="30"
+                        <!--<GridLayout rows="auto, auto" columns="auto, *">-->
+                            <GridLayout rows="auto, auto" columns="auto, *" *ngFor="let comment of todo.comments">
+                            <Image [src]='comment.userImage' width="30" height="30"
                                    stretch="aspectFit" rowSpan="1" col="0"></Image>
-                            <TextView text="MANUEL GAFOZ Neue DEADLINE: Ende Jänner" editable="false"
+                            <Label [text]="comment.message" editable="false"
                                       textWrap="true"
                                       class="longtext h4" col="1"
-                                      row="0"></TextView>
-                            <Label text="16. Oktober 2017 um 16:35" col="1" row="1"></Label>
-                        </GridLayout>
+                                      row="0"></Label>
+                            <Label [text]="comment.created_at" col="1" row="1"></Label>
+                            </GridLayout>
+                        <!--</GridLayout>-->
                         <GridLayout rows="auto" columns="auto, *, auto">
                             <Image src='~/images/user.png' width="30" height="30"
                                    stretch="aspectFit" row="0" col="0"></Image>

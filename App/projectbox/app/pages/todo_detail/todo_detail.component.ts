@@ -71,7 +71,12 @@ export class Todo_detailComponent {
       .then((data) => {
         this.todo = data.tasks[0];
         this.todo.comments = data.comments;
-        console.dir(this.todo);
+        this.todo.comments.forEach((comment) => {
+          this.userService.getUser(comment.user_id)
+              .then((data) => {
+                comment.userImage = "https://api.agiletoolz.com/v2/user/avatar/" + data.users[0].avatar + "?access_token=" + this.userService.getCurrentUser().access_token;
+              });
+        });
       });
     
   }
@@ -129,7 +134,7 @@ export class Todo_detailComponent {
     getAvatar(user_id){
       this.userService.getUser(user_id)
         .then((data) => {
-          return "https://secure.projectbox.eu/v2/user/avatar/" + data.avatar + "?access_token=" + this.userService.getCurrentUser().access_token;
+          return "https://api.agiletoolz.com/v2/user/avatar/" + data.avatar + "?access_token=" + this.userService.getCurrentUser().access_token;
         });
     }
 
