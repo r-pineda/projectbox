@@ -169,15 +169,7 @@ export class TodoService {
       Config.apiUrl + "v2/trackings",
       ("{\"tracking\": " + JSON.stringify(tracking) + "}"),
       { headers: this.headers }
-    )
-    .map(response => {
-      console.dir(response);
-      return response.json()
-    })
-    .do(data => {
-    })
-    .catch(this.handleErrors)
-    .toPromise();
+    );
   }
 
   deleteTracking(tracking_id :string){

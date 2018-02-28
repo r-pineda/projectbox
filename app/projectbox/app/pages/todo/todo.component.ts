@@ -220,25 +220,23 @@ export class TodoComponent {
         this.currentTrackings[task_id].task = task_id;
         this.currentTrackings[task_id].started_at = new Date();
         this.currentTrackings[task_id].finished = false;
-        this.currentTrackings[task_id].description = "mobile tracking";
+        this.currentTrackings[task_id].description = "another actual mobile tracking";
         this.currentTrackings[task_id].user = null;
         this.currentTrackings[task_id].trackedSeconds = 0;
         this.currentTrackings[task_id].timerString = "00:00:00";
-        /*this.todoService.createTracking(this.currentTracking)
-          .then((data) => {
-          this.todos.forEach((todo) => {
-            if(todo.id === task_id){
-              todo.trackings.push(data.trackings[0].id);
-              todo.trackingsFull.push(data.trackings[0]);
-              this.todoService.updateTodo(todo);
-            }
-          });
-        }); */
+        this.todoService.createTracking(this.currentTrackings[task_id])
+        this.todos.forEach((todo) => {
+          if(todo.id === task_id){
+            todo.trackings.push(this.currentTrackings[task_id].id);
+            todo.trackingsFull.push(this.currentTrackings[task_id]);
+            this.todoService.updateTodo(todo);
+          }
+        });
 
        }else{
         this.currentTrackings[task_id].finished = true;
         this.currentTrackings[task_id].finished_at = new Date();
-        //this.todoService.updateTracking(this.currentTrackings[task_id]);
+        this.todoService.updateTracking(this.currentTrackings[task_id]);
       } 
     }
   
@@ -276,7 +274,6 @@ export class TodoComponent {
         if (this.direction == 2) {
             this.nav.state('todo');
         }
-
         /* nach links */
         if (this.direction == 1) {
             this.nav.state('meeting');
