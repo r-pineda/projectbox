@@ -103,6 +103,7 @@ export class TodoService {
   }
 
   createComment(comment :Comment){
+    delete comment.userImage;
     delete comment.id;
     delete comment.task_id;
     delete comment.date;

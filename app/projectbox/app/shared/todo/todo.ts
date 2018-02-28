@@ -82,4 +82,5 @@ export class Comment {
   user: string;
   project?: any;
   task: string;
+  userImage? :string;
 }
