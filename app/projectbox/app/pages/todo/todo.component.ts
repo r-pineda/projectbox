@@ -180,8 +180,8 @@ export class TodoComponent {
           name: "slide",
           curve: "easeOut"
       }
-  });
-}
+    });
+  }
 
     createTodo(){
       //this.newTodo.name = "created with mobile app";
@@ -220,23 +220,17 @@ export class TodoComponent {
         this.currentTrackings[task_id].task = task_id;
         this.currentTrackings[task_id].started_at = new Date();
         this.currentTrackings[task_id].finished = false;
-        this.currentTrackings[task_id].description = "mobile tracking";
+        this.currentTrackings[task_id].description = "another actual mobile tracking";
         this.currentTrackings[task_id].user = null;
         this.currentTrackings[task_id].trackedSeconds = 0;
         this.currentTrackings[task_id].timerString = "00:00:00";
-        this.todoService.createTracking(this.currentTrackings[task_id]);
+        this.todoService.createTracking(this.currentTrackings[task_id]);//hier die id
 
        }else{
         this.currentTrackings[task_id].finished = true;
         this.currentTrackings[task_id].finished_at = new Date();
         this.todoService.updateTracking(this.currentTrackings[task_id]);
       } 
-    }
-  
-
-    
-  stopTimer(){
-      
     }
 
     state(id) {
@@ -267,7 +261,6 @@ export class TodoComponent {
         if (this.direction == 2) {
             this.nav.state('todo');
         }
-
         /* nach links */
         if (this.direction == 1) {
             this.nav.state('meeting');
