@@ -7,5 +7,11 @@ export interface Meeting {
     duration :Number;
     date :Date;
     attendees: string;
-    agenda :string
+    agenda :AgendaPoint[];
+  }
+
+  export class AgendaPoint {
+    topic;
+    responsible :string;
+    duration :number;
   }

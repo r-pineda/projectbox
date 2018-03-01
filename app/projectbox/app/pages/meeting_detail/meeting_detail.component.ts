@@ -11,7 +11,7 @@ import {
   RotationGestureEventData,
   SwipeGestureEventData,
   TouchGestureEventData} from "ui/gestures";
-import { Meeting } from "../../shared/meeting/meeting"
+import { Meeting, AgendaPoint } from "../../shared/meeting/meeting"
 import { MeetingService } from "../../shared/meeting/meeting.service"
 import * as camera from "nativescript-camera";
 let imagepicker = require("nativescript-imagepicker");
@@ -134,20 +134,10 @@ export class Meeting_detailComponent implements OnInit{
 
         if(meeting.id === meeting_id){
           this.meeting = meeting;
+          this.meeting.agenda[0] = new AgendaPoint();
         }
       });
 
-          //$H!T some
-          /*
-          this.meetingService.saveMeetings(data);
-          data.some(function(meeting, index){
-            if(meeting.id == meeting_id){
-              this.meeting = meeting;
-              return true;
-            }
-            return false;
-          });
-          */
     }else{
     
       data = this.meetingService.getSavedMeetings();
