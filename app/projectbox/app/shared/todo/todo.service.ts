@@ -171,7 +171,6 @@ export class TodoService {
       { headers: this.headers }
     )
     .map(response => {
-      console.dir(response);
       return response.json()
     })
     .do(data => {
@@ -192,7 +191,7 @@ export class TodoService {
     .toPromise();
   }
 
-  updateTracking(tracking :Tracking){
+  updateTracking(tracking :Tracking){//die id ist null!!!!!!!!!!!!
     let id :string = tracking.id + "";
     delete tracking.id;
     return this.http.put(
