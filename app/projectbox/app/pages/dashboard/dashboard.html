@@ -58,7 +58,7 @@
                 <Label class="borderitem" [ngStyle]="{'border-color' : item.color}" height="60" col="0" row="0"></Label>
                 <GridLayout columns="80,auto,auto,*" rows="auto,auto,*" col="1" row="0" class="padding-topbot-10"
                             shadow="10">
-                    <Label [text]="item.date" col="0" row="0" rowSpan="3" class="meeting-indicator h4"
+                    <Label [text]="item.dateFormatted" col="0" row="0" rowSpan="3" class="meeting-indicator h4"
                            margin="0 0 0 5"></Label>
                     <Label col="1" rowSpan="3" class="hr-light" width="1" height="80%" margin="5"></Label>
                     <Label [text]="item.name" textWrap="true" class="h4" col="2" margin="5 0 0 0"></Label>

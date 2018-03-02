@@ -14,4 +14,6 @@ export interface Meeting {
     topic;
     responsible :string;
     duration :number;
+    agenda :string;
+    dateFormatted: string;
   }
