@@ -184,13 +184,15 @@ export class TodoComponent {
   }
 
     createTodo(){
-      //this.newTodo.name = "created with mobile app";
-      //this.newTodo.project = "619492ee-6fb5-4afd-b0b1-d6140392951a";
-      //this.getPhases();
-      //this.todoService.createTodo(this.newTodo);
-      this.create = false;
-      this.ngOnInit();
+      let dueDate = this.newTodo.due_date_string.split(".");
+      this.newTodo.due_date = new Date(+dueDate[2], +dueDate[1]-1, +dueDate[0]);
+      this.todoService.createTodo(this.newTodo)
+      .then(() => {
+        this.create = false;
+        this.ngOnInit();
+      });
     }
+
 
     createComment(task_id :string){
       this.newComment.task = task_id;
@@ -270,5 +272,13 @@ export class TodoComponent {
         if (this.direction == 4) {
             this.nav.state('ticket');
         }
+    }
+
+
+    finished(task :Todo){
+      task.completed = true;
+      this.todoService.updateTodo(task);
+      this.todos.splice(this.todos.indexOf(task), 1);
+      alert("Marked '" + task.name + "' as completed!");
     }
 }
