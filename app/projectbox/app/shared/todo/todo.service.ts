@@ -166,7 +166,6 @@ export class TodoService {
     delete tracking.created_at;
     delete tracking.updated_at;
     tracking.user = null;
-    console.log("{\"tracking\": " + JSON.stringify(tracking) + "}");
     return this.http.post(
       Config.apiUrl + "v2/trackings",
       ("{\"tracking\": " + JSON.stringify(tracking) + "}"),

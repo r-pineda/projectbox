@@ -137,7 +137,7 @@ export class TodoComponent {
               this.todos[index].trackingsFull.push(data.trackings[0]);
               if(!data.trackings[0].finished){
                 this.currentTrackings[todo.id] = data.trackings[0];
-                console.dir(this.currentTrackings)
+                this.currentTrackings[todo.id].trackedSeconds = Math.round((new Date().getTime() - new Date(data.trackings[0].started_at).getTime())/1000);
               }
             },
             (error) => {});
@@ -226,7 +226,10 @@ export class TodoComponent {
         this.currentTrackings[task_id].user = null;
         this.currentTrackings[task_id].trackedSeconds = 0;
         this.currentTrackings[task_id].timerString = "00:00:00";
-        this.todoService.createTracking(this.currentTrackings[task_id]);//hier die id
+        this.todoService.createTracking(this.currentTrackings[task_id])
+          .then((data) => {
+            this.currentTrackings[task_id].id = data.trackings[0].id;
+          });
 
        }else{
         this.currentTrackings[task_id].finished = true;
