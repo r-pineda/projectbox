@@ -83,9 +83,13 @@ export class Todo_detailComponent {
 
   }
 
-    createComment(task_id :string){
-      this.newComment.task = task_id;
-      this.todoService.createComment(this.newComment);
+    createComment(){
+      this.newComment.task = this.todo.id;
+      this.todoService.createComment(this.newComment)
+        .then(() => {
+          this.getTodo(this.todo.id);
+        });
+      this.newComment = new Comment();
     }
 /*
     startTimer(task_id :string){
