@@ -40,6 +40,7 @@ export class TodoService {
     )
     .map(response => response.json())
     .do(data => {
+
     })
     .catch(this.handleErrors)
     .toPromise();
@@ -55,7 +56,7 @@ export class TodoService {
     )
     .map(response => response.json())
     .do(data => {
-
+      console.dir(data);
     })
     .catch(this.handleErrors)
     .toPromise();

@@ -173,7 +173,7 @@ export class Meeting_detailComponent implements OnInit{
     }
   }
 
-  uploadFile(){
+  uploadImage(){
     console.log("uploading...");
     var session = bghttp.session("image-upload");
  
@@ -217,7 +217,7 @@ export class Meeting_detailComponent implements OnInit{
                     console.log("saved image")
                 }
                 that.picture = path;
-                that.uploadFile();
+                that.uploadImage();
             })
         }).catch((err) => {
         console.log("Error -> " + err.message);
@@ -256,7 +256,7 @@ export class Meeting_detailComponent implements OnInit{
           var path = fs.path.join(folder.path, milliseconds + ".png");
           var saved = imagesource.saveToFile(path, "png");
           that.picture = path;
-          that.uploadFile();
+          that.uploadImage();
         })
       });
     }).catch(function (e) {

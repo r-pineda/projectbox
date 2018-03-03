@@ -47,6 +47,7 @@ export class UserService {
     .do(data => {
       this.setCurrentUser(data);
       Config.token = data.access_token;
+      console.log(data.access_token);
     })
     .catch((err: any) => {
       if(err.indexOf("403")){
