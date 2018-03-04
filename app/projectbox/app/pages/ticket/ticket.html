@@ -74,7 +74,7 @@
         <Label class="h5" text="VERANTWORTLICHER"></Label>
         <TextField class="textfield" [(ngModel)]="newTicket.user"></TextField>
         <Label class="h5" text="BESCHREIBUNG"></Label>
-        <TextField class="textfield" [(ngModel)]="newTodo.description"></TextField>
+        <TextField class="textfield" [(ngModel)]="newTicket.description"></TextField>
         <Label class="field-seperator" height="1"></Label>
         <GridLayout columns="*,*" rows="*,*">
             <Image [src]="task_tabs == 'timetracking' ? '~/images/timetracking_t.png' : '~/images/timetracking_g.png'" (tap)="state('timetracking')" row="0" col="0" width="20"
@@ -119,6 +119,100 @@
             </StackLayout>
         </StackLayout>
         <Label class="field-seperator" height="1"></Label>
+        <StackLayout orientation="horizontal" horizontalAlignment="right">
+            <StackLayout class="btn-img" (tap)="cancel()">
+                <Image src="~/images/abbrechen2.png" width="30" height="30" stretch="aspectFit"></Image>
+            </StackLayout>
+            <StackLayout class="btn-img" (tap)="createTodo()">
+                <Image src="~/images/save.png" width="30" height="30" stretch="aspectFit"></Image>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</StackLayout>
+
+<ActionBar title="" (swipe)="onSwipe($event)">
+    <GridLayout rows="*,*,*" columns="*">
+        <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
+               android:horizontalAlignment="left" row="0" col="0"></Label>
+        <Label text="Tickets" class="nav-h3" row="0" col="1"></Label>
+        <Label class="fa" (tap)="cr_ticket()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right"
+               android:horizontalAlignment="right" row="0" col="2"></Label>
+    </GridLayout>
+</ActionBar>
+<StackLayout class="page" width="100%">
+    <StackLayout *ngIf="!create">
+        <GridLayout columns="*" rows="auto,auto,auto">
+            <Label class="h1" text="TICKETS" col="0" row="0"></Label>
+            <StackLayout class="marginitem" col="0" row="1">
+                <GridLayout class="marginitem" *ngFor="let item of tickets" columns="auto,*" rows="auto,auto,auto"
+                            (tap)="expand(item.id)">
+                    <Label class="borderitem" height="30" col="0" rowSpan="2"></Label>
+                    <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
+                        <StackLayout col="0" row="0" orientation="horizontal">
+                            <!--<Image src="~/images/toptask.png" width="25" height="25" stretch="aspectFit"></Image>-->
+                            <Label [text]="item.name" class="longtext h4" col="0"
+                                   row="0"></Label>
+                        </StackLayout>
+                        <Label class="text ticket" [text]="item.priority" col="0" row="1"></Label>
+                        <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon" col="1"
+                               rowSpan="2"></Label>
+                    </GridLayout>
+                    <StackLayout col="1" row="3" *ngIf="ticketForDetail[item.id]" class="details">
+                        <Label class="h4" [text]="item.project"></Label>
+                        <TextView
+                                [text]="description"
+                                editable="false" textWrap="true" class="longtext"></TextView>
+                        <GridLayout rows="*" columns="auto,auto,*">
+                            <StackLayout (tap)="startTimer(item.id)" class="btn-img margin-right-10" row="0" col="0">
+                                <Image [src]="currentTrackings[item.id].finished ? '~/images/play2.png' : '~/images/stop2.png'"
+                                       width="15" height="15" stretch="aspectFit"></Image>
+                            </StackLayout>
+                            <Label class="h4 time" verticalAlignment="center"
+                                   [text]="currentTrackings[item.id].timerString" col="1" row="0"></Label>
+                            <StackLayout orientation="horizontal" horizontalAlignment="right" col="2" row="0">
+                                <StackLayout class="btn-img tt-actions" (tap)="goToDetail(item.id)">
+                                    <Image src="~/images/edit2.png" width="15" height="15" stretch="aspectFit"></Image>
+                                </StackLayout>
+                                <StackLayout class="btn-img tt-actions" (tap)="finished(item)">
+                                    <Image src="~/images/done2.png" width="15" height="15" stretch="aspectFit"></Image>
+                                </StackLayout>
+                                <StackLayout class="btn-img tt-actions attention" (tap)="delete(item.id)">
+                                    <Image src="~/images/delete2.png" width="15" height="15" stretch="aspectFit"></Image>
+                                </StackLayout>
+                            </StackLayout>
+                        </GridLayout>
+                    </StackLayout>
+                </GridLayout>
+            </StackLayout>
+        </GridLayout>
+    </StackLayout>
+    <StackLayout *ngIf="create" class="form-taskticket">
+        <Label class="fa" [text]="'fa-angle-down' | fonticon" horizontalAlignment="center"></Label>
+        <Label class="h5" text="Titel"></Label>
+        <TextField class="textfield" [(ngModel)]="newTicket.name"></TextField>
+        <Label class="h5" text="Status"></Label>
+        <TextField class="textfield" [(ngModel)]="newTicket.priority"></TextField>
+        <Label class="h5" text="Projekt"></Label>
+        <!--<TextField class="textfield" [(ngModel)]="todo.project"></TextField>-->
+        <DropDown #dd
+                  style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
+                  [items]="projectList"
+                  [selectedIndex]="selectedProject"
+                  (selectedIndexChanged)="getPhases($event)"
+                  (opened)="onopen()"
+                  (closed)="getPhases()"></DropDown>
+        <Label class="h5" text="Phase"></Label>
+        <DropDown #phasedd
+                  style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
+                  [items]="phaseSelection"
+                  (selectedIndexChanged)="selectPhase($event)"
+                  (opened)="onopen()" A
+                  (closed)="onclose()"></DropDown>
+        <Label class="h5" text="Verantwortlicher"></Label>
+        <TextField class="textfield" [(ngModel)]="newTicket.responsible"></TextField>
+        <Label class="h5" text="Beschreibung"></Label>
+        <TextView  style="margin-top: 15px" [(ngModel)]="newTicket.description" height="200" returnKeyType="send" class="input"></TextView>
+        <Label class="margin-topbot-10" text=""></Label>
         <StackLayout orientation="horizontal" horizontalAlignment="right">
             <StackLayout class="btn-img" (tap)="cancel()">
                 <Image src="~/images/abbrechen2.png" width="30" height="30" stretch="aspectFit"></Image>

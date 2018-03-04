@@ -14,12 +14,12 @@
                 <Label class="h5" text="Titel"></Label>
                 <TextField class="textfield" [(ngModel)]="todo.name"></TextField>
                 <Label class="h5" text="Deadline"></Label>
-                <TextField class="textfield" hint="DD.MM.YYYY" [(ngModel)]="todo.planned"></TextField>
+                <TextField class="textfield" hint="DD.MM.YYYY" [(ngModel)]="todo.due_date"></TextField>
                 <Label class="h5" text="Projekt"></Label>
                 <!--<TextField class="textfield" [(ngModel)]="todo.project"></TextField>-->
                 <DropDown #dd
                           style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
-                          [items]="projectList"
+                          [items]="projectNames"
                           [selectedIndex]="selectedProject"
                           (selectedIndexChanged)="getPhases($event)"
                           (opened)="onopen()"
@@ -34,7 +34,7 @@
                 <Label class="h5" text="Verantwortlicher"></Label>
                 <TextField class="textfield" [(ngModel)]="todo.user"></TextField>
                 <Label class="h5" text="Beschreibung"></Label>
-                <TextField class="textfield" [(ngModel)]="todo.description"></TextField>
+                <TextView [(ngModel)]="todo.description" height="200" returnKeyType="send" class="input textfield"></TextView>
                 <Label class="field-seperator margin-topbot-10" height="1"></Label>
                 <GridLayout columns="*,*" rows="*,*">
                     <Image [src]="task_tabs == 'timetracking' ? '~/images/timetracking_t.png' : '~/images/timetracking_g.png'"

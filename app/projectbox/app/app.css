@@ -225,10 +225,10 @@ h1 {
 /* tickets and tasks */
 
 .borderitem {
-    margin-top: 5;
+    /*margin-top: 5;*/
     border-width: 2 2 2 2;
     border-radius: 2;
-    vertical-align: top;
+   /* vertical-align: top;*/
     background-color: rgba(255, 0, 0, 0.0);
 }
 
