@@ -119,8 +119,6 @@ export class MeetingComponent implements OnInit {
             this.meetings = data.meetings;
         }
         this.displayedMeetings = data.meetings;
-
-        //this.meetings.sort((a, b) => {return a.date.getTime()-b.date.getTime()})
     }
 
     createMeeting() {
@@ -144,6 +142,7 @@ export class MeetingComponent implements OnInit {
     subtitles: CalendarSubtitle[];
     events: CalendarEvent[];
     public appearance: Appearance;
+    appearanceOptions: Array<Appearance>;
     private _calendar: Calendar;
 
     public calendarLoaded(event) {
@@ -154,6 +153,15 @@ export class MeetingComponent implements OnInit {
             firstWeekday: 2, // SUN: O, MON: 1, TUES: 2 etc..
         };
         this.appearance = <Appearance>{
+            weekdayTextColor: "#000000", //color of Tue, Wed, Thur.. (only iOS)
+                headerTitleColor: "#000000", //color of the current Month (only iOS)
+                eventColor: "#29A699", // color of dots
+                selectionColor: "#29A699", // color of the circle when a date is clicked
+                todayColor: "#BDC3C7", // the color of the current day
+                hasBorder: true, // remove border (only iOS)
+                todaySelectionColor: "#29A699", // today color when seleted (only iOS)
+                borderRadius: 40 // border radius of the selection marker
+        },{
             weekdayTextColor: "#000000", //color of Tue, Wed, Thur.. (only iOS)
             headerTitleColor: "#000000", //color of the current Month (only iOS)
             eventColor: "#29A699", // color of dots
