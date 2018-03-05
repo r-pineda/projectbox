@@ -14,7 +14,7 @@
             <StackLayout class="marginitem" col="0" row="1">
                 <GridLayout class="marginitem" *ngFor="let task of todos" columns="auto,*" rows="auto,auto,auto"
                             (tap)="expand(task.id)">
-                    <Label class="borderitem" height="30" col="0" rowSpan="2"></Label>
+                    <Label class="borderitem" [ngStyle]="{'border-color': task.color}" height="30" col="0" rowSpan="2"></Label>
                     <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
                         <StackLayout col="0" row="0" orientation="horizontal">
                             <!--<Image src="~/images/toptask.png" width="25" height="25" stretch="aspectFit"></Image>-->
@@ -80,6 +80,7 @@
         <TextField class="textfield" [(ngModel)]="newTodo.user"></TextField>
         <Label class="h5" text="Beschreibung"></Label>
         <TextView  style="margin-top: 15px" [(ngModel)]="newTodo.description" height="200" returnKeyType="send" class="input"></TextView>
+        <!-- unnötig weil beim Erstellen von Tasks, dass das Anzeigen von Zeiterfassungen und Kommentare unnötig sind -->
         <!--
         <Label class="field-seperator" height="1"></Label>
         <GridLayout columns="*,*" rows="*,*">

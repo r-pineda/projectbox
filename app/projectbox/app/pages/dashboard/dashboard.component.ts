@@ -24,7 +24,7 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { User } from "../../shared/user/user";
 import { TodoService } from "../../shared/todo/todo.service";
 import { TicketService } from "../../shared/ticket/ticket.service";
-import { Todo } from "../../shared/todo/todo";
+import {Todo, Tracking} from "../../shared/todo/todo";
 import { Ticket } from "../../shared/ticket/ticket";
 import { NavComponent } from "../nav/nav.component";
 
@@ -115,6 +115,14 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   }
 
   displayTodos(data :any) {
+      data.tasks.forEach((todo, index) => {        //alle todos durchlaufen
+          /*Projektfarben für tasks herausfinden*/
+          this.userService.getSingleProject(todo.project_id)
+              .then(
+                  (data) => {this.todos[index].color = data.projects[0].color},
+                  (error) => {}
+              );
+          });
       if (data) {
           this.todoService.saveTodos(data);
           this.todos = data.tasks;
@@ -213,6 +221,10 @@ export class DashboardComponent implements AfterViewInit, OnInit {
 
   showAllProjects() {
     this.all_projects = true;
+  }
+
+  limitProjects() {
+    this.all_projects = false;
   }
 
   /* gesten */

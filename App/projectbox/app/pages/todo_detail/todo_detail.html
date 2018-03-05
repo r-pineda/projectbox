@@ -61,23 +61,25 @@
                             <Label class="h4" col="0" row="0" text="Gesamtdauer"></Label>
                             <Label class="h4" col="1" row="0" text="00:00:00" horizontalAlignment="right"></Label>
                             <StackLayout colSpan="2" row="1">
+                                <StackLayout *ngFor="let tracking of trackings">
                                 <Label class="field-seperator" height="1"></Label>
                                 <StackLayout orientation="horizontal" class="bg-gray">
-                                    <Label text="21.10.2017"
+                                    <Label [text]="tracking.created_at"
                                            horizontalAlignment="right"></Label>
                                 </StackLayout>
                                 <Label class="field-seperator" height="1"></Label>
                                 <GridLayout columns="auto,*" row="*">
                                     <StackLayout orientation="horizontal" row="0" col="0">
-                                    <Label text="18:04"></Label>
+                                    <Label [text]="tracking.started_at"></Label>
                                     <Label text=" - "></Label>
-                                    <Label text="18:07"></Label>
+                                    <Label [text]="tracking.finished_at"></Label>
                                     </StackLayout>
                                     <StackLayout orientation="horizontal" row="0" col="1" horizontalAlignment="right">
-                                    <Label text="00:03:27" class="margin-right-10"></Label>
-                                    <Label class="fa" [text]="'fa-times' | fonticon"></Label>
+                                    <Label [text]="tracking.timerString" [class]="isPL == 'true' ? 'margin-right-10' : '' " ></Label>
+                                    <Label class="fa" [text]="'fa-times' | fonticon" (tap)="deleteTracking(todo.id)" *ngIf="isPL"></Label>
                                     </StackLayout>
                                 </GridLayout>
+                                </StackLayout>
                             </StackLayout>
                         </GridLayout>
                     </StackLayout>
