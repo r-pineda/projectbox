@@ -79,16 +79,40 @@ export class Todo_detailComponent {
               //comment.date = new Date(comment.created_at).toLocaleDateString('de-DE', options);
           });
         }
-        this.todo.trackings.forEach((tracking) => {
-          this.trackings.push(data.trackings[0]);
+        this.todo.trackings.forEach((tracking, index) => {
+          let currentItem :number = index;
+          this.todoService.fillTracking(tracking)
+          .then((data) => {
+            let elapsedTime = Math.round((new Date(data.trackings[0].finished_at).getTime() - new Date(data.trackings[0].started_at).getTime())/1000);
+            let minsecs = elapsedTime%3600;
+            let hours = (elapsedTime-minsecs)/3600;
+            let seconds = minsecs%60;
+            let minutes = (minsecs-seconds)/60;
+            data.trackings[0].timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
+            return data;
+          })
+          .then((data) => {
+            if(!data.trackings[0].finished){
+              this.trackings.push(data.trackings[0]);
+            }
+          });
+
+        });
+        this.trackings.forEach((tracking) => {
+          console.log("hallo");
+          let elapsedTime = Math.round((new Date(tracking.finished_at).getTime() - new Date(tracking.started_at).getTime())/1000);
+          let minsecs = elapsedTime%3600;
+          let hours = (elapsedTime-minsecs)/3600;
+          let seconds = minsecs%60;
+          let minutes = (minsecs-seconds)/60;
+          tracking.timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
+          
         });
         this.userService.getSingleProject(this.todo.project)
           .then((data) =>{
             this.isPL = (data.projects[0].user == this.userService.getCurrentUser().id);
-            console.log(this.isPL);
           });
       });
-
   }
 
     createComment(){
