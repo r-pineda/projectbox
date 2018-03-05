@@ -6,21 +6,15 @@ Generell:
 	- bis heute / morgen (ev. funktion schreiben?)
 
 
-Meeting:
-- files:
-	- file extension bzw. file type in eigener variable auslagern? 
-	(neben dem namen der datei wird eig. ein icon angezeigt und nicht das bild selber, bild icon -> jpg, png; document icon -> pdf)
-	- 
-
-Dashboard:
-- warum wird schatten erst beim zurückkehren auf die seite angezeigt?
-- projekt in pb-farbe setzen
-
-
 Ticket:
+- noch alles von task importieren
 
 Task:
+- alles geht
 
+Tutorial:
+- fehlt noch
 
 Einstellungen:
-- persistent speichern (ob offline oder tutorial angezeigt wird)
+- über app
+- lizenzen
