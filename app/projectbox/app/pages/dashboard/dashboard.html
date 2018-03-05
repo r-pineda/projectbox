@@ -11,8 +11,10 @@
     <StackLayout class="page" width="100%">
         <GridLayout columns="auto, *" rows="auto">
             <Label text="PROJEKTE" (tap)="showAllProjects()" row="0" col="0" class="h2"></Label>
-            <Label text="alle >" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom"
+            <Label text="alle >" *ngIf="!all_projects" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom"
                    class="text" style="margin-right:10;" (tap)="showAllProjects()"></Label>
+            <Label text="weniger >" *ngIf="all_projects" row="0" col="1" style.horizontalAlignment="right" style.verticalAlignment="bottom"
+                   class="text" style="margin-right:10;" (tap)="limitProjects()"></Label>
         </GridLayout>
         <StackLayout orientation="horizontal" *ngIf="!all_projects">
             <StackLayout orientation="horizontal" *ngFor="let item of projects" class="project">

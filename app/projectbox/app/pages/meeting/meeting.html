@@ -17,15 +17,16 @@
                           (monthChanged)="monthChanged($event)" (loaded)="calendarLoaded($event)"></Calendar>
                 <StackLayout>
                     <StackLayout id="meetinglist">
-                        <GridLayout *ngFor="let item of displayedMeetings" class="meeting" columns="auto, *" rows="auto"
-                                    [nsRouterLink]="['/meeting_detail', item.id]" marginBottom="10" shadow="2">
-                            <Label class="borderitem" height="60" col="0" row="0"></Label>
-                            <GridLayout columns="80,auto,auto,*" rows="auto,auto,*" col="1" row="0" class="meeting">
-                                <Label text="HEUTE" col="0" row="0" rowSpan="3" class="meeting-indicator h4"
+                        <GridLayout *ngFor="let item of displayedMeetings" class="marginitem" columns="auto, *" rows="auto"
+                                    [nsRouterLink]="['/meeting_detail', item.id]" marginBottom="10">
+                            <Label class="borderitem" [ngStyle]="{'border-color' : item.color}" height="60" col="0" row="0" horizontalAlignment="center"></Label>
+                            <GridLayout columns="80,auto,auto,*" rows="auto,auto,*" col="1" row="0" class="padding-topbot-10"
+                                        shadow="10">
+                                <Label [text]="item.dateFormatted" col="0" row="0" rowSpan="3" class="meeting-indicator h4"
                                        margin="0 0 0 5"></Label>
                                 <Label col="1" rowSpan="3" class="hr-light" width="1" height="80%" margin="5"></Label>
                                 <Label [text]="item.name" textWrap="true" class="h4" col="2" margin="5 0 0 0"></Label>
-                                <Label [text]="item.date" col="2" row="1" class="text" margin="0"></Label>
+                                <Label [text]="item.duration + ' Minuten'" col="2" row="1" class="text" margin="0"></Label>
                                 <Label [text]="item.location" col="2" row="2" class="text" margin="0 5 0 0"></Label>
                                 <Label text="..." col="3" rowSpan="3" class="meeting-cont" margin="0 20 20 20"></Label>
                             </GridLayout>
