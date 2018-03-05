@@ -28,6 +28,7 @@ export class Todo_detailComponent {
   public phaseSelection :string[] = new Array<string>();  //dropdown selection zur auswahl der phase in der ein task created werden soll. wird befüllt nachdem der user ein Projekt ausgewählt hat.
   task_tabs: string;
   trackings :Tracking[] = new Array<Tracking>();
+  isPL :boolean;
 
 
   constructor
@@ -68,17 +69,24 @@ export class Todo_detailComponent {
       .then((data) => {
         this.todo = data.tasks[0];
         this.todo.comments = data.comments;
-        this.todo.comments.forEach((comment) => {
-          this.userService.getUser(comment.user_id)
-              .then((data) => {
-                comment.userImage = "https://api.agiletoolz.com/v2/user/avatar/" + data.users[0].avatar + "?access_token=" + this.userService.getCurrentUser().access_token;
-              });
-            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            //comment.date = new Date(comment.created_at).toLocaleDateString('de-DE', options);
-        });
+        if(this.todo.comments.length > 0){
+          this.todo.comments.forEach((comment) => {
+            this.userService.getUser(comment.user_id)
+                .then((data) => {
+                  comment.userImage = "https://api.agiletoolz.com/v2/user/avatar/" + data.users[0].avatar + "?access_token=" + this.userService.getCurrentUser().access_token;
+                });
+              var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+              //comment.date = new Date(comment.created_at).toLocaleDateString('de-DE', options);
+          });
+        }
         this.todo.trackings.forEach((tracking) => {
           this.trackings.push(data.trackings[0]);
         });
+        this.userService.getSingleProject(this.todo.project)
+          .then((data) =>{
+            this.isPL = (data.projects[0].user == this.userService.getCurrentUser().id);
+            console.log(this.isPL);
+          });
       });
 
   }
@@ -91,47 +99,6 @@ export class Todo_detailComponent {
         });
       this.newComment = new Comment();
     }
-/*
-    startTimer(task_id :string){
-      if(!this.currentTracking){
-        this.currentTracking = new Tracking();
-        this.currentTracking.task = task_id;
-        this.currentTracking.started_at = new Date();
-        this.currentTracking.finished = false;
-        this.currentTracking.description = "mobile tracking";
-        this.currentTracking.user = null
-        this.todoService.createTracking(this.currentTracking)
-        .then((data) => {
-          this.todos.forEach((todo) => {
-            if(todo.id === task_id){
-              todo.trackings.push(data.trackings[0].id);
-              todo.trackingsFull.push(data.trackings[0]);
-              this.todoService.updateTodo(todo);
-            }
-          });
-        });
-        this.timerString = "00:00:00";
-        this.tracker = setInterval(() => {
-          this.trackedSeconds++;
-          let minsecs = this.trackedSeconds%60;
-          let hours = (this.trackedSeconds-minsecs)/60;
-          let seconds = minsecs%60;
-          let minutes = (minsecs-seconds)/60;
-          this.timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
-      }, 1000);
-
-      }else{
-        alert("stop your currently running timer first!");
-      }
-    }
-
-    stopTimer(){
-      this.currentTracking.finished = true;
-      this.currentTracking.finished_at = new Date();
-      this.todoService.updateTracking(this.currentTracking);
-    }
-
-*/
 
     state(id) {
         this.task_tabs = id;
