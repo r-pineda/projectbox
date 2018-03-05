@@ -12,6 +12,7 @@ import { UserService } from "../../shared/user/user.service";
 import { NavComponent } from "../nav/nav.component";
 import {DropDown, ValueList, SelectedIndexChangedEventData} from "nativescript-drop-down";
 import {SwipeGestureEventData} from "tns-core-modules/ui/gestures";
+import * as dialogs from "tns-core-modules/ui/dialogs";
 var timer = require("timer");
 
 
@@ -264,11 +265,11 @@ export class TodoComponent {
         this.direction = args.direction;
         /* nach rechts */
         if (this.direction == 2) {
-            this.nav.state('todo');
+            this.nav.state('meeting');
         }
         /* nach links */
         if (this.direction == 1) {
-            this.nav.state('meeting');
+            this.nav.state('dashboard');
         }
 
         /* nach unten */
@@ -282,6 +283,13 @@ export class TodoComponent {
       task.completed = true;
       this.todoService.updateTodo(task);
       this.todos.splice(this.todos.indexOf(task), 1);
-      alert("Marked '" + task.name + "' as completed!");
+
+        let options = {
+            title: "Bestätigung",
+            message: "Aufgabe '" + task.name + "' wurde erledigt.",
+            okButtonText: "OK"
+        };
+
+        alert(options);
     }
 }
