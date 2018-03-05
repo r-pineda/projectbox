@@ -30,7 +30,7 @@
                         <TextView
                                 [text]="description"
                                 editable="false" textWrap="true" class="longtext"></TextView>
-                        <GridLayout rows="*" columns="auto,auto,*">
+                        <GridLayout rows="*" columns="auto,*,auto">
                             <StackLayout (tap)="startTimer(task.id)" class="btn-img margin-right-10" row="0" col="0">
                                 <Image [src]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'"
                                        width="15" height="15" stretch="aspectFit"></Image>
