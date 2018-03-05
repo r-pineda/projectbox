@@ -193,7 +193,7 @@ export class TodoService {
     .toPromise();
   }
 
-  updateTracking(tracking :Tracking){//die id ist null!!!!!!!!!!!!
+  updateTracking(tracking :Tracking){
     let id :string = tracking.id + "";
     delete tracking.id;
     return this.http.put(
