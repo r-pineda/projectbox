@@ -5,12 +5,14 @@ Generell:
 	- dd. month year
 	- bis heute / morgen (ev. funktion schreiben?)
 
-
 Ticket:
-- noch alles von task importieren
+- noch alles von task importieren bis auf Kommentare
 
 Task:
-- alles geht
+- Kommentar:
+	- User - Vor- und Nachname
+	- Datum falsch? (1970-01-01)
+- Zeiterfassung: keine Daten?
 
 Tutorial:
 - fehlt noch
@@ -18,3 +20,5 @@ Tutorial:
 Einstellungen:
 - über app
 - lizenzen
+
+Code säubern (css klassen, html, ts)

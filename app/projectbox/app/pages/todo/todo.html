@@ -21,9 +21,11 @@
                             <Label [text]="task.name" class="longtext h4" col="0"
                                       row="0"></Label>
                         </StackLayout>
-                        <Label class="text ticket" [text]="task.due_date" col="0" row="1"></Label>
+                        <Label class="text ticket" [text]="task.due_date_string" col="0" row="1"></Label>
                         <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon" col="1"
-                               rowSpan="2"></Label>
+                               rowSpan="2" *ngIf="!todoForDetail[task.id]"></Label>
+                        <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-up' | fonticon" col="1"
+                               rowSpan="2" *ngIf="todoForDetail[task.id]"></Label>
                     </GridLayout>
                     <StackLayout col="1" row="3" *ngIf="todoForDetail[task.id]" class="details">
                         <Label class="h4" [text]="task.project"></Label>
@@ -76,8 +78,6 @@
                   (selectedIndexChanged)="selectPhase($event)"
                   (opened)="onopen()" A
                   (closed)="onclose()"></DropDown>
-        <Label class="h5" text="Verantwortlicher"></Label>
-        <TextField class="textfield" [(ngModel)]="newTodo.user"></TextField>
         <Label class="h5" text="Beschreibung"></Label>
         <TextView  style="margin-top: 15px" [(ngModel)]="newTodo.description" height="200" returnKeyType="send" class="input"></TextView>
         <!-- unnötig weil beim Erstellen von Tasks, dass das Anzeigen von Zeiterfassungen und Kommentare unnötig sind -->

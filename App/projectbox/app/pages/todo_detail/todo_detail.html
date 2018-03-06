@@ -30,10 +30,11 @@
                           (selectedIndexChanged)="selectPhase($event)"
                           (opened)="onopen()" A
                           (closed)="onclose()"></DropDown>
-                <Label class="h5" text="Verantwortlicher"></Label>
-                <TextField class="textfield" [(ngModel)]="todo.user"></TextField>
+                <!--<Label class="h5" text="Verantwortlicher"></Label>
+                <TextField class="textfield" [(ngModel)]="todo.user"></TextField>-->
                 <Label class="h5" text="Beschreibung"></Label>
-                <TextView [(ngModel)]="todo.description" height="200" returnKeyType="send" class="input textfield"></TextView>
+                <TextView [(ngModel)]="todo.description" height="200" returnKeyType="send"
+                          class="input textfield"></TextView>
                 <Label class="field-seperator margin-topbot-10" height="1"></Label>
                 <GridLayout columns="*,*" rows="*,*">
                     <Image [src]="task_tabs == 'timetracking' ? '~/images/timetracking_t.png' : '~/images/timetracking_g.png'"
@@ -56,68 +57,68 @@
                 <Label class="field-seperator margin-topbot-10" height="1"></Label>
                 <StackLayout [ngSwitch]="task_tabs">
                     <StackLayout *ngSwitchCase="'timetracking'">
-                        <GridLayout columns="*,*" rows="*, *" class="time-entry">
+                        <GridLayout columns="*,*" rows="*, *">
                             <Label class="h4" col="0" row="0" text="Gesamtdauer"></Label>
                             <Label class="h4" col="1" row="0" text="00:00:00" horizontalAlignment="right"></Label>
                             <StackLayout colSpan="2" row="1">
                                 <StackLayout *ngFor="let tracking of trackings">
-                                <Label class="field-seperator" height="1"></Label>
-                                <StackLayout orientation="horizontal" class="bg-gray">
-                                    <Label [text]="tracking.created_at"
-                                           horizontalAlignment="right"></Label>
-                                </StackLayout>
-                                <Label class="field-seperator" height="1"></Label>
-                                <GridLayout columns="auto,*" row="*">
-                                    <StackLayout orientation="horizontal" row="0" col="0">
-                                    <Label [text]="tracking.started_at"></Label>
-                                    <Label text=" - "></Label>
-                                    <Label [text]="tracking.finished_at"></Label>
+                                    <Label class="field-seperator" height="1"></Label>
+                                    <StackLayout orientation="horizontal" class="bg-gray">
+                                        <Label [text]="tracking.created_at"
+                                               horizontalAlignment="right"></Label>
                                     </StackLayout>
-                                    <StackLayout orientation="horizontal" row="0" col="1" horizontalAlignment="right">
-                                    <Label [text]="tracking.timerString" [class]="isPL == 'true' ? 'margin-right-10' : '' " ></Label>
-                                    <Label class="fa" [text]="'fa-times' | fonticon" (tap)="deleteTracking(todo.id)" *ngIf="isPL"></Label>
-                                    </StackLayout>
-                                </GridLayout>
+                                    <Label class="field-seperator" height="1"></Label>
+                                    <GridLayout columns="auto,*" row="*">
+                                        <StackLayout orientation="horizontal" row="0" col="0">
+                                            <Label [text]="tracking.started_at"></Label>
+                                            <Label text=" - "></Label>
+                                            <Label [text]="tracking.finished_at"></Label>
+                                        </StackLayout>
+                                        <StackLayout orientation="horizontal" row="0" col="1"
+                                                     horizontalAlignment="right">
+                                            <Label [text]="tracking.timerString"
+                                                   [class]="isPL == 'true' ? 'margin-right-10' : '' "></Label>
+                                            <Label class="fa" [text]="'fa-times' | fonticon"
+                                                   (tap)="deleteTracking(todo.id)" *ngIf="isPL"></Label>
+                                        </StackLayout>
+                                    </GridLayout>
                                 </StackLayout>
                             </StackLayout>
                         </GridLayout>
                     </StackLayout>
-                <StackLayout *ngSwitchCase="'kommentare'">
-                    <StackLayout>
-                        <!--<GridLayout rows="auto, auto" columns="auto, *">-->
-                            <GridLayout rows="auto, auto" columns="auto, *" *ngFor="let comment of todo.comments">
-                            <Image [src]='comment.userImage' width="30" height="30"
-                                   stretch="aspectFit" rowSpan="1" col="0"></Image>
-                            <Label [text]="comment.message" editable="false"
-                                      textWrap="true"
-                                      class="longtext h4" col="1"
-                                      row="0"></Label>
-                            <Label [text]="comment.date" col="1" row="1"></Label>
+                    <StackLayout *ngSwitchCase="'kommentare'">
+                        <StackLayout>
+                            <!--<GridLayout rows="auto, auto" columns="auto, *">-->
+                            <GridLayout rows="auto, auto" columns="auto, *" class="margin-topbot-10"
+                                        *ngFor="let comment of todo.comments">
+                                <Image [src]='comment.userImage' width="45" height="45"
+                                       stretch="aspectFit" verticalAlignment="center" rowSpan="1" col="0" class="img-rounded"></Image>
+                                <Label [text]="comment.message"
+                                       class="bold" col="1"
+                                       row="0"></Label>
+                                <Label [text]="comment.date" col="1" row="1"></Label>
                             </GridLayout>
-                        <!--</GridLayout>-->
-                        <GridLayout rows="auto" columns="auto, *, auto">
-                            <Image src='~/images/user.png' width="30" height="30"
-                                   stretch="aspectFit" row="0" col="0"></Image>
-                            <TextField class="textfield" hint="Kommentieren" [(ngModel)]="newComment.message"
-                                       col="1" row="0"></TextField>
-                            <StackLayout class="btn-img margin-left-10" (tap)="createComment()" row="0"
-                                         col="2">
-                                <Image src="~/images/send.png" width="30" height="30" stretch="aspectFit"></Image>
-                            </StackLayout>
-                        </GridLayout>
+                            <!--</GridLayout>-->
+                            <GridLayout rows="auto" columns="auto, *, auto">
+                                <Image src='~/images/user.png' width="45" height="45"
+                                       stretch="aspectFit" row="0" col="0" class="margin-10"></Image>
+                                <TextField class="textfield" hint="Kommentieren" [(ngModel)]="newComment.message"
+                                           col="1" row="0"></TextField>
+                                <FAB icon="~/images/send.png" (tap)="createComment()" row="0"
+                                     col="2" rippleColor="#f1f1f1"
+                                     class="fab-button margin-10"></FAB>
+                            </GridLayout>
+                        </StackLayout>
                     </StackLayout>
                 </StackLayout>
-            </StackLayout>
-            <Label class="field-seperator margin-topbot-10" height="1"></Label>
-            <StackLayout orientation="horizontal" horizontalAlignment="right">
-                <StackLayout class="btn-img" (tap)="cancel()">
-                    <Image src="~/images/abbrechen2.png" width="30" height="30" stretch="aspectFit"></Image>
-                </StackLayout>
-                <StackLayout class="btn-img" (tap)="createTodo()">
-                    <Image src="~/images/save.png" width="30" height="30" stretch="aspectFit"></Image>
+                <Label class="field-seperator margin-topbot-10" height="1"></Label>
+                <StackLayout orientation="horizontal" horizontalAlignment="right">
+                    <FAB icon="~/images/abbrechen2.png" (tap)="cancel()" rippleColor="#f1f1f1"
+                         class="fab-button margin-10"></FAB>
+                    <FAB icon="~/images/save.png" rippleColor="#f1f1f1" (tap)="saveTodo()"
+                         class="fab-button margin-10"></FAB>
                 </StackLayout>
             </StackLayout>
-        </StackLayout>
         </StackLayout>
     </AbsoluteLayout>
 </ScrollView>
