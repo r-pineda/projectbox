@@ -10,8 +10,11 @@ import { getBoolean, setBoolean } from "application-settings";
   selector: 'pb-setting',
   templateUrl: 'pages/settings/settings.html'
 })
-export class SettingsComponent {
+export class SettingsComponent implements OnInit{
   offlineData: boolean;
+  actualOfflinesave :boolean;
+  tutorial :boolean;
+  actualsaveTutorial :boolean;
 
    constructor
   (
@@ -22,15 +25,23 @@ export class SettingsComponent {
     private fonticon: TNSFontIconService,
     private _changeDetectionRef: ChangeDetectorRef,
     )
-  {
-    console.log(getBoolean("enableOffline"));
-    this.offlineData = getBoolean("enableoffline");
+  {}
+
+  ngOnInit(){
+    this.offlineData = getBoolean("enableOffline")?true:false;
+    this.actualOfflinesave = false;
+    this.tutorial = getBoolean("enableTutorial")?true:false;
+    this.actualsaveTutorial = false;
   }
 
   toggleOffline(){
-    this.offlineData = !this.offlineData;
-    console.log(this.offlineData);
-    setBoolean("enableOffline", this.offlineData);
+    this.actualOfflinesave = !this.actualOfflinesave;
+    setBoolean("enableOffline", this.actualOfflinesave);
+  }
+
+  toggleTutorial(){
+    this.actualsaveTutorial = !this.actualsaveTutorial;
+    setBoolean("enableTutorial", this.actualsaveTutorial);
   }
 
 }
