@@ -24,7 +24,7 @@ export class Todo_detailComponent {
   public newTracking = new Tracking();
   public newTimerTracking = new Tracking();
   public newComment = new Comment();
-  public projectSelection :string[] = new Array<string>();//testen ob assotiativ funktioniert. || array[project_id] = project_name
+  public projectSelection :string[] = new Array<string>();
   public phaseSelection :string[] = new Array<string>();  //dropdown selection zur auswahl der phase in der ein task created werden soll. wird befüllt nachdem der user ein Projekt ausgewählt hat.
   task_tabs: string;
   trackings :Tracking[] = new Array<Tracking>();
@@ -74,6 +74,8 @@ export class Todo_detailComponent {
             this.userService.getUser(comment.user_id)
                 .then((data) => {
                   comment.userImage = "https://api.agiletoolz.com/v2/user/avatar/" + data.users[0].avatar + "?access_token=" + this.userService.getCurrentUser().access_token;
+                  comment.userFName = data.users[0].first_name;
+                  comment.userLName = data.users[0].last_name;
                 });
               var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
               //comment.date = new Date(comment.created_at).toLocaleDateString('de-DE', options);
