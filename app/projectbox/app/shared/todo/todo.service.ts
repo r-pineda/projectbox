@@ -109,6 +109,8 @@ export class TodoService {
     delete comment.id;
     delete comment.task_id;
     delete comment.date;
+    delete comment.userFName;
+    delete comment.userLName;
     comment.created_at = null;
     comment.project = null;
     comment.user = null;
