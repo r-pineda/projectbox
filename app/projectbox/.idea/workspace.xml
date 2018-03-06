@@ -17,7 +17,7 @@
       <file leaf-file-name="todo_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/todo_detail/todo_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
+            <state relative-caret-position="1394">
               <caret line="82" column="54" lean-forward="false" selection-start-line="82" selection-start-column="54" selection-end-line="82" selection-end-column="54" />
               <folding />
             </state>
@@ -27,7 +27,7 @@
       <file leaf-file-name="meeting.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/meeting/meeting.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
+            <state relative-caret-position="1666">
               <caret line="98" column="89" lean-forward="false" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="89" />
               <folding />
             </state>
@@ -37,7 +37,7 @@
       <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
+            <state relative-caret-position="5559">
               <caret line="327" column="18" lean-forward="false" selection-start-line="327" selection-start-column="18" selection-end-line="327" selection-end-column="18" />
               <folding />
             </state>
@@ -47,7 +47,7 @@
       <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
+            <state relative-caret-position="1258">
               <caret line="74" column="17" lean-forward="false" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
               <folding />
             </state>
@@ -57,19 +57,24 @@
       <file leaf-file-name="dashboard.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/dashboard/dashboard.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
+            <state relative-caret-position="2397">
               <caret line="162" column="11" lean-forward="false" selection-start-line="162" selection-start-column="11" selection-end-line="162" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/app.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="74" column="17" lean-forward="false" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
-              <folding />
+            <state relative-caret-position="374">
+              <caret line="31" column="72" lean-forward="false" selection-start-line="31" selection-start-column="72" selection-end-line="31" selection-end-column="72" />
+              <folding>
+                <element signature="e#670#749#0" expanded="true" />
+                <element signature="e#849#931#0" expanded="true" />
+                <element signature="e#1771#1828#0" expanded="true" />
+                <element signature="e#2042#2106#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,7 +92,7 @@
       <file leaf-file-name="login.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/login/login.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
+            <state relative-caret-position="646">
               <caret line="48" column="23" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="48" selection-end-column="23" />
               <folding>
                 <element signature="e#0#65#0" expanded="true" />
@@ -106,11 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tutorial.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tutorial.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/tutorial/tutorial.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="45" lean-forward="false" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+            <state relative-caret-position="170">
+              <caret line="10" column="2" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -197,10 +202,10 @@
         <option value="$PROJECT_DIR$/app/pages/todo_detail/todo_detail.html" />
         <option value="$PROJECT_DIR$/app/app.css" />
         <option value="$PROJECT_DIR$/app/custom.css" />
-        <option value="$PROJECT_DIR$/app/app.module.ts" />
         <option value="$PROJECT_DIR$/app/pages/login/login.component.ts" />
         <option value="$PROJECT_DIR$/app/pages/tutorial/tutorial.html" />
         <option value="$PROJECT_DIR$/app/pages/tutorial/tutorial.component.ts" />
+        <option value="$PROJECT_DIR$/app/app.module.ts" />
       </list>
     </option>
   </component>
@@ -212,9 +217,11 @@
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/platforms/android/build/intermediates/assets/F0F1F2F3F4F5F6F7F8F9F10/debug/app/tns_modules/nativescript-imagepicker/node_modules" />
+    <handled-path value="$PROJECT_DIR$/platforms/android/build/intermediates/assets/F0F1F2F3F4F5F6F7F8F9F10/debug/app/tns_modules/nativescript-ngx-slides/node_modules" />
     <handled-path value="$PROJECT_DIR$/platforms/android/build/intermediates/assets/F0F1F2F3F4F5F6F7F8F9F10/debug/app/tns_modules/resolve/test/resolver/bar/node_modules" />
     <handled-path value="$PROJECT_DIR$/platforms/android/build/intermediates/assets/F0F1F2F3F4F5F6F7F8F9F10/debug/app/tns_modules/resolve/test/resolver/biz/node_modules" />
     <handled-path value="$PROJECT_DIR$/platforms/android/src/main/assets/app/tns_modules/nativescript-imagepicker/node_modules" />
+    <handled-path value="$PROJECT_DIR$/platforms/android/src/main/assets/app/tns_modules/nativescript-ngx-slides/node_modules" />
     <handled-path value="$PROJECT_DIR$/platforms/android/src/main/assets/app/tns_modules/resolve/test/resolver/bar/node_modules" />
     <handled-path value="$PROJECT_DIR$/platforms/android/src/main/assets/app/tns_modules/resolve/test/resolver/biz/node_modules" />
   </component>
@@ -239,6 +246,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -251,12 +259,6 @@
               <item name="projectbox" type="b2602c69:ProjectViewProjectNode" />
               <item name="projectbox" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectbox" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectbox" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projectbox" type="b2602c69:ProjectViewProjectNode" />
@@ -298,13 +300,6 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="nav" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectbox" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectbox" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="onboarding" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projectbox" type="b2602c69:ProjectViewProjectNode" />
@@ -372,7 +367,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -440,14 +434,17 @@
       <workItem from="1520277025145" duration="260000" />
       <workItem from="1520277869939" duration="26000" />
       <workItem from="1520321875465" duration="6864000" />
+      <workItem from="1520337186522" duration="669000" />
+      <workItem from="1520363003060" duration="178000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139985000" />
+    <option name="totallyTimeSpent" value="140832000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1780822" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -522,11 +519,6 @@
         <option value="$PROJECT_DIR$/app/shared/meeting/meeting.js" />
         <option value="$PROJECT_DIR$/app/pages/settings/settings.component.js" />
         <option value="$PROJECT_DIR$/app/pages/tutorial/tutorial.component.js" />
-        <option value="$PROJECT_DIR$/app/pages/onboarding/index.js" />
-        <option value="$PROJECT_DIR$/app/pages/onboarding/onboarding.module.js" />
-        <option value="$PROJECT_DIR$/app/pages/onboarding/interfaces/OnboardingSlide.js" />
-        <option value="$PROJECT_DIR$/app/pages/onboarding/components/onboarding-slide/onboarding-slide.component.js" />
-        <option value="$PROJECT_DIR$/app/pages/onboarding/components/onboarding/onboarding.component.js" />
         <option value="$PROJECT_DIR$/app/pages/todo_detail/todo_detail.component.js" />
         <option value="$PROJECT_DIR$/platforms/android/src/main/assets/app/shared/meeting/meeting.js" />
         <option value="$PROJECT_DIR$/platforms/android/src/main/assets/app/main.js" />
@@ -554,50 +546,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/pages/login/login.component.ts</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/interfaces/OnboardingSlide.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding-slide/onboarding-slide.component.android.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding-slide/_onboarding-slide.common.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding-slide/onboarding-slide.component.ios.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding/onboarding.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="202" column="23" lean-forward="false" selection-start-line="202" selection-start-column="19" selection-end-line="202" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/interfaces/OnboardingSlide.js" />
+    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding-slide/onboarding-slide.component.android.scss" />
+    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding-slide/_onboarding-slide.common.scss" />
+    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding-slide/onboarding-slide.component.ios.scss" />
+    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding/onboarding.component.ts" />
     <entry file="file://$PROJECT_DIR$/app/pages/nav/nav.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -605,27 +566,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding/onboarding.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="29" lean-forward="false" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding-slide/onboarding-slide.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding-slide/onboarding-slide.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="27" column="32" lean-forward="false" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding/onboarding.component.html" />
+    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding-slide/onboarding-slide.component.html" />
+    <entry file="file://$PROJECT_DIR$/app/pages/onboarding/components/onboarding-slide/onboarding-slide.component.ts" />
     <entry file="file://$PROJECT_DIR$/app/pages/dashboard/dashboard2.html" />
     <entry file="file://$PROJECT_DIR$/platforms/android/build/intermediates/assets/F0F1F2F3F4F5F6F7F8F9/debug/app/tns_modules/nativescript-pro-ui/dataform/angular/dataform-directives.metadata.json" />
     <entry file="file://$PROJECT_DIR$/app/package.json">
@@ -773,7 +716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -781,9 +723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#95#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -791,7 +730,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="50" lean-forward="false" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -799,7 +737,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1853">
           <caret line="144" column="41" lean-forward="false" selection-start-line="144" selection-start-column="41" selection-end-line="144" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,7 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
           <caret line="136" column="14" lean-forward="false" selection-start-line="136" selection-start-column="14" selection-end-line="136" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -815,10 +751,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1281">
           <caret line="79" column="50" lean-forward="false" selection-start-line="79" selection-start-column="50" selection-end-line="79" selection-end-column="50" />
-          <folding>
-            <element signature="n#style#0;n#TextView#0;n#StackLayout#1;n#StackLayout#0;n#!!top" expanded="false" />
-            <element signature="e#5805#8773#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -826,7 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="114" column="9" lean-forward="false" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -834,7 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="401">
           <caret line="55" column="28" lean-forward="false" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -842,13 +772,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/custom.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
+        <state relative-caret-position="1258">
           <caret line="74" column="17" lean-forward="false" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
           <folding />
         </state>
@@ -856,23 +785,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
+        <state relative-caret-position="5559">
           <caret line="327" column="18" lean-forward="false" selection-start-line="327" selection-start-column="18" selection-end-line="327" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="74" column="17" lean-forward="false" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/meeting/meeting.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
+        <state relative-caret-position="1666">
           <caret line="98" column="89" lean-forward="false" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="89" />
           <folding />
         </state>
@@ -880,7 +801,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/dashboard/dashboard.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
+        <state relative-caret-position="2397">
           <caret line="162" column="11" lean-forward="false" selection-start-line="162" selection-start-column="11" selection-end-line="162" selection-end-column="11" />
           <folding />
         </state>
@@ -896,7 +817,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/todo_detail/todo_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
+        <state relative-caret-position="1394">
           <caret line="82" column="54" lean-forward="false" selection-start-line="82" selection-start-column="54" selection-end-line="82" selection-end-column="54" />
           <folding />
         </state>
@@ -912,7 +833,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/login/login.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
+        <state relative-caret-position="646">
           <caret line="48" column="23" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="48" selection-end-column="23" />
           <folding>
             <element signature="e#0#65#0" expanded="true" />
@@ -922,10 +843,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/tutorial/tutorial.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="45" lean-forward="false" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+        <state relative-caret-position="170">
+          <caret line="10" column="2" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="31" column="72" lean-forward="false" selection-start-line="31" selection-start-column="72" selection-end-line="31" selection-end-column="72" />
+          <folding>
+            <element signature="e#670#749#0" expanded="true" />
+            <element signature="e#849#931#0" expanded="true" />
+            <element signature="e#1771#1828#0" expanded="true" />
+            <element signature="e#2042#2106#0" expanded="true" />
           </folding>
         </state>
       </provider>

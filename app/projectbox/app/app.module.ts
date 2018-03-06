@@ -30,7 +30,6 @@ import { TicketComponent } from "./pages/ticket/ticket.component";
 import { NavComponent } from "./pages/nav/nav.component";
 import { MeetingComponent } from "./pages/meeting/meeting.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
-import { OnboardingModule } from "./pages/onboarding/onboarding.module";
 import { TutorialComponent } from "./pages/tutorial/tutorial.component";
 
 
@@ -55,7 +54,6 @@ import { SlidesModule } from 'nativescript-ngx-slides';
     NativeScriptHttpModule,
     NativeScriptRouterModule,
     NgShadowModule, //ng-shadow plugin
-    OnboardingModule,
       DropDownModule,
       SlidesModule,
     NativeScriptRouterModule.forChild(routes),
