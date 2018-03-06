@@ -129,21 +129,21 @@ export class LoginComponent implements OnInit{
 
     if (valid === "403"){
       this.wrongcredentials = true;
-      alert("Incorrect username/password");
+      alert("E-Mail-Addresse oder Passwort falsch");
     }else{
 
       if(this.statusService.getWasLoggedIn()){
         this.statusService.setOfflineMode(true);
         this.keyboardOff();
         this.wrongcredentials = false;
-        this.routerExtensions.navigate(["/nav"], {
+        this.routerExtensions.navigate(["/tutorial"], {
             transition: {
             name: "slide",
             curve: "easeOut"
             }
         });
       }else{
-        alert("the first login requires an active internet connection");
+        alert("Das erste Login benötigt eine aktive Internetverbindung");
       }
     }
 
@@ -161,7 +161,7 @@ export class LoginComponent implements OnInit{
           curve: "easeOut"
       }
     })*/
-      this.routerExtensions.navigate(["/nav"], {
+      this.routerExtensions.navigate(["/tutorial"], {
       transition: {
           name: "slide",
           curve: "easeOut"

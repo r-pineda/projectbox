@@ -325,7 +325,7 @@ ActionBar {
 /* general forms */
 TextField, TextView {
     padding: 10;
-    font-size: 20;
+    font-size: 15;
     background-color: #EBEBEB;
     margin-bottom: 10;
 }

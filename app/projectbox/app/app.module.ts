@@ -45,6 +45,9 @@ import { DropDownModule } from "nativescript-drop-down/angular";
 import { registerElement } from "nativescript-angular/element-registry";
 registerElement("Fab", () => require("nativescript-floatingactionbutton").Fab);
 
+/* slides */
+import { SlidesModule } from 'nativescript-ngx-slides';
+
 @NgModule({
   imports: [
     NativeScriptModule,
@@ -54,6 +57,7 @@ registerElement("Fab", () => require("nativescript-floatingactionbutton").Fab);
     NgShadowModule, //ng-shadow plugin
     OnboardingModule,
       DropDownModule,
+      SlidesModule,
     NativeScriptRouterModule.forChild(routes),
     NativeScriptRouterModule.forRoot(routes),
    TNSFontIconModule.forRoot({
