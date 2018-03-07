@@ -10,6 +10,8 @@ import "rxjs/add/operator/switchMap";
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { UserService } from "../../shared/user/user.service";
 var timer = require("timer");
+/* date picker */
+import { ModalDatetimepicker, PickerOptions } from 'nativescript-modal-datetimepicker';
 
 
 @Component({
@@ -29,6 +31,10 @@ export class Todo_detailComponent {
   task_tabs: string;
   trackings :Tracking[] = new Array<Tracking>();
   isPL :boolean;
+
+    /* date picker */
+    public date: string;
+    private modalDatetimepicker: ModalDatetimepicker;
 
 
   constructor
@@ -51,6 +57,7 @@ export class Todo_detailComponent {
     this.task_tabs = 'timetracking';
 
     this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
+      this.modalDatetimepicker = new ModalDatetimepicker();
   }
 
   ngOnInit(): void {}
@@ -140,4 +147,23 @@ export class Todo_detailComponent {
     cancel() {
         this.routerExtensions.backToPreviousPage();
     }
+
+    /* date picker */
+    selectDate() {
+        this.modalDatetimepicker.pickDate(<PickerOptions>{
+            title: "Datum auswählen",
+            theme: "dark",
+            startingDate: new Date(),
+            maxDate: new Date('2030-01-01'), /* hier maxDate setzen */
+            minDate: new Date()
+        }).then((result:any) => {
+            if (result) {
+                this.date = result.day + "." + result.month + "." + result.year;
+                this.todo.due_date = new Date(result.day, result.month, result.year);
+            }
+        })
+            .catch((error) => {
+                console.log("Error: " + error);
+            });
+    };
 }

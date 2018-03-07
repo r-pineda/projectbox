@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Page} from "ui/page";
 import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
-import {UserService} from "../../shared/user/user.service";
-import {StatusService} from "../../shared/status/status.service";
 
 @Component({
   selector: 'pb-tutorial',

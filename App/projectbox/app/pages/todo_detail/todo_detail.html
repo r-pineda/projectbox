@@ -13,7 +13,7 @@
                 <Label class="h5" text="Titel"></Label>
                 <TextField class="textfield" [(ngModel)]="todo.name"></TextField>
                 <Label class="h5" text="Deadline"></Label>
-                <TextField class="textfield" hint="DD.MM.YYYY" [(ngModel)]="todo.due_date"></TextField>
+                <TextField class="textfield" (tap)="selectDate()" [text]="date"></TextField>
                 <Label class="h5" text="Projekt"></Label>
                 <!--<TextField class="textfield" [(ngModel)]="todo.project"></TextField>-->
                 <DropDown #dd
@@ -35,6 +35,14 @@
                 <Label class="h5" text="Beschreibung"></Label>
                 <TextView [(ngModel)]="todo.description" height="200" returnKeyType="send"
                           class="input textfield"></TextView>
+                <Label class="field-seperator margin-topbot-10" height="1"></Label>
+                <GridLayout columns="auto,auto,*" rows="*" class="margin-topbot-10">
+                    <Label verticalAlignment="center" text="Top-Task" class="h4" row="0" col="1"></Label>
+                    <Image src="~/images/toptask.png" width="20" height="20" stretch="aspectFit"
+                           class="margin-right-5" row="0" col="0"></Image>
+                    <Switch checked="false" (checkedChange)="onFirstChecked($event)" horizontalAlignment="right"
+                            col="2" row="0"></Switch>
+                </GridLayout>
                 <Label class="field-seperator margin-topbot-10" height="1"></Label>
                 <GridLayout columns="*,*" rows="*,*">
                     <Image [src]="task_tabs == 'timetracking' ? '~/images/timetracking_t.png' : '~/images/timetracking_g.png'"
@@ -92,7 +100,8 @@
                             <GridLayout rows="auto, auto" columns="auto, *" class="margin-topbot-10"
                                         *ngFor="let comment of todo.comments">
                                 <Image [src]='comment.userImage' width="45" height="45"
-                                       stretch="aspectFit" verticalAlignment="center" rowSpan="1" col="0" class="img-rounded"></Image>
+                                       stretch="aspectFit" verticalAlignment="center" rowSpan="1" col="0"
+                                       class="img-rounded"></Image>
                                 <Label [text]="comment.message"
                                        class="bold" col="1"
                                        row="0"></Label>
@@ -111,7 +120,6 @@
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
-                <Label class="field-seperator margin-topbot-10" height="1"></Label>
                 <StackLayout orientation="horizontal" horizontalAlignment="right">
                     <FAB icon="~/images/abbrechen2.png" (tap)="cancel()" rippleColor="#f1f1f1"
                          class="fab-button margin-10"></FAB>

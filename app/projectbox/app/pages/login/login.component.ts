@@ -4,6 +4,7 @@ import { UserService } from "../../shared/user/user.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
+import { getBoolean, setBoolean } from "application-settings";
 //import { AppShortcuts } from "nativescript-app-shortcuts"; //3D - Touch on iOS
 import { isIOS } from "tns-core-modules/platform";
 import { isAndroid } from "tns-core-modules/platform";
@@ -136,12 +137,7 @@ export class LoginComponent implements OnInit{
         this.statusService.setOfflineMode(true);
         this.keyboardOff();
         this.wrongcredentials = false;
-        this.routerExtensions.navigate(["/tutorial"], {
-            transition: {
-            name: "slide",
-            curve: "easeOut"
-            }
-        });
+          this.checkSettings();
       }else{
         alert("Das erste Login benötigt eine aktive Internetverbindung");
       }
@@ -155,20 +151,14 @@ export class LoginComponent implements OnInit{
     this.wrongcredentials = false;
     this.statusService.loggedIn();
     this.statusService.setOfflineMode(false);
+    this.checkSettings();
     /*this.routerExtensions.navigate(["/nav"], {
       transition: {
           name: "slide",
           curve: "easeOut"
       }
     })*/
-      this.routerExtensions.navigate(["/tutorial"], {
-      transition: {
-          name: "slide",
-          curve: "easeOut"
-      }
-    })
   }
-
   
   keyboardOn(){
     this.box = this.grid.nativeElement;
@@ -193,6 +183,24 @@ export class LoginComponent implements OnInit{
 
   forgotPW(){
     utilityModule.openUrl("https://secure.projectbox.eu/#/email");
+  }
+
+  checkSettings() {
+      if(getBoolean("enableTutorial")) {
+          this.routerExtensions.navigate(["/tutorial"], {
+              transition: {
+                  name: "slide",
+                  curve: "easeOut"
+              }
+          })
+      } else {
+          this.routerExtensions.navigate(["/nav"], {
+              transition: {
+                  name: "slide",
+                  curve: "easeOut"
+              }
+          })
+      }
   }
   
 }

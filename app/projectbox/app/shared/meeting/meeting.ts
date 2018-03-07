@@ -1,4 +1,4 @@
-export interface Meeting {
+export class Meeting {
     protocol :string;
     project :string;
     name :string;
@@ -7,7 +7,7 @@ export interface Meeting {
     duration :Number;
     date :Date;
     attendees: string;
-    agenda :AgendaPoint[];
+    agenda :AgendaPoint[] = new Array<AgendaPoint>();
   }
 
   export class AgendaPoint {

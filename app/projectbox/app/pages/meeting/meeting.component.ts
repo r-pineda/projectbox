@@ -40,6 +40,7 @@ import {
 import {registerElement} from "nativescript-angular/element-registry";
 import {Page} from "ui/page";
 import { NavComponent } from "../nav/nav.component";
+import {ModalDatetimepicker, PickerOptions} from "nativescript-modal-datetimepicker";
 
 registerElement('Calendar', () => Calendar);
 
@@ -62,6 +63,11 @@ export class MeetingComponent implements OnInit {
     public projectSelection :string[] = new Array<string>();
     direction: number;
 
+    /* date picker */
+    public date: string;
+    public time: string;
+    private modalDatetimepicker: ModalDatetimepicker;
+
     constructor(private route: ActivatedRoute,
         private router: Router,
         private routerExtensions: RouterExtensions,
@@ -72,6 +78,7 @@ export class MeetingComponent implements OnInit {
         private userService :UserService
     ) {
         this.nav = navState;
+        this.modalDatetimepicker = new ModalDatetimepicker();
     }
 
     ngOnInit() {
@@ -212,4 +219,44 @@ export class MeetingComponent implements OnInit {
             this.nav.state('ticket');
         }
     }
+
+    /* date picker */
+    selectDate() {
+        this.modalDatetimepicker.pickDate(<PickerOptions>{
+            title: "Datum auswählen",
+            theme: "dark",
+            startingDate: new Date(),
+            maxDate: new Date('2030-01-01'), /* hier maxDate setzen */
+            minDate: new Date()
+        }).then((result:any) => {
+            if (result) {
+                this.date = result.day + "." + result.month + "." + result.year;
+                //this.newMeeting.due_date = new Date(result.day, result.month, result.year);
+            }
+        })
+            .catch((error) => {
+                console.log("Error: " + error);
+            });
+    };
+
+    selectTime() {
+        this.modalDatetimepicker.pickTime(<PickerOptions>{
+            theme: "dark",
+            minTime: {
+                hour: 0,
+                minute: 0
+            },
+            maxTime: {
+                hour: 23,
+                minute: 59
+            }
+        }).then((result:any) => {
+            if (result) {
+                this.time = result.hour + ":" + result.minute;
+            }
+        })
+            .catch((error) => {
+                console.log("Error: " + error);
+            });
+    };
 }

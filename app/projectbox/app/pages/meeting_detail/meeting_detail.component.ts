@@ -31,8 +31,7 @@ import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 import * as dialogs from "ui/dialogs";
 
 /* date picker */
-import { DatePicker } from "ui/date-picker";
-import { EventData } from "data/observable";
+import { ModalDatetimepicker, PickerOptions } from 'nativescript-modal-datetimepicker';
 
 var PhotoViewer = require("nativescript-photoviewer");
 
@@ -46,7 +45,14 @@ var bghttp = require("nativescript-background-http"); //file upload
 })
 export class Meeting_detailComponent implements OnInit{
 
-  photoViewer = new PhotoViewer();
+
+    public selectedDate;
+    public date: string;
+    public time: string;
+    private modalDatetimepicker: ModalDatetimepicker;
+
+
+    photoViewer = new PhotoViewer();
   meeting :Meeting;
   public picture :ImageAsset;
   userFiles :FileObject[];
@@ -62,11 +68,7 @@ export class Meeting_detailComponent implements OnInit{
       this.getMeeting(params["id"]);
     });
 
-
-      this.items = [];
-      for (var i = 0; i < 5; i++) {
-          this.items.push("data item " + i);
-      }
+      this.modalDatetimepicker = new ModalDatetimepicker();
   }
 
   ngOnInit(){
@@ -294,21 +296,21 @@ export class Meeting_detailComponent implements OnInit{
     }
 
     /* date pciker */
-    onPickerLoaded(args) {
-        let datePicker = <DatePicker>args.object;
-
-        var d = new Date();
-
-        datePicker.year = d.getFullYear();
-        datePicker.month = d.getMonth()
-        datePicker.day = d.getDay();
-        datePicker.minDate = new Date(2000, 0, 1);
-        datePicker.maxDate = new Date(2040, 12, 31);
-    }
-
-    onDateChanged(args) {
-        console.log("Date changed");
-        console.log("New value: " + args.value);
-        console.log("Old value: " + args.oldValue);
-    }
+    selectDate() {
+        this.modalDatetimepicker.pickDate(<PickerOptions>{
+            title: "Datum auswählen",
+            theme: "dark",
+            startingDate: new Date('2017-10-01'),
+            maxDate: new Date(),
+            minDate: new Date('2017-09-19')
+        }).then((result:any) => {
+            if (result) {
+                this.date = result.day + "." + result.month + "." + result.year;
+                this.selectedDate = new Date(result.day, result.month, result.year);
+            }
+        })
+            .catch((error) => {
+                console.log("Error: " + error);
+            });
+    };
 }

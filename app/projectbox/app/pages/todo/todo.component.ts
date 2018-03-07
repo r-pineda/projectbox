@@ -13,6 +13,8 @@ import { NavComponent } from "../nav/nav.component";
 import {DropDown, ValueList, SelectedIndexChangedEventData} from "nativescript-drop-down";
 import {SwipeGestureEventData} from "tns-core-modules/ui/gestures";
 import * as dialogs from "tns-core-modules/ui/dialogs";
+/* date picker */
+import { ModalDatetimepicker, PickerOptions } from 'nativescript-modal-datetimepicker';
 var timer = require("timer");
 
 
@@ -52,6 +54,10 @@ export class TodoComponent {
         "Juli", "August", "September", "Oktober", "November", "Dezember"
     ];
 
+    /* date picker */
+    public date: string;
+    private modalDatetimepicker: ModalDatetimepicker;
+
   constructor
   (
     private router: Router,
@@ -69,6 +75,7 @@ export class TodoComponent {
     this.nav = navState;
     this.curUser = this.userService.getCurrentUser();
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
+    this.modalDatetimepicker = new ModalDatetimepicker();
 
   }
 
@@ -299,4 +306,23 @@ export class TodoComponent {
 
         alert(options);
     }
+
+    /* date picker */
+    selectDate() {
+        this.modalDatetimepicker.pickDate(<PickerOptions>{
+            title: "Datum auswählen",
+            theme: "dark",
+            startingDate: new Date(),
+            maxDate: new Date('2030-01-01'), /* hier maxDate setzen */
+            minDate: new Date()
+        }).then((result:any) => {
+            if (result) {
+                this.date = result.day + "." + result.month + "." + result.year;
+                this.newTodo.due_date = new Date(result.day, result.month, result.year);
+            }
+        })
+            .catch((error) => {
+                console.log("Error: " + error);
+            });
+    };
 }

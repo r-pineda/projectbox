@@ -15,10 +15,11 @@ import { TicketComponent } from "../ticket/ticket.component";
 import { NavModule } from "./nav.module";
 import { FileObject } from "../../shared/user/fileObject"
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
+import { StatusService } from "../../shared/status/status.service";
 
 @Component({
   selector: "pb-nav",
-  providers: [UserService],
+  providers: [UserService, StatusService],
   templateUrl: "pages/nav/nav.html",
   styleUrls: ["pages/nav/nav-common.css"]
 })
@@ -39,12 +40,13 @@ export class NavComponent implements AfterViewInit, OnInit {
   userFiles :FileObject[];
   avatar :string;
   appState :string = 'dashboard';
+    public offlinemode :boolean;
 
   constructor
   (
     private router: Router,
     private routerExtensions: RouterExtensions,
-    //private pageRoute: PageRoute,
+    private statusService :StatusService,
     private userService: UserService,
     private fonticon: TNSFontIconService,
     private _changeDetectionRef: ChangeDetectorRef
@@ -53,6 +55,7 @@ export class NavComponent implements AfterViewInit, OnInit {
 
     this.curUser = this.userService.getCurrentUser();
     this.avatar = "https://api.agiletoolz.com/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
+      this.offlinemode = this.statusService.getOfflineMode();
 
   }
   

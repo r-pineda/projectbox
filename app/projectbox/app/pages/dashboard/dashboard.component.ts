@@ -1,6 +1,5 @@
 import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef } from "@angular/core";
 import { UserService } from "../../shared/user/user.service";
-import { StatusService } from "../../shared/status/status.service";
 /*import { Router, ActivatedRoute } from "@angular/router";*/
 import { RouterExtensions } from "nativescript-angular/router";
 import { Meeting } from "../../shared/meeting/meeting";
@@ -30,7 +29,7 @@ import { NavComponent } from "../nav/nav.component";
 
 @Component({
   selector: "pb-dashboard",
-  providers: [UserService, MeetingService, StatusService, TodoService, TicketService],
+  providers: [UserService, MeetingService, TodoService, TicketService],
   templateUrl: "pages/dashboard/dashboard.html",
   styleUrls: ["pages/dashboard/dashboard-common.css", "pages/dashboard/dashboard.css"]
 })
@@ -42,7 +41,6 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   meetings :Meeting[] = new Array<Meeting>();
   displayedMeetings :Meeting[] = new Array<Meeting>();
   displayedTodos :Todo[] = new Array<Todo>();
-  public offlinemode :boolean;
   projects :Project[];
   selectedProject :string = null; //id of the selected project
   avatar :string;
@@ -64,7 +62,6 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     private meetingService :MeetingService,
     private todoService :TodoService,
     private ticketService :TicketService,
-    private statusService :StatusService,
     private _changeDetectionRef: ChangeDetectorRef,
     private fonticon: TNSFontIconService,
     private navState: NavComponent
@@ -75,7 +72,6 @@ export class DashboardComponent implements AfterViewInit, OnInit {
    /* this.curUser = this.userService.getCurrentUser();
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
 */
-    this.offlinemode = this.statusService.getOfflineMode();
   }
   
   public ngOnInit() {
