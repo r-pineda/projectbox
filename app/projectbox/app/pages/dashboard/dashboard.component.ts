@@ -111,7 +111,8 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   }
 
   displayTodos(data :any) {
-      data.tasks.forEach((todo, index) => {        //alle todos durchlaufen
+      if (data) {
+          data.tasks.forEach((todo, index) => {        //alle todos durchlaufen
           /*Projektfarben für tasks herausfinden*/
           this.userService.getSingleProject(todo.project_id)
               .then(
@@ -119,7 +120,6 @@ export class DashboardComponent implements AfterViewInit, OnInit {
                   (error) => {}
               );
           });
-      if (data) {
           this.todoService.saveTodos(data);
           this.todos = data.tasks;
       } else {

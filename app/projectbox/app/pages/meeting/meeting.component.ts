@@ -107,17 +107,17 @@ export class MeetingComponent implements OnInit {
     }
 
     displayMeetings(data: any) {
-        data.meetings.forEach(meeting => {
-            var curDate = new Date();
-            var date = new Date(meeting.date);
-            if (curDate.getDay() == date.getDay() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
-                meeting.dateFormatted = "HEUTE";
-            } else {
-                meeting.dateFormatted = date.getDay() + "." + date.getMonth() + "." + date.getFullYear().toString();
-            }
-        });
 
         if (data) {
+            data.meetings.forEach(meeting => {
+                var curDate = new Date();
+                var date = new Date(meeting.date);
+                if (curDate.getDay() == date.getDay() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
+                    meeting.dateFormatted = "HEUTE";
+                } else {
+                    meeting.dateFormatted = date.getDay() + "." + date.getMonth() + "." + date.getFullYear().toString();
+                }
+            });
             this.meetingService.saveMeetings(data);
             this.meetings = data.meetings;
         } else {
