@@ -134,12 +134,17 @@ export class LoginComponent implements OnInit{
     }else{
 
       if(this.statusService.getWasLoggedIn()){
-        this.statusService.setOfflineMode(true);
-        this.keyboardOff();
-        this.wrongcredentials = false;
+        if(getBoolean("enableOffline")){
+          this.statusService.setOfflineMode(true);
+          this.keyboardOff();
+          this.wrongcredentials = false;
           this.checkSettings();
+        }else{
+          this.keyboardOff();
+          alert("Please check your Internet connection or enable offline data on your next login")
+        }
       }else{
-        alert("Das erste Login benötigt eine aktive Internetverbindung");
+        alert("Der erste Login benötigt eine aktive Internetverbindung");
       }
     }
 
