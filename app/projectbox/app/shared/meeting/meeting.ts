@@ -22,5 +22,5 @@ export class Meeting {
   export class Attendee {
     full_name :string;
     eMail :string;
-    abbreviation :string
+    abbreviation :string;
   }
