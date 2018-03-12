@@ -1,8 +1,10 @@
 <ActionBar title="">
     <GridLayout rows="*,*,*" columns="*">
-        <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
+        <Label class="fa" (tap)="cancel()" [text]="'fa-times' | fonticon" ios:horizontalAlignment="left"
                android:horizontalAlignment="left" row="0" col="0"></Label>
         <Label text="Tasks" class="nav-h3" row="0" col="1"></Label>
+        <Label class="fa" (tap)="saveTodo()" [text]="'fa-floppy-o' | fonticon" ios:horizontalAlignment="right"
+               android:horizontalAlignment="right" row="0" col="2"></Label>
     </GridLayout>
 </ActionBar>
 <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="100%">
@@ -13,7 +15,7 @@
                 <Label class="h5" text="Titel"></Label>
                 <TextField class="textfield" [(ngModel)]="todo.name"></TextField>
                 <Label class="h5" text="Deadline"></Label>
-                <TextField class="textfield" (tap)="selectDate()" [text]="date"></TextField>
+                <TextField class="textfield" (tap)="selectDate()" [(ngModel)]="todo.due_date_string"></TextField>
                 <Label class="h5" text="Projekt"></Label>
                 <!--<TextField class="textfield" [(ngModel)]="todo.project"></TextField>-->
                 <DropDown #dd
@@ -28,7 +30,7 @@
                           style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
                           [items]="phaseSelection"
                           (selectedIndexChanged)="selectPhase($event)"
-                          (opened)="onopen()" A
+                          (opened)="onopen()"
                           (closed)="onclose()"></DropDown>
                 <!--<Label class="h5" text="Verantwortlicher"></Label>
                 <TextField class="textfield" [(ngModel)]="todo.user"></TextField>-->
@@ -40,7 +42,7 @@
                     <Label verticalAlignment="center" text="Top-Task" class="h4" row="0" col="1"></Label>
                     <Image src="~/images/toptask.png" width="20" height="20" stretch="aspectFit"
                            class="margin-right-5" row="0" col="0"></Image>
-                    <Switch checked="false" (checkedChange)="onFirstChecked($event)" horizontalAlignment="right"
+                    <Switch [(ngModel)]="todo.pinned" (checkedChange)="onFirstChecked($event)" horizontalAlignment="right"
                             col="2" row="0"></Switch>
                 </GridLayout>
                 <Label class="field-seperator margin-topbot-10" height="1"></Label>
@@ -120,12 +122,12 @@
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
-                <StackLayout orientation="horizontal" horizontalAlignment="right">
+                <!--<StackLayout orientation="horizontal" horizontalAlignment="right">
                     <FAB icon="~/images/abbrechen2.png" (tap)="cancel()" rippleColor="#f1f1f1"
                          class="fab-button margin-10"></FAB>
                     <FAB icon="~/images/save.png" rippleColor="#f1f1f1" (tap)="saveTodo()"
                          class="fab-button margin-10"></FAB>
-                </StackLayout>
+                </StackLayout>-->
             </StackLayout>
         </StackLayout>
     </AbsoluteLayout>

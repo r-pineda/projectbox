@@ -48,8 +48,7 @@
                 <TextField class="textfield" (tap)="selectDate()" [text]="date"></TextField>
                 <GridLayout columns="*,*" rows="*,*">
                     <Label class="h5" text="Beginn" col="0" row="0"></Label>
-                    <TextField class="textfield" (tap)="selectTime()" [text]="time" col="0" row="1"
-                               style="margin-right:5;"></TextField>
+                    <TextField class="textfield margin-right-5" (tap)="selectTime()" [text]="time" col="0" row="1"></TextField>
                     <Label class="h5" text="Dauer in Minuten" col="1" row="0"></Label>
                     <TextField class="textfield" keyboardType="number" [(ngModel)]="newMeeting.duration" col="1"
                                row="1"></TextField>
@@ -62,71 +61,84 @@
                           (selectedIndexChanged)="getUsers($event)"
                           (opened)="onopen()"
                           (closed)="onclose()"></DropDown>
-                <Label class="h5" text="Teilnehmer"></Label>
-                <!-- <DropDown #userdd
-                          style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
-                          [items]="userSelection"
-                          (selectedIndexChanged)="selectUser($event)"
-                          (opened)="onopen()"
-                          (closed)="onclose()"></DropDown> -->
                 <Label class="field-seperator margin-topbot-10" height="1"></Label>
                 <GridLayout columns="*,*,*" rows="*,*">
+                    <Image [src]="meeting_tabs == 'teilnehmer' ? '~/images/files_g.png' : '~/images/files_t.png'"
+                           (tap)="state('teilnehmer')" row="0" col="0" width="40"
+                           height="20"
+                           stretch="aspectFit"></Image>
                     <Image [src]="meeting_tabs == 'agenda' ? '~/images/agenda_t.png' : '~/images/agenda_g.png'"
-                           (tap)="state('agenda')" row="0" col="0" width="20"
-                           height="20" stretch="aspectFit"></Image>
-                    <Image [src]="meeting_tabs == 'protokoll' ? '~/images/protokoll_t.png' : '~/images/protokoll_g.png'"
-                           (tap)="state('protokoll')" row="0" col="1" width="40"
+                           (tap)="state('agenda')" row="0" col="1" width="20"
                            height="20" stretch="aspectFit"></Image>
                     <Image [src]="meeting_tabs == 'files' ? '~/images/files_g.png' : '~/images/files_t.png'"
                            (tap)="state('files')" row="0" col="2" width="40"
                            height="20"
                            stretch="aspectFit"></Image>
-                    <Label class="h4" text="Agenda" [style.color]="meeting_tabs == 'agenda' ? '#03A698' : '#222222'"
+                    <Label class="h4" text="Teilnehmer" [style.color]="meeting_tabs == 'teilnehmer' ? '#03A698' : '#222222'"
                            col="0" row="1" horizontalAlignment="center"
+                           (tap)="state('teilnehmer')"></Label>
+                    <Label class="h4" text="Agenda" [style.color]="meeting_tabs == 'agenda' ? '#03A698' : '#222222'"
+                           col="1" row="1" horizontalAlignment="center"
                            (tap)="state('agenda')"></Label>
-                    <Label class="h4" text="Protokoll"
-                           [style.color]="meeting_tabs == 'protokoll' ? '#03A698' : '#222222'" col="1" row="1"
-                           horizontalAlignment="center"
-                           (tap)="state('protokoll')"></Label>
                     <Label class="h4" text="Files" [style.color]="meeting_tabs == 'files' ? '#03A698' : '#222222'"
                            col="2" row="1" horizontalAlignment="center"
                            (tap)="state('files')"></Label>
                 </GridLayout>
                 <Label class="field-seperator margin-topbot-10" height="1"></Label>
                 <StackLayout [ngSwitch]="meeting_tabs">
-                    <StackLayout *ngSwitchCase="'agenda'">
+                    <StackLayout *ngSwitchCase="'teilnehmer'">
                         <StackLayout>
-                            <GridLayout rows="*,*" columns="*,*, auto">
-                                <TextView hint="Agendapunkt" class="textfield margin-bot-10" row="0"
-                                          colSpan="2"></TextView>
-                                <TextView hint="Verantwortlicher" class="textfield margin-bot-10" row="1" col="0"
-                                          style="margin-right:5;"></TextView>
-                                <TextView hint="Dauer" keyboardType="number" class="textfield margin-bot-10" row="1"
-                                          col="1"></TextView>
+                            <StackLayout orientation="horizontal" horizontalAlignment="center">
+                                <StackLayout class="btn-img margin-right-5">
+                                    <Image src="~/images/delete2.png" width="20" height="20" (tap)="addAttendee()"
+                                           stretch="aspectFit"></Image>
+                                </StackLayout>
+                                <Label verticalAlignment="center" class="h4" text="Teilnehmer hinzufügen"></Label>
+                            </StackLayout>
+                            <GridLayout columns="*,auto,auto" rows="auto,auto" *ngFor="let attendee of newMeeting.attendees">
+                                <TextField class="textfield  margin-right-5" hint="Name"[(ngModel)]="attendee.full_string" col="0" row="0"></TextField>
+                                <TextField class="textfield" hint="Kürzel" [(ngModel)]="attendee.abbreviation" col="1" row="0"></TextField>
+                                <TextField class="textfield" hint="E-Mail-Adresse" [(ngModel)]="attendee.eMail" colSpan="2" row="1"></TextField>
+                                <StackLayout class="btn-img attention margin-right-5">
+                                    <Image src="~/images/delete2.png" width="20" height="20" (tap)="sourcepic()"
+                                           stretch="aspectFit"></Image>
+                                </StackLayout>
                             </GridLayout>
                         </StackLayout>
                     </StackLayout>
-                    <StackLayout *ngSwitchCase="'protokoll'">
-                        <TextView style="margin-top: 15px" height="500px" hint="Inhalt vom Protokoll eingeben"
-                                  returnKeyType="send" class="input"></TextView>
-                    </StackLayout>
-                    <StackLayout *ngSwitchCase="'files'">
-                        <GridLayout columns="*,*" rows="*">
-                            <StackLayout orientation="horizontal" row="0" col="0">
-                                <StackLayout class="btn-img">
-                                    <Image src="~/images/files.png" width="20" height="20" (tap)="sourcepic()"
+                    <StackLayout *ngSwitchCase="'agenda'">
+                        <StackLayout>
+                            <StackLayout orientation="horizontal" horizontalAlignment="center">
+                                <StackLayout class="btn-img margin-right-5">
+                                    <Image src="~/images/delete2.png" width="20" height="20" (tap)="addAttendee()"
                                            stretch="aspectFit"></Image>
                                 </StackLayout>
-                                <Label verticalAlignment="center" text="Datei hinzufügen"></Label>
+                                <Label verticalAlignment="center" class="h4" text="Agendapunkt hinzufügen"></Label>
                             </StackLayout>
-                            <StackLayout orientation="horizontal" row="0" col="1">
-                                <StackLayout class="btn-img">
+                            <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let point of agenda">
+                                <Label class="field-seperator margin-topbot-5" height="1"></Label>
+                                <StackLayout class="btn-img attention margin-right-5" col="0" rowSpan="1">
+                                    <Image src="~/images/delete2.png" width="20" height="20" (tap)="sourcepic()"
+                                           stretch="aspectFit"></Image>
+                                </StackLayout>
+                                <TextView hint="Agendapunkt" [(ngModel)]="point.topic" class="textfield margin-bot-10" row="0"
+                                          colSpan="2"></TextView>
+                                <TextView hint="Verantwortlicher" [(ngModel)]="point.responsible" class="textfield margin-bot-10" row="1" col="0"
+                                          style="margin-right:5;"></TextView>
+                                <TextView hint="Dauer" keyboardType="number" [(ngModel)]="point.duration" class="textfield margin-bot-10" row="1"
+                                          col="1"></TextView>
+                                <Label class="field-seperator margin-topbot-5" height="1"></Label>
+                            </GridLayout>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout *ngSwitchCase="'files'">
+                            <StackLayout orientation="horizontal">
+                                <StackLayout class="btn-img margin-right-5">
                                     <Image src="~/images/photo-camera.png" width="20" height="20" (tap)="sourcepic()"
                                            stretch="aspectFit"></Image>
                                 </StackLayout>
                                 <Label verticalAlignment="center" text="Foto hinzufügen"></Label>
                             </StackLayout>
-                        </GridLayout>
                         <GridLayout columns="auto,*" rows="*,*" *ngFor="let file of userFiles"
                                     style="padding:5; margin-top: 10;">
                             <Image (tap)="showImage(file.imagesrc)" src="~/images/picture_file.png" rowSpan="2" col="0"

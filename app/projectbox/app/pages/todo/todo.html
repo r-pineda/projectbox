@@ -11,9 +11,65 @@
     <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" col="0" row="0">
         <StackLayout class="page" width="100%">
             <StackLayout *ngIf="!create">
-                <GridLayout columns="*" rows="auto,auto,auto">
-                    <Label class="h1" text="TASKS" col="0" row="0"></Label>
+                <GridLayout columns="*" rows="auto,auto,auto,auto">
+                    <Label class="h1" text="TOP-TASKS" col="0" row="0"></Label>
                     <StackLayout class="marginitem" col="0" row="1">
+                        <StackLayout *ngFor="let task of todos">
+                            <GridLayout class="marginitem" *ngIf="task.pinned" columns="auto,*"
+                                        rows="auto,auto,auto"
+                                        (tap)="expand(task.id)">
+                                <Label class="borderitem" [ngStyle]="{'border-color': task.color}" height="30" col="0"
+                                       rowSpan="2"></Label>
+                                <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
+                                    <StackLayout col="0" row="0" orientation="horizontal">
+                                        <Image src="~/images/toptask.png" width="25" height="25"
+                                               stretch="aspectFit"></Image>
+                                        <Label [text]="task.name" class="longtext h4" col="0"
+                                               row="0"></Label>
+                                    </StackLayout>
+                                    <Label class="text ticket" [text]="task.due_date_string" col="0" row="1"></Label>
+                                    <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon"
+                                           col="1"
+                                           rowSpan="2" *ngIf="!todoForDetail[task.id]"></Label>
+                                    <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-up' | fonticon"
+                                           col="1"
+                                           rowSpan="2" *ngIf="todoForDetail[task.id]"></Label>
+                                </GridLayout>
+                                <StackLayout col="1" row="3" *ngIf="todoForDetail[task.id]" class="details">
+                                    <Label class="h4" [text]="task.project"></Label>
+                                    <TextView
+                                            [text]="description"
+                                            editable="false" textWrap="true" class="longtext"></TextView>
+                                    <GridLayout rows="*" columns="auto,*,auto">
+                                        <StackLayout (tap)="startTimer(task.id)" class="btn-img margin-right-10" row="0"
+                                                     col="0">
+                                            <Image [src]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'"
+                                                   width="15" height="15" stretch="aspectFit"></Image>
+                                        </StackLayout>
+                                        <Label class="h4 time" verticalAlignment="center"
+                                               [text]="currentTrackings[task.id].timerString" col="1" row="0"></Label>
+                                        <StackLayout orientation="horizontal" horizontalAlignment="right" col="2"
+                                                     row="0">
+                                            <StackLayout class="btn-img tt-actions" (tap)="goToDetail(task.id)">
+                                                <Image src="~/images/edit2.png" width="15" height="15"
+                                                       stretch="aspectFit"></Image>
+                                            </StackLayout>
+                                            <StackLayout class="btn-img tt-actions" (tap)="finished(task)">
+                                                <Image src="~/images/done2.png" width="15" height="15"
+                                                       stretch="aspectFit"></Image>
+                                            </StackLayout>
+                                            <StackLayout class="btn-img tt-actions attention" (tap)="delete(task.id)">
+                                                <Image src="~/images/delete2.png" width="15" height="15"
+                                                       stretch="aspectFit"></Image>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </GridLayout>
+                                </StackLayout>
+                            </GridLayout>
+                        </StackLayout>
+                    </StackLayout>
+                    <Label class="h1" text="TASKS" col="0" row="2"></Label>
+                    <StackLayout class="marginitem" col="0" row="3">
                         <GridLayout class="marginitem" *ngFor="let task of todos" columns="auto,*"
                                     rows="auto,auto,auto"
                                     (tap)="expand(task.id)">
@@ -92,11 +148,11 @@
                           (closed)="onclose()"></DropDown>
                 <Label class="h5" text="Verantwortlicher"></Label>
                 <DropDown #phasedd
-                            style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
-                            [items]="userSelection"
-                            (selectedIndexChanged)="selectUser($event)"
-                            (opened)="onopen()" A
-                            (closed)="onclose()"></DropDown>
+                          style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
+                          [items]="userSelection"
+                          (selectedIndexChanged)="selectUser($event)"
+                          (opened)="onopen()" A
+                          (closed)="onclose()"></DropDown>
                 <Label class="h5" text="Beschreibung"></Label>
                 <TextView style="margin-top: 15px" [(ngModel)]="newTodo.description" height="200"
                           returnKeyType="send" class="input"></TextView>
@@ -104,7 +160,8 @@
                     <Label verticalAlignment="center" text="Top-Task" class="h4" row="0" col="1"></Label>
                     <Image src="~/images/toptask.png" width="20" height="20" stretch="aspectFit"
                            class="margin-right-5" row="0" col="0"></Image>
-                    <Switch [(ngModel)]="newTodo.pinned" (checkedChange)="onFirstChecked($event)" horizontalAlignment="right"
+                    <Switch [(ngModel)]="newTodo.pinned" (checkedChange)="onFirstChecked($event)"
+                            horizontalAlignment="right"
                             col="2" row="0"></Switch>
                 </GridLayout>
             </StackLayout>

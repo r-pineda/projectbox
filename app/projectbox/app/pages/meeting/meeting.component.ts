@@ -12,7 +12,7 @@ import {
     SwipeGestureEventData,
     TouchGestureEventData
 } from "ui/gestures";
-import {Meeting} from "../../shared/meeting/meeting"
+import {Attendee, Meeting} from "../../shared/meeting/meeting"
 import {MeetingService} from "../../shared/meeting/meeting.service"
 import * as camera from "nativescript-camera";
 
@@ -59,6 +59,7 @@ export class MeetingComponent implements OnInit {
     create: boolean;
     meetingdata: any;
     meetingsText: string;
+    meeting_tabs: String;
     meeting: Meeting;
     nav: NavComponent;
     public projectSelection :string[] = new Array<string>();
@@ -113,7 +114,7 @@ export class MeetingComponent implements OnInit {
 
     cancel() {
         this.create = false;
-        this.page.css = "Page { background-color: #ECEDEE; } .page { padding-left: 10; background-color: #ECEDEE;}";
+        this.page.css = "Page { background-color: #ECEDEE; padding: 0;} .page { padding-left: 10; background-color: #ECEDEE;}";
     }
 
     displayMeetings(data: any) {
@@ -167,6 +168,10 @@ export class MeetingComponent implements OnInit {
         });
     }
 
+    addAttendee() {
+        this.newMeeting.attendees.push(new Attendee());
+    }
+
     /* calendar */
 
     settings: any;
@@ -202,6 +207,10 @@ export class MeetingComponent implements OnInit {
             todaySelectionColor: "#29A699", // today color when seleted (only iOS)
             borderRadius: 40 // border radius of the selection marker
         };
+    }
+
+    state(id) {
+        this.meeting_tabs = id;
     }
 
     public dateSelected(event) {

@@ -60,7 +60,10 @@ export class Todo_detailComponent {
       this.modalDatetimepicker = new ModalDatetimepicker();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+      this.date = this.todo.due_date_string;
+
+  }
 
   navigateto(pagename: string) {
     this.routerExtensions.navigate([pagename], {
@@ -148,13 +151,18 @@ export class Todo_detailComponent {
         this.routerExtensions.backToPreviousPage();
     }
 
+    saveTodo() {
+      this.todoService.updateTodo(this.todo);
+      this.cancel();
+    }
+
     /* date picker */
     selectDate() {
         this.modalDatetimepicker.pickDate(<PickerOptions>{
             title: "Datum auswählen",
             theme: "dark",
             startingDate: new Date(),
-            maxDate: new Date('2030-01-01'), /* hier maxDate setzen */
+            maxDate: new Date('2030-12-31'), /* hier maxDate setzen */
             minDate: new Date()
         }).then((result:any) => {
             if (result) {

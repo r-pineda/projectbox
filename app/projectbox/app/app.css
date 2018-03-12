@@ -109,6 +109,11 @@ h1 {
     padding-bottom: 5;
 }
 
+.margin-topbot-5 {
+    margin-top: 5;
+    margin-bottom: 5;
+}
+
 .margin-topbot-10 {
     margin-top: 10;
     margin-bottom: 10;
