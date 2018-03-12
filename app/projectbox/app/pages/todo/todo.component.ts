@@ -39,6 +39,7 @@ export class TodoComponent {
   nav: NavComponent;
   public projectSelection :string[] = new Array<string>();//testen ob assotiativ funktioniert. || array[project_id] = project_name
   public phaseSelection :string[] = new Array<string>(); //dropdown selection zur auswahl der phase in der ein task created werden soll. wird befüllt nachdem der user ein Projekt ausgewählt hat.
+  public userSelection :string[] = new Array<string>();
   currentTrackings :Tracking[] = new Array<Tracking>();
   public projectList: string[] = new Array<string>();
   //timerString :string;
@@ -47,6 +48,7 @@ export class TodoComponent {
   selectedProject: string;
   projectIds :string[] = new Array<string>();
   phaseIds :string[] = new Array<string>();
+  userIds :string[] = new Array<string>();
   projectdd = this.page.getViewById<DropDown>("projectdd");
   phasedd = this.page.getViewById<DropDown>("phasedd");
   direction: number;
@@ -223,12 +225,19 @@ export class TodoComponent {
             data.phases.forEach((phase) => {
               this.phaseIds[this.phaseSelection.push(phase.name)-1] = phase.id;
             });
+            data.users.forEach((user) => {
+              this.userIds[this.userSelection.push(user.first_name + " " + user.last_name)-1] = user.id;
+            });
           },
           (error) => {})
     }
 
     selectPhase(args: SelectedIndexChangedEventData){
       this.newTodo.phase = this.phaseIds[args.newIndex];
+    }
+
+    selectUser(args: SelectedIndexChangedEventData){
+      this.newTodo.responsible = this.userIds[args.newIndex];
     }
 
     startTimer(task_id :string){
