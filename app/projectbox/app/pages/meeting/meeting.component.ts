@@ -12,7 +12,7 @@ import {
     SwipeGestureEventData,
     TouchGestureEventData
 } from "ui/gestures";
-import {Attendee, Meeting} from "../../shared/meeting/meeting"
+import {Meeting, Attendee, AgendaPoint} from "../../shared/meeting/meeting"
 import {MeetingService} from "../../shared/meeting/meeting.service"
 import * as camera from "nativescript-camera";
 
@@ -99,12 +99,14 @@ export class MeetingComponent implements OnInit {
         this.create = false;
         this.page.css = "Page { background-color: #ECEDEE; } .page { padding-left: 0; padding:20; background-color: #ECEDEE;} #meetinglist { padding-left: 20; }";
         this.userService.getProjects()
-    .then((data) => {
-      data.projects.forEach((project) => {
-        this.projectSelection[project.id] = project.name;
-        this.projectIds[this.projectList.push(project.name)-1] = project.id;
-      });
-    })
+        .then((data) => {
+            data.projects.forEach((project) => {
+                this.projectSelection[project.id] = project.name;
+                this.projectIds[this.projectList.push(project.name)-1] = project.id;
+            });
+        });
+    this.newMeeting.attendees = new Array<Attendee>();
+    this.newMeeting.attendees.push(new Attendee());
     }
 
     cr_meeting() {
@@ -138,6 +140,14 @@ export class MeetingComponent implements OnInit {
 
             data = this.meetingService.getSavedMeetings()
             data.meetings.forEach(meeting => {
+                this.userService.getSingleProject(meeting.project)
+                    .then(
+                    (data) => {
+                        console.log("hallo");
+                        meeting.project_color = data.projects[0].color
+                    },
+                    (error) => {console.log("ALARM")}
+                    );
                 let ce :CalendarEvent = new CalendarEvent(new Date(meeting.date));
                 this.events.push(ce);
                 var curDate = new Date();
