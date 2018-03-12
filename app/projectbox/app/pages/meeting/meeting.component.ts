@@ -65,6 +65,7 @@ export class MeetingComponent implements OnInit {
     direction: number;
     newMeeting :Meeting = new Meeting;
 
+
     projectIds :string[] = new Array<string>();
     public projectList: string[] = new Array<string>();
     /* attendeeArray :string[] = new Array<string>();
@@ -119,7 +120,7 @@ export class MeetingComponent implements OnInit {
 
         if (data) {
             data.meetings.forEach(meeting => {
-                console.log(meeting.name);
+                
                 let ce :CalendarEvent = new CalendarEvent(new Date(meeting.date));
                 this.events.push(ce);
                 var curDate = new Date();

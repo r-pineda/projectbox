@@ -40,7 +40,7 @@ export class TodoService {
     )
     .map(response => response.json())
     .do(data => {
-
+      this.saveTodos(data);
     })
     .catch(this.handleErrors)
     .toPromise();
