@@ -49,8 +49,6 @@ export class TodoComponent {
   projectIds :string[] = new Array<string>();
   phaseIds :string[] = new Array<string>();
   userIds :string[] = new Array<string>();
-  projectdd = this.page.getViewById<DropDown>("projectdd");
-  phasedd = this.page.getViewById<DropDown>("phasedd");
   direction: number;
     monthNames = ["Jänner", "Februar", "März", "April", "Mai", "Juni",
         "Juli", "August", "September", "Oktober", "November", "Dezember"

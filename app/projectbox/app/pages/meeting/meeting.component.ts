@@ -27,6 +27,7 @@ import {RadSideDrawerComponent, SideDrawerType} from "nativescript-pro-ui/sidedr
 import {RadSideDrawer} from 'nativescript-pro-ui/sidedrawer';
 import {TNSFontIconService} from 'nativescript-ngx-fonticon';
 import * as tabViewModule from "tns-core-modules/ui/tab-view";
+import {DropDown, ValueList, SelectedIndexChangedEventData} from "nativescript-drop-down";
 import {
     Calendar,
     SELECTION_MODE, // Multiple or single
@@ -62,6 +63,13 @@ export class MeetingComponent implements OnInit {
     nav: NavComponent;
     public projectSelection :string[] = new Array<string>();
     direction: number;
+    newMeeting :Meeting = new Meeting;
+
+    projectIds :string[] = new Array<string>();
+    public projectList: string[] = new Array<string>();
+    /* attendeeArray :string[] = new Array<string>();
+    userIds :string[] = new Array<string>();
+    public userSelection :string[] = new Array<string>(); */
 
     /* date picker */
     public date: string;
@@ -89,11 +97,12 @@ export class MeetingComponent implements OnInit {
         this.create = false;
         this.page.css = "Page { background-color: #ECEDEE; } .page { padding-left: 0; padding:20; background-color: #ECEDEE;} #meetinglist { padding-left: 20; }";
         this.userService.getProjects()
-            .then((data) => {
-                data.projects.forEach((project) => {
-                this.projectSelection[project.id] = project.name;
-            });
-        });
+    .then((data) => {
+      data.projects.forEach((project) => {
+        this.projectSelection[project.id] = project.name;
+        this.projectIds[this.projectList.push(project.name)-1] = project.id;
+      });
+    })
     }
 
     cr_meeting() {
@@ -211,7 +220,7 @@ export class MeetingComponent implements OnInit {
 
 
     public monthChanged(event) {
-        console.log('month selected');
+        //console.log('month selected');
     }
 
     /* gesten */
@@ -272,4 +281,22 @@ export class MeetingComponent implements OnInit {
                 console.log("Error: " + error);
             });
     };
+
+    /* getUsers(args: SelectedIndexChangedEventData){
+        this.newMeeting.project = this.projectIds[args.newIndex];
+        this.userService.getSingleProject(this.newMeeting.project)
+          .then(
+            (data) => {
+              this.userSelection = new Array<string>();
+              data.users.forEach((user) => {
+                this.userIds[this.userSelection.push(user.first_name + " " + user.last_name)-1] = user.id;
+              });
+            },
+            (error) => {})
+      }
+
+      selectUser(args: SelectedIndexChangedEventData){
+        this.attendeeArray[this.userIds[args.newIndex]] = this.userSelection.splice(args.newIndex, 1);
+        console.log(this.attendeeArray[this.userIds[args.newIndex]]);
+      } */
 }
