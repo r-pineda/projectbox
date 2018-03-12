@@ -110,6 +110,9 @@ export class MeetingComponent implements OnInit {
 
         if (data) {
             data.meetings.forEach(meeting => {
+                console.log(meeting.name);
+                let ce :CalendarEvent = new CalendarEvent(new Date(meeting.date));
+                this.events.push(ce);
                 var curDate = new Date();
                 var date = new Date(meeting.date);
                 if (curDate.getDay() == date.getDay() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
@@ -124,6 +127,8 @@ export class MeetingComponent implements OnInit {
 
             data = this.meetingService.getSavedMeetings()
             data.meetings.forEach(meeting => {
+                let ce :CalendarEvent = new CalendarEvent(new Date(meeting.date));
+                this.events.push(ce);
                 var curDate = new Date();
                 var date = new Date(meeting.date);
                 if (curDate.getDay() == date.getDay() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
@@ -156,7 +161,7 @@ export class MeetingComponent implements OnInit {
 
     settings: any;
     subtitles: CalendarSubtitle[];
-    events: CalendarEvent[];
+    events :CalendarEvent[] = new Array<CalendarEvent>();
     public appearance: Appearance;
     appearanceOptions: Array<Appearance>;
     private _calendar: Calendar;
@@ -195,7 +200,6 @@ export class MeetingComponent implements OnInit {
 
     filterByDate(date: Date) {
         this.displayedMeetings = new Array<Meeting>();
-        this.events = new Array <CalendarEvent>();
         this.meetings.forEach(meeting => {
             let meetingDate = new Date(meeting.date);
             if (meetingDate.getFullYear() === date.getFullYear() && meetingDate.getMonth() === date.getMonth() && meetingDate.getDate() === date.getDate()) {
