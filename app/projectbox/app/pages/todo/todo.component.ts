@@ -317,8 +317,7 @@ export class TodoComponent {
             minDate: new Date()
         }).then((result:any) => {
             if (result) {
-                this.date = result.day + "." + result.month + "." + result.year;
-                this.newTodo.due_date = new Date(result.day, result.month, result.year);
+                this.newTodo.due_date_string = result.day + "." + result.month + "." + result.year;
             }
         })
             .catch((error) => {

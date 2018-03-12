@@ -73,7 +73,7 @@
                 <Label class="h5" text="Titel"></Label>
                 <TextField class="textfield" [(ngModel)]="newTodo.name"></TextField>
                 <Label class="h5" text="Deadline"></Label>
-                <TextField class="textfield" (tap)="selectDate()" [text]="date"></TextField>
+                <TextField class="textfield" (tap)="selectDate()" [text]="newTodo.due_date_string"></TextField>
                 <Label class="h5" text="Projekt"></Label>
                 <!--<TextField class="textfield" [(ngModel)]="todo.project"></TextField>-->
                 <DropDown #dd
@@ -97,7 +97,7 @@
                     <Label verticalAlignment="center" text="Top-Task" class="h4" row="0" col="1"></Label>
                     <Image src="~/images/toptask.png" width="20" height="20" stretch="aspectFit"
                            class="margin-right-5" row="0" col="0"></Image>
-                    <Switch checked="false" (checkedChange)="onFirstChecked($event)" horizontalAlignment="right"
+                    <Switch [(ngModel)]="newTodo.pinned" (checkedChange)="onFirstChecked($event)" horizontalAlignment="right"
                             col="2" row="0"></Switch>
                 </GridLayout>
             </StackLayout>

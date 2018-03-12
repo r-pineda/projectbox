@@ -52,6 +52,7 @@ export class Todo {
   customer: any = null;
   parent: any = null;
   color: string;
+  pinned :boolean;
 }
 
 export class Tracking {
