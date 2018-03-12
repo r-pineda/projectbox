@@ -176,7 +176,7 @@ export class MeetingComponent implements OnInit {
         this.appearance = <Appearance>{
             weekdayTextColor: "#000000", //color of Tue, Wed, Thur.. (only iOS)
                 headerTitleColor: "#000000", //color of the current Month (only iOS)
-                eventColor: "#29A699", // color of dots
+                eventColor: "#22313F", // color of dots
                 selectionColor: "#29A699", // color of the circle when a date is clicked
                 todayColor: "#BDC3C7", // the color of the current day
                 hasBorder: true, // remove border (only iOS)
@@ -185,7 +185,7 @@ export class MeetingComponent implements OnInit {
         },{
             weekdayTextColor: "#000000", //color of Tue, Wed, Thur.. (only iOS)
             headerTitleColor: "#000000", //color of the current Month (only iOS)
-            eventColor: "#29A699", // color of dots
+            eventColor: "#22313F", // color of dots
             selectionColor: "#29A699", // color of the circle when a date is clicked
             todayColor: "#BDC3C7", // the color of the current day
             hasBorder: true, // remove border (only iOS)
