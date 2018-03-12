@@ -222,6 +222,7 @@ export class TodoComponent {
         .then(
           (data) => {
             this.phaseSelection = new Array<string>();
+            this.userSelection = new Array<string>();
             data.phases.forEach((phase) => {
               this.phaseIds[this.phaseSelection.push(phase.name)-1] = phase.id;
             });

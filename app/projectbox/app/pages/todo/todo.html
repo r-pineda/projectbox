@@ -90,6 +90,13 @@
                           (selectedIndexChanged)="selectPhase($event)"
                           (opened)="onopen()" A
                           (closed)="onclose()"></DropDown>
+                <Label class="h5" text="Verantwortlicher"></Label>
+                <DropDown #phasedd
+                            style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
+                            [items]="userSelection"
+                            (selectedIndexChanged)="selectUser($event)"
+                            (opened)="onopen()" A
+                            (closed)="onclose()"></DropDown>
                 <Label class="h5" text="Beschreibung"></Label>
                 <TextView style="margin-top: 15px" [(ngModel)]="newTodo.description" height="200"
                           returnKeyType="send" class="input"></TextView>
