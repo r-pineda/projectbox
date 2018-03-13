@@ -64,6 +64,9 @@ export class NavComponent implements AfterViewInit, OnInit {
       (data) => this.displayFiles(data),
       (error) => this.displayFiles(false)
     );
+
+      this.drawer = this.drawerComponent.sideDrawer;
+      this._changeDetectionRef.detectChanges();
   }
 
   displayFiles(data :any){
@@ -95,8 +98,8 @@ export class NavComponent implements AfterViewInit, OnInit {
     private drawer: RadSideDrawer;
 
     ngAfterViewInit() {
-        this.drawer = this.drawerComponent.sideDrawer;
-        this._changeDetectionRef.detectChanges();
+        /*this.drawer = this.drawerComponent.sideDrawer;
+        this._changeDetectionRef.detectChanges();*/
     }
 
     public openDrawer() {

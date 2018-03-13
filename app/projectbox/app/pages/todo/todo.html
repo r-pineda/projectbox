@@ -1,10 +1,18 @@
 <ActionBar title="" (swipe)="onSwipe($event)">
-    <GridLayout rows="*,*,*" columns="*">
-        <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
+    <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
+        <Label class="fa" *ngIf="nav.drawer.getIsOpen()" (tap)="nav.onCloseDrawerTap()" [text]="'fa-times' | fonticon" ios:horizontalAlignment="left"
+               android:horizontalAlignment="left" row="0" col="0"></Label>
+        <Label class="fa" *ngIf="!nav.drawer.getIsOpen()" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
                android:horizontalAlignment="left" row="0" col="0"></Label>
         <Label text="Tasks" class="nav-h3" row="0" col="1"></Label>
-        <Label class="fa" (tap)="cr_task()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right"
+        <Label class="fa" *ngIf="!create" (tap)="cr_task()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right"
                android:horizontalAlignment="right" row="0" col="2"></Label>
+        <StackLayout orientation="horizontal" row="0" col="2" ios:horizontalAlignment="right"
+                     android:horizontalAlignment="right" *ngIf="create">
+            <Label class="fa margin-right-10" (tap)="cancel()" [text]="'fa-times' | fonticon" ></Label>
+            <Label class="fa" (tap)="createTodo()" [text]="'fa-floppy-o' | fonticon" ></Label>
+        </StackLayout>
+
     </GridLayout>
 </ActionBar>
 <GridLayout columns="*" rows="*,auto">
@@ -41,19 +49,24 @@
                                             [text]="description"
                                             editable="false" textWrap="true" class="longtext"></TextView>
                                     <GridLayout rows="*" columns="auto,*,auto">
-                                        <StackLayout (tap)="startTimer(task.id)" class="btn-img margin-right-10" row="0"
+                                       <!-- <StackLayout (tap)="startTimer(task.id)" class="btn-img margin-right-10" row="0"
                                                      col="0">
                                             <Image [src]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'"
-                                                   width="15" height="15" stretch="aspectFit"></Image>
-                                        </StackLayout>
+                                                   width="15" height="15" stretch="aspectFit"></Image>-->
+                                            <FAB [icon]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'" (tap)="startTimer(task.id)"  rippleColor="#f1f1f1"
+                                            class="fab-button margin-10" row="0"
+                                                 col="0"></FAB>
+                                        <!--</StackLayout>-->
                                         <Label class="h4 time" verticalAlignment="center"
                                                [text]="currentTrackings[task.id].timerString" col="1" row="0"></Label>
                                         <StackLayout orientation="horizontal" horizontalAlignment="right" col="2"
                                                      row="0">
-                                            <StackLayout class="btn-img tt-actions" (tap)="goToDetail(task.id)">
+                                            <!--<StackLayout class="btn-img tt-actions" (tap)="goToDetail(task.id)">
                                                 <Image src="~/images/edit2.png" width="15" height="15"
                                                        stretch="aspectFit"></Image>
-                                            </StackLayout>
+                                            </StackLayout>-->
+                                            <FAB icon="~/images/edit2.png" (tap)="goToDetail(task.id)"  rippleColor="#f1f1f1"
+                                                 class="fab-button margin-10"></FAB>
                                             <StackLayout class="btn-img tt-actions" (tap)="finished(task)">
                                                 <Image src="~/images/done2.png" width="15" height="15"
                                                        stretch="aspectFit"></Image>
@@ -96,27 +109,20 @@
                                         [text]="description"
                                         editable="false" textWrap="true" class="longtext"></TextView>
                                 <GridLayout rows="*" columns="auto,*,auto">
-                                    <StackLayout (tap)="startTimer(task.id)" class="btn-img margin-right-10" row="0"
-                                                 col="0">
-                                        <Image [src]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'"
-                                               width="15" height="15" stretch="aspectFit"></Image>
-                                    </StackLayout>
+                                    <FAB [icon]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'" (tap)="startTimer(task.id)"  rippleColor="#f1f1f1"
+                                         class="fab-button margin-5" row="0"
+                                         col="0"></FAB>
+                                    <!--</StackLayout>-->
                                     <Label class="h4 time" verticalAlignment="center"
                                            [text]="currentTrackings[task.id].timerString" col="1" row="0"></Label>
                                     <StackLayout orientation="horizontal" horizontalAlignment="right" col="2"
                                                  row="0">
-                                        <StackLayout class="btn-img tt-actions" (tap)="goToDetail(task.id)">
-                                            <Image src="~/images/edit2.png" width="15" height="15"
-                                                   stretch="aspectFit"></Image>
-                                        </StackLayout>
-                                        <StackLayout class="btn-img tt-actions" (tap)="finished(task)">
-                                            <Image src="~/images/done2.png" width="15" height="15"
-                                                   stretch="aspectFit"></Image>
-                                        </StackLayout>
-                                        <StackLayout class="btn-img tt-actions attention" (tap)="delete(task.id)">
-                                            <Image src="~/images/delete2.png" width="15" height="15"
-                                                   stretch="aspectFit"></Image>
-                                        </StackLayout>
+                                        <FAB icon="~/images/edit2.png" (tap)="goToDetail(task.id)"  rippleColor="#f1f1f1"
+                                             class="fab-button margin-5"></FAB>
+                                        <FAB icon="~/images/done2.png" (tap)="finished(task)"  rippleColor="#f1f1f1"
+                                             class="fab-button margin-5"></FAB>
+                                        <FAB icon="~/images/delete2.png" (tap)="delete(task.id)"  rippleColor="#f1f1f1"
+                                             class="fab-button-red margin-5"></FAB>
                                     </StackLayout>
                                 </GridLayout>
                             </StackLayout>

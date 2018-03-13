@@ -32,6 +32,7 @@ import * as dialogs from "ui/dialogs";
 
 /* date picker */
 import { ModalDatetimepicker, PickerOptions } from 'nativescript-modal-datetimepicker';
+import {StatusService} from "../../shared/status/status.service";
 
 var PhotoViewer = require("nativescript-photoviewer");
 
@@ -40,7 +41,7 @@ var bghttp = require("nativescript-background-http"); //file upload
 @Component({
   selector: "pb-meeting_detail",
   templateUrl: "pages/meeting_detail/meeting_detail.html",
-  providers: [UserService, MeetingService, NavComponent],
+  providers: [UserService, MeetingService, StatusService, NavComponent],
   styleUrls: ["pages/meeting_detail/meeting_detail-common.css", "pages/meeting_detail/meeting_detail.css"]
 })
 export class Meeting_detailComponent implements OnInit{
@@ -158,22 +159,6 @@ export class Meeting_detailComponent implements OnInit{
     this.cancel();
   }
 
-  createMeeting(){
-    this.meetingService.createMeeting(this.meeting);
-    this.cancel();
-  }
-
-  onSwipe(args: SwipeGestureEventData) {
-    if (args.direction === 2) {
-    
-      this.routerExtensions.navigate(["/dashboard"], {
-          transition: {
-              name: "slideRight",
-              curve: "easeOut"
-          }
-      });
-    }
-  }
 
   uploadImage(){
     console.log("uploading...");

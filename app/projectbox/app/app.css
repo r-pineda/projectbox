@@ -293,7 +293,7 @@ ActionBar {
     border-color: #9e9e9e;
     background-color: #9e9e9e;
 }
-
+/* usage of FAB-BUTTONS
 .btn-img {
     border-radius: 100;
     border-width: 1;
@@ -301,7 +301,7 @@ ActionBar {
     color: #ffffff;
     border-color: #03A698;
     background-color: #03A698;
-    /*margin-right: 10;*/
+    /*margin-right: 10;
 }
 
 .btn-img-small {
@@ -316,7 +316,7 @@ ActionBar {
 .attention {
     background-color: #ff1744;
     border-color: #ff1744;
-}
+}*/
 
 .time {
     margin-right: 30;
@@ -351,6 +351,12 @@ TextField, TextView {
     height: 45;
     width: 45;
     background-color: #03A698;
+}
+
+.fab-button-red {
+    height: 45;
+    width: 45;
+    background-color: #ff1744;
 }
 
 .form-taskticket {

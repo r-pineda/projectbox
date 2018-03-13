@@ -1,6 +1,8 @@
 <ActionBar title="" (swipe)="onSwipe($event)">
     <GridLayout rows="*,*,*" columns="*">
-        <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
+        <Label class="fa" *ngIf="nav.drawer.getIsOpen()" (tap)="nav.onCloseDrawerTap()" [text]="'fa-times' | fonticon" ios:horizontalAlignment="left"
+               android:horizontalAlignment="left" row="0" col="0"></Label>
+        <Label class="fa" *ngIf="!nav.drawer.getIsOpen()" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
                android:horizontalAlignment="left" row="0" col="0"></Label>
         <Label text="Ticket" class="nav-h3" row="0" col="1"></Label>
         <Label class="fa" (tap)="cr_ticket()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right"

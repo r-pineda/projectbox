@@ -164,7 +164,7 @@ export class MeetingComponent implements OnInit {
     }
 
     createMeeting() {
-        this.meetingService.createMeeting(this.meeting);
+        this.meetingService.createMeeting(this.newMeeting);
     }
 
     showDetail(id: number) {
@@ -180,6 +180,18 @@ export class MeetingComponent implements OnInit {
 
     addAttendee() {
         this.newMeeting.attendees.push(new Attendee());
+    }
+
+    removeAttendee() {
+
+    }
+
+    addPoint() {
+        this.newMeeting.agenda.push(new AgendaPoint());
+    }
+
+    removePoint() {
+
     }
 
     /* calendar */

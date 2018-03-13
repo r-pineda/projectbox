@@ -26,10 +26,11 @@ import { TicketService } from "../../shared/ticket/ticket.service";
 import {Todo, Tracking} from "../../shared/todo/todo";
 import { Ticket } from "../../shared/ticket/ticket";
 import { NavComponent } from "../nav/nav.component";
+import {StatusService} from "../../shared/status/status.service";
 
 @Component({
   selector: "pb-dashboard",
-  providers: [UserService, MeetingService, TodoService, TicketService],
+  providers: [UserService, MeetingService, TodoService, TicketService, StatusService],
   templateUrl: "pages/dashboard/dashboard.html",
   styleUrls: ["pages/dashboard/dashboard-common.css", "pages/dashboard/dashboard.css"]
 })
@@ -47,7 +48,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   todos :Todo[];
   tickets :Ticket[];
   all_projects :boolean = false;
-  private nav :NavComponent;
+  nav :NavComponent;
   monthNames = ["Jänner", "Februar", "März", "April", "Mai", "Juni",
         "Juli", "August", "September", "Oktober", "November", "Dezember"
     ];

@@ -1,6 +1,8 @@
 <ActionBar title="" (swipe)="onSwipe($event)">
     <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
-        <Label class="fa" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
+        <Label class="fa" *ngIf="nav.drawer.getIsOpen()" (tap)="nav.onCloseDrawerTap()" [text]="'fa-times' | fonticon" ios:horizontalAlignment="left"
+               android:horizontalAlignment="left" row="0" col="0"></Label>
+        <Label class="fa" *ngIf="!nav.drawer.getIsOpen()" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
                android:horizontalAlignment="left" row="0" col="0"></Label>
         <Label text="Meetings" class="nav-h3" row="0" col="1"></Label>
         <Label class="fa" (tap)="cr_meeting()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right"
@@ -88,39 +90,40 @@
                 <StackLayout [ngSwitch]="meeting_tabs">
                     <StackLayout *ngSwitchCase="'teilnehmer'">
                         <StackLayout>
-                            <StackLayout orientation="horizontal" horizontalAlignment="center">
-                                <StackLayout class="btn-img margin-right-5">
-                                    <Image src="~/images/delete2.png" width="20" height="20" (tap)="addAttendee()"
-                                           stretch="aspectFit"></Image>
-                                </StackLayout>
+                            <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="addAttendee()">
+                                <FAB icon="~/images/abbrechen2.png" rowSpan="2"
+                                     col="0" rippleColor="#f1f1f1"
+                                     class="fab-button margin-10"></FAB>
                                 <Label verticalAlignment="center" class="h4" text="Teilnehmer hinzufügen"></Label>
                             </StackLayout>
-                            <GridLayout columns="*,auto,auto" rows="auto,auto" *ngFor="let attendee of newMeeting.attendees">
-                                <TextField class="textfield  margin-right-5" hint="Name"[(ngModel)]="attendee.full_string" col="0" row="0"></TextField>
-                                <TextField class="textfield" hint="Kürzel" [(ngModel)]="attendee.abbreviation" col="1" row="0"></TextField>
-                                <TextField class="textfield" hint="E-Mail-Adresse" [(ngModel)]="attendee.eMail" colSpan="2" row="1"></TextField>
-                                <StackLayout class="btn-img attention margin-right-5">
-                                    <Image src="~/images/delete2.png" width="20" height="20" (tap)="sourcepic()"
-                                           stretch="aspectFit"></Image>
-                                </StackLayout>
+                            <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let attendee of newMeeting.attendees">
+                                <FAB icon="~/images/abbrechen2.png" rowSpan="2"
+                                     col="0" rippleColor="#f1f1f1"
+                                     class="fab-button margin-10"></FAB>
+                                <TextField class="textfield  margin-right-5" hint="Name"[(ngModel)]="attendee.full_string" col="1" row="0"></TextField>
+                                <TextField class="textfield" hint="Kürzel" [(ngModel)]="attendee.abbreviation" col="2" row="0"></TextField>
+                                <TextField class="textfield" hint="E-Mail-Adresse" [(ngModel)]="attendee.eMail" col="1" colSpan="2" row="1"></TextField>
                             </GridLayout>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout *ngSwitchCase="'agenda'">
                         <StackLayout>
-                            <StackLayout orientation="horizontal" horizontalAlignment="center">
+                            <StackLayout orientation="horizontal" horizontalAlignment="center"  (tap)="addPoint()">
                                 <StackLayout class="btn-img margin-right-5">
-                                    <Image src="~/images/delete2.png" width="20" height="20" (tap)="addAttendee()"
+                                    <Image src="~/images/hinzufuegen2.png" width="20" height="20"
                                            stretch="aspectFit"></Image>
                                 </StackLayout>
                                 <Label verticalAlignment="center" class="h4" text="Agendapunkt hinzufügen"></Label>
                             </StackLayout>
-                            <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let point of agenda">
+                            <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let point of newMeeting.agenda">
                                 <Label class="field-seperator margin-topbot-5" height="1"></Label>
-                                <StackLayout class="btn-img attention margin-right-5" col="0" rowSpan="1">
-                                    <Image src="~/images/delete2.png" width="20" height="20" (tap)="sourcepic()"
-                                           stretch="aspectFit"></Image>
-                                </StackLayout>
+                                <!--<StackLayout class="btn-img attention margin-right-5" col="0" rowSpan="1">
+                                    <Image src="~/images/abbrechen2.png" width="20" height="20"
+                                           stretch="aspectFit" verticalAlignment="bottom"></Image>
+                                </StackLayout>-->
+                                <FAB icon="~/images/abbrechen2.png" rowSpan="1"
+                                     col="0" rippleColor="#f1f1f1"
+                                     class="fab-button margin-10"></FAB>
                                 <TextView hint="Agendapunkt" [(ngModel)]="point.topic" class="textfield margin-bot-10" row="0"
                                           colSpan="2"></TextView>
                                 <TextView hint="Verantwortlicher" [(ngModel)]="point.responsible" class="textfield margin-bot-10" row="1" col="0"
@@ -154,7 +157,7 @@
                 <StackLayout orientation="horizontal">
                     <FAB icon="~/images/abbrechen2.png" (tap)="cancel()" rippleColor="#f1f1f1"
                          class="fab-button margin-15"></FAB>
-                    <FAB icon="~/images/save.png" rippleColor="#f1f1f1" (tap)="updateMeeting()"
+                    <FAB icon="~/images/save.png" rippleColor="#f1f1f1" (tap)="createMeeting()"
                          class="fab-button margin-15"></FAB>
                 </StackLayout>
             </StackLayout>
