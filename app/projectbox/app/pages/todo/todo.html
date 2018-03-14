@@ -1,15 +1,21 @@
 <ActionBar title="" (swipe)="onSwipe($event)">
     <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
-        <Label class="fa" *ngIf="nav.drawer.getIsOpen()" (tap)="nav.onCloseDrawerTap()" [text]="'fa-times' | fonticon" ios:horizontalAlignment="left"
-               android:horizontalAlignment="left" row="0" col="0"></Label>
-        <Label class="fa" *ngIf="!nav.drawer.getIsOpen()" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
-               android:horizontalAlignment="left" row="0" col="0"></Label>
+        <StackLayout orientation="horizontal" row="0" col="0" ios:horizontalAlignment="left"
+                     android:horizontalAlignment="left" *ngIf="!create">
+            <Label class="fa" *ngIf="nav.drawer.getIsOpen()" (tap)="nav.onCloseDrawerTap()" [text]="'fa-times' | fonticon" ios:horizontalAlignment="left"
+                   android:horizontalAlignment="left" row="0" col="0"></Label>
+            <Label class="fa" *ngIf="!nav.drawer.getIsOpen()" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
+                   android:horizontalAlignment="left" row="0" col="0"></Label>
+        </StackLayout>
+        <StackLayout orientation="horizontal" row="0" col="0" ios:horizontalAlignment="left"
+                     android:horizontalAlignment="left" *ngIf="create">
+            <Label class="fa margin-right-10" (tap)="cancel()" [text]="'fa-times' | fonticon" ></Label>
+        </StackLayout>
         <Label text="Tasks" class="nav-h3" row="0" col="1"></Label>
         <Label class="fa" *ngIf="!create" (tap)="cr_task()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right"
                android:horizontalAlignment="right" row="0" col="2"></Label>
         <StackLayout orientation="horizontal" row="0" col="2" ios:horizontalAlignment="right"
                      android:horizontalAlignment="right" *ngIf="create">
-            <Label class="fa margin-right-10" (tap)="cancel()" [text]="'fa-times' | fonticon" ></Label>
             <Label class="fa" (tap)="createTodo()" [text]="'fa-floppy-o' | fonticon" ></Label>
         </StackLayout>
 
@@ -131,7 +137,7 @@
                 </GridLayout>
             </StackLayout>
             <StackLayout *ngIf="create" class="form-taskticket">
-                <Label class="fa" [text]="'fa-angle-down' | fonticon" horizontalAlignment="center"></Label>
+                <!--<Label class="fa" [text]="'fa-angle-down' | fonticon" horizontalAlignment="center"></Label>-->
                 <Label class="h5" text="Titel"></Label>
                 <TextField class="textfield" [(ngModel)]="newTodo.name"></TextField>
                 <Label class="h5" text="Deadline"></Label>
@@ -160,7 +166,7 @@
                           (opened)="onopen()" A
                           (closed)="onclose()"></DropDown>
                 <Label class="h5" text="Beschreibung"></Label>
-                <TextView style="margin-top: 15px" [(ngModel)]="newTodo.description" height="200"
+                <TextView style="margin-top: 15px" [(ngModel)]="newTodo.description" height="150"
                           returnKeyType="send" class="input"></TextView>
                 <GridLayout columns="auto,auto,*" rows="*" class="margin-topbot-10">
                     <Label verticalAlignment="center" text="Top-Task" class="h4" row="0" col="1"></Label>
@@ -173,11 +179,11 @@
             </StackLayout>
         </StackLayout>
     </ScrollView>
-    <StackLayout orientation="horizontal" horizontalAlignment="right" *ngIf="create" verticalAlignment="bottom"
+    <!--<StackLayout orientation="horizontal" horizontalAlignment="right" *ngIf="create" verticalAlignment="bottom"
                  height="10%" col="0" row="1">
         <FAB icon="~/images/abbrechen2.png" (tap)="cancel()" rippleColor="#f1f1f1"
              class="fab-button margin-10"></FAB>
         <FAB icon="~/images/save.png" rippleColor="#f1f1f1" (tap)="createTodo()"
              class="fab-button margin-10"></FAB>
-    </StackLayout>
+    </StackLayout>-->
 </GridLayout>

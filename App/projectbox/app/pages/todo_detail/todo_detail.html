@@ -11,7 +11,7 @@
     <AbsoluteLayout>
         <StackLayout class="page" width="100%">
             <StackLayout class="form-taskticket">
-                <Label class="fa" [text]="'fa-angle-down' | fonticon" horizontalAlignment="center"></Label>
+                <!--<Label class="fa" [text]="'fa-angle-down' | fonticon" horizontalAlignment="center"></Label>-->
                 <Label class="h5" text="Titel"></Label>
                 <TextField class="textfield" [(ngModel)]="todo.name"></TextField>
                 <Label class="h5" text="Deadline"></Label>
@@ -35,7 +35,7 @@
                 <!--<Label class="h5" text="Verantwortlicher"></Label>
                 <TextField class="textfield" [(ngModel)]="todo.user"></TextField>-->
                 <Label class="h5" text="Beschreibung"></Label>
-                <TextView [(ngModel)]="todo.description" height="200" returnKeyType="send"
+                <TextView [(ngModel)]="todo.description" height="150" returnKeyType="send"
                           class="input textfield"></TextView>
                 <Label class="field-seperator margin-topbot-10" height="1"></Label>
                 <GridLayout columns="auto,auto,*" rows="*" class="margin-topbot-10">
