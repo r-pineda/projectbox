@@ -25,7 +25,6 @@ import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import * as tabViewModule from "tns-core-modules/ui/tab-view";
 import { FileObject } from "../../shared/user/fileObject";
-import { NavComponent } from "../nav/nav.component";
 import { Page } from "ui/page";
 import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 import * as dialogs from "ui/dialogs";
@@ -41,19 +40,15 @@ var bghttp = require("nativescript-background-http"); //file upload
 @Component({
   selector: "pb-meeting_detail",
   templateUrl: "pages/meeting_detail/meeting_detail.html",
-  providers: [UserService, MeetingService, StatusService, NavComponent],
+  providers: [UserService, MeetingService, StatusService],
   styleUrls: ["pages/meeting_detail/meeting_detail-common.css", "pages/meeting_detail/meeting_detail.css"]
 })
 export class Meeting_detailComponent implements OnInit{
-
-
-    public selectedDate;
-    public date: string;
-    public time: string;
-    private modalDatetimepicker: ModalDatetimepicker;
-
-
-    photoViewer = new PhotoViewer();
+  public selectedDate;
+  public date: string;
+  public time: string;
+  private modalDatetimepicker: ModalDatetimepicker;
+  photoViewer = new PhotoViewer();
   meeting :Meeting;
   public picture :ImageAsset;
   userFiles :FileObject[];
@@ -63,7 +58,7 @@ export class Meeting_detailComponent implements OnInit{
   public projectNames: string[] = new Array<string>();
 
 
-  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private page: Page, private nav: NavComponent, private meetingService: MeetingService, private userService: UserService) {
+  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private page: Page, private meetingService: MeetingService, private userService: UserService) {
 
     this.route.params.subscribe((params) => {
       this.getMeeting(params["id"]);
