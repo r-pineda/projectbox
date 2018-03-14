@@ -111,7 +111,7 @@
                             </GridLayout>
                             <!--</GridLayout>-->
                             <GridLayout rows="auto" columns="auto, *, auto">
-                                <Image src='~/images/user.png' width="45" height="45"
+                                <Image [src]="userAvatar" width="45" height="45"
                                        stretch="aspectFit" row="0" col="0" class="margin-10"></Image>
                                 <TextField class="textfield" hint="Kommentieren" [(ngModel)]="newComment.message"
                                            col="1" row="0"></TextField>

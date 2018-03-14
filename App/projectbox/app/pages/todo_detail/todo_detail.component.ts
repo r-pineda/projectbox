@@ -12,6 +12,7 @@ import { UserService } from "../../shared/user/user.service";
 var timer = require("timer");
 /* date picker */
 import { ModalDatetimepicker, PickerOptions } from 'nativescript-modal-datetimepicker';
+import {Config} from "../../shared/config";
 
 
 @Component({
@@ -31,6 +32,7 @@ export class Todo_detailComponent {
   task_tabs: string;
   trackings :Tracking[] = new Array<Tracking>();
   isPL :boolean;
+  userAvatar :string = "";
 
     /* date picker */
     public date: string;
@@ -62,7 +64,8 @@ export class Todo_detailComponent {
 
   ngOnInit(): void {
       this.date = this.todo.due_date_string;
-
+      this.userAvatar = Config.apiUrl + "/v2/avatar/" + this.userService.getCurrentUser().avatar + "?access_token=" + Config.token;
+      console.log(this.userAvatar);
   }
 
   navigateto(pagename: string) {
@@ -83,7 +86,7 @@ export class Todo_detailComponent {
           this.todo.comments.forEach((comment) => {
             this.userService.getUser(comment.user_id)
                 .then((data) => {
-                  comment.userImage = "https://api.agiletoolz.com/v2/user/avatar/" + data.users[0].avatar + "?access_token=" + this.userService.getCurrentUser().access_token;
+                  comment.userImage = Config.apiUrl + "/v2/avatar/" + data.users[0].avatar + "?access_token=" + Config.token;
                   comment.userFName = data.users[0].first_name;
                   comment.userLName = data.users[0].last_name;
                 });
