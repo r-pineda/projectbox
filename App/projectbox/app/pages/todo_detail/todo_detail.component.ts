@@ -57,15 +57,12 @@ export class Todo_detailComponent {
     });
 
     this.userAvatar = Config.apiUrl + "v2/user/avatar/" + this.userService.getCurrentUser().avatar + "?access_token=" + Config.token;
-    console.log(this.userAvatar);
 
     this.task_tabs = 'timetracking';
 
     this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
       this.modalDatetimepicker = new ModalDatetimepicker();
   }
-
-  ngOnInit(): void {}
 
   navigateto(pagename: string) {
     this.routerExtensions.navigate([pagename], {
@@ -167,4 +164,38 @@ export class Todo_detailComponent {
                 console.log("Error: " + error);
             });
     };
+
+    deleteTracking(t_id :string){
+      this.todoService.deleteTracking(t_id)
+        .then(() => {
+          this.reloadTrackings();
+        })
+    }
+
+    reloadTrackings(){
+      this.todoService.getSingleTodo(this.todo.id)
+      .then((data) => {
+        this.todo.trackings = data.tasks[0].trackings;
+        this.trackings = new Array<Tracking>();
+        this.todo.trackings.forEach((tracking, index) => {
+          let currentItem :number = index;
+          this.todoService.fillTracking(tracking)
+          .then((data) => {
+            let elapsedTime = Math.round((new Date(data.trackings[0].finished_at).getTime() - new Date(data.trackings[0].started_at).getTime())/1000);
+            let minsecs = elapsedTime%3600;
+            let hours = (elapsedTime-minsecs)/3600;
+            let seconds = minsecs%60;
+            let minutes = (minsecs-seconds)/60;
+            data.trackings[0].timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
+            return data;
+
+          })
+          .then((data) => {
+            if(data.trackings[0].finished){
+              this.trackings.push(data.trackings[0]);
+            }
+          });
+        });
+      });
+    }
 }

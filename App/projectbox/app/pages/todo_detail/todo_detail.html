@@ -87,9 +87,9 @@
                                         <StackLayout orientation="horizontal" row="0" col="1"
                                                      horizontalAlignment="right">
                                             <Label [text]="tracking.timerString"
-                                                   [class]="isPL == 'true' ? 'margin-right-10' : '' "></Label>
+                                                   [class]="isPL ? 'margin-right-10' : '' "></Label>
                                             <Label class="fa" [text]="'fa-times' | fonticon"
-                                                   (tap)="deleteTracking(todo.id)" *ngIf="isPL"></Label>
+                                                   (tap)="deleteTracking(tracking.id)" *ngIf="isPL"></Label>
                                         </StackLayout>
                                     </GridLayout>
                                 </StackLayout>
