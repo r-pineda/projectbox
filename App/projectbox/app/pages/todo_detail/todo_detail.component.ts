@@ -104,25 +104,14 @@ export class Todo_detailComponent {
             let minutes = (minsecs-seconds)/60;
             data.trackings[0].timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
             return data;
-            
+
           })
           .then((data) => {
             if(data.trackings[0].finished){
               this.trackings.push(data.trackings[0]);
-              console.dir(this.trackings);
             }
           });
 
-        });
-        this.trackings.forEach((tracking) => {
-          console.log("hallo");
-          let elapsedTime = Math.round((new Date(tracking.finished_at).getTime() - new Date(tracking.started_at).getTime())/1000);
-          let minsecs = elapsedTime%3600;
-          let hours = (elapsedTime-minsecs)/3600;
-          let seconds = minsecs%60;
-          let minutes = (minsecs-seconds)/60;
-          tracking.timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
-          
         });
         this.userService.getSingleProject(this.todo.project)
           .then((data) =>{
