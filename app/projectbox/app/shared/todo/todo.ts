@@ -78,7 +78,7 @@ export class Comment {
   user_id: string;
   message: string;
   date: string;
-  created_at: Date;
+  created_at: any;
   updated_at: Date;
   user: string;
   project?: any;

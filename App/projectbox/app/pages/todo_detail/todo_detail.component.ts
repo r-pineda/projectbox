@@ -121,9 +121,17 @@ export class Todo_detailComponent {
       this.newComment.task = this.todo.id;
       this.todoService.createComment(this.newComment)
         .then(() => {
-          this.getTodo(this.todo.id);
+          if(!this.todo.comments){
+            this.todo.comments = new Array<Comment>();
+          }
+          this.newComment.userImage = Config.apiUrl + "v2/user/avatar/" + this.userService.getCurrentUser().avatar + "?access_token=" + Config.token;
+          this.newComment.userFName = this.userService.getCurrentUser().first_name;
+          this.newComment.userLName = this.userService.getCurrentUser().last_name;
+          this.newComment.created_at = "jetzt";
+          console.dir(this.newComment);
+          this.todo.comments.push(this.newComment);
+          this.newComment = new Comment();
         });
-      this.newComment = new Comment();
     }
 
     state(id) {
@@ -133,7 +141,7 @@ export class Todo_detailComponent {
     getAvatar(user_id){
       this.userService.getUser(user_id)
         .then((data) => {
-          return "https://api.agiletoolz.com/v2/user/avatar/" + data.avatar + "?access_token=" + this.userService.getCurrentUser().access_token;
+          return Config.apiUrl + "v2/user/avatar/" + data.avatar + "?access_token=" + Config.token;
         });
     }
 
