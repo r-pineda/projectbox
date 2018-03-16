@@ -264,15 +264,12 @@ export class Meeting_detailComponent implements OnInit{
 
 
     public onchange(args: SelectedIndexChangedEventData) {
-        console.log(`Drop Down selected index changed from ${args.oldIndex} to ${args.newIndex}`);
     }
 
     public onopen() {
-        console.log("Drop Down opened.");
     }
 
     public onclose() {
-        console.log("Drop Down closed.");
     }
 
     /* date pciker */

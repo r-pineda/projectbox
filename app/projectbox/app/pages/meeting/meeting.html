@@ -11,7 +11,7 @@
                      android:horizontalAlignment="left" *ngIf="create">
             <Label class="fa margin-right-10" (tap)="cancel()" [text]="'fa-times' | fonticon" ></Label>
         </StackLayout>
-        <Label text="Tasks" class="nav-h3" row="0" col="1"></Label>
+        <Label text="Meetings" class="nav-h3" row="0" col="1"></Label>
         <Label class="fa" *ngIf="!create" (tap)="cr_meeting()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right"
                android:horizontalAlignment="right" row="0" col="2"></Label>
         <StackLayout orientation="horizontal" row="0" col="2" ios:horizontalAlignment="right"
@@ -37,7 +37,7 @@
                             <Label class="borderitem" [ngStyle]="{'border-color' : item.color}" height="60" col="0"
                                    row="0" horizontalAlignment="center"></Label>
                             <GridLayout columns="80,auto,auto,*" rows="auto,auto,*" col="1" row="0"
-                                        class="padding-topbot-10"
+                                        class="padding-topbot-5"
                                         shadow="10">
                                 <Label [text]="item.dateFormatted" col="0" row="0" rowSpan="3"
                                        class="meeting-indicator h4"
@@ -104,7 +104,7 @@
                                 <Label verticalAlignment="center" class="h4" text="Teilnehmer hinzufügen"></Label>
                             </StackLayout>
                             <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let attendee of newMeeting.attendees">
-                                <FAB icon="~/images/delete.png" rowSpan="1"
+                                <FAB icon="~/images/delete.png" rowSpan="2"
                                      col="0" rippleColor="#f1f1f1"
                                      class="fab-button-red margin-10" verticalAlignment="center"></FAB>
                                 <TextField class="textfield  margin-right-5" hint="Name"[(ngModel)]="attendee.full_string" col="1" row="0"></TextField>
@@ -133,8 +133,8 @@
                     <StackLayout *ngSwitchCase="'files'">
                         <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="sourcepic()">
                             <FAB icon="~/images/photo-camera.png"  rippleColor="#f1f1f1"
-                                 class="fab-button margin-10"></FAB>
-                            <Label verticalAlignment="center" class="h4" text="Foto hochladen"></Label>
+                                 class="fab-button margin-10" (tap)="sourcepic()"></FAB>
+                            <Label verticalAlignment="center" class="h4" text="Foto hochladen" (tap)="sourcepic()"></Label>
                         </StackLayout>
                         <GridLayout columns="auto,*" rows="*,*" *ngFor="let file of userFiles"
                                     style="padding:5; margin-top: 10;">
