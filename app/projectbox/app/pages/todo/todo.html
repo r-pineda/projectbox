@@ -38,8 +38,7 @@
                                     <StackLayout col="0" row="0" orientation="horizontal">
                                         <Image src="~/images/toptask.png" width="10" height="10"
                                                stretch="aspectFit" class="margin-right-5"></Image>
-                                        <Label [text]="task.name" class="longtext h4" col="0"
-                                               row="0"></Label>
+                                        <Label [text]="task.name" class="longtext h4" textWrap="true"></Label>
                                     </StackLayout>
                                     <Label class="text ticket" [text]="task.due_date_string" col="0" row="1"></Label>
                                     <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon"
@@ -52,7 +51,7 @@
                                 <StackLayout col="1" row="3" *ngIf="todoForDetail[task.id]" class="details padding-topbot-10">
                                     <Label class="h4" [text]="task.project"></Label>
                                     <TextView
-                                            [text]="description"
+                                            [text]="task.description"
                                             editable="false" textWrap="true" class="longtext"></TextView>
                                     <GridLayout rows="*" columns="auto,120,auto">
                                         <FAB [icon]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'" (tap)="startTimer(task.id)"  rippleColor="#f1f1f1"
@@ -87,8 +86,7 @@
                                 <StackLayout col="0" row="0" orientation="horizontal">
                                     <Image *ngIf="task.isPinned" src="~/images/toptask.png" width="25" height="25"
                                            stretch="aspectFit"></Image>
-                                    <Label [text]="task.name" class="longtext h4" col="0"
-                                           row="0"></Label>
+                                    <Label [text]="task.name" class="longtext h4" textWrap="true"></Label>
                                 </StackLayout>
                                 <Label class="text ticket" [text]="task.due_date_string" col="0" row="1"></Label>
                                 <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon"
@@ -101,7 +99,7 @@
                             <StackLayout col="1" row="3" *ngIf="todoForDetail[task.id]" class="details padding-topbot-10">
                                 <Label class="h4" [text]="task.project"></Label>
                                 <TextView
-                                        [text]="description"
+                                        [text]="task.description"
                                         editable="false" textWrap="true" class="longtext"></TextView>
                                 <GridLayout rows="*" columns="auto,120,auto">
                                     <FAB [icon]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'" (tap)="startTimer(task.id)"  rippleColor="#f1f1f1"
