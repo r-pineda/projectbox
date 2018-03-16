@@ -108,6 +108,8 @@ export class MeetingComponent implements OnInit {
         });
     this.newMeeting.attendees = new Array<Attendee>();
     this.newMeeting.attendees.push(new Attendee());
+    this.newMeeting.agenda = new Array<AgendaPoint>();
+    this.newMeeting.agenda.push(new AgendaPoint());
     }
 
     cr_meeting() {
@@ -117,7 +119,7 @@ export class MeetingComponent implements OnInit {
 
     cancel() {
         this.create = false;
-        this.page.css = "Page { background-color: #ECEDEE; padding: 0;} .page { padding-left: 10; background-color: #ECEDEE;}";
+        this.page.css = "Page { background-color: #ECEDEE;} .page { padding: 0; padding-left:20; background-color: #ECEDEE;}  #meetinglist { padding-left: 20; } ";
     }
 
     displayMeetings(data: any) {
