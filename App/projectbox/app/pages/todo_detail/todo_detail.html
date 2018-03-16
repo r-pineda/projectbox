@@ -74,15 +74,15 @@
                                 <StackLayout *ngFor="let tracking of trackings">
                                     <Label class="field-seperator" height="1"></Label>
                                     <StackLayout orientation="horizontal" class="bg-gray">
-                                        <Label [text]="tracking.created_at"
+                                        <Label [text]="tracking.startDateString"
                                                horizontalAlignment="right"></Label>
                                     </StackLayout>
                                     <Label class="field-seperator" height="1"></Label>
                                     <GridLayout columns="auto,*" row="*">
                                         <StackLayout orientation="horizontal" row="0" col="0">
-                                            <Label [text]="tracking.started_at"></Label>
+                                            <Label [text]="tracking.startTimeString"></Label>
                                             <Label text=" - "></Label>
-                                            <Label [text]="tracking.finished_at"></Label>
+                                            <Label [text]="tracking.endTimeString"></Label>
                                         </StackLayout>
                                         <StackLayout orientation="horizontal" row="0" col="1"
                                                      horizontalAlignment="right">
@@ -113,7 +113,7 @@
                                 <Image [src]="userAvatar" width="45" height="45"
                                        stretch="aspectFit" row="0" col="0" class="margin-right-5"></Image>
                                 <TextField #commentText class="textfield" hint="Kommentieren" [(ngModel)]="newComment.message"
-                                           col="1" row="0"></TextField>
+                                           col="1" row="0" height="40"></TextField>
                                 <FAB icon="~/images/send.png" (tap)="createComment()" row="0"
                                      col="2" rippleColor="#f1f1f1"
                                      class="fab-button margin-10 margin-bot-15"></FAB>

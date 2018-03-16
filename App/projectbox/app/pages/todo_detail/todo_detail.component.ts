@@ -91,13 +91,46 @@ export class Todo_detailComponent {
                 });
             var date = new Date (comment.created_at);
             var month = date.setMonth(date.getMonth()+1);
-            comment.date = date.getDate() + "." + date.getMonth() + "." + date.getFullYear() + " um " + (date.getHours()>9?date.getHours():"0"+date.getHours()) + ":" + (date.getMinutes()>9?date.getMinutes():"0"+date.getMinutes());
+            comment.date = date.getDate() + "." + date.getMonth() + "." + date.getFullYear() + " um " + (date.getHours()>9?date.getHours():"0"+date.getHours()) + ":" + (date.getMinutes()>9?date.getMinutes():"0"+date.getMinutes()) + " Uhr";
           });
         }
         let trackingsprocessed :number = 0;
         this.todo.trackings.forEach((tracking, index, array) => {
           this.todoService.fillTracking(tracking)
           .then((data) => {
+            let startDate = new Date (data.trackings[0].created_at);
+            let month = startDate.setMonth(startDate.getMonth()+1);
+              let start_minfix;
+              if (startDate.getMinutes() < 10) {
+                  start_minfix = 0 + startDate.getMinutes().toString();
+              } else {
+                  start_minfix = startDate.getMinutes().toString();
+              }
+
+              let start_hourfix;
+              if (startDate.getHours() < 10) {
+                  start_hourfix = 0 + startDate.getHours().toString();
+              } else {
+                  start_hourfix = startDate.getHours().toString();
+              }
+            data.trackings[0].startDateString = startDate.getDate() + "." + startDate.getMonth() + "." + startDate.getFullYear();
+            data.trackings[0].startTimeString = start_hourfix + ":" + start_minfix + ":" + startDate.getSeconds();
+            let endDate = new Date (data.trackings[0].finished_at);
+              let end_minfix;
+            if (endDate.getMinutes() < 10) {
+                end_minfix = 0 + endDate.getMinutes().toString();
+            } else {
+                end_minfix = endDate.getMinutes().toString();
+            }
+
+              let end_hourfix;
+              if (endDate.getHours() < 10) {
+                  end_hourfix = 0 + endDate.getHours().toString();
+              } else {
+                  end_hourfix = endDate.getHours().toString();
+              }
+            data.trackings[0].endTimeString = end_hourfix + ":" + end_minfix + ":" + endDate.getSeconds();
+
             let elapsedTime = Math.round((new Date(data.trackings[0].finished_at).getTime() - new Date(data.trackings[0].started_at).getTime())/1000);
             this.totalTime += elapsedTime; //counting together the length of all trackings
             trackingsprocessed++;
@@ -115,7 +148,6 @@ export class Todo_detailComponent {
             let seconds = minsecs%60;
             let minutes = (minsecs-seconds)/60;
             data.trackings[0].timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
-            
             return data;
 
           })

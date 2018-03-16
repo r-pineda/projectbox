@@ -69,6 +69,9 @@ export class Tracking {
   user: string;
   trackedSeconds :number = 0;
   timerString :string;
+  startDateString :string;
+  startTimeString :string;
+  endTimeString :string;
 }
 
 export class Comment {
