@@ -134,7 +134,7 @@ export class TodoComponent {
           /*Projektfarben für tasks herausfinden*/
           this.userService.getSingleProject(todo.project_id)
             .then(
-              (data) => {this.todos[index].color = data.projects[0].color},
+              (data) => {this.todos[index].color = data.projects[0].color;this.todos[index].project = data.projects[0].name},
               (error) => {}
             );
             /*-*/

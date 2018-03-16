@@ -134,9 +134,7 @@ export class Todo_detailComponent {
             let elapsedTime = Math.round((new Date(data.trackings[0].finished_at).getTime() - new Date(data.trackings[0].started_at).getTime())/1000);
             this.totalTime += elapsedTime; //counting together the length of all trackings
             trackingsprocessed++;
-            console.log(elapsedTime);
             if(trackingsprocessed === array.length) {
-              console.log(this.totalTime);
               let minsecs = this.totalTime%3600;
               let hours = (this.totalTime-minsecs)/3600;
               let seconds = minsecs%60;
