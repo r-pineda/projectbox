@@ -64,15 +64,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="todo_detail.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="todo_detail.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/pages/todo_detail/todo_detail.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-425">
-              <caret line="134" column="28" lean-forward="false" selection-start-line="134" selection-start-column="28" selection-end-line="134" selection-end-column="28" />
+            <state relative-caret-position="640">
+              <caret line="175" column="27" lean-forward="false" selection-start-line="175" selection-start-column="27" selection-end-line="175" selection-end-column="27" />
               <folding>
                 <element signature="e#0#93#0" expanded="true" />
                 <element signature="e#703#790#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="todo_detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/pages/todo_detail/todo_detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="99" column="37" lean-forward="true" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,6 +92,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="303">
               <caret line="47" column="18" lean-forward="false" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="todo.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/pages/todo/todo.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-442">
+              <caret line="121" column="83" lean-forward="false" selection-start-line="121" selection-start-column="83" selection-end-line="121" selection-end-column="83" />
               <folding />
             </state>
           </provider>
@@ -175,14 +195,14 @@
         <option value="$PROJECT_DIR$/app/app.routing.ts" />
         <option value="$PROJECT_DIR$/app/pages/meeting_detail/meeting_detail.component.ts" />
         <option value="$PROJECT_DIR$/app/pages/meeting_detail/meeting_detail.html" />
-        <option value="$PROJECT_DIR$/app/pages/todo/todo.html" />
-        <option value="$PROJECT_DIR$/app/pages/todo_detail/todo_detail.html" />
         <option value="$PROJECT_DIR$/app/app.css" />
         <option value="$PROJECT_DIR$/app/pages/dashboard/dashboard.html" />
         <option value="$PROJECT_DIR$/app/pages/dashboard/dashboard.component.ts" />
         <option value="$PROJECT_DIR$/app/pages/meeting/meeting.component.ts" />
         <option value="$PROJECT_DIR$/app/pages/meeting/meeting.html" />
         <option value="$PROJECT_DIR$/app/pages/todo_detail/todo_detail.component.ts" />
+        <option value="$PROJECT_DIR$/app/pages/todo_detail/todo_detail.html" />
+        <option value="$PROJECT_DIR$/app/pages/todo/todo.html" />
       </list>
     </option>
   </component>
@@ -420,12 +440,12 @@
       <workItem from="1521011409676" duration="4548000" />
       <workItem from="1521018199470" duration="48000" />
       <workItem from="1521126549820" duration="3975000" />
-      <workItem from="1521203742295" duration="4266000" />
+      <workItem from="1521203742295" duration="4798000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190895000" />
+    <option name="totallyTimeSpent" value="191427000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -795,14 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/todo_detail/todo_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="118" column="78" lean-forward="false" selection-start-line="118" selection-start-column="78" selection-end-line="118" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/shared/todo/todo.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
@@ -835,14 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/pages/todo/todo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="17" lean-forward="false" selection-start-line="1" selection-start-column="2" selection-end-line="21" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/dashboard/dashboard.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -863,12 +867,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/todo_detail/todo_detail.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-425">
-          <caret line="134" column="28" lean-forward="false" selection-start-line="134" selection-start-column="28" selection-end-line="134" selection-end-column="28" />
+        <state relative-caret-position="640">
+          <caret line="175" column="27" lean-forward="false" selection-start-line="175" selection-start-column="27" selection-end-line="175" selection-end-column="27" />
           <folding>
             <element signature="e#0#93#0" expanded="true" />
             <element signature="e#703#790#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/pages/todo_detail/todo_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="99" column="37" lean-forward="true" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/pages/todo/todo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-442">
+          <caret line="121" column="83" lean-forward="false" selection-start-line="121" selection-start-column="83" selection-end-line="121" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
