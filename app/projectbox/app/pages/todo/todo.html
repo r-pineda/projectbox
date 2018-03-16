@@ -36,8 +36,8 @@
                                        rowSpan="2"></Label>
                                 <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
                                     <StackLayout col="0" row="0" orientation="horizontal">
-                                        <Image src="~/images/toptask.png" width="25" height="25"
-                                               stretch="aspectFit"></Image>
+                                        <Image src="~/images/toptask.png" width="10" height="100"
+                                               stretch="aspectFit" class="margin-right-5"></Image>
                                         <Label [text]="task.name" class="longtext h4" col="0"
                                                row="0"></Label>
                                     </StackLayout>
@@ -49,38 +49,26 @@
                                            col="1"
                                            rowSpan="2" *ngIf="todoForDetail[task.id]"></Label>
                                 </GridLayout>
-                                <StackLayout col="1" row="3" *ngIf="todoForDetail[task.id]" class="details">
+                                <StackLayout col="1" row="3" *ngIf="todoForDetail[task.id]" class="details padding-topbot-10">
                                     <Label class="h4" [text]="task.project"></Label>
                                     <TextView
                                             [text]="description"
                                             editable="false" textWrap="true" class="longtext"></TextView>
                                     <GridLayout rows="*" columns="auto,*,auto">
-                                       <!-- <StackLayout (tap)="startTimer(task.id)" class="btn-img margin-right-10" row="0"
-                                                     col="0">
-                                            <Image [src]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'"
-                                                   width="15" height="15" stretch="aspectFit"></Image>-->
-                                            <FAB [icon]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'" (tap)="startTimer(task.id)"  rippleColor="#f1f1f1"
-                                            class="fab-button margin-10" row="0"
-                                                 col="0"></FAB>
+                                        <FAB [icon]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'" (tap)="startTimer(task.id)"  rippleColor="#f1f1f1"
+                                             class="fab-button margin-left-5 margin-right-5 margin-bot-10" row="0"
+                                             col="0"></FAB>
                                         <!--</StackLayout>-->
                                         <Label class="h4 time" verticalAlignment="center"
                                                [text]="currentTrackings[task.id].timerString" col="1" row="0"></Label>
                                         <StackLayout orientation="horizontal" horizontalAlignment="right" col="2"
                                                      row="0">
-                                            <!--<StackLayout class="btn-img tt-actions" (tap)="goToDetail(task.id)">
-                                                <Image src="~/images/edit2.png" width="15" height="15"
-                                                       stretch="aspectFit"></Image>
-                                            </StackLayout>-->
                                             <FAB icon="~/images/edit2.png" (tap)="goToDetail(task.id)"  rippleColor="#f1f1f1"
-                                                 class="fab-button margin-10"></FAB>
-                                            <StackLayout class="btn-img tt-actions" (tap)="finished(task)">
-                                                <Image src="~/images/done2.png" width="15" height="15"
-                                                       stretch="aspectFit"></Image>
-                                            </StackLayout>
-                                            <StackLayout class="btn-img tt-actions attention" (tap)="delete(task.id)">
-                                                <Image src="~/images/delete2.png" width="15" height="15"
-                                                       stretch="aspectFit"></Image>
-                                            </StackLayout>
+                                                 class="fab-button margin-right-5 margin-bot-10"></FAB>
+                                            <FAB icon="~/images/done2.png" (tap)="finished(task)"  rippleColor="#f1f1f1"
+                                                 class="fab-button margin-right-5 margin-bot-10"></FAB>
+                                            <FAB icon="~/images/delete2.png" (tap)="delete(task.id)"  rippleColor="#f1f1f1"
+                                                 class="fab-button-red margin-right-5 margin-bot-10"></FAB>
                                         </StackLayout>
                                     </GridLayout>
                                 </StackLayout>
@@ -89,7 +77,8 @@
                     </StackLayout>
                     <Label class="h1" text="TASKS" col="0" row="2"></Label>
                     <StackLayout class="marginitem" col="0" row="3">
-                        <GridLayout class="marginitem" *ngFor="let task of todos" columns="auto,*"
+                        <StackLayout *ngFor="let task of todos">
+                        <GridLayout class="marginitem" *ngIf="!task.pinned" columns="auto,*"
                                     rows="auto,auto,auto"
                                     (tap)="expand(task.id)">
                             <Label class="borderitem" [ngStyle]="{'border-color': task.color}" height="30" col="0"
@@ -133,6 +122,7 @@
                                 </GridLayout>
                             </StackLayout>
                         </GridLayout>
+                        </StackLayout>
                     </StackLayout>
                 </GridLayout>
             </StackLayout>
