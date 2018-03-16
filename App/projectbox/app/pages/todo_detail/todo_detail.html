@@ -74,15 +74,15 @@
                                 <StackLayout *ngFor="let tracking of trackings">
                                     <Label class="field-seperator" height="1"></Label>
                                     <StackLayout orientation="horizontal" class="bg-gray">
-                                        <Label [text]="tracking.created_at"
+                                        <Label [text]="tracking.startDateString"
                                                horizontalAlignment="right"></Label>
                                     </StackLayout>
                                     <Label class="field-seperator" height="1"></Label>
                                     <GridLayout columns="auto,*" row="*">
                                         <StackLayout orientation="horizontal" row="0" col="0">
-                                            <Label [text]="tracking.started_at"></Label>
+                                            <Label [text]="tracking.startTimeString"></Label>
                                             <Label text=" - "></Label>
-                                            <Label [text]="tracking.finished_at"></Label>
+                                            <Label [text]="tracking.endTimeString"></Label>
                                         </StackLayout>
                                         <StackLayout orientation="horizontal" row="0" col="1"
                                                      horizontalAlignment="right">
