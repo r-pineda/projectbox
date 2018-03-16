@@ -92,7 +92,7 @@ export class TodoComponent {
         this.projectSelection[project.id] = project.name;
         this.projectIds[this.projectList.push(project.name)-1] = project.id;
       });
-    })
+    });
     this.create = false;
     this.page.css = ".details { height: 0;}";
     this.phaseSelection.push("Zuerst ein Projekt auswählen!");
@@ -163,19 +163,20 @@ export class TodoComponent {
           }
           this.currentTrackings[todo.id].timerString = "00:00:00"; //default wert für alle timerStrings
         });
-        
-        this.tracker = setInterval(() => { //Interval der currentTrackings nach unfinished dursucht und bei all diesen eins raufzählt
-          this.todos.forEach((todo) =>{
-            if(!this.currentTrackings[todo.id].finished){
-              this.currentTrackings[todo.id].trackedSeconds++;
-              let minsecs = this.currentTrackings[todo.id].trackedSeconds%3600;
-              let hours = (this.currentTrackings[todo.id].trackedSeconds-minsecs)/3600;
-              let seconds = minsecs%60;
-              let minutes = (minsecs-seconds)/60;
-              this.currentTrackings[todo.id].timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
-            }
-          });
-        }, 1000);
+        if(!this.tracker){
+          this.tracker = setInterval(() => { //Interval der currentTrackings nach unfinished dursucht und bei all diesen eins raufzählt
+            this.todos.forEach((todo) =>{
+              if(!this.currentTrackings[todo.id].finished){
+                this.currentTrackings[todo.id].trackedSeconds++;
+                let minsecs = this.currentTrackings[todo.id].trackedSeconds%3600;
+                let hours = (this.currentTrackings[todo.id].trackedSeconds-minsecs)/3600;
+                let seconds = minsecs%60;
+                let minutes = (minsecs-seconds)/60;
+                this.currentTrackings[todo.id].timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
+              }
+            });
+          }, 1000);
+        }
 
         this.todoForDetail = new Array<boolean>(this.todos.length);
         this.todos.forEach((element) => {
@@ -332,4 +333,11 @@ export class TodoComponent {
                 console.log("Error: " + error);
             });
     };
+
+    deleteTodo(t_id :string){
+      this.todoService.deleteTodo(t_id)
+        .then(() => {alert("Task erfolgreich gelöscht!");this.ngOnInit()},
+              (error) => {alert("Fehler beim löschen des Tasks")});
+
+    }
 }

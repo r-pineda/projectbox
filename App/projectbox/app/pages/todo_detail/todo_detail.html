@@ -69,7 +69,7 @@
                     <StackLayout *ngSwitchCase="'timetracking'">
                         <GridLayout columns="*,*" rows="*, *">
                             <Label class="h4" col="0" row="0" text="Gesamtdauer"></Label>
-                            <Label class="h4" col="1" row="0" text="00:00:00" horizontalAlignment="right"></Label>
+                            <Label class="h4" col="1" row="0" [text]="totalTimeString" horizontalAlignment="right"></Label>
                             <StackLayout colSpan="2" row="1">
                                 <StackLayout *ngFor="let tracking of trackings">
                                     <Label class="field-seperator" height="1"></Label>
