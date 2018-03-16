@@ -54,7 +54,7 @@
                                     <TextView
                                             [text]="description"
                                             editable="false" textWrap="true" class="longtext"></TextView>
-                                    <GridLayout rows="*" columns="auto,*,auto">
+                                    <GridLayout rows="*" columns="auto,50,auto">
                                         <FAB [icon]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'" (tap)="startTimer(task.id)"  rippleColor="#f1f1f1"
                                              class="fab-button margin-left-5 margin-right-5 margin-bot-10" row="0"
                                              col="0"></FAB>
@@ -103,7 +103,7 @@
                                 <TextView
                                         [text]="description"
                                         editable="false" textWrap="true" class="longtext"></TextView>
-                                <GridLayout rows="*" columns="auto,*,auto">
+                                <GridLayout rows="*" columns="auto,50,auto">
                                     <FAB [icon]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'" (tap)="startTimer(task.id)"  rippleColor="#f1f1f1"
                                          class="fab-button margin-left-5 margin-right-5 margin-bot-10" row="0"
                                          col="0"></FAB>
@@ -115,9 +115,9 @@
                                         <FAB icon="~/images/edit2.png" (tap)="goToDetail(task.id)"  rippleColor="#f1f1f1"
                                              class="fab-button margin-right-5 margin-bot-10"></FAB>
                                         <FAB icon="~/images/done2.png" (tap)="finished(task)"  rippleColor="#f1f1f1"
-                                             class="fab-button margin-5"></FAB>
+                                             class="fab-button margin-right-5 margin-bot-10"></FAB>
                                         <FAB icon="~/images/delete2.png" (tap)="deleteTodo(task.id)"  rippleColor="#f1f1f1"
-                                             class="fab-button-red margin-5"></FAB>
+                                             class="fab-button-red margin-right-5 margin-bot-10"></FAB>
                                     </StackLayout>
                                 </GridLayout>
                             </StackLayout>

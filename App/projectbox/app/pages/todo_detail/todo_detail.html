@@ -104,7 +104,7 @@
                                 <Image [src]='comment.userImage' width="45" height="45"
                                        stretch="aspectFit" verticalAlignment="center" rowSpan="2" col="0"
                                        class="img-rounded"></Image>
-                                <Label [text]="userFName + ' ' + userLName + ': '" class="bold" col="1" row="0" verticalAlignment="center"></Label>
+                                <Label [text]="comment.userFName + ' ' + comment.userLName + ': '" class="bold" col="1" row="0" verticalAlignment="center"></Label>
                                 <Label [text]="comment.message" col="2" row="0" verticalAlignment="center"></Label>
                                 <Label [text]="comment.date" col="1" colSpan="2" row="1" verticalAlignment="center"></Label>
                             </GridLayout>
@@ -120,14 +120,8 @@
                             </GridLayout>
                         </StackLayout>
                     </StackLayout>
-                </StackLayout>
-                <!--<StackLayout orientation="horizontal" horizontalAlignment="right">
-                    <FAB icon="~/images/abbrechen2.png" (tap)="cancel()" rippleColor="#f1f1f1"
-                         class="fab-button margin-10"></FAB>
-                    <FAB icon="~/images/save.png" rippleColor="#f1f1f1" (tap)="saveTodo()"
-                         class="fab-button margin-10"></FAB>
-                </StackLayout>-->
             </StackLayout>
+        </StackLayout>
         </StackLayout>
     </AbsoluteLayout>
 </ScrollView>
