@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef} from "@angular/core";
+import {Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef, ElementRef} from "@angular/core";
 import { User } from "../../shared/user/user";
 import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
@@ -35,6 +35,7 @@ export class Todo_detailComponent {
   userAvatar :string = "";
   totalTime :number = 0;
   totalTimeString :string;
+  @ViewChild("commentText") commentTextField: ElementRef;
 
     /* date picker */
     public date: string;
@@ -90,7 +91,7 @@ export class Todo_detailComponent {
                 });
             var date = new Date (comment.created_at);
             var month = date.setMonth(date.getMonth()+1);
-            comment.date = date.getDate() + "." + date.getMonth() + "." + date.getFullYear() + " um " + date.getHours() + ":" + date.getMinutes() + " Uhr";
+            comment.date = date.getDate() + "." + date.getMonth() + "." + date.getFullYear() + " um " + (date.getHours()>9?date.getHours():"0"+date.getHours()) + ":" + (date.getMinutes()>9?date.getMinutes():"0"+date.getMinutes()) + " Uhr";
           });
         }
         let trackingsprocessed :number = 0;
@@ -133,7 +134,9 @@ export class Todo_detailComponent {
             let elapsedTime = Math.round((new Date(data.trackings[0].finished_at).getTime() - new Date(data.trackings[0].started_at).getTime())/1000);
             this.totalTime += elapsedTime; //counting together the length of all trackings
             trackingsprocessed++;
+            console.log(elapsedTime);
             if(trackingsprocessed === array.length) {
+              console.log(this.totalTime);
               let minsecs = this.totalTime%3600;
               let hours = (this.totalTime-minsecs)/3600;
               let seconds = minsecs%60;
@@ -163,19 +166,23 @@ export class Todo_detailComponent {
   }
 
     createComment(){
-      this.newComment.task = this.todo.id;
-      this.todoService.createComment(this.newComment)
-        .then(() => {
-          if(!this.todo.comments){
-            this.todo.comments = new Array<Comment>();
-          }
-          this.newComment.userImage = Config.apiUrl + "v2/user/avatar/" + this.userService.getCurrentUser().avatar + "?access_token=" + Config.token;
-          this.newComment.userFName = this.userService.getCurrentUser().first_name;
-          this.newComment.userLName = this.userService.getCurrentUser().last_name;
-          this.newComment.created_at = "jetzt";
-          this.todo.comments.push(this.newComment);
-          this.newComment = new Comment();
-        });
+      if(!this.newComment.message){
+        let tf = this.commentTextField.nativeElement;
+        tf.dismissSoftInput();
+        this.newComment.task = this.todo.id;
+        this.todoService.createComment(this.newComment)
+          .then(() => {
+            if(!this.todo.comments){
+              this.todo.comments = new Array<Comment>();
+            }
+            this.newComment.userImage = Config.apiUrl + "v2/user/avatar/" + this.userService.getCurrentUser().avatar + "?access_token=" + Config.token;
+            this.newComment.userFName = this.userService.getCurrentUser().first_name;
+            this.newComment.userLName = this.userService.getCurrentUser().last_name;
+            this.newComment.created_at = "jetzt";
+            this.todo.comments.push(this.newComment);
+            this.newComment = new Comment();
+          });
+        }
     }
 
     state(id) {
