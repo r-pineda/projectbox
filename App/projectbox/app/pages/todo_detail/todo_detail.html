@@ -112,7 +112,7 @@
                             <GridLayout rows="auto" columns="auto, *, auto" class="margin-topbot-10 padding-topbot-10">
                                 <Image [src]="userAvatar" width="45" height="45"
                                        stretch="aspectFit" row="0" col="0" class="margin-right-5"></Image>
-                                <TextField class="textfield" hint="Kommentieren" [(ngModel)]="newComment.message"
+                                <TextField #commentText class="textfield" hint="Kommentieren" [(ngModel)]="newComment.message"
                                            col="1" row="0"></TextField>
                                 <FAB icon="~/images/send.png" (tap)="createComment()" row="0"
                                      col="2" rippleColor="#f1f1f1"
