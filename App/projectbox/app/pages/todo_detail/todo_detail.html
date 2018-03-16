@@ -7,7 +7,7 @@
                android:horizontalAlignment="right" row="0" col="2"></Label>
     </GridLayout>
 </ActionBar>
-<ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="100%">
+<ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%">
     <AbsoluteLayout>
         <StackLayout class="page" width="100%">
             <StackLayout class="form-taskticket">
@@ -99,25 +99,24 @@
                     <StackLayout *ngSwitchCase="'kommentare'">
                         <StackLayout>
                             <!--<GridLayout rows="auto, auto" columns="auto, *">-->
-                            <GridLayout rows="auto, auto" columns="auto, *" class="margin-topbot-10"
+                            <GridLayout rows="auto, auto" columns="auto, auto, *" class="margin-topbot-10"
                                         *ngFor="let comment of todo.comments">
                                 <Image [src]='comment.userImage' width="45" height="45"
-                                       stretch="aspectFit" verticalAlignment="center" rowSpan="1" col="0"
+                                       stretch="aspectFit" verticalAlignment="center" rowSpan="2" col="0"
                                        class="img-rounded"></Image>
-                                <Label [text]="comment.message"
-                                       class="bold" col="1"
-                                       row="0"></Label>
-                                <Label [text]="comment.created_at" col="1" row="1"></Label>
+                                <Label [text]="userFName + ' ' + userLName + ': '" class="bold" col="1" row="0" verticalAlignment="center"></Label>
+                                <Label [text]="comment.message" col="2" row="0" verticalAlignment="center"></Label>
+                                <Label [text]="comment.date" col="1" colSpan="2" row="1" verticalAlignment="center"></Label>
                             </GridLayout>
                             <!--</GridLayout>-->
-                            <GridLayout rows="auto" columns="auto, *, auto">
+                            <GridLayout rows="auto" columns="auto, *, auto" class="margin-topbot-10 padding-topbot-10">
                                 <Image [src]="userAvatar" width="45" height="45"
-                                       stretch="aspectFit" row="0" col="0" class="margin-10"></Image>
+                                       stretch="aspectFit" row="0" col="0" class="margin-right-5"></Image>
                                 <TextField class="textfield" hint="Kommentieren" [(ngModel)]="newComment.message"
                                            col="1" row="0"></TextField>
                                 <FAB icon="~/images/send.png" (tap)="createComment()" row="0"
                                      col="2" rippleColor="#f1f1f1"
-                                     class="fab-button margin-10"></FAB>
+                                     class="fab-button margin-10 margin-bot-15"></FAB>
                             </GridLayout>
                         </StackLayout>
                     </StackLayout>

@@ -89,6 +89,7 @@ export class MeetingComponent implements OnInit {
     ) {
         this.nav = navState;
         this.modalDatetimepicker = new ModalDatetimepicker();
+        this.meeting_tabs = 'teilnehmer';
     }
 
     ngOnInit() {

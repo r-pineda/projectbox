@@ -86,10 +86,12 @@ export class Todo_detailComponent {
                   comment.userFName = data.users[0].first_name;
                   comment.userLName = data.users[0].last_name;
                 });
-              var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-              //comment.date = new Date(comment.created_at).toLocaleDateString('de-DE', options);
+            var date = new Date (comment.created_at);
+            var month = date.setMonth(date.getMonth()+1);
+            comment.date = date.getDate() + "." + date.getMonth() + "." + date.getFullYear() + " um " + date.getHours() + ":" + date.getMinutes();
           });
         }
+          this.todo.comments = data.comments;
         this.todo.trackings.forEach((tracking, index) => {
           let currentItem :number = index;
           this.todoService.fillTracking(tracking)

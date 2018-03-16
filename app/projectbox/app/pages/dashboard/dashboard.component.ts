@@ -156,6 +156,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
           if (curDate.getDay() == date.getDay() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
               meeting.dateFormatted = "HEUTE";
           } else {
+              var month = date.setMonth(date.getMonth()+1);
               meeting.dateFormatted = date.getDay() + "." + date.getMonth() + "." + date.getFullYear().toString();
           }
       });

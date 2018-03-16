@@ -47,6 +47,10 @@ Label,
     font-family: "Mukta-Light";
 }
 
+Label {
+    font-size: 15;
+}
+
 .bold {
     font-weight: bold;
 }
@@ -112,9 +116,14 @@ h1 {
     margin: 15;
 }
 
+.padding-topbot-15 {
+    padding-top: 15;
+    padding-bottom: 15;
+}
+
 .padding-topbot-10 {
-    padding-top: 5;
-    padding-bottom: 5;
+    padding-top: 10;
+    padding-bottom: 10;
 }
 
 .margin-topbot-5 {
@@ -129,6 +138,10 @@ h1 {
 
 .margin-bot-10 {
     margin-bottom: 10;
+}
+
+.margin-bot-15 {
+    margin-bottom: 15;
 }
 
 /* position classes */
