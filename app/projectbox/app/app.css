@@ -269,7 +269,7 @@ ActionBar {
 
 .borderitem {
     border-width: 2 2 2 2;
-    border-radius: 3;
+    border-radius: 3 0 0 3;
     background-color: rgba(255, 0, 0, 0.0);
 }
 

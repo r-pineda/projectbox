@@ -97,6 +97,7 @@ export class Todo_detailComponent {
         this.todo.trackings.forEach((tracking, index, array) => {
           this.todoService.fillTracking(tracking)
           .then((data) => {
+            let startDate = new Date (data.trackings[0].created_at);
             let elapsedTime = Math.round((new Date(data.trackings[0].finished_at).getTime() - new Date(data.trackings[0].started_at).getTime())/1000);
             this.totalTime += elapsedTime; //counting together the length of all trackings
             trackingsprocessed++;
@@ -112,7 +113,6 @@ export class Todo_detailComponent {
             let seconds = minsecs%60;
             let minutes = (minsecs-seconds)/60;
             data.trackings[0].timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
-            
             return data;
 
           })
