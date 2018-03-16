@@ -33,6 +33,8 @@ export class Todo_detailComponent {
   trackings :Tracking[] = new Array<Tracking>();
   isPL :boolean;
   userAvatar :string = "";
+  totalTime :number = 0;
+  totalTimeString :string;
 
     /* date picker */
     public date: string;
@@ -90,16 +92,26 @@ export class Todo_detailComponent {
               //comment.date = new Date(comment.created_at).toLocaleDateString('de-DE', options);
           });
         }
-        this.todo.trackings.forEach((tracking, index) => {
-          let currentItem :number = index;
+        let trackingsprocessed :number = 0;
+        this.todo.trackings.forEach((tracking, index, array) => {
           this.todoService.fillTracking(tracking)
           .then((data) => {
             let elapsedTime = Math.round((new Date(data.trackings[0].finished_at).getTime() - new Date(data.trackings[0].started_at).getTime())/1000);
+            this.totalTime += elapsedTime; //counting together the length of all trackings
+            trackingsprocessed++;
+            if(trackingsprocessed === array.length) {
+              let minsecs = this.totalTime%3600;
+              let hours = (this.totalTime-minsecs)/3600;
+              let seconds = minsecs%60;
+              let minutes = (minsecs-seconds)/60;
+              this.totalTimeString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
+            }
             let minsecs = elapsedTime%3600;
             let hours = (elapsedTime-minsecs)/3600;
             let seconds = minsecs%60;
             let minutes = (minsecs-seconds)/60;
             data.trackings[0].timerString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
+            
             return data;
 
           })
@@ -128,7 +140,6 @@ export class Todo_detailComponent {
           this.newComment.userFName = this.userService.getCurrentUser().first_name;
           this.newComment.userLName = this.userService.getCurrentUser().last_name;
           this.newComment.created_at = "jetzt";
-          console.dir(this.newComment);
           this.todo.comments.push(this.newComment);
           this.newComment = new Comment();
         });
