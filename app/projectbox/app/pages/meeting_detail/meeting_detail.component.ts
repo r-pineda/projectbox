@@ -278,12 +278,12 @@ export class Meeting_detailComponent implements OnInit{
         this.modalDatetimepicker.pickDate(<PickerOptions>{
             title: "Datum auswählen",
             theme: "dark",
-            startingDate: new Date('2017-10-01'),
-            maxDate: new Date(),
-            minDate: new Date('2017-09-19')
+            startingDate: new Date(),
+            maxDate: new Date('2030-12-31'),
+            minDate: new Date()
         }).then((result:any) => {
             if (result) {
-                this.date = result.day + "." + result.month + "." + result.year;
+                this.date = result.day + "." + result.month+1 + "." + result.year;
                 this.selectedDate = new Date(result.day, result.month, result.year);
             }
         })
@@ -294,10 +294,9 @@ export class Meeting_detailComponent implements OnInit{
 
     /* time picker */
     selectTime() {
-        let src = new Array<PickerOptions>();
-        src.
         this.modalDatetimepicker.pickTime(<PickerOptions>{
-            theme: "dark"
+            theme: "dark",
+            is24HourView: true
         }).then((result:any) => {
             if (result) {
                 this.meeting.date = new Date(this.meeting.date.getFullYear(), this.meeting.date.getMonth(), this.meeting.date.getDate(), result.hour, result.minute, 0);
