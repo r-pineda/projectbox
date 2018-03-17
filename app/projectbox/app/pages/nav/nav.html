@@ -33,9 +33,7 @@
         <AbsoluteLayout>
             <StackLayout width="100%" [ngSwitch]="appState">
                 <pb-dashboard *ngSwitchCase="'dashboard'"></pb-dashboard>
-                <pb-todo *ngSwitchCase="'todo'">
-                    <pb-todo-detail></pb-todo-detail>
-                </pb-todo>
+                <pb-todo *ngSwitchCase="'todo'"></pb-todo>
                 <pb-meeting *ngSwitchCase="'meeting'"></pb-meeting>
                 <pb-ticket *ngSwitchCase="'ticket'"></pb-ticket>
                 <pb-setting *ngSwitchCase="'settings'"></pb-setting>

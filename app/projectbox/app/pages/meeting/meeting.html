@@ -100,7 +100,7 @@
                 <StackLayout [ngSwitch]="meeting_tabs">
                     <StackLayout *ngSwitchCase="'teilnehmer'">
                             <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="addAttendee()">
-                                <FAB icon="~/images/hinzufuegen2.png" (tap)="addAttendee()" rippleColor="#f1f1f1" class="fab-button margin-10"></FAB>
+                                <FAB icon="~/images/hinzufuegen2.png" (tap)="addAttendee()" rippleColor="#f1f1f1" class="fab-button margin-15"></FAB>
                                 <Label verticalAlignment="center" class="h4" text="Teilnehmer hinzufügen"></Label>
                             </StackLayout>
                             <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let attendee of newMeeting.attendees; let i = index" [attr.data-index]="i">
@@ -114,26 +114,22 @@
                     </StackLayout>
                     <StackLayout *ngSwitchCase="'agenda'">
                             <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="addPoint()">
-                                <FAB icon="~/images/hinzufuegen2.png" rippleColor="#f1f1f1" class="fab-button margin-10" (tap)="addPoint()"></FAB>
+                                <FAB icon="~/images/hinzufuegen2.png" rippleColor="#f1f1f1" class="fab-button margin-15" (tap)="addPoint()"></FAB>
                                 <Label verticalAlignment="center" class="h4" text="Agendapunkt hinzufügen"></Label>
                             </StackLayout>
                             <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let point of newMeeting.agenda">
                                 <FAB icon="~/images/delete.png" rowSpan="2"
                                      col="0" rippleColor="#f1f1f1"
                                      class="fab-button-red margin-10" verticalAlignment="center"></FAB>
-                                <TextView hint="Agendapunkt" [(ngModel)]="point.topic" class="textfield margin-bot-10" row="0"
-                                          colSpan="2"></TextView>
-                                <TextView hint="Verantwortlicher" [(ngModel)]="point.responsible" class="textfield margin-bot-10" row="1" col="0"
-                                          style="margin-right:5;"></TextView>
-                                <TextView hint="Dauer" keyboardType="number" [(ngModel)]="point.duration" class="textfield margin-bot-10" row="1"
-                                          col="1"></TextView>
-                                <Label class="field-seperator margin-topbot-5" height="1"></Label>
+                                <TextField class="textfield  margin-right-5" hint="Agendapunkt" [(ngModel)]="point.topic" col="1" row="0"></TextField>
+                                <TextField class="textfield" hint="Dauer" keyboardType="number" [(ngModel)]="point.duration" col="2" row="0"></TextField>
+                                <TextField class="textfield" hint="Verantwortlicher" [(ngModel)]="point.responsible" col="1" colSpan="2" row="1"></TextField>
                             </GridLayout>
                     </StackLayout>
                     <StackLayout *ngSwitchCase="'files'">
                         <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="sourcepic()">
                             <FAB icon="~/images/photo-camera.png"  rippleColor="#f1f1f1"
-                                 class="fab-button margin-10" (tap)="sourcepic()"></FAB>
+                                 class="fab-button margin-15" (tap)="sourcepic()"></FAB>
                             <Label verticalAlignment="center" class="h4" text="Foto hochladen" (tap)="sourcepic()"></Label>
                         </StackLayout>
                         <GridLayout columns="auto,*" rows="*,*" *ngFor="let file of userFiles"

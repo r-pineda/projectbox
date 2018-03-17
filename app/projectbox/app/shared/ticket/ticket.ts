@@ -12,4 +12,6 @@ export class Ticket {
   date: Date;
   completed_at?: any;
   completed?: any;
+  pinned :boolean;
+  color: string = '#000';
 }
