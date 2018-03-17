@@ -39,7 +39,7 @@
                               (opened)="onopen()"
                               (closed)="onclose()"></DropDown>
                     <Label class="h5" text="TEILNEHMER"></Label>
-                    <TextField class="textfield" [(ngModel)]="meeting.attendees"></TextField>
+                    <TextField class="textfield" [(ngModel)]="attendeesString"></TextField>
                     <Label class="field-seperator margin-topbot-10" height="1"></Label>
                     <GridLayout columns="*,*,*" rows="*,*">
                         <Image [src]="meeting_tabs == 'agenda' ? '~/images/agenda_t.png' : '~/images/agenda_g.png'" (tap)="state('agenda')" row="0" col="0" width="20"

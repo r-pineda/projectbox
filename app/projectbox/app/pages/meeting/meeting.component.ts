@@ -107,10 +107,7 @@ export class MeetingComponent implements OnInit {
         });
     this.newMeeting.attendees = new Array<Attendee>();
     let newAttendee = new Attendee();
-    newAttendee.id = this.generateGuid();
-    this.newMeeting.attendees.push(newAttendee);
     this.newMeeting.agenda = new Array<AgendaPoint>();
-    this.newMeeting.agenda.push(new AgendaPoint());
     }
 
     cr_meeting() {
@@ -188,12 +185,13 @@ export class MeetingComponent implements OnInit {
     }
 
     createMeeting() {
+        this.newMeeting.attendees.forEach((attendee, index) => {attendee.order = index+1});
+        this.newMeeting.agenda.forEach((agendaPoint, index) => {agendaPoint.order = index+1});
         this.newMeeting.attendees = (JSON.stringify(this.newMeeting.attendees));
+        this.newMeeting.agenda = (JSON.stringify(this.newMeeting.agenda));
         this.newMeeting.date = new Date(this.selectedDate.year, this.selectedDate.month-1, this.selectedDate.day, this.selectedTime.hour, this.selectedTime.minute);
-        this.newMeeting.agenda = null;
-        console.dir(this.newMeeting);
-        /* this.meetingService.createMeeting(this.newMeeting)
-            .then((data) => {console.dir(data)}); */
+        this.meetingService.createMeeting(this.newMeeting)
+            .then((data) => {console.dir(data)});
     }
 
     showDetail(id: number) {
@@ -218,11 +216,13 @@ export class MeetingComponent implements OnInit {
     }
 
     addPoint() {
-        this.newMeeting.agenda.push(new AgendaPoint());
+        let newPoint = new AgendaPoint();
+        newPoint.id = this.generateGuid();
+        this.newMeeting.agenda.push(newPoint);
     }
 
-    removePoint() {
-
+    removePoint(index :number) {
+        this.newMeeting.agenda.splice(index, 1);
     }
     
     /* calendar */

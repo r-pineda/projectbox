@@ -8,15 +8,15 @@ export class Meeting {
     date :Date;
     attendees? :any;
     project_color? :string;
-    agenda? :AgendaPoint[] = new Array<AgendaPoint>();
+    agenda? :any;
   }
 
   export class AgendaPoint {
-    topic :string;
+    id :string;
+    name :string;
     responsible :string;
     duration :number;
-    agenda :string;
-    dateFormatted: string;
+    order :number;
   }
 
   export class Attendee {
@@ -24,4 +24,5 @@ export class Meeting {
     name :string;
     email :string;
     abbreviation :string;
+    order :number;
   }

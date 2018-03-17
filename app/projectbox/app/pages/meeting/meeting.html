@@ -117,13 +117,13 @@
                                 <FAB icon="~/images/hinzufuegen2.png" rippleColor="#f1f1f1" class="fab-button margin-15" (tap)="addPoint()"></FAB>
                                 <Label verticalAlignment="center" class="h4" text="Agendapunkt hinzufügen"></Label>
                             </StackLayout>
-                            <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let point of newMeeting.agenda">
+                            <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let point of newMeeting.agenda; let i = index" [attr.data-index]="i">
                                 <FAB icon="~/images/delete.png" rowSpan="2"
                                      col="0" rippleColor="#f1f1f1"
                                      class="fab-button-red margin-10" verticalAlignment="center"></FAB>
-                                <TextField class="textfield  margin-right-5" hint="Agendapunkt" [(ngModel)]="point.topic" col="1" row="0"></TextField>
-                                <TextField class="textfield" hint="Dauer" keyboardType="number" [(ngModel)]="point.duration" col="2" row="0"></TextField>
-                                <TextField class="textfield" hint="Verantwortlicher" [(ngModel)]="point.responsible" col="1" colSpan="2" row="1"></TextField>
+                                <TextField class="textfield  margin-right-5" hint="Thema" [(ngModel)]="newMeeting.agenda[i].name" col="1" row="0"></TextField>
+                                <TextField class="textfield" hint="Dauer" keyboardType="number" [(ngModel)]="newMeeting.agenda[i].duration" col="2" row="0"></TextField>
+                                <TextField class="textfield" hint="Verantwortlicher" [(ngModel)]="newMeeting.agenda[i].responsible" col="1" colSpan="2" row="1"></TextField>
                             </GridLayout>
                     </StackLayout>
                     <StackLayout *ngSwitchCase="'files'">

@@ -56,6 +56,7 @@ export class Meeting_detailComponent implements OnInit{
   meeting_tabs: String;
   public projectSelection :string[] = new Array<string>();
   public projectNames: string[] = new Array<string>();
+  attendeesString :string = "";
 
 
   constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private page: Page, private meetingService: MeetingService, private userService: UserService) {
@@ -128,13 +129,14 @@ export class Meeting_detailComponent implements OnInit{
     if(data){
 
       data.forEach(meeting => {
+        if(meeting.id === meeting_id){
+          this.meeting = meeting;
           let date = new Date(meeting.date);
           date.setMonth(date.getMonth()+1);
           this.date = (date.getDate() < 10? '0'+date.getDate() : date.getDate()) + "." + (date.getMonth() < 10? '0'+date.getMonth() : date.getMonth()) + "." + date.getFullYear().toString();
           this.time = date.getHours() + ":" + date.getMinutes();
-        if(meeting.id === meeting_id){
-          this.meeting = meeting;
-          this.meeting.agenda[0] = new AgendaPoint();
+          JSON.parse(this.meeting.attendees).forEach((attendee) => {this.attendeesString += attendee.name + ", "});
+          this.attendeesString = this.attendeesString.substring(0, this.attendeesString.length-2)
         }
       });
 
