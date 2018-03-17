@@ -128,9 +128,10 @@ export class Meeting_detailComponent implements OnInit{
     if(data){
 
       data.forEach(meeting => {
-          let meeting_date = new Date(meeting.date);
-          this.date = meeting_date.getDate() + "." + meeting_date.getMonth() + "." + meeting_date.getFullYear();
-          this.time = meeting_date.getHours() + ":" + meeting_date.getMinutes();
+          let date = new Date(meeting.date);
+          date.setMonth(date.getMonth()+1);
+          this.date = (date.getDate() < 10? '0'+date.getDate() : date.getDate()) + "." + (date.getMonth() < 10? '0'+date.getMonth() : date.getMonth()) + "." + date.getFullYear().toString();
+          this.time = date.getHours() + ":" + date.getMinutes();
         if(meeting.id === meeting_id){
           this.meeting = meeting;
           this.meeting.agenda[0] = new AgendaPoint();

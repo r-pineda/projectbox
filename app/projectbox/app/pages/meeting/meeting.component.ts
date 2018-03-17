@@ -131,10 +131,11 @@ export class MeetingComponent implements OnInit {
                 this.events.push(ce);
                 var curDate = new Date();
                 var date = new Date(meeting.date);
-                if (curDate.getDay() == date.getDay() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
+                if (curDate.getDate() == date.getDate() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
                     meeting.dateFormatted = "HEUTE";
                 } else {
-                    meeting.dateFormatted = date.getDay() + "." + date.getMonth() + "." + date.getFullYear().toString();
+                    date.setMonth(date.getMonth()+1);
+                    meeting.dateFormatted = (date.getDate() < 10? '0'+date.getDate() : date.getDate()) + "." + (date.getMonth() < 10? '0'+date.getMonth() : date.getMonth()) + "." + date.getFullYear().toString().substring(2,4);
                 }
             });
             this.meetingService.saveMeetings(data);
@@ -147,7 +148,7 @@ export class MeetingComponent implements OnInit {
                     .then(
                     (data) => {
                         console.log("hallo");
-                        meeting.project_color = data.projects[0].color
+                        meeting.project_color = data.projects[0].color;
                     },
                     (error) => {console.log("ALARM")}
                     );
@@ -155,10 +156,10 @@ export class MeetingComponent implements OnInit {
                 this.events.push(ce);
                 var curDate = new Date();
                 var date = new Date(meeting.date);
-                if (curDate.getDay() == date.getDay() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
+                if (curDate.getDate() == date.getDate() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
                     meeting.dateFormatted = "HEUTE";
                 } else {
-                    meeting.dateFormatted = date.getDay() + "." + date.getMonth() + "." + date.getFullYear().toString();
+                    meeting.dateFormatted = date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
                 }
             });
             this.meetings = data.meetings;

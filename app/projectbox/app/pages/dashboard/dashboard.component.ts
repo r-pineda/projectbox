@@ -153,11 +153,11 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     data.meetings.forEach(meeting => {
           var curDate = new Date();
           var date = new Date(meeting.date);
-          if (curDate.getDay() == date.getDay() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
+          if (curDate.getDate() == date.getDate() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
               meeting.dateFormatted = "HEUTE";
           } else {
-              var month = date.setMonth(date.getMonth()+1);
-              meeting.dateFormatted = date.getDay() + "." + date.getMonth() + "." + date.getFullYear().toString();
+              date.setMonth(date.getMonth()+1);
+              meeting.dateFormatted = (date.getDate() < 10? '0'+date.getDate() : date.getDate()) + "." + (date.getMonth() < 10? '0'+date.getMonth() : date.getMonth()) + "." + date.getFullYear().toString().substring(2,4);
           }
       });
     this.meetings = data.meetings;
