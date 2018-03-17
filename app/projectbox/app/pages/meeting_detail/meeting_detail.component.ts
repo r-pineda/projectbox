@@ -108,7 +108,6 @@ export class Meeting_detailComponent implements OnInit{
       (error) => this.getMeetingById(null, meeting_id)
     )
     .then((data) => {
-      //do shit after initialization of all datasets
     });
   }
 
@@ -129,7 +128,9 @@ export class Meeting_detailComponent implements OnInit{
     if(data){
 
       data.forEach(meeting => {
-
+          let meeting_date = new Date(meeting.date);
+          this.date = meeting_date.getDate() + "." + meeting_date.getMonth() + "." + meeting_date.getFullYear();
+          this.time = meeting_date.getHours() + ":" + meeting_date.getMinutes();
         if(meeting.id === meeting_id){
           this.meeting = meeting;
           this.meeting.agenda[0] = new AgendaPoint();
@@ -284,6 +285,23 @@ export class Meeting_detailComponent implements OnInit{
             if (result) {
                 this.date = result.day + "." + result.month + "." + result.year;
                 this.selectedDate = new Date(result.day, result.month, result.year);
+            }
+        })
+            .catch((error) => {
+                console.log("Error: " + error);
+            });
+    };
+
+    /* time picker */
+    selectTime() {
+        let src = new Array<PickerOptions>();
+        src.
+        this.modalDatetimepicker.pickTime(<PickerOptions>{
+            theme: "dark"
+        }).then((result:any) => {
+            if (result) {
+                this.meeting.date = new Date(this.meeting.date.getFullYear(), this.meeting.date.getMonth(), this.meeting.date.getDate(), result.hour, result.minute, 0);
+                this.time = result.hour + ":" + result.minute;
             }
         })
             .catch((error) => {
