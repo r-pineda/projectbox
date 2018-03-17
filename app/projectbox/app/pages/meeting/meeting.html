@@ -34,7 +34,7 @@
                         <GridLayout *ngFor="let item of displayedMeetings" class="marginitem" columns="auto, *"
                                     rows="auto"
                                     [nsRouterLink]="['/meeting_detail', item.id]" marginBottom="10">
-                            <Label class="borderitem" [ngStyle]="{'border-color' : item.color}" height="60" col="0"
+                            <Label class="borderitem" [ngStyle]="{'border-color' : item.project_color}" height="60" col="0"
                                    row="0" horizontalAlignment="center"></Label>
                             <GridLayout columns="80,auto,auto,*" rows="auto,auto,*" col="1" row="0"
                                         class="padding-topbot-5"
@@ -65,14 +65,14 @@
                     <TextField class="textfield" keyboardType="number" [(ngModel)]="newMeeting.duration" col="1"
                                row="1"></TextField>
                 </GridLayout>
+                <Label class="h5" text="Ort"></Label>
+                <TextField class="textfield" [(ngModel)]="newMeeting.location"></TextField>
                 <Label class="h5" text="Projekt"></Label>
                 <!--<TextField class="textfield" [(ngModel)]="meeting.project"></TextField>-->
                 <DropDown #projectdd
                           style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
                           [items]="projectList"
-                          (selectedIndexChanged)="getUsers($event)"
-                          (opened)="onopen()"
-                          (closed)="onclose()"></DropDown>
+                          (selectedIndexChanged)="selectProject($event)"></DropDown>
                 <Label class="field-seperator margin-topbot-10" height="1"></Label>
                 <GridLayout columns="*,*,*" rows="*,*">
                     <Image [src]="meeting_tabs == 'teilnehmer' ? '~/images/files_g.png' : '~/images/files_t.png'"
@@ -100,21 +100,21 @@
                 <StackLayout [ngSwitch]="meeting_tabs">
                     <StackLayout *ngSwitchCase="'teilnehmer'">
                             <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="addAttendee()">
-                                <FAB icon="~/images/hinzufuegen2.png" rippleColor="#f1f1f1" class="fab-button margin-10"></FAB>
+                                <FAB icon="~/images/hinzufuegen2.png" (tap)="addAttendee()" rippleColor="#f1f1f1" class="fab-button margin-10"></FAB>
                                 <Label verticalAlignment="center" class="h4" text="Teilnehmer hinzufügen"></Label>
                             </StackLayout>
-                            <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let attendee of newMeeting.attendees">
-                                <FAB icon="~/images/delete.png" rowSpan="2"
+                            <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let attendee of newMeeting.attendees; let i = index" [attr.data-index]="i">
+                                <FAB (tap)="removeAttendee(i)" icon="~/images/delete.png" rowSpan="2"
                                      col="0" rippleColor="#f1f1f1"
                                      class="fab-button-red margin-10" verticalAlignment="center"></FAB>
-                                <TextField class="textfield  margin-right-5" hint="Name"[(ngModel)]="attendee.full_string" col="1" row="0"></TextField>
-                                <TextField class="textfield" hint="Kürzel" [(ngModel)]="attendee.abbreviation" col="2" row="0"></TextField>
-                                <TextField class="textfield" hint="E-Mail-Adresse" [(ngModel)]="attendee.eMail" col="1" colSpan="2" row="1"></TextField>
+                                <TextField class="textfield  margin-right-5" hint="Name"[(ngModel)]="newMeeting.attendees[i].name" col="1" row="0"></TextField>
+                                <TextField class="textfield" hint="Kürzel" [(ngModel)]="newMeeting.attendees[i].abbreviation" col="2" row="0"></TextField>
+                                <TextField class="textfield" hint="E-Mail-Adresse" [(ngModel)]="newMeeting.attendees[i].email" col="1" colSpan="2" row="1"></TextField>
                             </GridLayout>
                     </StackLayout>
                     <StackLayout *ngSwitchCase="'agenda'">
                             <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="addPoint()">
-                                <FAB icon="~/images/hinzufuegen2.png" rippleColor="#f1f1f1" class="fab-button margin-10"></FAB>
+                                <FAB icon="~/images/hinzufuegen2.png" rippleColor="#f1f1f1" class="fab-button margin-10" (tap)="addPoint()"></FAB>
                                 <Label verticalAlignment="center" class="h4" text="Agendapunkt hinzufügen"></Label>
                             </StackLayout>
                             <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let point of newMeeting.agenda">

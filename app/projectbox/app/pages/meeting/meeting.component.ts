@@ -66,12 +66,11 @@ export class MeetingComponent implements OnInit {
     direction: number;
     newMeeting :Meeting = new Meeting;
 
+    selectedDate :any;
+    selectedTime :any;
 
     projectIds :string[] = new Array<string>();
     public projectList: string[] = new Array<string>();
-    /* attendeeArray :string[] = new Array<string>();
-    userIds :string[] = new Array<string>();
-    public userSelection :string[] = new Array<string>(); */
 
     /* date picker */
     public date: string;
@@ -107,7 +106,9 @@ export class MeetingComponent implements OnInit {
             });
         });
     this.newMeeting.attendees = new Array<Attendee>();
-    this.newMeeting.attendees.push(new Attendee());
+    let newAttendee = new Attendee();
+    newAttendee.id = this.generateGuid();
+    this.newMeeting.attendees.push(newAttendee);
     this.newMeeting.agenda = new Array<AgendaPoint>();
     this.newMeeting.agenda.push(new AgendaPoint());
     }
@@ -125,49 +126,40 @@ export class MeetingComponent implements OnInit {
     displayMeetings(data: any) {
 
         if (data) {
-            data.meetings.forEach(meeting => {
-                
-                let ce :CalendarEvent = new CalendarEvent(new Date(meeting.date));
-                this.events.push(ce);
-                var curDate = new Date();
-                var date = new Date(meeting.date);
-                if (curDate.getDay() == date.getDay() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
-                    meeting.dateFormatted = "HEUTE";
-                } else {
-                    meeting.dateFormatted = date.getDay() + "." + date.getMonth() + "." + date.getFullYear().toString();
-                }
-            });
             this.meetingService.saveMeetings(data);
-            this.meetings = data.meetings;
         } else {
 
             data = this.meetingService.getSavedMeetings()
-            data.meetings.forEach(meeting => {
-                this.userService.getSingleProject(meeting.project)
-                    .then(
-                    (data) => {
-                        console.log("hallo");
-                        meeting.project_color = data.projects[0].color
-                    },
-                    (error) => {console.log("ALARM")}
-                    );
-                let ce :CalendarEvent = new CalendarEvent(new Date(meeting.date));
-                this.events.push(ce);
-                var curDate = new Date();
-                var date = new Date(meeting.date);
-                if (curDate.getDay() == date.getDay() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
-                    meeting.dateFormatted = "HEUTE";
-                } else {
-                    meeting.dateFormatted = date.getDay() + "." + date.getMonth() + "." + date.getFullYear().toString();
-                }
-            });
-            this.meetings = data.meetings;
         }
+        data.meetings.forEach(meeting => {
+            this.userService.getSingleProject(meeting.project)
+                .then(
+                (data) => {
+                    meeting.project_color = data.projects[0].color
+                },
+                (error) => {}
+                );
+            let ce :CalendarEvent = new CalendarEvent(new Date(meeting.date));
+            this.events.push(ce);
+            var curDate = new Date();
+            var date = new Date(meeting.date);
+            if (curDate.getDay() == date.getDay() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
+                meeting.dateFormatted = "HEUTE";
+            } else {
+                meeting.dateFormatted = date.getDay() + "." + date.getMonth() + "." + date.getFullYear().toString();
+            }
+        });
+        this.meetings = data.meetings;
         this.displayedMeetings = data.meetings;
     }
 
     createMeeting() {
-        this.meetingService.createMeeting(this.newMeeting);
+        this.newMeeting.attendees = (JSON.stringify(this.newMeeting.attendees));
+        this.newMeeting.date = new Date(this.selectedDate.year, this.selectedDate.month-1, this.selectedDate.day, this.selectedTime.hour, this.selectedTime.minute);
+        this.newMeeting.agenda = null;
+        console.dir(this.newMeeting);
+        /* this.meetingService.createMeeting(this.newMeeting)
+            .then((data) => {console.dir(data)}); */
     }
 
     showDetail(id: number) {
@@ -182,11 +174,13 @@ export class MeetingComponent implements OnInit {
     }
 
     addAttendee() {
-        this.newMeeting.attendees.push(new Attendee());
+        let newAttendee = new Attendee();
+        newAttendee.id = this.generateGuid();
+        this.newMeeting.attendees.push(newAttendee);
     }
 
-    removeAttendee() {
-
+    removeAttendee(index :number) {
+        this.newMeeting.attendees.splice(index, 1);
     }
 
     addPoint() {
@@ -196,7 +190,7 @@ export class MeetingComponent implements OnInit {
     removePoint() {
 
     }
-
+    
     /* calendar */
 
     settings: any;
@@ -288,7 +282,8 @@ export class MeetingComponent implements OnInit {
         }).then((result:any) => {
             if (result) {
                 this.date = result.day + "." + result.month + "." + result.year;
-                //this.newMeeting.due_date = new Date(result.day, result.month, result.year);
+                this.selectedDate = result;
+                this.newMeeting.date = new Date(result.year, result.month, result.day);
             }
         })
             .catch((error) => {
@@ -310,6 +305,7 @@ export class MeetingComponent implements OnInit {
         }).then((result:any) => {
             if (result) {
                 this.time = result.hour + ":" + result.minute;
+                this.selectedTime = result;
             }
         })
             .catch((error) => {
@@ -317,21 +313,16 @@ export class MeetingComponent implements OnInit {
             });
     };
 
-    /* getUsers(args: SelectedIndexChangedEventData){
+    selectProject(args: SelectedIndexChangedEventData){
         this.newMeeting.project = this.projectIds[args.newIndex];
-        this.userService.getSingleProject(this.newMeeting.project)
-          .then(
-            (data) => {
-              this.userSelection = new Array<string>();
-              data.users.forEach((user) => {
-                this.userIds[this.userSelection.push(user.first_name + " " + user.last_name)-1] = user.id;
-              });
-            },
-            (error) => {})
-      }
+    }
 
-      selectUser(args: SelectedIndexChangedEventData){
-        this.attendeeArray[this.userIds[args.newIndex]] = this.userSelection.splice(args.newIndex, 1);
-        console.log(this.attendeeArray[this.userIds[args.newIndex]]);
-      } */
+    generateGuid(){
+        function s4(){
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+        return(s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4());
+    }
 }
