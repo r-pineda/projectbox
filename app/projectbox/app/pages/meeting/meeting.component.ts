@@ -328,14 +328,7 @@ export class MeetingComponent implements OnInit {
     selectTime() {
         this.modalDatetimepicker.pickTime(<PickerOptions>{
             theme: "dark",
-            minTime: {
-                hour: 0,
-                minute: 0
-            },
-            maxTime: {
-                hour: 23,
-                minute: 59
-            }
+            is24HourView: true
         }).then((result:any) => {
             if (result) {
                 this.time = result.hour + ":" + result.minute;

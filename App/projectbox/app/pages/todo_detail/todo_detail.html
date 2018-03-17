@@ -15,7 +15,7 @@
                 <Label class="h5" text="Titel"></Label>
                 <TextField class="textfield" [(ngModel)]="todo.name"></TextField>
                 <Label class="h5" text="Deadline"></Label>
-                <TextField class="textfield" (tap)="selectDate()" [(ngModel)]="todo.due_date_string"></TextField>
+                <TextField class="textfield" (tap)="selectDate()" [text]="date"></TextField>
                 <Label class="h5" text="Projekt"></Label>
                 <!--<TextField class="textfield" [(ngModel)]="todo.project"></TextField>-->
                 <DropDown #dd

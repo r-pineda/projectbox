@@ -80,6 +80,9 @@ export class Todo_detailComponent {
     this.todoService.getSingleTodo(todo_id)
       .then((data) => {
         this.todo = data.tasks[0];
+        let date = new Date(this.todo.due_date);
+        date.setMonth(date.getMonth()+1);
+        this.date = (date.getDate() < 10? '0'+date.getDate() : date.getDate()) + "." + (date.getMonth() < 10? '0'+date.getMonth() : date.getMonth()) + "." + date.getFullYear().toString();
         this.todo.comments = data.comments;
         if(this.todo.comments){
           this.todo.comments.forEach((comment) => {
