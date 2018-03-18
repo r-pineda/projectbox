@@ -120,7 +120,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
           /*Projektfarben für tasks herausfinden*/
           this.userService.getSingleProject(todo.project_id)
               .then(
-                  (data) => {data.projects[0].color?this.todos[index].color = data.projects[0].color:null},
+                  (data) => {data.projects[0].color?todo.color = data.projects[0].color:null},
                   (error) => {}
               );
           });
