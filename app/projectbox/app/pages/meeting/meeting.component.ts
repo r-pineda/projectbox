@@ -243,6 +243,7 @@ export class MeetingComponent implements OnInit {
     }
 
     removePoint(index :number) {
+        console.dir(this.newMeeting.agenda);
         this.newMeeting.agenda.splice(index, 1);
     }
     

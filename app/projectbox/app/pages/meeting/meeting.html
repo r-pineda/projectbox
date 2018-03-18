@@ -118,7 +118,7 @@
                                 <Label verticalAlignment="center" class="h4" text="Agendapunkt hinzufügen"></Label>
                             </StackLayout>
                             <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let point of newMeeting.agenda; let i = index" [attr.data-index]="i">
-                                <FAB icon="~/images/delete.png" rowSpan="2"
+                                <FAB icon="~/images/delete.png" rowSpan="2" (tap)="removePoint(i)"
                                      col="0" rippleColor="#f1f1f1"
                                      class="fab-button-red margin-10" verticalAlignment="center"></FAB>
                                 <TextField class="textfield  margin-right-5" hint="Thema" [(ngModel)]="newMeeting.agenda[i].name" col="1" row="0"></TextField>
