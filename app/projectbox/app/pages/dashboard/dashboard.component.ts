@@ -153,7 +153,14 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     }else {
         this.meetingService.saveMeetings(data);
     }
-    data.meetings.forEach(meeting => {
+          data.meetings.forEach(meeting => {
+            this.userService.getSingleProject(meeting.project)
+            .then(
+            (data) => {
+                meeting.project_color = data.projects[0].color
+            },
+            (error) => {}
+            );
           var curDate = new Date();
           var date = new Date(meeting.date);
           if (curDate.getDate() == date.getDate() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
