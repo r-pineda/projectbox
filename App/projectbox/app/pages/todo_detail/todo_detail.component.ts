@@ -88,6 +88,9 @@ export class Todo_detailComponent {
     this.todoService.getSingleTodo(todo_id)
       .then((data) => {
         this.todo = data.tasks[0];
+        let date = new Date(this.todo.due_date);
+        date.setMonth(date.getMonth()+1);
+        this.date = (date.getDate() < 10? '0'+date.getDate() : date.getDate()) + "." + (date.getMonth() < 10? '0'+date.getMonth() : date.getMonth()) + "." + date.getFullYear().toString();
         this.todo.comments = data.comments;
         if(this.todo.comments){
           this.todo.comments.forEach((comment) => {
@@ -107,10 +110,10 @@ export class Todo_detailComponent {
           this.todoService.fillTracking(tracking)
           .then((data) => {
             let startDate = new Date (data.trackings[0].created_at);
-            let month = startDate.setMonth(startDate.getMonth()+1);
+            startDate.setMonth(startDate.getMonth()+1);
             let start_minfix = startDate.getMinutes() < 10? 0 + startDate.getMinutes().toString() : startDate.getMinutes().toString();
             let start_hourfix = startDate.getHours() < 10? 0 + startDate.getHours().toString() :  startDate.getHours().toString();
-            data.trackings[0].startDateString = startDate.getDate() + "." + startDate.getMonth() + "." + startDate.getFullYear();
+            data.trackings[0].startDateString = (startDate.getDate() < 10? '0'+startDate.getDate() : startDate.getDate()) + "." + (startDate.getMonth() < 10? '0'+startDate.getMonth() : startDate.getMonth()) + "." + startDate.getFullYear().toString().substring(2,4);
             data.trackings[0].startTimeString = start_hourfix + ":" + start_minfix + ":" + startDate.getSeconds();
             let endDate = new Date (data.trackings[0].finished_at);
             let end_minfix = endDate.getMinutes() < 10? 0 + endDate.getMinutes().toString() :  endDate.getMinutes().toString();

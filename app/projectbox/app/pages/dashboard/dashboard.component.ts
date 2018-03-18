@@ -27,6 +27,7 @@ import {Todo, Tracking} from "../../shared/todo/todo";
 import { Ticket } from "../../shared/ticket/ticket";
 import { NavComponent } from "../nav/nav.component";
 import {StatusService} from "../../shared/status/status.service";
+import {Page} from "ui/page";
 
 @Component({
   selector: "pb-dashboard",
@@ -65,10 +66,12 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     private ticketService :TicketService,
     private _changeDetectionRef: ChangeDetectorRef,
     private fonticon: TNSFontIconService,
-    private navState: NavComponent
+    private navState: NavComponent,
+    private page: Page
   )
   {
       this.nav = navState;
+      this.page.css = ".page {  padding-top: 10; padding-left: 10; padding-bottom: 20; background-color: #ECEDEE;}";
 
    /* this.curUser = this.userService.getCurrentUser();
     this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
