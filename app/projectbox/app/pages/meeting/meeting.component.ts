@@ -203,9 +203,11 @@ export class MeetingComponent implements OnInit {
         this.newMeeting.date = new Date(this.selectedDate.year, this.selectedDate.month-1, this.selectedDate.day, this.selectedTime.hour, this.selectedTime.minute);
         this.meetingService.createMeeting(this.newMeeting)
             .then((data) => {
-                this.uploadQueue.forEach((path) => {
+                this.cancel();
+                /* this.uploadQueue.forEach((path) => {
                     this.uploadImage(path, data.meeting.id)
-                });
+                }); */
+                this.ngOnInit();
             });
     }
 
