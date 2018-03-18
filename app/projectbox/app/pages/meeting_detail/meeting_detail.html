@@ -58,20 +58,6 @@
                     </GridLayout>
                     <Label class="field-seperator margin-topbot-10" height="1"></Label>
                         <StackLayout [ngSwitch]="meeting_tabs">
-                            <StackLayout *ngSwitchCase="'teilnehmer'">
-                                <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="addAttendee()">
-                                    <FAB icon="~/images/hinzufuegen2.png" rippleColor="#f1f1f1" class="fab-button margin-15"></FAB>
-                                    <Label verticalAlignment="center" class="h4" text="Teilnehmer hinzufügen"></Label>
-                                </StackLayout>
-                                <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let attendee of meeting.attendees">
-                                    <FAB icon="~/images/delete.png" rowSpan="2"
-                                         col="0" rippleColor="#f1f1f1"
-                                         class="fab-button-red margin-10" verticalAlignment="center"></FAB>
-                                    <TextField class="textfield  margin-right-5" hint="Name"[(ngModel)]="attendee.full_string" col="1" row="0"></TextField>
-                                    <TextField class="textfield" hint="Kürzel" [(ngModel)]="attendee.abbreviation" col="2" row="0"></TextField>
-                                    <TextField class="textfield" hint="E-Mail-Adresse" [(ngModel)]="attendee.eMail" col="1" colSpan="2" row="1"></TextField>
-                                </GridLayout>
-                            </StackLayout>
                             <StackLayout *ngSwitchCase="'agenda'">
                                 <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="addPoint()">
                                     <FAB icon="~/images/hinzufuegen2.png" rippleColor="#f1f1f1" class="fab-button margin-15"></FAB>
@@ -107,53 +93,6 @@
                                 <TextView  style="margin-top: 15px"  height="500px"  [(ngModel)]="meeting.protocol" hint="Inhalt vom Protokoll eingeben"  returnKeyType="send" class="input"></TextView>
                             </StackLayout>
                         </StackLayout>
-
-                       <!-- <StackLayout *ngSwitchCase="'agenda'">
-                            <StackLayout>
-                                <StackLayout orientation="horizontal" horizontalAlignment="center"  (tap)="addPoint()">
-                                    <StackLayout class="btn-img margin-right-5">
-                                        <Image src="~/images/hinzufuegen2.png" width="20" height="20"
-                                               stretch="aspectFit"></Image>
-                                    </StackLayout>
-                                    <Label verticalAlignment="center" class="h4" text="Agendapunkt hinzufügen"></Label>
-                                </StackLayout>
-                                <GridLayout columns="auto,*,auto,auto" rows="auto,auto" *ngFor="let point of meeting.agenda">
-                                    <Label class="field-seperator margin-topbot-5" height="1"></Label>
-                                    <FAB icon="~/images/abbrechen2.png" rowSpan="1"
-                                         col="0" rippleColor="#f1f1f1"
-                                         class="fab-button margin-10"></FAB>
-                                    <TextView hint="Agendapunkt" [(ngModel)]="point.topic" class="textfield margin-bot-10" row="0"
-                                              colSpan="2"></TextView>
-                                    <TextView hint="Verantwortlicher" [(ngModel)]="point.responsible" class="textfield margin-bot-10" row="1" col="0"
-                                              style="margin-right:5;"></TextView>
-                                    <TextView hint="Dauer" keyboardType="number" [(ngModel)]="point.duration" class="textfield margin-bot-10" row="1"
-                                              col="1"></TextView>
-                                    <Label class="field-seperator margin-topbot-5" height="1"></Label>
-                                </GridLayout>
-                            </StackLayout>
-                        </StackLayout>
-                        <StackLayout *ngSwitchCase="'protokoll'">
-                            <TextView  style="margin-top: 15px"  height="500px" hint="Inhalt vom Protokoll eingeben"  returnKeyType="send" class="input"></TextView>
-                        </StackLayout>
-                        <StackLayout *ngSwitchCase="'files'">
-                            <StackLayout orientation="horizontal">
-                                <StackLayout class="btn-img margin-right-5">
-                                    <Image src="~/images/photo-camera.png" width="20" height="20" (tap)="sourcepic()"
-                                           stretch="aspectFit"></Image>
-                                </StackLayout>
-                                <Label verticalAlignment="center" text="Foto hinzufügen"></Label>
-                            </StackLayout>
-                            <GridLayout columns="auto,*" rows="*,*" *ngFor="let file of userFiles"
-                                        style="padding:5; margin-top: 10;">
-                                <Image (tap)="showImage(file.imagesrc)" src="~/images/picture_file.png" rowSpan="2" col="0"
-                                       width="40" height="40"></Image> <!-- [src]=filetype? picture : document
-                                <Label [text]="file.name" row="0" col="1" verticalAlignment="center"
-                                       style="padding:5;"></Label>
-                                <!--<Label [text]="imagefile.name"></Label>
-                                <Label [text]="file.size + ' Bytes'" row="1" col="1" verticalAlignment="center"
-                                       style="padding:5;"></Label>
-                            </GridLayout>
-                        </StackLayout>-->
                 </StackLayout>
             </GridLayout>
         </StackLayout>
