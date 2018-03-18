@@ -162,7 +162,6 @@ export class Todo_detailComponent {
   }
 
     createComment(){
-      if(!this.newComment.message){
         let tf = this.commentTextField.nativeElement;
         tf.dismissSoftInput();
         this.newComment.task = this.todo.id;
@@ -178,7 +177,6 @@ export class Todo_detailComponent {
             this.todo.comments.push(this.newComment);
             this.newComment = new Comment();
           });
-        }
     }
 
     state(id) {
