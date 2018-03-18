@@ -13,6 +13,7 @@ var timer = require("timer");
 /* date picker */
 import { ModalDatetimepicker, PickerOptions } from 'nativescript-modal-datetimepicker';
 import {Config} from "../../shared/config";
+import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 
 
 @Component({
@@ -23,11 +24,18 @@ import {Config} from "../../shared/config";
 })
 
 export class Todo_detailComponent {
+  selectedUserIndex: number;
+  selectedPhaseIndex: number;
+  selectedProjectIndex: any;
+  projectList: string[] = new Array<string>();
+  userIds: string[] = new Array<string>();
+  phaseIds: string[] = new Array<string>();
+  userSelection: string[] = new Array<string>();
+  projectIds: string[] = new Array<string>();
   todo: Todo;
   public newTracking = new Tracking();
   public newTimerTracking = new Tracking();
   public newComment = new Comment();
-  public projectSelection :string[] = new Array<string>();
   public phaseSelection :string[] = new Array<string>();  //dropdown selection zur auswahl der phase in der ein task created werden soll. wird befüllt nachdem der user ein Projekt ausgewählt hat.
   task_tabs: string;
   trackings :Tracking[] = new Array<Tracking>();
@@ -136,7 +144,17 @@ export class Todo_detailComponent {
         this.userService.getSingleProject(this.todo.project)
           .then((data) =>{
             this.isPL = (data.projects[0].user == this.userService.getCurrentUser().id);
+        });
+        this.userService.getProjects()
+        .then((data) => {
+          data.projects.forEach((project) => {
+            this.projectIds[this.projectList.push(project.name)-1] = project.id;
+            if(this.todo.project == project.id){
+              this.selectedProjectIndex = this.projectList.length-1;
+              this.fillDropDown(project.id);
+            }
           });
+        });
       });
   }
 
@@ -243,4 +261,52 @@ export class Todo_detailComponent {
         });
       });
     }
+
+    getPhases(args: SelectedIndexChangedEventData){
+      this.todo.project = this.projectIds[args.newIndex];
+      this.userService.getSingleProject(this.todo.project)
+        .then(
+          (data) => {
+            this.phaseSelection = new Array<string>();
+            this.userSelection = new Array<string>();
+            data.phases.forEach((phase) => {
+              this.phaseIds[this.phaseSelection.push(phase.name)-1] = phase.id;
+            });
+            data.users.forEach((user) => {
+              this.userIds[this.userSelection.push(user.first_name + " " + user.last_name)-1] = user.id;
+            });
+          },
+          (error) => {})
+    }
+
+    selectPhase(args: SelectedIndexChangedEventData){
+      this.todo.phase = this.phaseIds[args.newIndex];
+    }
+
+    selectUser(args: SelectedIndexChangedEventData){
+      this.todo.responsible = this.userIds[args.newIndex];
+    }
+    fillDropDown(project_id){
+      this.userService.getSingleProject(project_id)
+        .then((data) => {
+          this.phaseSelection = new Array<string>();
+          this.userSelection = new Array<string>();
+          data.phases.forEach((phase) => {
+            this.phaseIds[this.phaseSelection.push(phase.name)-1] = phase.id;
+            if(this.todo.phase == phase.id){
+              this.selectedPhaseIndex = this.phaseSelection.length-1
+            }
+          });
+
+
+          data.users.forEach((user) => {
+            this.userIds[this.userSelection.push(user.first_name + " " + user.last_name)-1] = user.id;
+            if(this.todo.responsible == user.id){
+              this.selectedUserIndex = this.userSelection.length-1
+            }
+          });
+        });
+      
+    }
+
 }

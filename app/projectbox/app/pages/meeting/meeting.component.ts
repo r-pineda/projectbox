@@ -42,6 +42,9 @@ import {registerElement} from "nativescript-angular/element-registry";
 import {Page} from "ui/page";
 import { NavComponent } from "../nav/nav.component";
 import {ModalDatetimepicker, PickerOptions} from "nativescript-modal-datetimepicker";
+import * as dialogs from "ui/dialogs";
+import { Config } from "../../shared/config";
+var bghttp = require("nativescript-background-http"); //file upload
 
 registerElement('Calendar', () => Calendar);
 
@@ -72,6 +75,8 @@ export class MeetingComponent implements OnInit {
     projectIds :string[] = new Array<string>();
     public projectList: string[] = new Array<string>();
 
+    uploadQueue :any[] = new Array<any>();
+
     /* date picker */
     public date: string;
     public time: string;
@@ -101,13 +106,9 @@ export class MeetingComponent implements OnInit {
         this.userService.getProjects()
         .then((data) => {
             data.projects.forEach((project) => {
-                this.projectSelection[project.id] = project.name;
                 this.projectIds[this.projectList.push(project.name)-1] = project.id;
             });
         });
-    this.newMeeting.attendees = new Array<Attendee>();
-    let newAttendee = new Attendee();
-    this.newMeeting.agenda = new Array<AgendaPoint>();
     }
 
     cr_meeting() {
@@ -185,13 +186,27 @@ export class MeetingComponent implements OnInit {
     }
 
     createMeeting() {
-        this.newMeeting.attendees.forEach((attendee, index) => {attendee.order = index+1});
-        this.newMeeting.agenda.forEach((agendaPoint, index) => {agendaPoint.order = index+1});
-        this.newMeeting.attendees = (JSON.stringify(this.newMeeting.attendees));
+        if(this.newMeeting.attendees[0]){
+            this.newMeeting.attendees.forEach((attendee, index) => {attendee.order = index+1});
+        }else{
+            this.newMeeting.attendees = null;
+        }
+        if(this.newMeeting.agenda[0]){
+            this.newMeeting.agenda.forEach((agendaPoint, index) => {agendaPoint.order = index+1});
+        }else{
+            this.newMeeting.agenda = null
+        }
+        console.dir(this.newMeeting.attendees);
+        console.dir(this.newMeeting.agenda);
+        /* this.newMeeting.attendees = (JSON.stringify(this.newMeeting.attendees));
         this.newMeeting.agenda = (JSON.stringify(this.newMeeting.agenda));
         this.newMeeting.date = new Date(this.selectedDate.year, this.selectedDate.month-1, this.selectedDate.day, this.selectedTime.hour, this.selectedTime.minute);
         this.meetingService.createMeeting(this.newMeeting)
-            .then((data) => {console.dir(data)});
+            .then((data) => {
+                this.uploadQueue.forEach((path) => {
+                    this.uploadImage(path, data.meeting.id)
+                });
+            }); */
     }
 
     showDetail(id: number) {
@@ -206,6 +221,9 @@ export class MeetingComponent implements OnInit {
     }
 
     addAttendee() {
+        if(!this.newMeeting.attendees){
+            this.newMeeting.attendees = new Array<Attendee>();
+        }
         let newAttendee = new Attendee();
         newAttendee.id = this.generateGuid();
         this.newMeeting.attendees.push(newAttendee);
@@ -216,6 +234,9 @@ export class MeetingComponent implements OnInit {
     }
 
     addPoint() {
+        if(!this.newMeeting.agenda){
+            this.newMeeting.agenda = new Array<AgendaPoint>();
+        }
         let newPoint = new AgendaPoint();
         newPoint.id = this.generateGuid();
         this.newMeeting.agenda.push(newPoint);
@@ -338,7 +359,7 @@ export class MeetingComponent implements OnInit {
             }
         }).then((result:any) => {
             if (result) {
-                this.time = result.hour + ":" + result.minute;
+                this.time = result.hour + ":" + (result.minute>9?result.minute:"0"+result.minute);
                 this.selectedTime = result;
             }
         })
@@ -359,4 +380,93 @@ export class MeetingComponent implements OnInit {
         }
         return(s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4());
     }
+
+    openCamera(){
+        var milliseconds = new Date().getTime();
+        var that = this;
+        camera.requestPermissions();
+        camera.takePicture()
+            .then((imageAsset) => {
+                console.log("Result is an image asset instance");
+                let source = new imageSource.ImageSource();
+                source.fromAsset(imageAsset).then((source) => {
+                    let folder = fs.knownFolders.documents();
+                    let fileName = "test.png"
+                    let path = fs.path.join(folder.path, milliseconds + ".png");
+                    let saved = source.saveToFile(path, "png");
+                    if(saved){
+                        console.log("saved image")
+                    }
+                    that.uploadQueue.push(path);
+                })
+            }).catch((err) => {
+            console.log("Error -> " + err.message);
+        });
+    }
+    
+      sourcepic() {
+          dialogs.action({
+              message: "Quelle des Bildes",
+              cancelButtonText: "Abbrechen",
+              actions: ["Kamera", "Gallerie"]
+          }).then(result => {
+              if(result == "Kamera"){
+                  this.openCamera();
+              }else if(result == "Gallerie"){
+                  this.openGallery();
+              }
+          });
+      }
+    
+      openGallery(){
+    
+        var milliseconds = new Date().getTime();
+        var that = this;
+        let context = imagepicker.create({
+          mode: "single" //use "multiple" for multiple selection
+        });
+    
+        context
+        .authorize()
+        .then(() => context.present())
+        .then((selection) => {
+          selection.forEach(selected => {
+            selected.getImage().then(function(imagesource){
+              let folder = fs.knownFolders.documents();
+              var path = fs.path.join(folder.path, milliseconds + ".png");
+              var saved = imagesource.saveToFile(path, "png");
+              that.uploadQueue.push(path);
+            })
+          });
+        }).catch(function (e) {
+            // process error
+        });
+      }
+
+      uploadImage(path, meeting_id){
+        console.log("uploading...");
+        var session = bghttp.session("image-upload");
+     
+        var request = {
+            url: Config.apiUrl + "v2/upload/files",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/octet-stream",
+                "File-Name": "mobile_upload.png",
+                "Authorization": "Bearer " + Config.token
+            },
+            description: "{ 'uploading': 'mobile_upload.png' }" //wie body bei normalem post
+        };
+        var params = [{name: "meeting", value: meeting_id}, {name:"file", filename: path , mimeType: 'image/png'}];
+    
+        let task = session.multipartUpload(params, request);
+     
+        task.on("progress", this.logEvent);
+        task.on("error", this.logEvent);
+        task.on("complete", this.logEvent);
+      }
+     
+      logEvent(e) {
+        console.log(e.eventName);
+      }
 }

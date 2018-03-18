@@ -32,6 +32,7 @@ import * as dialogs from "ui/dialogs";
 /* date picker */
 import { ModalDatetimepicker, PickerOptions } from 'nativescript-modal-datetimepicker';
 import {StatusService} from "../../shared/status/status.service";
+import { Config } from "../../shared/config";
 
 var PhotoViewer = require("nativescript-photoviewer");
 
@@ -44,6 +45,7 @@ var bghttp = require("nativescript-background-http"); //file upload
   styleUrls: ["pages/meeting_detail/meeting_detail-common.css", "pages/meeting_detail/meeting_detail.css"]
 })
 export class Meeting_detailComponent implements OnInit{
+  selectedProjectIndex: number;
   public selectedDate;
   public date: string;
   public time: string;
@@ -54,9 +56,10 @@ export class Meeting_detailComponent implements OnInit{
   userFiles :FileObject[];
   imageFiles :string[] = new Array<string>();
   meeting_tabs: String;
-  public projectSelection :string[] = new Array<string>();
   public projectNames: string[] = new Array<string>();
+  projectIds :string[] = new Array<string>();
   attendeesString :string = "";
+  agenda :AgendaPoint[];
 
 
   constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private page: Page, private meetingService: MeetingService, private userService: UserService) {
@@ -85,20 +88,12 @@ export class Meeting_detailComponent implements OnInit{
     .then(() => {
       this.userFiles.forEach(file => {
         if(file.mime.split("/")[0] === "image"){
-          file.imagesrc = ("https://secure.projectbox.eu/v2/preview/file/" + file.id + "?access_token=" + this.userService.getCurrentUser().access_token)
+          file.imagesrc = (Config.apiUrl + "v2/preview/file/" + file.id + "?access_token=" + Config.token)
         }
       });
     });
 
       this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
-
-      this.userService.getProjects()
-      .then((data) => {
-        data.projects.forEach((project) => {
-          this.projectSelection[project.id] = project.name;
-          this.projectNames.push(project.name);
-        });
-      });
 
       this.meeting_tabs = 'agenda';
   }
@@ -107,9 +102,7 @@ export class Meeting_detailComponent implements OnInit{
     this.meetingService.getMeetings().then(
       (data) => this.getMeetingById(data.meetings, meeting_id),
       (error) => this.getMeetingById(null, meeting_id)
-    )
-    .then((data) => {
-    });
+    );
   }
 
   cancel() {
@@ -126,31 +119,31 @@ export class Meeting_detailComponent implements OnInit{
   }
 
   getMeetingById(data :any, meeting_id :number){
-    if(data){
-
-      data.forEach(meeting => {
-        if(meeting.id === meeting_id){
-          this.meeting = meeting;
-          let date = new Date(meeting.date);
-          date.setMonth(date.getMonth()+1);
-          this.date = (date.getDate() < 10? '0'+date.getDate() : date.getDate()) + "." + (date.getMonth() < 10? '0'+date.getMonth() : date.getMonth()) + "." + date.getFullYear().toString();
-          this.time = date.getHours() + ":" + date.getMinutes();
-          JSON.parse(this.meeting.attendees).forEach((attendee) => {this.attendeesString += attendee.name + ", "});
-          this.attendeesString = this.attendeesString.substring(0, this.attendeesString.length-2)
-        }
-      });
-
-    }else{
-    
+    if(!data){
       data = this.meetingService.getSavedMeetings();
-
-      data.forEach(meeting => {
-            
-        if(meeting.id === meeting_id){
-          this.meeting = meeting;
-        }
-      });
     }
+    data.forEach(meeting => {
+      if(meeting.id === meeting_id){
+        this.meeting = meeting;
+        console.dir(meeting);
+        let date = new Date(meeting.date);
+        date.setMonth(date.getMonth()+1);
+        this.date = (date.getDate() < 10? '0'+date.getDate() : date.getDate()) + "." + (date.getMonth() < 10? '0'+date.getMonth() : date.getMonth()) + "." + date.getFullYear().toString();
+        this.time = date.getHours() + ":" + date.getMinutes();
+        JSON.parse(this.meeting.attendees).forEach((attendee) => {this.attendeesString += attendee.name + ", "});
+        this.attendeesString = this.attendeesString.substring(0, this.attendeesString.length-2);
+        this.agenda = JSON.parse(this.meeting.agenda);
+        this.userService.getProjects()
+          .then((data) => {
+        data.projects.forEach((project) => {
+          this.projectIds[this.projectNames.push(project.name)-1] = project.id;
+          if(project.id == this.meeting.project){
+            this.selectedProjectIndex = this.projectNames.length-1;
+          }
+        });
+      });
+      }
+    });
   }
 
   updateMeeting(){
@@ -158,18 +151,17 @@ export class Meeting_detailComponent implements OnInit{
     this.cancel();
   }
 
-
   uploadImage(){
     console.log("uploading...");
     var session = bghttp.session("image-upload");
  
     var request = {
-        url: "https://secure.projectbox.eu/v2/upload/files",
+        url: Config.apiUrl + "v2/upload/files",
         method: "POST",
         headers: {
             "Content-Type": "application/octet-stream",
             "File-Name": "mobile_upload.png",
-            "Authorization": "Bearer " + this.userService.getCurrentUser().access_token
+            "Authorization": "Bearer " + Config.token
         },
         description: "{ 'uploading': 'mobile_upload.png' }" //wie body bei normalem post
     };
@@ -310,4 +302,6 @@ export class Meeting_detailComponent implements OnInit{
                 console.log("Error: " + error);
             });
     };
+
+
 }

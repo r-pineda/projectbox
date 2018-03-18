@@ -20,8 +20,8 @@
                 <!--<TextField class="textfield" [(ngModel)]="todo.project"></TextField>-->
                 <DropDown #dd
                           style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
-                          [items]="projectNames"
-                          [selectedIndex]="selectedProject"
+                          [items]="projectList"
+                          [selectedIndex]="selectedProjectIndex"
                           (selectedIndexChanged)="getPhases($event)"
                           (opened)="onopen()"
                           (closed)="getPhases()"></DropDown>
@@ -29,8 +29,17 @@
                 <DropDown #phasedd
                           style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
                           [items]="phaseSelection"
+                          [selectedIndex]="selectedPhaseIndex"
                           (selectedIndexChanged)="selectPhase($event)"
-                          (opened)="onopen()"
+                          (opened)="onopen()" A
+                          (closed)="onclose()"></DropDown>
+                <Label class="h5" text="Verantwortlicher"></Label>
+                <DropDown #userdd
+                          style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
+                          [items]="userSelection"
+                          [selectedIndex]="selectedUserIndex"
+                          (selectedIndexChanged)="selectUser($event)"
+                          (opened)="onopen()" A
                           (closed)="onclose()"></DropDown>
                 <!--<Label class="h5" text="Verantwortlicher"></Label>
                 <TextField class="textfield" [(ngModel)]="todo.user"></TextField>-->

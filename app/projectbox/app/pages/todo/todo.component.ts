@@ -31,13 +31,11 @@ export class TodoComponent {
   public newTimerTracking = new Tracking();
   public newComment = new Comment();
   curUser :User = new User;
-  avatar :string;
   todos :Todo[];
   todoForDetail :boolean[];
   timestart :string;
   create :boolean;
   nav: NavComponent;
-  public projectSelection :string[] = new Array<string>();//testen ob assotiativ funktioniert. || array[project_id] = project_name
   public phaseSelection :string[] = new Array<string>(); //dropdown selection zur auswahl der phase in der ein task created werden soll. wird befüllt nachdem der user ein Projekt ausgewählt hat.
   public userSelection :string[] = new Array<string>();
   currentTrackings :Tracking[] = new Array<Tracking>();
@@ -74,7 +72,6 @@ export class TodoComponent {
   {
     this.nav = navState;
     this.curUser = this.userService.getCurrentUser();
-    this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
     this.modalDatetimepicker = new ModalDatetimepicker();
 
   }
@@ -89,7 +86,6 @@ export class TodoComponent {
     this.userService.getProjects()
     .then((data) => {
       data.projects.forEach((project) => {
-        this.projectSelection[project.id] = project.name;
         this.projectIds[this.projectList.push(project.name)-1] = project.id;
       });
     });
@@ -265,14 +261,6 @@ export class TodoComponent {
     state(id) {
         this.task_tabs = id;
     }
-
-    getAvatar(user_id){
-      this.userService.getUser(user_id)
-        .then((data) => {
-          return this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + data.avatar + "?access_token=" + this.curUser.access_token;
-        });
-    }
-
     goToDetail(todo_id :string){
       this.routerExtensions.navigate(["todo_detail/" + todo_id], {
         transition: {

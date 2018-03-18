@@ -70,7 +70,6 @@ export class MeetingService {
   }
 
   update(meeting :Meeting){
-    console.log("UPDATE");
     let id :string = meeting.id + "";
     delete meeting.id;
     return this.http.put(
