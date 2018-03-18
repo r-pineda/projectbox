@@ -90,7 +90,7 @@ export class Todo_detailComponent {
         this.todo = data.tasks[0];
         let date = new Date(this.todo.due_date);
         date.setMonth(date.getMonth()+1);
-        this.date = (date.getDate() < 10? '0'+date.getDate() : date.getDate()) + "." + (date.getMonth() < 10? '0'+date.getMonth() : date.getMonth()) + "." + date.getFullYear().toString();
+        this.date = (date.getDate() < 10? '0'+date.getDate() : date.getDate()) + "." + ((date.getMonth()+1) < 10? '0'+(date.getMonth()+1) : (date.getMonth()+1)) + "." + date.getFullYear().toString();
         this.todo.comments = data.comments;
         if(this.todo.comments){
           this.todo.comments.forEach((comment) => {
@@ -197,8 +197,12 @@ export class Todo_detailComponent {
     }
 
     saveTodo() {
-      this.todoService.updateTodo(this.todo);
-      this.cancel();
+      this.todo.phase_id = this.todo.phase;
+      this.todo.responsible_id = this.todo.responsible;
+      this.todo.project_id = this.todo.project;
+      console.dir(this.todo);
+      //this.todoService.updateTodo(this.todo);
+      //this.cancel();
     }
 
     /* date picker */
@@ -211,8 +215,8 @@ export class Todo_detailComponent {
             minDate: new Date()
         }).then((result:any) => {
             if (result) {
-                this.date = result.day + "." + result.month + "." + result.year;
-                this.todo.due_date = new Date(result.day, result.month, result.year);
+                this.date = (result.day>9?result.day:"0"+result.day) + "." + (result.month>9?result.month:"0"+result.month) + "." + result.year;
+                this.todo.due_date = new Date(result.year, result.month-1, result.day);
             }
         })
             .catch((error) => {

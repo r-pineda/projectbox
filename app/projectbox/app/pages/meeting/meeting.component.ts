@@ -198,7 +198,7 @@ export class MeetingComponent implements OnInit {
         }
         console.dir(this.newMeeting.attendees);
         console.dir(this.newMeeting.agenda);
-        /* this.newMeeting.attendees = (JSON.stringify(this.newMeeting.attendees));
+        this.newMeeting.attendees = (JSON.stringify(this.newMeeting.attendees));
         this.newMeeting.agenda = (JSON.stringify(this.newMeeting.agenda));
         this.newMeeting.date = new Date(this.selectedDate.year, this.selectedDate.month-1, this.selectedDate.day, this.selectedTime.hour, this.selectedTime.minute);
         this.meetingService.createMeeting(this.newMeeting)
@@ -206,7 +206,7 @@ export class MeetingComponent implements OnInit {
                 this.uploadQueue.forEach((path) => {
                     this.uploadImage(path, data.meeting.id)
                 });
-            }); */
+            });
     }
 
     showDetail(id: number) {
