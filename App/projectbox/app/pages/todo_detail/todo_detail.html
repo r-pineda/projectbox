@@ -100,7 +100,7 @@
                                             <Label [text]="tracking.timerString"
                                                    [class]="isPL ? 'margin-right-10 pb-color bold' : '' "></Label>
                                             <Label class="fa" [text]="'fa-times' | fonticon"
-                                                   (tap)="deleteTracking(tracking.id)" *ngIf="isPL"></Label>
+                                                   (tap)="deleteTracking(tracking)" *ngIf="isPL"></Label>
                                         </StackLayout>
                                     </GridLayout>
                                 </StackLayout>

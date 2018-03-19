@@ -67,6 +67,8 @@ export class Todo_detailComponent {
       this.getTodo(params["id"]);
     });
 
+    this.totalTimeString = "00:00:00";
+
     this.userAvatar = Config.apiUrl + "v2/user/avatar/" + this.userService.getCurrentUser().avatar + "?access_token=" + Config.token;
 
     this.task_tabs = 'timetracking';
@@ -221,14 +223,25 @@ export class Todo_detailComponent {
             });
     };
 
-    deleteTracking(t_id :string){
-      this.todoService.deleteTracking(t_id)
+    deleteTracking(t :Tracking){
+      this.todoService.deleteTracking(t.id)
         .then(() => {
-          this.reloadTrackings();
-        })
+          //this.reloadTrackings();
+          this.trackings.splice(this.trackings.indexOf(t), 1);
+          this.totalTime -= Math.round((new Date(t.finished_at).getTime() - new Date(t.started_at).getTime())/1000);
+          if(this.totalTime <= 0){
+            this.totalTimeString = "00:00:00";
+          }else{
+            let minsecs = this.totalTime%3600;
+            let hours = (this.totalTime-minsecs)/3600;
+            let seconds = minsecs%60;
+            let minutes = (minsecs-seconds)/60;
+            this.totalTimeString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
+          }
+        });
     }
 
-    reloadTrackings(){
+   /* reloadTrackings(){
       this.todoService.getSingleTodo(this.todo.id)
       .then((data) => {
         this.todo.trackings = data.tasks[0].trackings;
@@ -264,7 +277,7 @@ export class Todo_detailComponent {
           });
         });
       });
-    }
+    } */
 
     getPhases(args: SelectedIndexChangedEventData){
       this.todo.project = this.projectIds[args.newIndex];
