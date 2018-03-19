@@ -2,21 +2,24 @@
     <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
         <StackLayout orientation="horizontal" row="0" col="0" ios:horizontalAlignment="left"
                      android:horizontalAlignment="left" *ngIf="!create">
-            <Label class="fa" *ngIf="nav.drawer.getIsOpen()" (tap)="nav.onCloseDrawerTap()" [text]="'fa-times' | fonticon" ios:horizontalAlignment="left"
+            <Label class="fa" *ngIf="nav.drawer.getIsOpen()" (tap)="nav.onCloseDrawerTap()"
+                   [text]="'fa-times' | fonticon" ios:horizontalAlignment="left"
                    android:horizontalAlignment="left" row="0" col="0"></Label>
-            <Label class="fa" *ngIf="!nav.drawer.getIsOpen()" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon" ios:horizontalAlignment="left"
+            <Label class="fa" *ngIf="!nav.drawer.getIsOpen()" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon"
+                   ios:horizontalAlignment="left"
                    android:horizontalAlignment="left" row="0" col="0"></Label>
         </StackLayout>
         <StackLayout orientation="horizontal" row="0" col="0" ios:horizontalAlignment="left"
                      android:horizontalAlignment="left" *ngIf="create">
-            <Label class="fa margin-right-10" (tap)="cancel()" [text]="'fa-times' | fonticon" ></Label>
+            <Label class="fa margin-right-10" (tap)="cancel()" [text]="'fa-times' | fonticon"></Label>
         </StackLayout>
         <Label text="Tickets" class="nav-h3" row="0" col="1"></Label>
-        <Label class="fa" *ngIf="!create" (tap)="cr_ticket()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right"
+        <Label class="fa" *ngIf="!create" (tap)="cr_ticket()" [text]="'fa-plus' | fonticon"
+               ios:horizontalAlignment="right"
                android:horizontalAlignment="right" row="0" col="2"></Label>
         <StackLayout orientation="horizontal" row="0" col="2" ios:horizontalAlignment="right"
                      android:horizontalAlignment="right" *ngIf="create">
-            <Label class="fa" (tap)="createTicket()" [text]="'fa-floppy-o' | fonticon" ></Label>
+            <Label class="fa" (tap)="createTicket()" [text]="'fa-floppy-o' | fonticon"></Label>
         </StackLayout>
 
     </GridLayout>
@@ -26,95 +29,43 @@
         <StackLayout class="page" width="100%">
             <StackLayout *ngIf="!create">
                 <GridLayout columns="*" rows="auto,auto,auto,auto">
-                    <Label class="h1" text="TOP-TICKETS" col="0" row="0"></Label>
-                    <StackLayout class="marginitem" col="0" row="1">
-                        <StackLayout *ngFor="let ticket  of tickets">
-                            <GridLayout class="marginitem" *ngIf="ticket.pinned" columns="auto,*"
-                                        rows="auto,auto,auto"
-                                        (tap)="expand(ticket.id)">
-                                <Label class="borderitem" [ngStyle]="{'border-color': ticket.color}" height="30" col="0"
-                                       rowSpan="2"></Label>
-                                <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
-                                    <StackLayout col="0" row="0" orientation="horizontal">
-                                        <Image src="~/images/topticket.png" width="10" height="10"
-                                               stretch="aspectFit" class="margin-right-5"></Image>
-                                        <Label [text]="ticket.name" class="longtext h4" textWrap="true"></Label>
-                                    </StackLayout>
-                                    <Label class="text ticket" [text]="ticket.priority" col="0" row="1"></Label>
-                                    <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon"
-                                           col="1"
-                                           rowSpan="2" *ngIf="!ticketForDetail[ticket.id]"></Label>
-                                    <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-up' | fonticon"
-                                           col="1"
-                                           rowSpan="2" *ngIf="ticketForDetail[ticket.id]"></Label>
-                                </GridLayout>
-                                <StackLayout col="1" row="3" *ngIf="ticketForDetail[ticket.id]" class="details padding-topbot-10">
-                                    <Label class="h4" [text]="ticket.project"></Label>
-                                    <TextView
-                                            [text]="ticket.description"
-                                            editable="false" textWrap="true" class="longtext"></TextView>
-                                    <GridLayout rows="*" columns="auto,120,auto">
-                                        <FAB [icon]="currentTrackings[ticket.id].finished ? '~/images/play2.png' : '~/images/stop2.png'" (tap)="startTimer(ticket.id)"  rippleColor="#f1f1f1"
-                                             class="fab-button margin-left-10 margin-right-5 margin-bot-10" row="0"
-                                             col="0"></FAB>
-                                        <!--</StackLayout>-->
-                                        <Label class="h4 time" verticalAlignment="center"
-                                               [text]="currentTrackings[ticket.id].timerString" col="1" row="0"></Label>
-                                        <StackLayout orientation="horizontal" horizontalAlignment="right" col="2"
-                                                     row="0">
-                                            <FAB icon="~/images/edit2.png" (tap)="goToDetail(ticket.id)"  rippleColor="#f1f1f1"
-                                                 class="fab-button margin-left-10 margin-right-5 margin-bot-10"></FAB>
-                                            <FAB icon="~/images/done2.png" (tap)="finished(ticket)"  rippleColor="#f1f1f1"
-                                                 class="fab-button margin-right-5 margin-bot-10"></FAB>
-                                            <FAB icon="~/images/delete2.png" (tap)="deleteTicket(ticket.id)"  rippleColor="#f1f1f1"
-                                                 class="fab-button-red margin-right-10 margin-bot-10"></FAB>
-                                        </StackLayout>
-                                    </GridLayout>
-                                </StackLayout>
-                            </GridLayout>
-                        </StackLayout>
-                    </StackLayout>
-                    <Label class="h1" text="WEITERE TICKETS" col="0" row="2"></Label>
+                    <Label class="h1" text="TICKETS" col="0" row="2"></Label>
                     <StackLayout class="marginitem" col="0" row="3">
-                        <StackLayout *ngFor="let ticket of tickets">
-                            <GridLayout class="marginitem" *ngIf="!ticket.pinned" columns="auto,*"
+                        <StackLayout *ngFor="let item of tickets">
+                            <GridLayout class="marginitem" columns="auto,*"
                                         rows="auto,auto,auto"
-                                        (tap)="expand(ticket.id)">
-                                <Label class="borderitem" [ngStyle]="{'border-color': ticket.color}" height="30" col="0"
+                                        (tap)="expand(item.id)">
+                                <Label class="borderitem" [ngStyle]="{'border-color': item.color}" height="30" col="0"
                                        rowSpan="2"></Label>
                                 <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
                                     <StackLayout col="0" row="0" orientation="horizontal">
-                                        <Image *ngIf="ticket.isPinned" src="~/images/topticket.png" width="25" height="25"
-                                               stretch="aspectFit"></Image>
-                                        <Label [text]="ticket.name" class="longtext h4" textWrap="true"></Label>
+                                        <Label [text]="item.name" class="longtext h4" textWrap="true"></Label>
                                     </StackLayout>
-                                    <Label class="text ticket" [text]="ticket.priority" col="0" row="1"></Label>
+                                    <Label class="text ticket" [text]="item.priority" col="0" row="1"></Label>
                                     <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon"
                                            col="1"
-                                           rowSpan="2" *ngIf="!todoForDetail[ticket.id]"></Label>
+                                           rowSpan="2" *ngIf="!ticketForDetail[item.id]"></Label>
                                     <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-up' | fonticon"
                                            col="1"
-                                           rowSpan="2" *ngIf="todoForDetail[ticket.id]"></Label>
+                                           rowSpan="2" *ngIf="ticketForDetail[item.id]"></Label>
                                 </GridLayout>
-                                <StackLayout col="1" row="3" *ngIf="todoForDetail[ticket.id]" class="details padding-topbot-10">
-                                    <Label class="h4" [text]="ticket.project"></Label>
+                                <StackLayout col="1" row="3" *ngIf="ticketForDetail[item.id]"
+                                             class="details padding-topbot-10">
+                                    <Label class="h4" [text]="item.project"></Label>
                                     <TextView
-                                            [text]="ticket.description"
+                                            [text]="item.description"
                                             editable="false" textWrap="true" class="longtext"></TextView>
-                                    <GridLayout rows="*" columns="auto,120,auto">
-                                        <FAB [icon]="currentTrackings[ticket.id].finished ? '~/images/play2.png' : '~/images/stop2.png'" (tap)="startTimer(ticket.id)"  rippleColor="#f1f1f1"
-                                             class="fab-button margin-left-10 margin-right-5 margin-bot-10" row="0"
-                                             col="0"></FAB>
-                                        <!--</StackLayout>-->
-                                        <Label class="h4 time" verticalAlignment="center"
-                                               [text]="currentTrackings[ticket.id].timerString" col="1" row="0"></Label>
-                                        <StackLayout orientation="horizontal" horizontalAlignment="right" col="2"
+                                    <GridLayout rows="*" columns="auto">
+                                        <StackLayout orientation="horizontal" horizontalAlignment="right" col="0"
                                                      row="0">
-                                            <FAB icon="~/images/edit2.png" (tap)="goToDetail(ticket.id)"  rippleColor="#f1f1f1"
+                                            <FAB icon="~/images/edit2.png" (tap)="goToDetail(item.id)"
+                                                 rippleColor="#f1f1f1"
                                                  class="fab-button margin-right-5 margin-bot-10"></FAB>
-                                            <FAB icon="~/images/done2.png" (tap)="finished(ticket)"  rippleColor="#f1f1f1"
+                                            <FAB icon="~/images/done2.png" (tap)="finished(item)"
+                                                 rippleColor="#f1f1f1"
                                                  class="fab-button margin-right-5 margin-bot-10"></FAB>
-                                            <FAB icon="~/images/delete2.png" (tap)="deleteTicket(ticket.id)"  rippleColor="#f1f1f1"
+                                            <FAB icon="~/images/delete2.png" (tap)="deleteTicket(item.id)"
+                                                 rippleColor="#f1f1f1"
                                                  class="fab-button-red margin-right-5 margin-bot-10"></FAB>
                                         </StackLayout>
                                     </GridLayout>
@@ -128,24 +79,18 @@
                 <!--<Label class="fa" [text]="'fa-angle-down' | fonticon" horizontalAlignment="center"></Label>-->
                 <Label class="h5" text="Titel"></Label>
                 <TextField class="textfield" [(ngModel)]="newTicket.name"></TextField>
-                <Label class="h5" text="Deadline"></Label>
-                <TextField class="textfield" (tap)="selectDate()" [text]="newTicket.due_date_string"></TextField>
-                <Label class="h5" text="Projekt"></Label>
-                <!--<TextField class="textfield" [(ngModel)]="todo.project"></TextField>-->
-                <DropDown #dd
-                          style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
-                          [items]="projectList"
-                          [selectedIndex]="selectedProject"
-                          (selectedIndexChanged)="getPhases($event)"
-                          (opened)="onopen()"
-                          (closed)="getPhases()"></DropDown>
-                <Label class="h5" text="Phase"></Label>
-                <DropDown #phasedd
-                          style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
-                          [items]="phaseSelection"
-                          (selectedIndexChanged)="selectPhase($event)"
-                          (opened)="onopen()" A
-                          (closed)="onclose()"></DropDown>
+                <GridLayout columns="*,auto" rows="*,*">
+                    <Label class="h5" text="Projekt" col="0" row="0"></Label>
+                    <DropDown #phasedd
+                              style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-right:5;margin-bottom:10;"
+                              [items]="projectList"
+                              (selectedIndexChanged)="getUsers($event)"
+                              (opened)="onopen()"
+                              (closed)="onclose()" col="0" row="1"></DropDown>
+                    <Label class="h5" text="Priorität" col="1" row="0"></Label>
+                    <TextField class="textfield" keyboardType="number" [(ngModel)]="newTicket.priority" col="1"
+                               row="1"></TextField>
+                </GridLayout>
                 <Label class="h5" text="Verantwortlicher"></Label>
                 <DropDown #phasedd
                           style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
@@ -156,14 +101,6 @@
                 <Label class="h5" text="Beschreibung"></Label>
                 <TextView style="margin-top: 15px" [(ngModel)]="newTicket.description" height="150"
                           returnKeyType="send" class="input"></TextView>
-                <GridLayout columns="auto,auto,*" rows="*" class="margin-topbot-10">
-                    <Label verticalAlignment="center" text="Top-Task" class="h4" row="0" col="1"></Label>
-                    <Image src="~/images/topticket.png" width="20" height="20" stretch="aspectFit"
-                           class="margin-right-5" row="0" col="0"></Image>
-                    <Switch [(ngModel)]="newTicket.pinned" (checkedChange)="onFirstChecked($event)"
-                            horizontalAlignment="right"
-                            col="2" row="0"></Switch>
-                </GridLayout>
             </StackLayout>
         </StackLayout>
     </ScrollView>

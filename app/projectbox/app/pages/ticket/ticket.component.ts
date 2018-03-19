@@ -15,6 +15,8 @@ import { RadSideDrawer } from 'nativescript-pro-ui/sidedrawer';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import * as dialogs from "ui/dialogs";
 import { NavComponent } from "../nav/nav.component";
+import {Tracking} from "../../shared/todo/todo";
+import {SelectedIndexChangedEventData} from "nativescript-drop-down";
 
 
 @Component({
@@ -29,13 +31,14 @@ export class TicketComponent implements OnInit {
   tickets :Ticket[];
   ticketForDetail :Boolean[];
   create: boolean;
-  timestart :string;
   curUser :User = new User;
-  avatar :string;
   public newTicket :Ticket = new Ticket();
   nav: NavComponent;
-  meeting_tabs: String;
   public projectSelection :string[] = new Array<string>();
+  public userSelection :string[] = new Array<string>();
+  public projectList: string[] = new Array<string>();
+  projectIds :string[] = new Array<string>();
+  userIds :string[] = new Array<string>();
 
   constructor
   (
@@ -53,7 +56,6 @@ export class TicketComponent implements OnInit {
   {
     this.nav = navState;
     this.curUser = this.userService.getCurrentUser();
-    this.avatar = "https://secure.projectbox.eu/v2/user/avatar/" + this.curUser.avatar + "?access_token=" + this.curUser.access_token;
   }
 
   ngOnInit(): void {
@@ -67,12 +69,13 @@ export class TicketComponent implements OnInit {
       });
     });
 
-    this.userService.getProjects()
-      .then((data) => {
-        data.projects.forEach((project) => {
-          this.projectSelection[project.id] = project.name;
-        });
-      });
+      this.userService.getProjects()
+          .then((data) => {
+              data.projects.forEach((project) => {
+                  console.log(project.name);
+                  this.projectIds[this.projectList.push(project.name)-1] = project.id;
+              });
+          });
       this.page.css = "Page { background-color: #ECEDEE; } .page { padding-left: 20; background-color: #ECEDEE;}";
   }
 
@@ -83,7 +86,6 @@ export class TicketComponent implements OnInit {
   displayTickets(data :any){
 
     if(data){
-
       this.ticketService.saveTickets(data);
       this.tickets = data.tickets;
 
@@ -93,6 +95,18 @@ export class TicketComponent implements OnInit {
       this.tickets = data.tickets;
       
     }
+
+    this.tickets.forEach((ticket) => {
+      if(ticket.completed){
+          this.tickets.splice(this.tickets.indexOf(ticket), 1)
+      }else {
+          this.userService.getSingleProject(ticket.project)
+              .then((data) => {
+                  ticket.project = data.projects[0].name;
+                  ticket.color = data.projects[0].color;
+              })
+      }
+    });
   }
 
   cr_ticket() {
@@ -106,47 +120,48 @@ export class TicketComponent implements OnInit {
   }
 
   createTicket() {
-      this.ticketService.createTicket(this.newTicket);
+      console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+      console.dir(this.newTicket);//whatever
+      console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+      this.ticketService.createTicket(this.newTicket)
+          .then((data) => {this.newTicket.id = data.ticket.id;this.ticketService.updateTicket(this.newTicket).then((data) => {this.ngOnInit()})})
       alert("Ticket erstellt");
       this.create = false;
   }
 
-    state(id) {
-        this.meeting_tabs = id;
+    getUsers(args: SelectedIndexChangedEventData){
+        this.newTicket.project = this.projectIds[args.newIndex];
+        this.userService.getSingleProject(this.newTicket.project)
+            .then(
+                (data) => {
+                    this.userSelection = new Array<string>();
+                    data.users.forEach((user) => {
+                        console.log(user.first_name);
+                        this.userIds[this.userSelection.push(user.first_name + " " + user.last_name)-1] = user.id;
+                    });
+                },
+                (error) => {})
     }
 
-  /*
-  saveTime(id :any){
-    console.dir(this.temp);
-    this.tickets.forEach(ticket => {
-      if(id == ticket.id){
-        let sec :number = 
-        ((this.temp[id][3] * 3600) + (this.temp[id][4] * 60) + +this.temp[id][5]) 
-        - ((this.temp[id][0] * 3600) + (this.temp[id][1] * 60) + +this.temp[id][2]);
-        sec -= sec%60;
-        ticket.timeTaken += (sec/60);
-      }
-    });
-  }
-
-
-  play_stop(id :any){
-    if(this.temp[id][7] == 0){
-      this.temp[id][7] = 1;
-      let date :Date = new Date();
-      this.temp[id][0] = date.getHours();
-      this.temp[id][1] = date.getMinutes();
-      this.temp[id][2] = date.getSeconds();
-    }else{
-      this.temp[id][7] = 0;
-      let date :Date = new Date();
-      this.temp[id][3] = date.getHours();
-      this.temp[id][4] = date.getMinutes();
-      this.temp[id][5] = date.getSeconds();
-      this.saveTime(id);
-      console.dir(this.temp);
+    selectUser(args: SelectedIndexChangedEventData){
+        this.newTicket.responsible = this.userIds[args.newIndex];
     }
 
-  }
-  */
+    deleteTicket(t_id :string){
+      this.ticketService.deleteTicket(t_id).then(() => {alert("Ticket erfolgreich gelöscht!");this.ngOnInit()});
+    }
+
+    finished(t :Ticket){
+        t.completed = true;
+        this.ticketService.updateTicket(t).then((data) => {this.ngOnInit();alert("Ticket erfolgreich abgeschlossen!")});
+    }
+
+    goToDetail(t_id :string){
+        this.routerExtensions.navigate(["ticket_detail/" + t_id], {
+            transition: {
+                name: "slideTop",
+                curve: "easeOut"
+            }
+        });
+    }
 }
