@@ -110,7 +110,15 @@ export class Ticket_detailComponent implements OnInit{
                 });
             },
             (error) => {})
-}
+  }
+
+    cancel() {
+        this.routerExtensions.backToPreviousPage();
+    }
+
+    saveTicket() {
+        this.cancel();
+    }
 
   
 

@@ -198,9 +198,8 @@ export class Todo_detailComponent {
       this.todo.phase_id = this.todo.phase;
       this.todo.responsible_id = this.todo.responsible;
       this.todo.project_id = this.todo.project;
-      console.dir(this.todo);
-      //this.todoService.updateTodo(this.todo);
-      //this.cancel();
+      this.todoService.updateTodo(this.todo);
+      this.cancel();
     }
 
     /* date picker */
