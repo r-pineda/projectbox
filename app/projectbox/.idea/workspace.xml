@@ -37,9 +37,11 @@
       <file leaf-file-name="meeting_detail.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/pages/meeting_detail/meeting_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="90" column="75" lean-forward="false" selection-start-line="90" selection-start-column="75" selection-end-line="90" selection-end-column="75" />
-              <folding />
+            <state relative-caret-position="278">
+              <caret line="97" column="83" lean-forward="false" selection-start-line="97" selection-start-column="83" selection-end-line="97" selection-end-column="83" />
+              <folding>
+                <marker date="1521492626456" expanded="true" signature="6586:6973" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -377,12 +379,12 @@
       <workItem from="1521359675749" duration="1794000" />
       <workItem from="1521401701312" duration="3789000" />
       <workItem from="1521443470185" duration="18924000" />
-      <workItem from="1521486555036" duration="4316000" />
+      <workItem from="1521486555036" duration="4758000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="243461000" />
+    <option name="totallyTimeSpent" value="243903000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -856,9 +858,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/meeting_detail/meeting_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="90" column="75" lean-forward="false" selection-start-line="90" selection-start-column="75" selection-end-line="90" selection-end-column="75" />
-          <folding />
+        <state relative-caret-position="278">
+          <caret line="97" column="83" lean-forward="false" selection-start-line="97" selection-start-column="83" selection-end-line="97" selection-end-column="83" />
+          <folding>
+            <marker date="1521492626456" expanded="true" signature="6586:6973" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

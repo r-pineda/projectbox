@@ -79,17 +79,15 @@
                             </GridLayout>
                         </StackLayout>
                         <StackLayout *ngSwitchCase="'files'">
-                            <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="sourcepic()">
+                            <GridLayout columns="auto,auto" horizontalAlignment="center" rows="auto,auto">
                                 <FAB icon="~/images/photo-camera.png" rippleColor="#f1f1f1"
-                                     class="fab-button margin-15" (tap)="sourcepic()"></FAB>
+                                     class="fab-button margin-15" (tap)="sourcepic()" col="0" row="0"></FAB>
                                 <Label verticalAlignment="center" class="h4" text="Foto hochladen"
-                                       (tap)="sourcepic()"></Label>
-                            </StackLayout>
-                            <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="reloadFiles()">
+                                       (tap)="sourcepic()" col="1" row="0"></Label>
                                 <FAB rippleColor="#f1f1f1" icon="~/images/refresh.png"
-                                     class="fab-button margin-15" (tap)="reloadFiles()"></FAB><!--  icon="~/images/refresh.png"  -->
-                                <Label class="h4" verticalAlignment="center" text="Files aktualisieren" (tap)="reloadFiles()"></Label>
-                            </StackLayout>
+                                     class="fab-button margin-15" (tap)="reloadFiles()" row="1" col="0"></FAB><!--  icon="~/images/refresh.png"  -->
+                                <Label class="h4" verticalAlignment="center" text="Files aktualisieren" col="1" row="1" (tap)="reloadFiles()"></Label>
+                            </GridLayout>
                             <GridLayout rows="auto, auto" columns="auto, auto" class="margin-topbot-10"
                                         *ngFor="let file of userFiles">
                                 <!--<Image [src]='comment.userImage' width="45" height="45"
@@ -97,7 +95,7 @@
                                        class="img-rounded"></Image>-->
                                 <Image (tap)="showImage(file.imagesrc)" src="~/images/picture_file.png" rowSpan="2"
                                        col="0"
-                                       width="50" height="50"></Image>
+                                       width="50" height="50" class="margin-right-5"></Image>
                                 <Label [text]="file.name" verticalAlignment="center"
                                        class="bold" col="1" row="0"></Label>
                                 <Label [text]="file.size + ' Bytes'" row="1" col="1" verticalAlignment="center"
