@@ -27,6 +27,7 @@ import { TodoComponent } from "./pages/todo/todo.component";
 import { Todo_detailComponent } from "./pages/todo_detail/todo_detail.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { TicketComponent } from "./pages/ticket/ticket.component";
+import { Ticket_detailComponent } from "./pages/ticket_detail/ticket_detail.component";
 import { NavComponent } from "./pages/nav/nav.component";
 import { MeetingComponent } from "./pages/meeting/meeting.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
@@ -68,6 +69,7 @@ import { SlidesModule } from 'nativescript-ngx-slides';
     TodoComponent,
     Todo_detailComponent,
     TicketComponent,
+    Ticket_detailComponent,
     Meeting_detailComponent,
     MeetingComponent,
     NavComponent,

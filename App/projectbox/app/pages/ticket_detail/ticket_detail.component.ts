@@ -17,10 +17,10 @@ import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 
 
 @Component({
-  selector: "pb-todo_detail",
+  selector: "pb-ticket_detail",
   providers: [TicketService, StatusService, UserService],
-  templateUrl: "pages/todo_detail/todo_detail.html",
-  styleUrls: ["pages/todo_detail/todo_detail-common.css", "pages/todo_detail/todo_detail.css"]
+  templateUrl: "pages/ticket_detail/ticket_detail.html",
+  styleUrls: ["pages/ticket_detail/ticket_detail-common.css", "pages/ticket_detail/ticket_detail.css"]
 })
 
 export class Ticket_detailComponent {
