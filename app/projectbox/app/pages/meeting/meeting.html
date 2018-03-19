@@ -27,7 +27,7 @@
 <ScrollView orientation="vertical" isEnabled="true" width="100%" height="100%">
     <AbsoluteLayout>
         <StackLayout width="100%">
-            <StackLayout *ngIf="!create">
+            <StackLayout *ngIf="!create && showanything">
                 <Calendar style="background-color:#ffffff;padding:5;font-size:15;font-weight:500;margin:0;margin-bottom:20;" [settings]="settings"
                           [events]="events"
                           [appearance]="appearance" (dateSelected)="dateSelected($event)"

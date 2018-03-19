@@ -56,10 +56,11 @@ registerElement('Calendar', () => Calendar);
 })
 export class MeetingComponent implements OnInit {
 
+    showanything :boolean = true;
     meetings: Meeting[];
     displayedMeetings: Meeting[];
     public picture: any;
-    create: boolean;
+    create: boolean = true;
     meetingdata: any;
     meetingsText: string;
     meeting_tabs: String;
@@ -130,11 +131,15 @@ export class MeetingComponent implements OnInit {
     }
 
     displayMeetings(data: any) {
+        this.showanything = false;
+        setTimeout(() => {
+            this.showanything = true;
+        }, 1)
+        
 
         if (data) {
             data.meetings.forEach(meeting => {
                 this.events.push(new CalendarEvent(new Date(meeting.date)));
-                console.dir(this.events)
                 var curDate = new Date();
                 var date = new Date(meeting.date);
                 if (curDate.getDate() == date.getDate() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
