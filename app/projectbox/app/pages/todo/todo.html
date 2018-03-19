@@ -37,7 +37,7 @@
                             <GridLayout class="marginitem" *ngIf="task.pinned" columns="auto,*"
                                         rows="auto,auto,auto"
                                         (tap)="expand(task.id)">
-                                <Label class="borderitem" [ngStyle]="{'border-color': task.color}" height="30" col="0"
+                                <Label class="borderitem" [ngStyle]="{'border-color': task.color}" height="40" col="0"
                                        rowSpan="2"></Label>
                                 <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
                                     <StackLayout col="0" row="0" orientation="horizontal">
@@ -56,7 +56,7 @@
                                 <StackLayout col="1" row="3" *ngIf="todoForDetail[task.id]" class="details padding-topbot-10">
                                     <StackLayout orientation="horizontal">
                                         <Label class="h4" [text]="task.project"></Label>
-                                        <Label text="" [ngStyle]="{'background-color': task.color}" class="margin-left-10 circle"></Label>
+                                        <Label text="" [ngStyle]="{'background-color': task.color}" class="margin-left-5 circle"></Label>
                                     </StackLayout>
                                     <TextView
                                             [text]="task.description"
@@ -78,7 +78,7 @@
                                             <FAB icon="~/images/done2.png" (tap)="finished(task)"  rippleColor="#f1f1f1"
                                                  class="fab-button margin-right-5 margin-bot-10"></FAB>
                                             <FAB icon="~/images/delete2.png" (tap)="deleteTodo(task.id)"  rippleColor="#f1f1f1"
-                                                 class="fab-button-red margin-right-10 margin-bot-10"></FAB>
+                                                 class="fab-button-red margin-right-15 margin-bot-10"></FAB>
                                         </StackLayout>
                                     </GridLayout>
                                 </StackLayout>
@@ -110,7 +110,7 @@
                             <StackLayout col="1" row="3" *ngIf="todoForDetail[task.id]" class="details padding-topbot-10">
                                 <StackLayout orientation="horizontal">
                                     <Label class="h4" [text]="task.project"></Label>
-                                    <Label text="" [ngStyle]="{'background-color': task.color}" class="margin-left-10 circle"></Label>
+                                    <Label text="" [ngStyle]="{'background-color': task.color}" class="margin-left-5 circle"></Label>
                                 </StackLayout>
                                 <TextView
                                         [text]="task.description"
@@ -128,11 +128,11 @@
                                     <StackLayout orientation="horizontal" horizontalAlignment="right" col="2"
                                                  row="0">
                                         <FAB icon="~/images/edit2.png" (tap)="goToDetail(task.id)"  rippleColor="#f1f1f1"
-                                             class="fab-button margin-right-5 margin-bot-10"></FAB>
+                                             class="fab-button margin-left-10 margin-right-5 margin-bot-10"></FAB>
                                         <FAB icon="~/images/done2.png" (tap)="finished(task)"  rippleColor="#f1f1f1"
                                              class="fab-button margin-right-5 margin-bot-10"></FAB>
                                         <FAB icon="~/images/delete2.png" (tap)="deleteTodo(task.id)"  rippleColor="#f1f1f1"
-                                             class="fab-button-red margin-right-5 margin-bot-10"></FAB>
+                                             class="fab-button-red margin-right-15 margin-bot-10"></FAB>
                                     </StackLayout>
                                 </GridLayout>
                             </StackLayout>

@@ -38,7 +38,7 @@
                             <GridLayout class="marginitem" columns="auto,*"
                                         rows="auto,auto,auto"
                                         (tap)="expand(item.id)">
-                                <Label class="borderitem" [ngStyle]="{'border-color': item.color}" height="30" col="0"
+                                <Label class="borderitem" [ngStyle]="{'border-color': item.color}" height="40" col="0"
                                        rowSpan="2"></Label>
                                 <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*">
                                     <StackLayout col="0" row="0" orientation="horizontal">
@@ -56,7 +56,7 @@
                                              class="details padding-topbot-10">
                                     <StackLayout orientation="horizontal">
                                         <Label class="h4" [text]="item.project"></Label>
-                                        <Label [ngStyle]="{'background-color': item.color}" class="margin-left-10 circle"></Label>
+                                        <Label [ngStyle]="{'background-color': item.color}" class="margin-left-5 circle"></Label>
                                     </StackLayout>
                                     <TextView
                                             [text]="item.description"
@@ -69,13 +69,13 @@
                                                      row="0">
                                             <FAB icon="~/images/edit2.png" (tap)="goToDetail(item.id)"
                                                  rippleColor="#f1f1f1"
-                                                 class="fab-button margin-right-5 margin-bot-10"></FAB>
+                                                 class="fab-button margin-left-10 margin-right-5 margin-bot-10"></FAB>
                                             <FAB icon="~/images/done2.png" (tap)="finished(item)"
                                                  rippleColor="#f1f1f1"
                                                  class="fab-button margin-right-5 margin-bot-10"></FAB>
                                             <FAB icon="~/images/delete2.png" (tap)="deleteTicket(item.id)"
                                                  rippleColor="#f1f1f1"
-                                                 class="fab-button-red margin-right-5 margin-bot-10"></FAB>
+                                                 class="fab-button-red margin-right-15 margin-bot-10"></FAB>
                                         </StackLayout>
                                     </GridLayout>
                                 </StackLayout>

@@ -38,7 +38,7 @@
         <GridLayout class="marginitem" *ngFor="let ite of projects"
                     columns="auto,*" rows="auto,auto"
                     (tap)="filterByProject(ite.id)">
-            <Label class="borderitem" [ngStyle]="{'border-color': ite.color}" height="30" col="0"
+            <Label class="borderitem" [ngStyle]="{'border-color': ite.color}" height="40" col="0"
                    rowSpan="2"></Label>
             <StackLayout class="listitem" rowSpan="2" col="1"
                          [style.background-color]="selectedProject == ite.id? '#03A698' : '#fff'"
@@ -54,7 +54,7 @@
         <GridLayout class="marginitem" *ngFor="let task of displayedTodos"
                     [nsRouterLink]="['/todo_detail', task.id]"
                     columns="auto,*" rows="auto,auto">
-            <Label class="borderitem" [ngStyle]="{'border-color': task.color}" height="30" col="0"
+            <Label class="borderitem" [ngStyle]="{'border-color': task.color}" height="40" col="0"
                    rowSpan="2"></Label>
             <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*" shadow="10">
                 <Label [text]="task.name" col="0" row="0" class="longtext h4" textWrap="true"></Label>
