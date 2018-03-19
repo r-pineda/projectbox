@@ -112,6 +112,7 @@ export class MeetingComponent implements OnInit {
         this.page.css = "Page { background-color: #ECEDEE; } .page { padding-left: 0; padding:20; background-color: #ECEDEE;} #meetinglist { padding-left: 20; }";
         this.userService.getProjects()
         .then((data) => {
+            this.projectList = new Array<string>();
             data.projects.forEach((project) => {
                 this.projectIds[this.projectList.push(project.name)-1] = project.id;
             });
@@ -187,26 +188,40 @@ export class MeetingComponent implements OnInit {
     }
 
     createMeeting() {
-        if(this.newMeeting.attendees[0]){
-            this.newMeeting.attendees.forEach((attendee, index) => {attendee.order = index+1});
+        if(this.newMeeting.attendees){
+            if(this.newMeeting.attendees[0]){
+                this.newMeeting.attendees.forEach((attendee, index) => {attendee.order = index+1});
+            }else{
+                this.newMeeting.attendees = null;
+            }
         }else{
             this.newMeeting.attendees = null;
         }
-        if(this.newMeeting.agenda[0]){
-            this.newMeeting.agenda.forEach((agendaPoint, index) => {agendaPoint.order = index+1});
+        if(this.newMeeting.agenda){
+            if(this.newMeeting.agenda[0]){
+                this.newMeeting.agenda.forEach((agendaPoint, index) => {agendaPoint.order = index+1});
+            }else{
+                this.newMeeting.agenda = null
+            }
         }else{
-            this.newMeeting.agenda = null
+            this.newMeeting.agenda = null;
         }
         this.newMeeting.attendees = (JSON.stringify(this.newMeeting.attendees));
         this.newMeeting.agenda = (JSON.stringify(this.newMeeting.agenda));
         this.newMeeting.date = new Date(this.selectedDate.year, this.selectedDate.month-1, this.selectedDate.day, this.selectedTime.hour, this.selectedTime.minute);
+        console.dir(this.newMeeting);
         this.meetingService.createMeeting(this.newMeeting)
             .then((data) => {
-                this.cancel();
+                this.newMeeting.id = data.meeting.id;
+                this.meetingService.update(this.newMeeting)
+                    .then((data) => {
+                        this.cancel();
+                        this.ngOnInit();
+                    });
+
                 /* this.uploadQueue.forEach((path) => {
                     this.uploadImage(path, data.meeting.id)
                 }); */
-                this.ngOnInit();
             });
     }
 
