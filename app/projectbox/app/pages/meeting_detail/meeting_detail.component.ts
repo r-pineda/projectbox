@@ -111,7 +111,6 @@ export class Meeting_detailComponent implements OnInit{
 
   displayFiles(data :any){
     if(data){
-      console.dir(data.files);
       this.userFiles = data.files;
     }else{
       data = this.userService.getSavedFiles();
@@ -304,5 +303,27 @@ export class Meeting_detailComponent implements OnInit{
             });
     };
 
-
+    reloadFiles(){
+      console.log("reloadFiles");
+      this.userService.getFiles().then(
+        (data) => this.displayFiles(data),
+        (error) => this.displayFiles(false)
+      )
+      .then(() => {
+        
+        this.userFiles.forEach(file => {
+          if(file.meeting_id != this.meeting.id){
+            this.userFiles.splice(this.userFiles.indexOf(file), 1);
+          }
+        });
+        
+      })
+      .then(() => {
+        this.userFiles.forEach(file => {
+          if(file.mime.split("/")[0] === "image"){
+            file.imagesrc = (Config.apiUrl + "v2/preview/file/" + file.id + "?access_token=" + Config.token)
+          }
+        });
+      });
+    }
 }
