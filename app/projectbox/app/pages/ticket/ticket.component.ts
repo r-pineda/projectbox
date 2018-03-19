@@ -71,6 +71,7 @@ export class TicketComponent implements OnInit {
 
       this.userService.getProjects()
           .then((data) => {
+              this.projectList = new Array<string>();
               data.projects.forEach((project) => {
                   console.log(project.name);
                   this.projectIds[this.projectList.push(project.name)-1] = project.id;
