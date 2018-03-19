@@ -28,7 +28,7 @@
     <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" col="0" row="0">
         <StackLayout class="page" width="100%">
             <StackLayout *ngIf="!create">
-                <GridLayout columns="*" rows="auto,auto,auto,auto">
+                <GridLayout columns="*" rows="auto,auto,auto,auto" *ngIf="tickets.length > 0">
                     <Label class="h1" text="TICKETS" col="0" row="2"></Label>
                     <StackLayout class="marginitem" col="0" row="3">
                         <StackLayout *ngFor="let item of tickets">
@@ -41,7 +41,7 @@
                                     <StackLayout col="0" row="0" orientation="horizontal">
                                         <Label [text]="item.name" class="longtext h4" textWrap="true"></Label>
                                     </StackLayout>
-                                    <Label class="text ticket" [text]="item.priority" col="0" row="1"></Label>
+                                    <Label class="text ticket" [text]="'Priorität: ' + item.priority" col="0" row="1"></Label>
                                     <Label class="fa ticket indicator-tickets right" [text]="'fa-angle-down' | fonticon"
                                            col="1"
                                            rowSpan="2" *ngIf="!ticketForDetail[item.id]"></Label>
@@ -74,6 +74,9 @@
                         </StackLayout>
                     </StackLayout>
                 </GridLayout>
+                <StackLayout horizontalAlignment="center" verticalAlignment="center" class="margin-topbot-10" *ngIf="tickets.length <= 0">
+                    <Label class="h4" text="keine Tickets vorhanden."></Label>
+                </StackLayout>
             </StackLayout>
             <StackLayout *ngIf="create" class="form-taskticket">
                 <!--<Label class="fa" [text]="'fa-angle-down' | fonticon" horizontalAlignment="center"></Label>-->

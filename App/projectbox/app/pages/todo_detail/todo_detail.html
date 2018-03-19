@@ -51,7 +51,8 @@
                     <Label verticalAlignment="center" text="Top-Task" class="h4" row="0" col="1"></Label>
                     <Image src="~/images/toptask.png" width="20" height="20" stretch="aspectFit"
                            class="margin-right-5" row="0" col="0"></Image>
-                    <Switch [(ngModel)]="todo.pinned" (checkedChange)="onFirstChecked($event)" horizontalAlignment="right"
+                    <Switch [(ngModel)]="todo.pinned" (checkedChange)="onFirstChecked($event)"
+                            horizontalAlignment="right"
                             col="2" row="0"></Switch>
                 </GridLayout>
                 <Label class="field-seperator margin-topbot-10" height="1"></Label>
@@ -78,7 +79,8 @@
                     <StackLayout *ngSwitchCase="'timetracking'">
                         <GridLayout columns="*,*" rows="*, *">
                             <Label class="h4" col="0" row="0" text="Gesamtdauer"></Label>
-                            <Label class="h4 pb-color" col="1" row="0" [text]="totalTimeString" horizontalAlignment="right"></Label>
+                            <Label class="h4 pb-color" col="1" row="0" [text]="totalTimeString"
+                                   horizontalAlignment="right"></Label>
                             <StackLayout colSpan="2" row="1">
                                 <StackLayout *ngFor="let tracking of trackings">
                                     <Label class="field-seperator" height="1"></Label>
@@ -113,15 +115,18 @@
                                 <Image [src]='comment.userImage' width="45" height="45"
                                        stretch="aspectFit" verticalAlignment="center" rowSpan="2" col="0"
                                        class="img-rounded"></Image>
-                                <Label [text]="comment.userFName + ' ' + comment.userLName + ': '" class="bold" col="1" row="0" verticalAlignment="center"></Label>
+                                <Label [text]="comment.userFName + ' ' + comment.userLName + ': '" class="bold" col="1"
+                                       row="0" verticalAlignment="center"></Label>
                                 <Label [text]="comment.message" col="2" row="0" verticalAlignment="center"></Label>
-                                <Label [text]="comment.date" col="1" colSpan="2" row="1" verticalAlignment="center"></Label>
+                                <Label [text]="comment.date" col="1" colSpan="2" row="1"
+                                       verticalAlignment="center"></Label>
                             </GridLayout>
                             <!--</GridLayout>-->
                             <GridLayout rows="auto" columns="auto, *, auto" class="margin-topbot-10 padding-topbot-10">
                                 <Image [src]="userAvatar" width="45" height="45"
                                        stretch="aspectFit" row="0" col="0" class="margin-right-5"></Image>
-                                <TextField #commentText class="textfield" hint="Kommentieren" [(ngModel)]="newComment.message"
+                                <TextField #commentText class="textfield" hint="Kommentieren"
+                                           [(ngModel)]="newComment.message"
                                            col="1" row="0" height="40"></TextField>
                                 <FAB icon="~/images/send.png" (tap)="createComment()" row="0"
                                      col="2" rippleColor="#f1f1f1"
@@ -129,8 +134,8 @@
                             </GridLayout>
                         </StackLayout>
                     </StackLayout>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
         </StackLayout>
     </AbsoluteLayout>
 </ScrollView>
