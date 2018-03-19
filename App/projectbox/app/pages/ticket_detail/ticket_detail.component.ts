@@ -117,7 +117,8 @@ export class Ticket_detailComponent implements OnInit{
     }
 
     saveTicket() {
-        this.cancel();
+      this.ticketService.updateTicket(this.ticket)
+        .then(() => {this.cancel()});
     }
 
   
