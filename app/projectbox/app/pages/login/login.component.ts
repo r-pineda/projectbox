@@ -138,11 +138,11 @@ export class LoginComponent implements OnInit{
           this.statusService.setOfflineMode(true);
           this.keyboardOff();
           this.wrongcredentials = false;
-          this.navigatetonav();
-          //this.checkSettings();
+          //this.navigatetonav();
+          this.checkSettings();
         }else{
           this.keyboardOff();
-          alert("Please check your Internet connection or enable offline data on your next login")
+          alert("Internetverbindung nicht vorhanden oder Offline-Verfügbarkeit einstellen")
         }
       }else{
         alert("Der erste Login benötigt eine aktive Internetverbindung");
@@ -151,14 +151,14 @@ export class LoginComponent implements OnInit{
 
   }
 
-  navigatetonav() {
+  /*navigatetonav() {
       this.routerExtensions.navigate(["/nav"], {
           transition: {
               name: "slide",
               curve: "easeOut"
           }
       })
-  }
+  }*/
 
   loginProceed(){
 
@@ -166,8 +166,8 @@ export class LoginComponent implements OnInit{
     this.wrongcredentials = false;
     this.statusService.loggedIn();
     this.statusService.setOfflineMode(false);
-    //this.checkSettings();
-      this.navigatetonav();
+    this.checkSettings();
+    //this.navigatetonav();
     /*this.routerExtensions.navigate(["/nav"], {
       transition: {
           name: "slide",

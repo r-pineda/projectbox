@@ -1,5 +1,5 @@
 <ActionBar title="" (swipe)="onSwipe($event)">
-    <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
+    <GridLayout rows="*" columns="*,*,*" class="padding-right-10">
         <StackLayout orientation="horizontal" row="0" col="0" ios:horizontalAlignment="left"
                      android:horizontalAlignment="left" *ngIf="!create">
             <Label class="fa" *ngIf="nav.drawer.getIsOpen()" (tap)="nav.onCloseDrawerTap()" [text]="'fa-times' | fonticon" ios:horizontalAlignment="left"
@@ -11,7 +11,10 @@
                      android:horizontalAlignment="left" *ngIf="create">
             <Label class="fa margin-right-10" (tap)="cancel()" [text]="'fa-times' | fonticon" ></Label>
         </StackLayout>
-        <Label text="Tasks" class="nav-h3" row="0" col="1"></Label>
+        <StackLayout orientation="horizontal" horizontalAlignment="center" row="0" col="1">
+            <Label text="Tasks" class="nav-h3 margin-right-5"></Label>
+            <Label class="fa" (tap)="ngOnInit()" [text]="'fa-repeat' | fonticon"></Label>
+        </StackLayout>
         <Label class="fa" *ngIf="!create" (tap)="cr_task()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right"
                android:horizontalAlignment="right" row="0" col="2"></Label>
         <StackLayout orientation="horizontal" row="0" col="2" ios:horizontalAlignment="right"
@@ -22,11 +25,13 @@
     </GridLayout>
 </ActionBar>
 <GridLayout columns="*" rows="*,auto">
-    <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" col="0" row="0">
+    <!--<ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" col="0" row="0">-->
         <StackLayout class="page" width="100%">
             <StackLayout *ngIf="!create">
                 <GridLayout columns="*" rows="auto,auto,auto,auto" *ngIf="todos.length > 0">
-                    <Label class="h1" text="TOP-TASKS" col="0" row="0"></Label>
+                    <StackLayout orientation="horizontal" col="0" row="0">
+                    <Label class="h1" text="TOP-TASKS"></Label>
+                    </StackLayout>
                     <StackLayout class="marginitem" col="0" row="1">
                         <StackLayout *ngFor="let task of todos">
                             <GridLayout class="marginitem" *ngIf="task.pinned" columns="auto,*"
@@ -49,9 +54,13 @@
                                            rowSpan="2" *ngIf="todoForDetail[task.id]"></Label>
                                 </GridLayout>
                                 <StackLayout col="1" row="3" *ngIf="todoForDetail[task.id]" class="details padding-topbot-10">
-                                    <Label class="h4" [text]="task.project"></Label>
+                                    <StackLayout orientation="horizontal">
+                                        <Label class="h4" [text]="task.project"></Label>
+                                        <Label text="" [ngStyle]="{'background-color': task.color}" class="margin-left-10 circle"></Label>
+                                    </StackLayout>
+                                    <TextView text="keine Beschreibung vorhanden" editable="false" class="light" *ngIf="!task.description"></TextView>
                                     <TextView
-                                            [text]="task.description"
+                                            [text]="task.description" *ngIf="task.description"
                                             editable="false" textWrap="true" class="longtext"></TextView>
                                     <GridLayout rows="*" columns="auto,120,auto">
                                         <FAB [icon]="currentTrackings[task.id].finished ? '~/images/play2.png' : '~/images/stop2.png'" (tap)="startTimer(task.id)"  rippleColor="#f1f1f1"
@@ -97,7 +106,10 @@
                                        rowSpan="2" *ngIf="todoForDetail[task.id]"></Label>
                             </GridLayout>
                             <StackLayout col="1" row="3" *ngIf="todoForDetail[task.id]" class="details padding-topbot-10">
-                                <Label class="h4" [text]="task.project"></Label>
+                                <StackLayout orientation="horizontal">
+                                    <Label class="h4" [text]="task.project"></Label>
+                                    <Label text="" [ngStyle]="{'background-color': task.color}" class="margin-left-10 circle"></Label>
+                                </StackLayout>
                                 <TextView
                                         [text]="task.description"
                                         editable="false" textWrap="true" class="longtext"></TextView>
@@ -169,7 +181,7 @@
                 </GridLayout>
             </StackLayout>
         </StackLayout>
-    </ScrollView>
+    <!--</ScrollView>-->
     <!--<StackLayout orientation="horizontal" horizontalAlignment="right" *ngIf="create" verticalAlignment="bottom"
                  height="10%" col="0" row="1">
         <FAB icon="~/images/abbrechen2.png" (tap)="cancel()" rippleColor="#f1f1f1"

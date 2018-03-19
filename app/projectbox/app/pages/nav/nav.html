@@ -26,11 +26,7 @@
             <Label (tap)="logout()" text="Logout" row="5" col="1" class="h4 center nav-label"></Label>
         </GridLayout>
     </StackLayout>
-    <!--<GridLayout rows="auto,*" columns="*">
-        <Label *ngIf="offlinemode" class="h3" text="OFFLINE"
-               style="text-align:center;background-color:#03A698;color:#fff;" row="0" col="0"></Label>-->
-    <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="100%" row="1" col="0">
-        <AbsoluteLayout>
+    <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="90%" row="1" col="0">
             <StackLayout width="100%" [ngSwitch]="appState">
                 <pb-dashboard *ngSwitchCase="'dashboard'"></pb-dashboard>
                 <pb-todo *ngSwitchCase="'todo'"></pb-todo>
@@ -38,6 +34,5 @@
                 <pb-ticket *ngSwitchCase="'ticket'"></pb-ticket>
                 <pb-setting *ngSwitchCase="'settings'"></pb-setting>
             </StackLayout>
-        </AbsoluteLayout>
     </ScrollView>
 </RadSideDrawer>
