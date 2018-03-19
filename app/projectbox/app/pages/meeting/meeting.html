@@ -11,7 +11,10 @@
                      android:horizontalAlignment="left" *ngIf="create">
             <Label class="fa margin-right-10" (tap)="cancel()" [text]="'fa-times' | fonticon" ></Label>
         </StackLayout>
-        <Label text="Meetings" class="nav-h3" row="0" col="1"></Label>
+        <StackLayout orientation="horizontal" horizontalAlignment="center" row="0" col="1">
+            <Label text="Meetings" class="nav-h3 margin-right-5"></Label>
+            <Label class="fa" (tap)="ngOnInit()" [text]="'fa-repeat' | fonticon"></Label>
+        </StackLayout>
         <Label class="fa" *ngIf="!create" (tap)="cr_meeting()" [text]="'fa-plus' | fonticon" ios:horizontalAlignment="right"
                android:horizontalAlignment="right" row="0" col="2"></Label>
         <StackLayout orientation="horizontal" row="0" col="2" ios:horizontalAlignment="right"
@@ -25,7 +28,7 @@
     <AbsoluteLayout>
         <StackLayout width="100%">
             <StackLayout *ngIf="!create">
-                <Calendar style="background-color:#ffffff;padding:10;margin:0;margin-bottom:20;" [settings]="settings"
+                <Calendar style="background-color:#ffffff;padding:5;font-size:15;font-weight:500;margin:0;margin-bottom:20;" [settings]="settings"
                           [events]="events"
                           [appearance]="appearance" (dateSelected)="dateSelected($event)"
                           (monthChanged)="monthChanged($event)" (loaded)="calendarLoaded($event)"></Calendar>
@@ -43,7 +46,7 @@
                                        class="meeting-indicator h4"
                                        margin="0 0 0 5"></Label>
                                 <Label col="1" rowSpan="3" class="hr-light" width="1" height="80%" margin="5"></Label>
-                                <Label [text]="item.name" textWrap="true" class="h4" col="2" margin="5 0 0 0"></Label>
+                                <Label [text]="item.name"  class="longtext h4" textWrap="true" col="2" margin="5 0 0 0"></Label>
                                 <Label [text]="item.duration + ' Minuten'" col="2" row="1" class="text"
                                        margin="0"></Label>
                                 <Label [text]="item.location" col="2" row="2" class="text" margin="0 5 0 0"></Label>

@@ -13,7 +13,10 @@
                      android:horizontalAlignment="left" *ngIf="create">
             <Label class="fa margin-right-10" (tap)="cancel()" [text]="'fa-times' | fonticon"></Label>
         </StackLayout>
-        <Label text="Tickets" class="nav-h3" row="0" col="1"></Label>
+        <StackLayout orientation="horizontal" horizontalAlignment="center" row="0" col="1">
+            <Label text="Tickets" class="nav-h3 margin-right-5"></Label>
+            <Label class="fa" (tap)="ngOnInit()" [text]="'fa-repeat' | fonticon"></Label>
+        </StackLayout>
         <Label class="fa" *ngIf="!create" (tap)="cr_ticket()" [text]="'fa-plus' | fonticon"
                ios:horizontalAlignment="right"
                android:horizontalAlignment="right" row="0" col="2"></Label>
@@ -51,11 +54,15 @@
                                 </GridLayout>
                                 <StackLayout col="1" row="3" *ngIf="ticketForDetail[item.id]"
                                              class="details padding-topbot-10">
-                                    <Label class="h4" [text]="item.project"></Label>
+                                    <StackLayout orientation="horizontal">
+                                        <Label class="h4" [text]="item.project"></Label>
+                                        <Label [ngStyle]="{'background-color': item.color}" class="margin-left-10 circle"></Label>
+                                    </StackLayout>
+                                    <TextView text="keine Beschreibung vorhanden" editable="false" class="light" *ngIf="!task.description"></TextView>
                                     <TextView
-                                            [text]="item.description"
-                                            editable="false" textWrap="true" class="longtext"></TextView>
-                                    <GridLayout rows="*" columns="auto">
+                                            [text]="item.description" *ngIf="task.description"
+                                            editable="false" textWrap="true" class="longtext text"></TextView>
+                                    <GridLayout rows="*" columns="auto" horizontalAlignment="right">
                                         <StackLayout orientation="horizontal" horizontalAlignment="right" col="0"
                                                      row="0">
                                             <FAB icon="~/images/edit2.png" (tap)="goToDetail(item.id)"
