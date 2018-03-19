@@ -79,6 +79,12 @@ export class Ticket_detailComponent implements OnInit{
     });
   }
 
+  
+
+  selectUser(args: SelectedIndexChangedEventData){
+    this.ticket.responsible = this.userIds[args.newIndex];
+  }
+
   fillDropDown(project_id){
     this.userService.getSingleProject(project_id)
       .then((data) => {
@@ -91,8 +97,20 @@ export class Ticket_detailComponent implements OnInit{
           }
         });
       });
-    
   }
+
+  getUsers(args: SelectedIndexChangedEventData){
+    this.ticket.project = this.projectIds[args.newIndex];
+    this.userService.getSingleProject(this.ticket.project)
+        .then(
+            (data) => {
+                this.userSelection = new Array<string>();
+                data.users.forEach((user) => {
+                    this.userIds[this.userSelection.push(user.first_name + " " + user.last_name)-1] = user.id;
+                });
+            },
+            (error) => {})
+}
 
   
 
