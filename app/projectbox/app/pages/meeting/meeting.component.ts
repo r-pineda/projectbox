@@ -69,6 +69,13 @@ export class MeetingComponent implements OnInit {
     direction: number;
     newMeeting :Meeting = new Meeting;
 
+    settings: any;
+    subtitles: CalendarSubtitle[];
+    events :CalendarEvent[] = new Array<CalendarEvent>();
+    public appearance: Appearance;
+    appearanceOptions: Array<Appearance>;
+    private _calendar: Calendar;
+
     selectedDate :any;
     selectedTime :any;
 
@@ -124,10 +131,9 @@ export class MeetingComponent implements OnInit {
     displayMeetings(data: any) {
 
         if (data) {
-            /*data.meetings.forEach(meeting => {
-                
-                let ce :CalendarEvent = new CalendarEvent(new Date(meeting.date));
-                this.events.push(ce);
+            data.meetings.forEach(meeting => {
+                this.events.push(new CalendarEvent(new Date(meeting.date)));
+                console.dir(this.events)
                 var curDate = new Date();
                 var date = new Date(meeting.date);
                 if (curDate.getDate() == date.getDate() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
@@ -136,22 +142,19 @@ export class MeetingComponent implements OnInit {
                     date.setMonth(date.getMonth()+1);
                     meeting.dateFormatted = (date.getDate() < 10? '0'+date.getDate() : date.getDate()) + "." + (date.getMonth() < 10? '0'+date.getMonth() : date.getMonth()) + "." + date.getFullYear().toString().substring(2,4);
                 }
-            });*/
+            });
             this.meetingService.saveMeetings(data);
         } else {
-
             data = this.meetingService.getSavedMeetings()
-            /*data.meetings.forEach(meeting => {
+            data.meetings.forEach(meeting => {
+                this.events.push(new CalendarEvent(new Date(meeting.date)));
                 this.userService.getSingleProject(meeting.project)
                     .then(
                     (data) => {
-                        console.log("hallo");
                         meeting.project_color = data.projects[0].color;
                     },
                     (error) => {console.log("ALARM")}
                     );
-                let ce :CalendarEvent = new CalendarEvent(new Date(meeting.date));
-                this.events.push(ce);
                 var curDate = new Date();
                 var date = new Date(meeting.date);
                 if (curDate.getDate() == date.getDate() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
@@ -160,7 +163,7 @@ export class MeetingComponent implements OnInit {
                     meeting.dateFormatted = date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
                 }
             });
-            this.meetings = data.meetings;*/
+            this.meetings = data.meetings;
         }
         data.meetings.forEach(meeting => {
             this.userService.getSingleProject(meeting.project)
@@ -170,8 +173,6 @@ export class MeetingComponent implements OnInit {
                 },
                 (error) => {}
                 );
-            let ce :CalendarEvent = new CalendarEvent(new Date(meeting.date));
-            this.events.push(ce);
             var curDate = new Date();
             var date = new Date(meeting.date);
             if (curDate.getDate() == date.getDate() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
@@ -196,8 +197,6 @@ export class MeetingComponent implements OnInit {
         }else{
             this.newMeeting.agenda = null
         }
-        console.dir(this.newMeeting.attendees);
-        console.dir(this.newMeeting.agenda);
         this.newMeeting.attendees = (JSON.stringify(this.newMeeting.attendees));
         this.newMeeting.agenda = (JSON.stringify(this.newMeeting.agenda));
         this.newMeeting.date = new Date(this.selectedDate.year, this.selectedDate.month-1, this.selectedDate.day, this.selectedTime.hour, this.selectedTime.minute);
@@ -250,13 +249,6 @@ export class MeetingComponent implements OnInit {
     }
     
     /* calendar */
-
-    settings: any;
-    subtitles: CalendarSubtitle[];
-    events :CalendarEvent[] = new Array<CalendarEvent>();
-    public appearance: Appearance;
-    appearanceOptions: Array<Appearance>;
-    private _calendar: Calendar;
 
     public calendarLoaded(event) {
         this.settings = <Settings>{

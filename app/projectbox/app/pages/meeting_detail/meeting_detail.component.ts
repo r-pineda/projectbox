@@ -111,6 +111,7 @@ export class Meeting_detailComponent implements OnInit{
 
   displayFiles(data :any){
     if(data){
+      console.dir(data.files);
       this.userFiles = data.files;
     }else{
       data = this.userService.getSavedFiles();
