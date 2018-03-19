@@ -18,6 +18,7 @@
                     <DropDown #phasedd
                               style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-right:5;margin-bottom:10;"
                               [items]="projectList"
+                              [selectedIndex]="selectedProjectIndex"
                               (selectedIndexChanged)="getUsers($event)"
                               (opened)="onopen()"
                               (closed)="onclose()" col="0" row="1"></DropDown>
@@ -29,6 +30,7 @@
                 <DropDown #phasedd
                           style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
                           [items]="userSelection"
+                          [selectedIndex]="selectedUserIndex"
                           (selectedIndexChanged)="selectUser($event)"
                           (opened)="onopen()" A
                           (closed)="onclose()"></DropDown>

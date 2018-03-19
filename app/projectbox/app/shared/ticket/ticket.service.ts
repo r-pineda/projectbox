@@ -45,6 +45,18 @@ export class TicketService {
     .toPromise();
   }
 
+  getSingleTicket(ticket_id :string){
+    return this.http.get(
+      Config.apiUrl + "v2/tickets/" + ticket_id,
+      { headers: this.headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+    })
+    .catch(this.handleErrors)
+    .toPromise();
+  }
+
   saveTickets(ticketsToSave :any){
     setString("tickets", JSON.stringify(ticketsToSave));
   }

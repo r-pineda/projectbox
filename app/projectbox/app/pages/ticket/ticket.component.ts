@@ -120,9 +120,6 @@ export class TicketComponent implements OnInit {
   }
 
   createTicket() {
-      console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
-      console.dir(this.newTicket);//whatever
-      console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
       this.ticketService.createTicket(this.newTicket)
           .then((data) => {this.newTicket.id = data.ticket.id;this.ticketService.updateTicket(this.newTicket).then((data) => {this.ngOnInit()})})
       alert("Ticket erstellt");

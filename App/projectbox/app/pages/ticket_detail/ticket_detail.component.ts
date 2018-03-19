@@ -20,8 +20,16 @@ import { SelectedIndexChangedEventData } from "nativescript-drop-down";
   styleUrls: ["pages/ticket_detail/ticket_detail-common.css", "pages/ticket_detail/ticket_detail.css"]
 })
 
-export class Ticket_detailComponent {
+export class Ticket_detailComponent implements OnInit{
   
+  selectedUserIndex: number;
+  selectedProjectIndex: any;
+  projectList: string[] = new Array<string>();
+  userIds: string[] = new Array<string>();
+  userSelection: string[] = new Array<string>();
+  projectIds: string[] = new Array<string>();
+  ticket :Ticket;
+
   constructor
   (
     private router: Router,
@@ -42,8 +50,24 @@ export class Ticket_detailComponent {
     this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
   }
 
-  getTicket(ticket_id){
+  ngOnInit(): void {
+  }
 
+  getTicket(ticket_id){
+    this.ticketService.getSingleTicket(ticket_id)
+      .then((data) => {
+        this.ticket = data.ticket;
+        this.userService.getProjects()
+        .then((data) => {
+          data.projects.forEach((project) => {
+            this.projectIds[this.projectList.push(project.name)-1] = project.id;
+            if(this.ticket.project == project.id){
+              this.selectedProjectIndex = this.projectList.length-1;
+              this.fillDropDown(project.id);
+            }
+          });
+        });
+      })
   }
 
   navigateto(pagename: string) {
@@ -53,6 +77,21 @@ export class Ticket_detailComponent {
           curve: "easeOut"
       }
     });
+  }
+
+  fillDropDown(project_id){
+    this.userService.getSingleProject(project_id)
+      .then((data) => {
+        this.userSelection = new Array<string>();
+      
+        data.users.forEach((user) => {
+          this.userIds[this.userSelection.push(user.first_name + " " + user.last_name)-1] = user.id;
+          if(this.ticket.responsible == user.id){
+            this.selectedUserIndex = this.userSelection.length-1
+          }
+        });
+      });
+    
   }
 
   
