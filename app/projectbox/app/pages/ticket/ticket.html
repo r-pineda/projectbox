@@ -58,10 +58,12 @@
                                         <Label class="h4" [text]="item.project"></Label>
                                         <Label [ngStyle]="{'background-color': item.color}" class="margin-left-10 circle"></Label>
                                     </StackLayout>
-                                    <TextView text="keine Beschreibung vorhanden" editable="false" class="light" *ngIf="!item.description"></TextView>
                                     <TextView
-                                            [text]="item.description" *ngIf="item.description"
-                                            editable="false" textWrap="true" class="longtext text"></TextView>
+                                            [text]="item.description"
+                                            editable="false" textWrap="true" class="longtext" *ngIf="item.description"></TextView>
+                                    <TextView
+                                            text="keine Beschreibung vorhanden."
+                                            editable="false" textWrap="true" class="longtext" *ngIf="!item.description"></TextView>
                                     <GridLayout rows="*" columns="auto" horizontalAlignment="right">
                                         <StackLayout orientation="horizontal" horizontalAlignment="right" col="0"
                                                      row="0">
