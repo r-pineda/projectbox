@@ -86,9 +86,9 @@
                                        (tap)="sourcepic()"></Label>
                             </StackLayout>
                             <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="reloadFiles()">
-                                <FAB icon="~/images/refresh.png" rippleColor="#f1f1f1"
-                                     class="fab-button margin-15" (tap)="reloadFiles()"></FAB>
-                                <Label class="h4" text="Files aktualisieren" (tap)="reloadFiles()"></Label>
+                                <FAB rippleColor="#f1f1f1" icon="~/images/refresh.png"
+                                     class="fab-button margin-15" (tap)="reloadFiles()"></FAB><!--  icon="~/images/refresh.png"  -->
+                                <Label class="h4" verticalAlignment="center" text="Files aktualisieren" (tap)="reloadFiles()"></Label>
                             </StackLayout>
                             <GridLayout rows="auto, auto" columns="auto, auto" class="margin-topbot-10"
                                         *ngFor="let file of userFiles">
