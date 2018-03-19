@@ -112,7 +112,7 @@ export class TodoComponent {
   displayTodos(data :any){
       data.tasks.forEach(todo => {
           var date = new Date(todo.due_date);
-          todo.due_date_string = "bis " + date.getDay() + ". " + this.monthNames[date.getMonth()] + " " + date.getFullYear();
+          todo.due_date_string = "bis " + date.getDate() + ". " + this.monthNames[date.getMonth()] + " " + date.getFullYear();
       })
         if(data){
           this.todoService.saveTodos(data);

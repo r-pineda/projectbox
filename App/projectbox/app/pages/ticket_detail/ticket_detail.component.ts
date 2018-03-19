@@ -4,14 +4,11 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
 import { StatusService } from "../../shared/status/status.service";
-import { Todo, Tracking, Comment } from "../../shared/todo/todo";
+import { Ticket } from "../../shared/ticket/ticket";
 import { TicketService } from "../../shared/ticket/ticket.service";
 import "rxjs/add/operator/switchMap";
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { UserService } from "../../shared/user/user.service";
-var timer = require("timer");
-/* date picker */
-import { ModalDatetimepicker, PickerOptions } from 'nativescript-modal-datetimepicker';
 import {Config} from "../../shared/config";
 import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 
@@ -31,7 +28,7 @@ export class Ticket_detailComponent {
     private routerExtensions: RouterExtensions,
     private route: ActivatedRoute,
     private statusService :StatusService,
-    private todoService :TicketService,
+    private ticketService :TicketService,
     private page: Page,
     private _changeDetectionRef: ChangeDetectorRef,
     private fonticon: TNSFontIconService,
