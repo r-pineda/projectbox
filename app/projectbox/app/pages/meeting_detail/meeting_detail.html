@@ -85,10 +85,10 @@
                                 <Label verticalAlignment="center" class="h4" text="Foto hochladen"
                                        (tap)="sourcepic()"></Label>
                             </StackLayout>
-                            <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="michisbutton()">
-                                <FAB icon="~/images/refresh.png" rippleColor="#f1f1f1"
-                                     class="fab-button margin-15" (tap)="michisbutton()"></FAB>
-                                <Label class="h4" text="Files aktualisieren" (tap)="michisbutton()"></Label>
+                            <StackLayout orientation="horizontal" horizontalAlignment="center" (tap)="reloadFiles()">
+                                <FAB rippleColor="#f1f1f1"
+                                     class="fab-button margin-15" (tap)="reloadFiles()"></FAB><!--  icon="~/images/refresh.png"  -->
+                                <Label class="h4" text="Files aktualisieren" (tap)="reloadFiles()"></Label>
                             </StackLayout>
                             <GridLayout rows="auto, auto" columns="auto, auto" class="margin-topbot-10"
                                         *ngFor="let file of userFiles">
