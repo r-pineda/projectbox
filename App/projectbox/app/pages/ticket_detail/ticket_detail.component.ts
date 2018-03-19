@@ -91,8 +91,16 @@ export class Ticket_detailComponent implements OnInit{
           }
         });
       });
-    
+
   }
+
+    cancel() {
+        this.routerExtensions.backToPreviousPage();
+    }
+
+    saveTicket() {
+        this.cancel();
+    }
 
   
 
