@@ -84,6 +84,7 @@ export class TicketComponent implements OnInit {
     this.ticketForDetail[id] = !this.ticketForDetail[id];
   }
 
+
   displayTickets(data :any){
 
     if(data){
@@ -96,7 +97,6 @@ export class TicketComponent implements OnInit {
       this.tickets = data.tickets;
       
     }
-
     this.tickets.forEach((ticket) => {
       if(ticket.completed){
           this.tickets.splice(this.tickets.indexOf(ticket), 1)
@@ -108,6 +108,7 @@ export class TicketComponent implements OnInit {
               })
       }
     });
+    this.tickets.sort((a, b) => a.priority-b.priority);
   }
 
   cr_ticket() {
