@@ -1,4 +1,4 @@
-<ActionBar title="" (swipe)="onSwipe($event)">
+    <ActionBar title="" (swipe)="onSwipe($event)">
     <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
         <Label class="fa" *ngIf="nav.drawer.getIsOpen()" (tap)="nav.onCloseDrawerTap()" [text]="'fa-times' | fonticon"
                ios:horizontalAlignment="left"

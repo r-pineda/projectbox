@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef } from "@angular/core";
+import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef, NgZone } from "@angular/core";
 import { UserService } from "../../shared/user/user.service";
 /*import { Router, ActivatedRoute } from "@angular/router";*/
 import { RouterExtensions } from "nativescript-angular/router";
@@ -54,6 +54,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
         "Juli", "August", "September", "Oktober", "November", "Dezember"
     ];
   public direction: number;
+  isUpdating = false;
 
   constructor
   (
@@ -67,7 +68,8 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     private _changeDetectionRef: ChangeDetectorRef,
     private fonticon: TNSFontIconService,
     private navState: NavComponent,
-    private page: Page
+    private page: Page,
+    private zone: NgZone
   )
   {
       this.nav = navState;
