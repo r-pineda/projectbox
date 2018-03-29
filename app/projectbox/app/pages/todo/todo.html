@@ -12,6 +12,7 @@
             <Label class="fa margin-right-10" (tap)="cancel()" [text]="'fa-times' | fonticon" ></Label>
         </StackLayout>
         <StackLayout orientation="horizontal" horizontalAlignment="center" row="0" col="1">
+            <Image src="~/images/disconnect.png" *ngIf="offlinemode"></Image>
             <Label text="Tasks" class="nav-h3 margin-right-5"></Label>
             <Label class="fa" (tap)="ngOnInit()" [text]="'fa-repeat' | fonticon"></Label>
         </StackLayout>

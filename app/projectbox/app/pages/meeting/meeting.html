@@ -12,6 +12,7 @@
             <Label class="fa margin-right-10" (tap)="cancel()" [text]="'fa-times' | fonticon" ></Label>
         </StackLayout>
         <StackLayout orientation="horizontal" horizontalAlignment="center" row="0" col="1">
+            <Image src="~/images/disconnect.png" *ngIf="offlinemode"></Image>
             <Label text="Meetings" class="nav-h3 margin-right-5"></Label>
             <Label class="fa" (tap)="ngOnInit()" [text]="'fa-repeat' | fonticon"></Label>
         </StackLayout>
@@ -78,7 +79,7 @@
                           (selectedIndexChanged)="selectProject($event)"></DropDown>
                 <Label class="field-seperator margin-topbot-10" height="1"></Label>
                 <GridLayout columns="*,*" rows="*,*">
-                    <Image [src]="meeting_tabs == 'teilnehmer' ? '~/images/files_g.png' : '~/images/files_t.png'"
+                    <Image [src]="meeting_tabs == 'teilnehmer' ? '~/images/members_t.png' : '~/images/members_g.png'"
                            (tap)="state('teilnehmer')" row="0" col="0" width="40"
                            height="20"
                            stretch="aspectFit"></Image>

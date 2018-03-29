@@ -2,7 +2,11 @@
     <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
         <Label class="fa" (tap)="cancel()" [text]="'fa-times' | fonticon" ios:horizontalAlignment="left"
                android:horizontalAlignment="left" row="0" col="0"></Label>
-        <Label text="Tasks" class="nav-h3" row="0" col="1"></Label>
+        <StackLayout orientation="horizontal" row="0" col="1" ios:horizontalAlignment="center"
+                     android:horizontalAlignment="center">
+            <Image src="~/images/disconnect.png" *ngIf="offlinemode"></Image>
+            <Label text="Tasks" class="nav-h3"></Label>
+        </StackLayout>
         <Label class="fa" (tap)="saveTodo()" [text]="'fa-floppy-o' | fonticon" ios:horizontalAlignment="right"
                android:horizontalAlignment="right" row="0" col="2"></Label>
     </GridLayout>

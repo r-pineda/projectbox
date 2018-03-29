@@ -7,6 +7,7 @@
                ios:horizontalAlignment="left"
                android:horizontalAlignment="left" row="0" col="0"></Label>
         <StackLayout orientation="horizontal" horizontalAlignment="center" row="0" col="1">
+            <Image src="~/images/disconnect.png" *ngIf="offlinemode"></Image>
             <Label text="Dashboard" class="nav-h3 margin-right-5"></Label>
             <Label class="fa" (tap)="ngOnInit()" [text]="'fa-repeat' | fonticon"></Label>
         </StackLayout>
