@@ -280,12 +280,12 @@ export class TodoComponent {
         }
         /* nach links */
         if (this.direction == 1) {
-            this.nav.state('dashboard');
+            this.nav.state('ticket');
         }
 
         /* nach unten */
         if (this.direction == 4) {
-            this.nav.state('ticket');
+            this.nav.state('dashboard');
         }
     }
 

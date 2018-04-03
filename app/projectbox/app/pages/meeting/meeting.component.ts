@@ -327,17 +327,17 @@ export class MeetingComponent implements OnInit {
         this.direction = args.direction;
         /* nach rechts */
         if (this.direction == 2) {
-            this.nav.state('todo');
+            this.nav.state('ticket');
         }
 
         /* nach links */
         if (this.direction == 1) {
-            this.nav.state('meeting');
+            this.nav.state('todo');
         }
 
         /* nach unten */
         if (this.direction == 4) {
-            this.nav.state('ticket');
+            this.nav.state('dashboard');
         }
     }
 

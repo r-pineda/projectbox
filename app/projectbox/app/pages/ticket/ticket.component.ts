@@ -108,7 +108,7 @@ export class TicketComponent implements OnInit {
               })
       }
     });
-    this.tickets.sort((a, b) => a.priority-b.priority);
+    this.tickets.sort((a, b) => b.priority-a.priority);
   }
 
   cr_ticket() {

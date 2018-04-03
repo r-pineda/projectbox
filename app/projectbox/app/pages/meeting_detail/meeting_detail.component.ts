@@ -148,6 +148,12 @@ export class Meeting_detailComponent implements OnInit{
 
   updateMeeting(){
     this.meetingService.update(this.meeting);
+      let options = {
+          title: "Bestätigung",
+          message: "Meeting wurde aktualisiert.",
+          okButtonText: "OK"
+      };
+    alert(options);
     this.cancel();
   }
 
@@ -278,7 +284,7 @@ export class Meeting_detailComponent implements OnInit{
             minDate: new Date()
         }).then((result:any) => {
             if (result) {
-                this.meeting.date = new Date(result.year, result.month, result.day);
+                this.meeting.date = new Date(result.year, result.month, result.day, this.meeting.date.getHours(), this.meeting.date.getMinutes(), this.meeting.date.getSeconds());
                 this.date = result.day + "." + result.month + "." + result.year;
                 this.selectedDate = new Date(result.day, result.month, result.year);
             }
@@ -295,8 +301,8 @@ export class Meeting_detailComponent implements OnInit{
             is24HourView: true
         }).then((result:any) => {
             if (result) {
-                this.meeting.date = new Date(this.meeting.date.getFullYear(), this.meeting.date.getMonth(), this.meeting.date.getDate(), result.hour, result.minute, 0);
                 this.time = result.hour + ":" + result.minute;
+                this.meeting.date = new Date(this.meeting.date.getFullYear(), this.meeting.date.getMonth(), this.meeting.date.getDate(), result.hour, result.minute, 0);
             }
         })
             .catch((error) => {
