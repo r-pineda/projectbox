@@ -1,3 +1,4 @@
+<!-- actionbar -->
 <ActionBar title="">
     <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
         <Label class="fa" (tap)="cancel()" [text]="'fa-times' | fonticon" ios:horizontalAlignment="left"
@@ -11,33 +12,30 @@
                android:horizontalAlignment="right" row="0" col="2"></Label>
     </GridLayout>
 </ActionBar>
+<!-- content -->
 <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="100%">
     <AbsoluteLayout>
         <StackLayout class="page" width="100%">
-            <!--<StackLayout orientation="horizontal" horizontalAlignment="right">
-                <Button class="btn btn-primary btn-active" (tap)="openCamera()" text="Abbrechen"></Button>
-                <Button class="btn btn-primary btn-active" (tap)="uploadFile()" text="Aktualisieren"></Button>
-            </StackLayout>-->
             <GridLayout rows="auto, *">
                 <StackLayout class="form-taskticket" row="1">
-                    <!--<Label class="fa" [text]="'fa-angle-down' | fonticon" (tap)="cancel()"
-                           horizontalAlignment="center"></Label>-->
                     <Label class="h5" text="Titel"></Label>
+                    <!-- meeting name -->
                     <TextField class="textfield" [(ngModel)]="meeting.name"></TextField>
                     <Label class="h5" text="Datum"></Label>
+                    <!-- meeting date -->
                     <TextField class="textfield" (tap)="selectDate()" [text]="date"></TextField>
-                    <!--<TextField class="textfield" [(ngModel)]="meeting.date"></TextField>-->
                     <GridLayout columns="*,*" rows="*,*">
                         <Label class="h5" text="Beginn" col="0" row="0"></Label>
-                        <!--<TextField class="textfield" [(ngModel)]="meeting.date" col="0" row="1"
-                                   style="margin-right:5;"></TextField>-->
+                        <!-- meeting start time -->
                         <TextField class="textfield margin-right-5" (tap)="selectTime()" [text]="time" col="0"
                                    row="1"></TextField>
                         <Label class="h5" text="Dauer (Minuten)" col="1" row="0"></Label>
+                        <!-- meeting duraction -->
                         <TextField class="textfield" keyboardType="number" [(ngModel)]="meeting.duration" col="1"
                                    row="1"></TextField>
                     </GridLayout>
                     <Label class="h5" text="Projekt"></Label>
+                    <!-- meeting project -->
                     <DropDown #dd
                               style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
                               [items]="projectNames"
@@ -45,32 +43,41 @@
                               (opened)="onopen()"
                               (closed)="onclose()"></DropDown>
                     <Label class="h5" text="Teilnehmer"></Label>
+                    <!-- meeting attendees -->
                     <TextField class="textfield" [(ngModel)]="attendeesString"></TextField>
                     <Label class="field-seperator margin-topbot-10" height="1"></Label>
+                    <!-- tabs -->
                     <GridLayout columns="*,*,*" rows="*,*">
+                        <!-- agenda icon -->
                         <Image [src]="meeting_tabs == 'agenda' ? '~/images/agenda_t.png' : '~/images/agenda_g.png'"
                                (tap)="state('agenda')" row="0" col="0" width="20"
                                height="20" stretch="aspectFit"></Image>
+                        <!-- protocol icon -->
                         <Image [src]="meeting_tabs == 'protokoll' ? '~/images/protokoll_t.png' : '~/images/protokoll_g.png'"
                                (tap)="state('protokoll')" row="0" col="1" width="40"
                                height="20" stretch="aspectFit"></Image>
+                        <!-- files icon -->
                         <Image [src]="meeting_tabs == 'files' ? '~/images/files_g.png' : '~/images/files_t.png'"
                                (tap)="state('files')" row="0" col="2" width="40"
                                height="20"
                                stretch="aspectFit"></Image>
+                        <!-- agenda headline -->
                         <Label class="h4" text="Agenda" [style.color]="meeting_tabs == 'agenda' ? '#03A698' : '#222222'"
                                col="0" row="1" horizontalAlignment="center"
                                (tap)="state('agenda')"></Label>
+                        <!-- protocol headline -->
                         <Label class="h4" text="Protokoll"
                                [style.color]="meeting_tabs == 'protokoll' ? '#03A698' : '#222222'" col="1" row="1"
                                horizontalAlignment="center"
                                (tap)="state('protokoll')"></Label>
+                        <!-- files headline -->
                         <Label class="h4" text="Files" [style.color]="meeting_tabs == 'files' ? '#03A698' : '#222222'"
                                col="2" row="1" horizontalAlignment="center"
                                (tap)="state('files')"></Label>
                     </GridLayout>
                     <Label class="field-seperator margin-topbot-10" height="1"></Label>
                     <StackLayout [ngSwitch]="meeting_tabs">
+                        <!-- agenda tab -->
                         <StackLayout *ngSwitchCase="'agenda'">
                             <GridLayout columns="auto,*,auto,auto" rows="auto,auto"
                                         *ngFor="let point of agenda; let i = index" [attr.data-index]="i">
@@ -82,33 +89,37 @@
                                            col="1" colSpan="2" row="1"></TextField>
                             </GridLayout>
                         </StackLayout>
+                        <!-- files tab -->
                         <StackLayout *ngSwitchCase="'files'">
                             <GridLayout columns="auto,auto" horizontalAlignment="center" rows="auto,auto">
+                                <!-- add picture -->
                                 <FAB icon="~/images/photo-camera.png" rippleColor="#f1f1f1"
                                      class="fab-button margin-15" (tap)="sourcepic()" col="0" row="0"></FAB>
                                 <Label verticalAlignment="center" class="h4" text="Foto hochladen"
                                        (tap)="sourcepic()" col="1" row="0"></Label>
+                                <!-- refresh pictures -->
                                 <FAB rippleColor="#f1f1f1" icon="~/images/refresh.png"
                                      class="fab-button margin-15" (tap)="reloadFiles()" row="1" col="0"></FAB>
-                                <!--  icon="~/images/refresh.png"  -->
                                 <Label class="h4" verticalAlignment="center" text="Files aktualisieren" col="1" row="1"
                                        (tap)="reloadFiles()"></Label>
                             </GridLayout>
+                            <!-- pictures -->
                             <GridLayout rows="auto, auto" columns="auto, auto" class="margin-topbot-10"
                                         *ngFor="let file of userFiles">
-                                <!--<Image [src]='comment.userImage' width="45" height="45"
-                                       stretch="aspectFit" verticalAlignment="center" rowSpan="2" col="0"
-                                       class="img-rounded"></Image>-->
                                 <Image (tap)="showImage(file.imagesrc)" src="~/images/picture_file.png" rowSpan="2"
                                        col="0"
                                        width="50" height="50" class="margin-right-5"></Image>
+                                <!-- file name -->
                                 <Label [text]="file.name" verticalAlignment="center"
                                        class="bold" col="1" row="0"></Label>
+                                <!-- file size -->
                                 <Label [text]="file.size + ' Bytes'" row="1" col="1" verticalAlignment="center"
                                        style="padding:5;"></Label>
                             </GridLayout>
                         </StackLayout>
+                        <!-- protocol tab -->
                         <StackLayout *ngSwitchCase="'protokoll'">
+                            <!-- protocol textfield -->
                             <TextView style="margin-top: 15px" height="500px" [(ngModel)]="meeting.protocol"
                                       hint="Inhalt vom Protokoll eingeben" returnKeyType="send"
                                       class="input"></TextView>

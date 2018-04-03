@@ -1,3 +1,4 @@
+<!-- actionbar -->
 <ActionBar title="">
     <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
         <Label class="fa" (tap)="cancel()" [text]="'fa-times' | fonticon" ios:horizontalAlignment="left"
@@ -11,14 +12,17 @@
                android:horizontalAlignment="right" row="0" col="2"></Label>
     </GridLayout>
 </ActionBar>
+<!-- content -->
 <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%">
     <AbsoluteLayout>
         <StackLayout class="page" width="100%">
             <StackLayout class="form-taskticket">
                 <Label class="h5" text="Titel"></Label>
+                <!-- ticket name -->
                 <TextField class="textfield" [(ngModel)]="ticket.name"></TextField>
                 <GridLayout columns="*,auto" rows="*,*">
                     <Label class="h5" text="Projekt" col="0" row="0"></Label>
+                    <!-- project dropdown -->
                     <DropDown #phasedd
                               style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-right:5;margin-bottom:10;"
                               [items]="projectList"
@@ -27,10 +31,12 @@
                               (opened)="onopen()"
                               (closed)="onclose()" col="0" row="1"></DropDown>
                     <Label class="h5" text="Priorität" col="1" row="0"></Label>
+                    <!-- ticket priority -->
                     <TextField class="textfield" keyboardType="number" [(ngModel)]="ticket.priority" col="1"
                                row="1"></TextField>
                 </GridLayout>
                 <Label class="h5" text="Verantwortlicher"></Label>
+                <!-- responsible dropdown -->
                 <DropDown #phasedd
                           style="padding: 5;font-size: 15;background-color: #EBEBEB;margin-bottom:15;"
                           [items]="userSelection"
@@ -39,6 +45,7 @@
                           (opened)="onopen()" A
                           (closed)="onclose()"></DropDown>
                 <Label class="h5" text="Beschreibung"></Label>
+                <!-- ticket description -->
                 <TextView style="margin-top: 15px" [(ngModel)]="ticket.description" height="150"
                           returnKeyType="send" class="input"></TextView>
             </StackLayout>

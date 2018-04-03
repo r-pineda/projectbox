@@ -1,38 +1,62 @@
+<!-- sidedrawer (nav) -->
 <RadSideDrawer tkExampleTitle tkToggleNavButton>
     <StackLayout tkDrawerContent class="sideStackLayout">
+        <!-- user information -->
         <StackLayout class="sideTitleStackLayout">
+            <!-- avatar -->
             <Image [src]="avatar" width="100" height="100"></Image>
+            <!-- first name -->
             <Label [text]="curUser.first_name" class="full-name"></Label>
+            <!-- email -->
             <Label [text]="curUser.email" class="e-mail-nav"></Label>
         </StackLayout>
+        <!-- modules and navable items -->
         <GridLayout class="side-nav-items" columns="*,*" rows="*,*,*,*,*,*">
+            <!-- dashboard icon -->
             <Image (tap)="state('dashboard')" src="~/images/dashboard.png" row="0" col="0" width="50" height="50"
                    stretch="aspectFit" class="sideLabel"></Image>
+            <!-- todo icon -->
             <Image (tap)="state('todo')" src="~/images/task.png" row="0" col="1" width="50" height="50"
                    stretch="aspectFill" class="sideLabel"></Image>
+            <!-- dashboard headline -->
             <Label (tap)="state('dashboard')" text="Dashboard" row="1" col="0" class="h5 center nav-label"></Label>
+            <!-- todo headline -->
             <Label (tap)="state('todo')" text="Tasks" row="1" col="1" class="h5 center nav-label"></Label>
+            <!-- meeting icon -->
             <Image (tap)="state('meeting')" src="~/images/meeting.png" row="2" col="0" width="50" height="50"
                    stretch="aspectFill" class="sideLabel"></Image>
+            <!-- ticket icon -->
             <Image (tap)="state('ticket')" src="~/images/bug.png" row="2" col="1" width="50" height="50"
                    stretch="aspectFill" class="sideLabel"></Image>
+            <!-- meeting headline -->
             <Label (tap)="state('meeting')" text="Meeting" row="3" col="0" class="h5 center nav-label"></Label>
+            <!-- ticket headline -->
             <Label (tap)="state('ticket')" text="Tickets" row="3" col="1" class="h5 center nav-label"></Label>
+            <!-- settings icon -->
             <Image (tap)="state('settings')" src="~/images/settings.png" row="4" col="0" width="50" height="50"
                    stretch="aspectFill" class="sideLabel"></Image>
+            <!-- logout icon -->
             <Image (tap)="logout()" src="~/images/logout.png" row="4" col="1" width="50" height="50"
                    stretch="aspectFill" class="sideLabel"></Image>
+            <!-- settings headline -->
             <Label (tap)="state('settings')" text="Einstellungen" row="5" col="0" class="h5 center nav-label"></Label>
+            <!-- logout headline -->
             <Label (tap)="logout()" text="Logout" row="5" col="1" class="h5 center nav-label"></Label>
         </GridLayout>
     </StackLayout>
+    <!-- views -->
     <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%" height="90%" row="1" col="0">
-            <StackLayout width="100%" [ngSwitch]="appState">
-                <pb-dashboard *ngSwitchCase="'dashboard'"></pb-dashboard>
-                <pb-todo *ngSwitchCase="'todo'"></pb-todo>
-                <pb-meeting *ngSwitchCase="'meeting'"></pb-meeting>
-                <pb-ticket *ngSwitchCase="'ticket'"></pb-ticket>
-                <pb-setting *ngSwitchCase="'settings'"></pb-setting>
-            </StackLayout>
+        <StackLayout width="100%" [ngSwitch]="appState">
+            <!-- dashboard view -->
+            <pb-dashboard *ngSwitchCase="'dashboard'"></pb-dashboard>
+            <!-- todo view -->
+            <pb-todo *ngSwitchCase="'todo'"></pb-todo>
+            <!-- meeting view -->
+            <pb-meeting *ngSwitchCase="'meeting'"></pb-meeting>
+            <!-- ticket view -->
+            <pb-ticket *ngSwitchCase="'ticket'"></pb-ticket>
+            <!-- settings view -->
+            <pb-setting *ngSwitchCase="'settings'"></pb-setting>
+        </StackLayout>
     </ScrollView>
 </RadSideDrawer>

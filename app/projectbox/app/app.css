@@ -374,16 +374,3 @@ TextField, TextView {
 .form-taskticket {
     background-color: #ffffff;
 }
-
-/* animation */
-.fa-spin {
-    animation-name: fa-spin;
-    animation-duration: 4;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-@keyframes fa-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}

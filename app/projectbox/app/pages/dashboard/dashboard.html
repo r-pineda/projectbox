@@ -1,23 +1,29 @@
-    <ActionBar title="" (swipe)="onSwipe($event)">
+<!-- ActionBar start -->
+<ActionBar title="" (swipe)="onSwipe($event)">
     <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
+        <!-- show x icon if nav is open -->
         <Label class="fa" *ngIf="nav.drawer.getIsOpen()" (tap)="nav.onCloseDrawerTap()" [text]="'fa-times' | fonticon"
                ios:horizontalAlignment="left"
                android:horizontalAlignment="left" row="0" col="0"></Label>
+        <!-- show sandwich icon if nav is closed -->
         <Label class="fa" *ngIf="!nav.drawer.getIsOpen()" (tap)="nav.openDrawer()" [text]="'fa-bars' | fonticon"
                ios:horizontalAlignment="left"
                android:horizontalAlignment="left" row="0" col="0"></Label>
         <StackLayout orientation="horizontal" horizontalAlignment="center" row="0" col="1">
+            <!-- show offline icon -->
             <Image src="~/images/disconnect.png" *ngIf="offlinemode"></Image>
             <Label text="Dashboard" class="nav-h3 margin-right-5"></Label>
             <Label class="fa" (tap)="ngOnInit()" [text]="'fa-repeat' | fonticon"></Label>
         </StackLayout>
-        <!--<Label class="fa" (tap)="aktualisieren()" [text]="'fa-repeat' | fonticon" ios:horizontalAlignment="right"
-               android:horizontalAlignment="right" row="0" col="2"></Label>-->
     </GridLayout>
 </ActionBar>
+<!-- ActionBar end -->
+
+<!-- Content Layout start-->
 <StackLayout class="page" width="100%">
     <GridLayout columns="auto, *" rows="auto">
         <Label text="PROJEKTE" (tap)="showAllProjects()" row="0" col="0" class="h2"></Label>
+        <!-- show weniger or all if all_projects is true oder false -->
         <Label text="alle >" *ngIf="!all_projects" row="0" col="1" style.horizontalAlignment="right"
                style.verticalAlignment="bottom"
                class="text" style="margin-right:10;" (tap)="showAllProjects()"></Label>
@@ -25,9 +31,12 @@
                style.verticalAlignment="bottom"
                class="text" style="margin-right:10;" (tap)="limitProjects()"></Label>
     </GridLayout>
+    <!-- show 3 projects -->
     <StackLayout orientation="horizontal" *ngIf="!all_projects">
         <StackLayout orientation="horizontal" *ngFor="let item of projects" class="project">
+            <!-- border color -->
             <Label class="borderitem" [ngStyle]="{'border-color': item.color}" height="60"></Label>
+            <!-- project name -->
             <TextView [text]="item.name" id="item.id" (tap)="filterByProject(item.id)" editable="false"
                       textWrap="true"
                       class="longtext h4" textWrap="true" width="100" height="100"
@@ -35,50 +44,68 @@
                       [style.color]="selectedProject == item.id? '#fff' : '#222222'" shadow="10"></TextView>
         </StackLayout>
     </StackLayout>
+    <!-- show all projects -->
     <StackLayout *ngIf="all_projects">
         <GridLayout class="marginitem" *ngFor="let ite of projects"
                     columns="auto,*" rows="auto,auto"
                     (tap)="filterByProject(ite.id)">
+            <!-- border color -->
             <Label class="borderitem" [ngStyle]="{'border-color': ite.color}" height="40" col="0"
                    rowSpan="2"></Label>
+            <!-- project name -->
             <StackLayout class="listitem" rowSpan="2" col="1"
                          [style.background-color]="selectedProject == ite.id? '#03A698' : '#fff'"
                          [style.color]="selectedProject == ite.id? '#fff' : '#222222'" shadow="10">
-                <Label [text]="ite.name" col="0" row="0"  class="longtext h4" textWrap="true"
+                <Label [text]="ite.name" col="0" row="0" class="longtext h4" textWrap="true"
                        [style.background-color]="selectedProject == ite.id? '#03A698' : '#fff'"
                        [style.color]="selectedProject == ite.id? '#fff' : '#222222'"></Label>
             </StackLayout>
         </GridLayout>
     </StackLayout>
+    <!-- Tasks start -->
     <Label text="TASKS" (tap)="nav.state('todo')" class="h2"></Label>
     <StackLayout>
+        <!-- Iterate through displayedTodos -->
         <GridLayout class="marginitem" *ngFor="let task of displayedTodos"
                     [nsRouterLink]="['/todo_detail', task.id]"
                     columns="auto,*" rows="auto,auto">
+            <!-- set border-color -->
             <Label class="borderitem" [ngStyle]="{'border-color': task.color}" height="40" col="0"
                    rowSpan="2"></Label>
             <GridLayout col="1" class="listitem" rowSpan="2" columns="*,*" rows="*,*" shadow="10">
+                <!-- task name -->
                 <Label [text]="task.name" col="0" row="0" class="longtext h4" textWrap="true"></Label>
+                <!-- deadline -->
                 <Label class="text ticket" [text]="task.due_date_string" col="0" row="1"></Label>
             </GridLayout>
         </GridLayout>
     </StackLayout>
+    <!-- Tasks end -->
+    <!-- Meetings start -->
     <Label text="MEETINGS" class="h2" (tap)="nav.state('meeting')"></Label>
     <StackLayout>
+        <!-- Iterate through displayedMeetings -->
         <GridLayout *ngFor="let item of displayedMeetings" class="marginitem" columns="auto, *" rows="auto"
                     (tap)="showDetail(item.id)">
+            <!-- set border-color -->
             <Label class="borderitem" [ngStyle]="{'border-color' : item.project_color}" height="60" col="0" row="0"
                    horizontalAlignment="center"></Label>
             <GridLayout columns="80,auto,auto,*" rows="auto,auto,*" col="1" row="0" class="padding-topbot-10"
                         shadow="10">
+                <!-- date -->
                 <Label [text]="item.dateFormatted" col="0" row="0" rowSpan="3" class="meeting-indicator h4"
                        margin="0 0 0 5"></Label>
                 <Label col="1" rowSpan="3" class="hr-light" width="1" height="80%" margin="5"></Label>
-                <Label [text]="item.name" textWrap="true"  class="longtext h4" textWrap="true" col="2" margin="5 0 0 0"></Label>
+                <!-- name of meeting -->
+                <Label [text]="item.name" textWrap="true" class="longtext h4" textWrap="true" col="2"
+                       margin="5 0 0 0"></Label>
+                <!-- estimated duration -->
                 <Label [text]="item.duration + ' Minuten'" col="2" row="1" class="text" margin="0"></Label>
+                <!-- location -->
                 <Label [text]="item.location" col="2" row="2" class="text" margin="0 5 0 0"></Label>
-                <!--<Label text="..." col="3" rowSpan="3" class="meeting-cont" margin="0 20 20 20"></Label>-->
             </GridLayout>
         </GridLayout>
     </StackLayout>
+    <!-- Meetings end -->
 </StackLayout>
+<!-- Content Layout end -->
