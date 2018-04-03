@@ -1,5 +1,5 @@
 <!-- actionbar -->
-<AcionBar title="">
+<ActionBar title="">
     <GridLayout rows="*,*,*" columns="*" class="padding-right-10">
         <Label class="fa" (tap)="cancel()" [text]="'fa-times' | fonticon" ios:horizontalAlignment="left"
                android:horizontalAlignment="left" row="0" col="0"></Label>
@@ -11,7 +11,7 @@
         <Label class="fa" (tap)="saveTodo()" [text]="'fa-floppy-o' | fonticon" ios:horizontalAlignment="right"
                android:horizontalAlignment="right" row="0" col="2"></Label>
     </GridLayout>
-</AcionBar>
+</ActionBar>
 <!-- content -->
 <ScrollView tkMainContent orientation="vertical" isEnabled="true" width="100%">
     <AbsoluteLayout>
