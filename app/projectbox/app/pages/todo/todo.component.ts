@@ -110,10 +110,6 @@ export class TodoComponent {
   }
 
   displayTodos(data :any){
-      data.tasks.forEach(todo => {
-          var date = new Date(todo.due_date);
-          todo.due_date_string = "bis " + date.getDate() + ". " + this.monthNames[date.getMonth()] + " " + date.getFullYear();
-      })
         if(data){
           this.todoService.saveTodos(data);
           this.todos = data.tasks;
@@ -121,6 +117,10 @@ export class TodoComponent {
           data = this.todoService.getSavedTodos();
           this.todos = data.tasks;
         }
+        data.tasks.forEach(todo => {
+          var date = new Date(todo.due_date);
+          todo.due_date_string = "bis " + date.getDate() + ". " + this.monthNames[date.getMonth()] + " " + date.getFullYear();
+        })
         this.todos.sort((a, b) => {return new Date(a.due_date).getTime() - new Date(b.due_date).getTime()});
         this.todos.forEach(todo => {
           todo.trackingsFull = new Array<Tracking>();
