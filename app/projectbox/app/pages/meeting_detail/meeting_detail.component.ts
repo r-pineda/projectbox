@@ -268,7 +268,7 @@ export class Meeting_detailComponent implements OnInit{
     public onclose() {
     }
 
-    /* date pciker */
+    /* date picker */
     selectDate() {
         this.modalDatetimepicker.pickDate(<PickerOptions>{
             title: "Datum auswählen",
@@ -278,7 +278,8 @@ export class Meeting_detailComponent implements OnInit{
             minDate: new Date()
         }).then((result:any) => {
             if (result) {
-                this.date = result.day + "." + result.month+1 + "." + result.year;
+                this.meeting.date = new Date(result.year, result.month, result.day);
+                this.date = result.day + "." + result.month + "." + result.year;
                 this.selectedDate = new Date(result.day, result.month, result.year);
             }
         })
