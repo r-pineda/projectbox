@@ -284,9 +284,9 @@ export class Meeting_detailComponent implements OnInit{
             minDate: new Date()
         }).then((result:any) => {
             if (result) {
-                this.meeting.date = new Date(result.year, result.month, result.day, this.meeting.date.getHours(), this.meeting.date.getMinutes(), this.meeting.date.getSeconds());
                 this.date = result.day + "." + result.month + "." + result.year;
                 this.selectedDate = new Date(result.day, result.month, result.year);
+                this.meeting.date = new Date(result.year, result.month, result.day, this.meeting.date.getHours(), this.meeting.date.getMinutes(), this.meeting.date.getSeconds());
             }
         })
             .catch((error) => {

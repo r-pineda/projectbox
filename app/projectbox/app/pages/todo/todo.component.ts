@@ -200,7 +200,13 @@ export class TodoComponent {
       this.newTodo.due_date = new Date(+dueDate[2], +dueDate[1]-1, +dueDate[0]);
       this.todoService.createTodo(this.newTodo)
       .then(() => {
-        this.create = false;
+          let options = {
+              title: "Bestätigung",
+              message: "Meeting wurde aktualisiert.",
+              okButtonText: "OK"
+          };
+          alert(options);
+          this.cancel();
         this.ngOnInit();
       });
     }

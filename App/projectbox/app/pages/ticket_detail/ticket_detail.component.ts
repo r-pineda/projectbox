@@ -116,8 +116,14 @@ export class Ticket_detailComponent implements OnInit{
     }
 
     saveTicket() {
-        this.ticketService.updateTicket(this.ticket)
-            .then(() => {this.cancel()});
+        this.ticketService.updateTicket(this.ticket);
+        let options = {
+            title: "Bestätigung",
+            message: "Ticket wurde aktualisiert.",
+            okButtonText: "OK"
+        };
+        alert(options);
+        this.cancel();
     }
 
 

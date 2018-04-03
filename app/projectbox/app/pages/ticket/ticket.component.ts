@@ -124,8 +124,13 @@ export class TicketComponent implements OnInit {
   createTicket() {
       this.ticketService.createTicket(this.newTicket)
           .then((data) => {this.newTicket.id = data.ticket.id;this.ticketService.updateTicket(this.newTicket).then((data) => {this.ngOnInit()})})
-      alert("Ticket erstellt");
-      this.create = false;
+      let options = {
+          title: "Bestätigung",
+          message: "Ticket wurde erstellt.",
+          okButtonText: "OK"
+      };
+      alert(options);
+      this.cancel();
   }
 
     getUsers(args: SelectedIndexChangedEventData){

@@ -201,6 +201,12 @@ export class Todo_detailComponent {
       this.todo.responsible_id = this.todo.responsible;
       this.todo.project_id = this.todo.project;
       this.todoService.updateTodo(this.todo);
+        let options = {
+            title: "Bestätigung",
+            message: "Task wurde aktualisiert.",
+            okButtonText: "OK"
+        };
+        alert(options);
       this.cancel();
     }
 

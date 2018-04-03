@@ -220,6 +220,13 @@ export class MeetingComponent implements OnInit {
                 this.newMeeting.id = data.meeting.id;
                 this.meetingService.update(this.newMeeting)
                     .then((data) => {
+                        let options = {
+                            title: "Bestätigung",
+                            message: "Meeting wurde erstellt.",
+                            okButtonText: "OK"
+                        };
+                        alert(options);
+                        this.cancel();
                         this.cancel();
                         this.ngOnInit();
                     });
