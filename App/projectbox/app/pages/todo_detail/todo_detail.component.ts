@@ -245,6 +245,12 @@ export class Todo_detailComponent {
             let minutes = (minsecs-seconds)/60;
             this.totalTimeString = "" + (hours>9?hours:"0"+hours) + ":" + (minutes>9?minutes:"0"+minutes) + ":" + (seconds>9?seconds:"0"+seconds);
           }
+            let options = {
+                title: "Bestätigung",
+                message: "Zeiteintrag wurde gelöscht.",
+                okButtonText: "OK"
+            };
+            alert(options);
         });
     }
 
