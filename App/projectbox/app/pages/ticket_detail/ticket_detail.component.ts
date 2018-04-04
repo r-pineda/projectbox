@@ -28,6 +28,7 @@ export class Ticket_detailComponent implements OnInit{
     userSelection: string[] = new Array<string>();
     projectIds: string[] = new Array<string>();
     ticket :Ticket;
+    offlineMode :boolean;
 
     constructor
     (
@@ -45,6 +46,8 @@ export class Ticket_detailComponent implements OnInit{
         this.route.params.subscribe((params) => {
             this.getTicket(params["id"]);
         });
+
+        this.offlineMode = statusService.getOfflineMode();
 
         this.page.css = "Page { background-color: #ffffff; } .page { padding-left: 0; padding:20; background-color: #ffffff;}";
     }

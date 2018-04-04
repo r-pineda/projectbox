@@ -6,6 +6,7 @@ import * as FrameModule from "ui/frame";
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { getBoolean, setBoolean } from "application-settings";
 import {NavComponent} from "../nav/nav.component";
+import {StatusService} from "../../shared/status/status.service";
 
 @Component({
   selector: 'pb-setting',
@@ -17,6 +18,7 @@ export class SettingsComponent implements OnInit{
   tutorial :boolean;
   actualsaveTutorial :boolean;
   nav :NavComponent;
+  offlineMode :boolean;
 
    constructor
   (
@@ -26,9 +28,11 @@ export class SettingsComponent implements OnInit{
     private page: Page,
     private fonticon: TNSFontIconService,
     private _changeDetectionRef: ChangeDetectorRef,
-    private navState: NavComponent
+    private navState: NavComponent,
+    private statusService: StatusService
     )
   {
+    this.offlineMode = statusService.getOfflineMode();
     this.nav = navState;
   }
 

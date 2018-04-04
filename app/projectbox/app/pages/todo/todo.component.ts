@@ -51,6 +51,7 @@ export class TodoComponent {
     monthNames = ["Jänner", "Februar", "März", "April", "Mai", "Juni",
         "Juli", "August", "September", "Oktober", "November", "Dezember"
     ];
+  offlineMode :boolean;
 
     /* date picker */
     public date: string;
@@ -70,6 +71,7 @@ export class TodoComponent {
     private navState: NavComponent
   )
   {
+    this.offlineMode = statusService.getOfflineMode();
     this.nav = navState;
     this.curUser = this.userService.getCurrentUser();
     this.modalDatetimepicker = new ModalDatetimepicker();

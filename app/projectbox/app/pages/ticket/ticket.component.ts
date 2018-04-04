@@ -39,6 +39,7 @@ export class TicketComponent implements OnInit {
   public projectList: string[] = new Array<string>();
   projectIds :string[] = new Array<string>();
   userIds :string[] = new Array<string>();
+  offlineMode :boolean;
 
   constructor
   (
@@ -54,6 +55,7 @@ export class TicketComponent implements OnInit {
     private navState: NavComponent
     )
   {
+    this.offlineMode = statusService.getOfflineMode();
     this.nav = navState;
     this.curUser = this.userService.getCurrentUser();
   }

@@ -55,6 +55,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     ];
   public direction: number;
   isUpdating = false;
+  offlineMode :boolean;
 
   constructor
   (
@@ -69,9 +70,11 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     private fonticon: TNSFontIconService,
     private navState: NavComponent,
     private page: Page,
-    private zone: NgZone
+    private zone: NgZone,
+    private statusService: StatusService
   )
   {
+      this.offlineMode = statusService.getOfflineMode();
       this.nav = navState;
       this.page.css = ".page {  padding-top: 10; padding-left: 10; padding-bottom: 20; background-color: #ECEDEE;}";
 
