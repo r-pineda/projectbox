@@ -204,7 +204,7 @@ export class TodoComponent {
       .then(() => {
           let options = {
               title: "Bestätigung",
-              message: "Meeting wurde aktualisiert.",
+              message: "Task wurde aktualisiert.",
               okButtonText: "OK"
           };
           alert(options);
@@ -332,8 +332,20 @@ export class TodoComponent {
 
     deleteTodo(t_id :string){
       this.todoService.deleteTodo(t_id)
-        .then(() => {alert("Task erfolgreich gelöscht!");this.ngOnInit()},
-              (error) => {alert("Fehler beim löschen des Tasks")});
+        .then(() => { let options = {
+                title: "Bestätigung",
+                message: "Task wurde gelöscht.",
+                okButtonText: "OK"
+            };
+                alert(options);this.ngOnInit()},
+              (error) => {
+                  let options = {
+                      title: "Fehlermeldung",
+                      message: "Task konnte nicht gelöscht werden.",
+                      okButtonText: "OK"
+                  };
+                  alert(options);
+              });
 
     }
 }

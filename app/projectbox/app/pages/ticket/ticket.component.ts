@@ -154,12 +154,22 @@ export class TicketComponent implements OnInit {
     }
 
     deleteTicket(t_id :string){
-      this.ticketService.deleteTicket(t_id).then(() => {alert("Ticket erfolgreich gelöscht!");this.ngOnInit()});
+      this.ticketService.deleteTicket(t_id).then(() => { let options = {
+          title: "Bestätigung",
+          message: "Ticket wurde gelöscht.",
+          okButtonText: "OK"
+      };
+          alert(options);this.ngOnInit()});
     }
 
     finished(t :Ticket){
         t.completed = true;
-        this.ticketService.updateTicket(t).then((data) => {this.ngOnInit();alert("Ticket erfolgreich abgeschlossen!")});
+        this.ticketService.updateTicket(t).then((data) => { let options = {
+            title: "Bestätigung",
+            message: "Ticket wurde als erledigt markiert.",
+            okButtonText: "OK"
+        };
+            alert(options);this.ngOnInit()});
     }
 
     goToDetail(t_id :string){
