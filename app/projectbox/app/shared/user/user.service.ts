@@ -50,7 +50,7 @@ export class UserService {
       console.log(data.access_token);
     })
     .catch((err: any) => {
-      if(err.indexOf("403")){
+      if(err == "Response with status: 403 Forbidden for URL: https://api.agiletoolz.com/v2/token"){
         return Observable.throw("403");
       }else{
         return Observable.throw(err);
