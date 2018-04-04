@@ -1,3 +1,4 @@
+///<reference path="../../shared/status/status.service.ts"/>
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../../shared/user/user.service";
 import { Router} from "@angular/router";
@@ -60,13 +61,16 @@ export class Meeting_detailComponent implements OnInit{
   projectIds :string[] = new Array<string>();
   attendeesString :string = "";
   agenda :AgendaPoint[];
+  offlineMode :boolean;
 
 
-  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private page: Page, private meetingService: MeetingService, private userService: UserService) {
+  constructor(private route :ActivatedRoute, private router: Router, private routerExtensions: RouterExtensions, private page: Page, private meetingService: MeetingService, private userService: UserService, private statusService: StatusService) {
 
     this.route.params.subscribe((params) => {
       this.getMeeting(params["id"]);
     });
+
+    this.offlineMode = statusService.getOfflineMode();
 
       this.modalDatetimepicker = new ModalDatetimepicker();
   }

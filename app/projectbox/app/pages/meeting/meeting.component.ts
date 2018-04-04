@@ -44,6 +44,7 @@ import { NavComponent } from "../nav/nav.component";
 import {ModalDatetimepicker, PickerOptions} from "nativescript-modal-datetimepicker";
 import * as dialogs from "ui/dialogs";
 import { Config } from "../../shared/config";
+import {StatusService} from "../../shared/status/status.service";
 var bghttp = require("nativescript-background-http"); //file upload
 
 registerElement('Calendar', () => Calendar);
@@ -69,6 +70,7 @@ export class MeetingComponent implements OnInit {
     public projectSelection :string[] = new Array<string>();
     direction: number;
     newMeeting :Meeting = new Meeting;
+    offlineMode :boolean;
 
     settings: any;
     subtitles: CalendarSubtitle[];
@@ -97,8 +99,10 @@ export class MeetingComponent implements OnInit {
         private navState: NavComponent,
         private page: Page,
         private fonticon: TNSFontIconService,
-        private userService :UserService
+        private userService :UserService,
+        private statusService :StatusService
     ) {
+        this.offlineMode = statusService.getOfflineMode();
         this.nav = navState;
         this.modalDatetimepicker = new ModalDatetimepicker();
         this.meeting_tabs = 'teilnehmer';

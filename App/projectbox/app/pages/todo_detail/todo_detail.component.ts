@@ -44,6 +44,7 @@ export class Todo_detailComponent {
   totalTime :number = 0;
   totalTimeString :string;
   @ViewChild("commentText") commentTextField: ElementRef;
+  offlineMode :boolean;
 
     /* date picker */
     public date: string;
@@ -66,7 +67,7 @@ export class Todo_detailComponent {
     this.route.params.subscribe((params) => {
       this.getTodo(params["id"]);
     });
-
+    this.offlineMode = statusService.getOfflineMode();
     this.totalTimeString = "00:00:00";
 
     this.userAvatar = Config.apiUrl + "v2/user/avatar/" + this.userService.getCurrentUser().avatar + "?access_token=" + Config.token;
